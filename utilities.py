@@ -90,13 +90,13 @@ def eval_or_default(optional: _ty.Optional[Some],
 
 
 @_ty.overload
-def tuplify(arg: _ty.Iterable[Var], num: int = 1, exclude: Excludable = ()
-            ) -> _ty.Tuple[Var, ...]:
+def tuplify(arg: _ty.Iterable[Some], num: int = 1, exclude: Excludable = ()
+            ) -> _ty.Tuple[Some, ...]:
     pass
 
 @_ty.overload
-def tuplify(arg: Var, num: int = 1, exclude: Excludable = ()
-            ) -> _ty.Tuple[Var, ...]:
+def tuplify(arg: Some, num: int = 1, exclude: Excludable = ()
+            ) -> _ty.Tuple[Some, ...]:
     pass
 
 def tuplify(arg, num=1, exclude=()):
@@ -124,14 +124,14 @@ def tuplify(arg, num=1, exclude=()):
 
 
 @_ty.overload
-def repeatify(arg: _ty.Iterable[Var], times: _ty.Optional[int] = None,
-              exclude: Excludable = ()) -> _ty.Iterable[Var]:
+def repeatify(arg: _ty.Iterable[Some], times: _ty.Optional[int] = None,
+              exclude: Excludable = ()) -> _ty.Iterable[Some]:
     pass
 
 @_ty.overload
-def repeatify(arg: Var, times: _ty.Optional[int] = None,
+def repeatify(arg: Some, times: _ty.Optional[int] = None,
               exclude: Excludable = ()
-              ) -> _ty.Iterable[Var]:
+              ) -> _ty.Iterable[Some]:
     pass
 
 def repeatify(arg, times=None, exclude=()):
@@ -155,7 +155,7 @@ def repeatify(arg, times=None, exclude=()):
     return arg if _is_iter(arg, exclude) else _it.repeat(arg, *opt)
 
 
-def unseqify(arg: _ty.Sequence[Var]) -> _ty.Optional[InstanceOrSeq[Var]]:
+def unseqify(arg: _ty.Sequence[Some]) -> _ty.Optional[InstanceOrSeq[Some]]:
     """Unpack sequence before returning, if not longer than 1.
 
     If a sequence has a single element, return that. If empty, return `None`.
@@ -221,7 +221,8 @@ def rev_seq(seq: _ty.Reversible) -> _ty.Reversible:
     return reversed(seq)
 
 
-def _and_reverse(it_func: _ty.Callable[..., _ty.Iterable]) -> _ty.Callable[..., _ty.Iterable]:
+def _and_reverse(it_func: _ty.Callable[..., _ty.Iterable]
+                 ) -> _ty.Callable[..., _ty.Iterable]:
     """Wrap iterator factory with reversed
     """
     @_ft.wraps(it_func)
@@ -235,12 +236,13 @@ def _and_reverse(it_func: _ty.Callable[..., _ty.Iterable]) -> _ty.Callable[..., 
 
 
 @_and_reverse
-def zenumerate(*iterables: _ty.Iterable, start=0, step=1) -> ZipSequences:
+def zenumerate(*iterables: _ty.Iterable, start=0, stop=None, step=1,
+               usemax=False) -> ZipSequences:
     """Combination of enumerate and unpacked zip.
 
     Behaves like `enumerate`, but accepts multiple iterables.
     The output of `next` is a `tuple`: (counter, iter0, iter1, ...)
-    `start` and `step` can only be passed as keyword arguments.
+    `start`, `stop` and `step` can only be passed as keyword arguments.
 
     Example
     -------
@@ -252,8 +254,10 @@ def zenumerate(*iterables: _ty.Iterable, start=0, step=1) -> ZipSequences:
     >>>     time.sleep(0.1)
     >>> print(words)
     """
+    len_fun = _max_len if usemax else _min_len
+    stop = len_fun(*iterables) if stop is None else stop
     counter = ExtendedRange(start, _min_len(*iterables), step)
-    return ZipSequences(counter, *iterables)
+    return ZipSequences(counter, *iterables, usemax=usemax)
 
 
 # =============================================================================
@@ -356,8 +360,8 @@ class ZipSequences(_cn.abc.Sequence):
 
     def __len__(self) -> int:
         if self._max:
-            return max(len(obj) for obj in self._seqs)
-        return min(len(obj) for obj in self._seqs)
+            return _max_len(self._seqs)
+        return _min_len(self._seqs)
 
     def __iter__(self) -> _ty.Union[zip, _it.zip_longest]:
         if self._max:
@@ -629,6 +633,14 @@ def _min_len(*iterables) -> int:
                default=None)
 
 
+def _max_len(*iterables) -> int:
+    """Length of longest sequence.
+    """
+    return max((len(seq) for seq in
+                filter(lambda x: isinstance(x, _cn.abc.Sized), iterables)),
+               default=None)
+
+
 # =============================================================================
 # Type hints
 # =============================================================================
@@ -638,12 +650,9 @@ Excludable = _ty.Tuple[_ty.Type[_ty.Iterable], ...]
 # -----------------------------------------------------------------------------
 Some = _ty.TypeVar('Some')
 Other = _ty.TypeVar('Other')
-Var = _ty.TypeVar('Var')
 # -----------------------------------------------------------------------------
-InstanceOrSeq = _ty.Union[Var, _ty.Sequence[Var]]
-CheckResult = _ty.Union[bool, type(NotImplemented)]
-Checker = _ty.Callable[[type, str], CheckResult]
-Eint = _ty.Union[_nm.Integral, _nm.Real]
+InstanceOrSeq = _ty.Union[Some, _ty.Sequence[Some]]
+Eint = _ty.Union[_nm.Integral, _nm.Real]  # Reals must be +-inf,nan
 RangeArg = _ty.Optional[Eint]
 RangeArgs = _ty.Tuple[RangeArg, ...]
 NameArg = _ty.Optional[str]
@@ -653,4 +662,3 @@ SliceArgs = _ty.Tuple[SliceArg, ...]
 Args = _ty.Tuple[Arg, ...]
 SliceKeys = _ty.Dict[str, SliceArg]
 Keys = _ty.Dict[str, Arg]
-#  _ty.Literal[math.inf, -math.inf, math.nan]

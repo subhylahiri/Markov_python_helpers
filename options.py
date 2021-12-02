@@ -115,40 +115,19 @@ class Options(_cn.abc.MutableMapping):
     (e.g. `obj.name`) or as dictionary items (e.g. `obj['name']`) for both
     getting and setting.
 
-    If the name is not found, it will search the attributes whose names are
-    listed in `map_attributes`. This does not apply to using as attributes
-    (either `obj.name` or `getattr(obj, 'name')`). Iterating and unpacking do
-    not recurse through these attributes, nor include properties and private
+    You can also subscript attributes of attributes with dotted keys:
+    `options['suboptions.name']`. If an attribute's name is found in
+    `map_attributes`, the attribute is updated when set rather than replaced
+    like other attributes. This statement does not apply to setting as
+    an attribute. New keys may be added by setting as attributes, e.g.
+    `obj.name=val` or `setattr(obj,'name',val)`.
+
+    Iterating and unpacking does not include properties and private
     attributes, unless their names are included in `prop_attributes`.
     If an attribute's value is only set by a default value in a type hint, and
     not set in `__init__`, it will be omitted when iterating, unpacking or
     printing. If it is both a member of `self.__dict__` and listed in
     `prop_attributes`, it will appear twice.
-
-    Setting attributes may be achieved via subscripting like a dictionary.
-    If the name is not found, it will search the attributes listed in
-    `map_attributes`. In case name exists in multiple map attributes, the
-    first one in definition order will be chosen. You also specify which map
-    attribute to choose with dotted keys: `options['suboptions.name']`. If
-    a key is not found when recursing these attributes, a `KeyError` is raised.
-    If an attribute's name is found in `map_attributes`, the attribute is
-    updated when set rather than replaced like other attributes. These three
-    statements do not apply to setting as an attribute. New keys may be added
-    by setting as attributes, e.g. `obj.name=val` or `setattr(obj,'name',val)`.
-
-    If a method `set_<name>(val)` exists, then `'<name>'` can be used as a key
-    for setting but (unless it exists as a property or attribute) it cannot
-    be used for getting. For such keys testing with `in` will return `False`,
-    iteration will not include them and setting in a parent class will not
-    propagate to this class.
-
-    The attributes listed in `map_attributes` should be `MutableMapping`s.
-    They, as well as the attributes in `prop_attributes`, will raise a
-    `TypeError` if you try to delete them.
-
-    If the same item appears in more than one of the `map_attributes`, or
-    in `self`, they can be partially synchronised by making it a property in
-    the parent `Options` with a `set_<key>` method that updates the children.
 
     Parameters
     ----------
@@ -187,13 +166,6 @@ class Options(_cn.abc.MutableMapping):
         for mapping in args:
             self.pop_my_args(mapping)
         self.update(kwds)
-        # for name in self.map_attributes:
-        #     if isinstance(self[name], MasterOptions):
-        #         raise TypeError(
-        #             f"{name} is a {type(self[name]).__name__}, a subclass of"
-        #             + "MasterOptions. It should not be a member of another "
-        #             + "Options class, as it will block searches for unknown "
-        #             + "keys when setting.")
 
     def __format__(self, format_spec: str) -> str:
         """formatted string representing object.
@@ -222,15 +194,6 @@ class Options(_cn.abc.MutableMapping):
     def __repr__(self) -> str:
         return self.__format__('r#\n    ')
 
-    # def __getattr__(self, name: str) -> Any:
-    #     for attr in self.map_attributes:
-    #         try:
-    #             return getattr(self, attr)[name]
-    #         except AttributeError:
-    #             pass
-    #     raise AttributeError(
-    #         f"{type(self).__name__} has no item named {name}")
-
     def __getitem__(self, key: str) -> _ty.Any:
         """Get an attribute"""
         if '.' in key:
@@ -239,15 +202,7 @@ class Options(_cn.abc.MutableMapping):
             for arg in args:
                 obj = getattr(obj, arg)
             return obj[attr]
-        try:
-            return getattr(self, key)
-        except AttributeError:
-            for attr in self.map_attributes:
-                try:
-                    return getattr(self, attr)[key]
-                except KeyError:
-                    pass
-        raise KeyError(f"Unknown key: {key}.")
+        return getattr(self, key)
 
     def __setitem__(self, key: str, value: _ty.Any) -> None:
         """Set an existing attribute"""
@@ -258,24 +213,10 @@ class Options(_cn.abc.MutableMapping):
                 obj = getattr(obj, arg)
             obj[attr] = value
             return
-        if hasattr(self, 'set_' + key):
-            getattr(self, 'set_' + key)(value)
-        elif key in self.map_attributes:
+        if key in self.map_attributes:
             self[key].update(value)
-        elif hasattr(self, key):
-            setattr(self, key, value)
         else:
-            for attr in self.map_attributes:
-                if key in self[attr]:
-                    getattr(self, attr).__setitem__(key, value)
-                    return
-                # try:
-                #     getattr(self, attr).__setitem__(key, value)
-                # except KeyError:
-                #     pass
-                # else:
-                #     return
-            raise KeyError(f"Unknown key: {key}.")
+            setattr(self, key, value)
 
     def __delitem__(self, key: str) -> None:
         if key in self.map_attributes + self.prop_attributes:
@@ -287,18 +228,7 @@ class Options(_cn.abc.MutableMapping):
                 obj = getattr(obj, arg)
             del obj[attr]
             return
-        try:
-            delattr(self, key)
-        except AttributeError:
-            # raise KeyError(f"Unknown key: {key}.")
-            for attr in self.map_attributes:
-                try:
-                    del getattr(self, attr)[key]
-                except KeyError:
-                    pass
-                else:
-                    return
-            raise KeyError(f"Unknown key: {key}.") from None
+        delattr(self, key)
 
     def __len__(self) -> int:
         # len(self.__dict__) + len(self.prop_attributes) includes privates.
@@ -323,7 +253,7 @@ class Options(_cn.abc.MutableMapping):
     def copy(self) -> Options:
         """Get a shallow copy of the object.
 
-        Onlu copies those attributes that appear when iterating.
+        Only copies those attributes that appear when iterating.
         """
         return type(self)(**self)
 
