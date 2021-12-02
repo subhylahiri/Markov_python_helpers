@@ -178,8 +178,8 @@ def unseqify(arg: _ty.Sequence[Var]) -> _ty.Optional[InstanceOrSeq[Var]]:
     return arg
 
 
-def seq_get(seq: _ty.Sequence[Val], ind: _ty.Union[int, slice],
-            default: _ty.Optional[Val] = None) -> Val:
+def seq_get(seq: _ty.Sequence[Other], ind: _ty.Union[int, slice],
+            default_val: _ty.Optional[Other] = None) -> Other:
     """Get an element from a sequence, or default if index is out of range
 
     Parameters
@@ -199,7 +199,7 @@ def seq_get(seq: _ty.Sequence[Val], ind: _ty.Union[int, slice],
     try:
         return seq[ind]
     except IndexError:
-        return default
+        return default_val
 
 
 def rev_seq(seq: _ty.Reversible) -> _ty.Reversible:
@@ -235,7 +235,7 @@ def _and_reverse(it_func: _ty.Callable[..., _ty.Iterable]) -> _ty.Callable[..., 
 
 
 @_and_reverse
-def zenumerate(*iterables: _it.Iterable, start=0, step=1) -> ZipSequences:
+def zenumerate(*iterables: _ty.Iterable, start=0, step=1) -> ZipSequences:
     """Combination of enumerate and unpacked zip.
 
     Behaves like `enumerate`, but accepts multiple iterables.
@@ -252,28 +252,8 @@ def zenumerate(*iterables: _it.Iterable, start=0, step=1) -> ZipSequences:
     >>>     time.sleep(0.1)
     >>> print(words)
     """
-    counter = erange(start, _it.min_len(*iterables), step)
+    counter = ExtendedRange(start, _min_len(*iterables), step)
     return ZipSequences(counter, *iterables)
-
-
-# =============================================================================
-# ABC mixin with __subclasshook__
-# =============================================================================
-
-
-class ABCauto(_abc.ABC):
-    """Base class for ABCs with automatic subclass check for abstract methods.
-    """
-
-    @classmethod
-    def __subclasshook__(cls, subcls):
-        return _subclass_hook(cls, subcls)
-
-    def __init_subclass__(cls, typecheckonly: bool = False):
-        if not typecheckonly:
-            supname = _supername(cls, ABCauto)
-            raise TypeError(f'{supname} should not be used as a superclass.'
-                            ' It is meant for instance/subclass checks only.')
 
 
 # =============================================================================
@@ -281,7 +261,7 @@ class ABCauto(_abc.ABC):
 # =============================================================================
 
 
-class RangeIsh(ABCauto, typecheckonly=True):
+class RangeIsh(_abc.ABC):
     """ABC for range-ish objects - those with start, stop, step attributes.
 
     Intended for instance/subclass checks only.
@@ -303,47 +283,7 @@ class RangeIsh(ABCauto, typecheckonly=True):
         """Step between members of range"""
 
 
-class RangeLike(RangeIsh, typecheckonly=True):
-    """ABC for range-like objects: range-ish objects with index, count methods.
-
-    Intended for instance/subclass checks only.
-    """
-
-    @_abc.abstractmethod
-    def count(self, value: Eint) -> int:
-        """return number of occurences of value"""
-
-    @_abc.abstractmethod
-    def index(self, value: Eint) -> Eint:
-        """return index of value.
-        Raise ValueError if the value is not present.
-        """
-
-
-class ContainerMixin:
-    """Mixin class to add extra Collection methods to RangeIsh classes
-
-    Should be used with `RangeCollectionMixin`
-    """
-
-    def count(self, value: Eint) -> int:
-        """return number of occurences of value"""
-        return int(value in self)
-
-    def index(self, value: Eint) -> Eint:
-        """return index of value.
-        Raise ValueError if the value is not present.
-        """
-        if value not in self:
-            raise ValueError(f"{value} is not in range")
-        return (value - self.start) // self.step
-
-    @_abc.abstractmethod
-    def __contains__(self, arg: Eint) -> bool:
-        pass
-
-
-class RangeCollectionMixin(ContainerMixin):
+class RangeCollectionMixin:
     """Mixin class to add range-container methods to RangeIsh classes"""
 
     def __len__(self) -> int:
@@ -360,6 +300,18 @@ class RangeCollectionMixin(ContainerMixin):
         if not _isinfslice(self) and (arg - self.stop) * self.step >= 0:
             return False
         return True
+
+    def count(self, value: Eint) -> int:
+        """return number of occurences of value"""
+        return int(value in self)
+
+    def index(self, value: Eint) -> Eint:
+        """return index of value.
+        Raise ValueError if the value is not present.
+        """
+        if value not in self:
+            raise ValueError(f"{value} is not in range")
+        return (value - self.start) // self.step
 
 
 # =============================================================================
@@ -495,7 +447,7 @@ class ExtendedRange(RangeCollectionMixin):
         return type(self)(*args)
 
     def __repr__(self) -> str:
-        return "erange" + _range_repr(self)
+        return "ExtendedRange" + _range_repr(self)
 
     def __getitem__(self, ind: _ty.Union[Eint, RangeIsh]
                     ) -> _ty.Union[Eint, ExtendedRange]:
@@ -515,8 +467,6 @@ class ExtendedRange(RangeCollectionMixin):
         return type(self)(nstart, nstop, nstep)
 
 
-erange = ExtendedRange
-
 # =============================================================================
 
 
@@ -527,99 +477,6 @@ def _nth_value(rng: RangeIsh, ind: Eint) -> Eint:
     if (val - start) * step < 0 or (stop - val) * step <= 0:
         return None
     return val
-
-
-def _supername(cls: type, base: type = object) -> str:
-    """String of name of superclass
-
-    Searches for first subclass of `base` in `cls.__mro__` other than `cls`.
-    raises `ValueError` if not found.
-    """
-    for scls in cls.__mro__:
-        if scls is not cls and issubclass(scls, base):
-            return scls.__name__
-    raise ValueError(f"{base.__name__} is not a superclass of {cls.__name__}")
-
-
-def _check_dict(the_class: type, method: str) -> CheckResult:
-    """Check if method is in class dictionary.
-    """
-    if method in the_class.__dict__:
-        if the_class.__dict__[method] is None:
-            return NotImplemented
-        return True
-    return False
-
-
-def _check_annotations(the_class: type, prop: str) -> CheckResult:
-    """Check if attribute is in class annotations.
-    """
-    return prop in getattr(the_class, '__annotations__', {})
-
-
-def _check_property(the_class: type, prop: str) -> CheckResult:
-    """Check if prop is in class dictionary (as a property) or annotation.
-    """
-    is_ok = _check_dict(the_class, prop)
-    if is_ok is NotImplemented:
-        return NotImplemented
-    if is_ok:
-        return isinstance(the_class.__dict__[prop], PROP_TYPES)
-    return _check_annotations(the_class, prop)
-
-
-def _check_generic(the_cls: type, check: Checker, *methods: str) -> CheckResult:
-    """Check class for methods
-    """
-    mro = the_cls.__mro__
-    for method in methods:
-        for super_class in mro:
-            is_ok = check(super_class, method)
-            if is_ok is NotImplemented:
-                return NotImplemented
-            if is_ok:
-                break
-        else:
-            return NotImplemented
-    return True
-
-
-def _check_methods(the_class: type, *methods: str) -> CheckResult:
-    """Check if methods are in class dictionary.
-    """
-    return _check_generic(the_class, _check_dict, *methods)
-
-
-def _check_properties(the_class: type, *properties: str) -> CheckResult:
-    """Check if properties are in class dictionary (as property) or annotations
-    """
-    return _check_generic(the_class, _check_property, *properties)
-
-
-def _get_abstracts(the_class: type) -> _ty.Tuple[_ty.List[str], ...]:
-    """Get names of abstract methods and properties
-    """
-    abstracts = getattr(the_class, '__abstractmethods__', set())
-    methods, properties = [], []
-    for abt in abstracts:
-        if isinstance(getattr(the_class, abt, None), property):
-            properties.append(abt)
-        else:
-            methods.append(abt)
-    return methods, properties
-
-
-def _subclass_hook(cls: type, subcls: type) -> CheckResult:
-    """Inheritable implementation of __subclasshook__.
-
-    Use in `__subclasshook__(cls, subcls)` as
-    `return subclass_hook(cls, subcls)`
-    """
-    methods, properties = _get_abstracts(cls)
-    is_ok = _check_methods(subcls, *methods)
-    if is_ok is not True:
-        return is_ok
-    return _check_properties(subcls, *properties)
 
 
 # -----------------------------------------------------------------------------
@@ -764,16 +621,25 @@ def _is_iter(arg: _ty.Any, exclude: Excludable = ()) -> bool:
             and not isinstance(arg, EXCLUDIFY + exclude))
 
 
+def _min_len(*iterables) -> int:
+    """Length of shortest sequence.
+    """
+    return min((len(seq) for seq in
+                filter(lambda x: isinstance(x, _cn.abc.Sized), iterables)),
+               default=None)
+
+
 # =============================================================================
 # Type hints
 # =============================================================================
 PROP_TYPES = (property, _tys.MemberDescriptorType)
 EXCLUDIFY = (str, dict, _cn.UserDict)
 Excludable = _ty.Tuple[_ty.Type[_ty.Iterable], ...]
+# -----------------------------------------------------------------------------
 Some = _ty.TypeVar('Some')
 Other = _ty.TypeVar('Other')
 Var = _ty.TypeVar('Var')
-Val = _ty.TypeVar('Val')
+# -----------------------------------------------------------------------------
 InstanceOrSeq = _ty.Union[Var, _ty.Sequence[Var]]
 CheckResult = _ty.Union[bool, type(NotImplemented)]
 Checker = _ty.Callable[[type, str], CheckResult]
@@ -787,4 +653,4 @@ SliceArgs = _ty.Tuple[SliceArg, ...]
 Args = _ty.Tuple[Arg, ...]
 SliceKeys = _ty.Dict[str, SliceArg]
 Keys = _ty.Dict[str, Arg]
-#  _ty.Literal[np.inf, -np.inf, np.nan]
+#  _ty.Literal[math.inf, -math.inf, math.nan]

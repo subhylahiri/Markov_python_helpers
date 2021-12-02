@@ -794,10 +794,10 @@ def list_edge_keys(graph: MultiDiGraph, get_inv: bool = False) -> np.ndarray:
     `graph.edge_key() == keys[inv]`.
     """
     key_vec = graph.edge_key()
-    return unique_unsorted(key_vec, get_inv)
+    return _unique_unsorted(key_vec, get_inv)
 
 
-def unique_unsorted(sequence: np.ndarray, get_inv: bool = False) -> np.ndarray:
+def _unique_unsorted(sequence: np.ndarray, get_inv: bool = False) -> np.ndarray:
     """Remove repetitions without changing the order
 
     Parameters

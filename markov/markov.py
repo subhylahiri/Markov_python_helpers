@@ -4,8 +4,7 @@
 from typing import Optional, Tuple
 
 import numpy as np
-
-import numpy_linalg as la
+import scipy.linalg as sla
 
 from ._helpers import num_param, stochastify_c, stochastify_d, stochastify_pd
 from .params import params_to_mat
@@ -41,25 +40,113 @@ def _tri_low_rank(array, *args, **kwds):
     return _anyclose(np.diagonal(array), 0., *args, **kwds)
 
 
+def _ravelaxes(arr: np.ndarray, start: int = 0, stop: Optional[int] = None
+             ) -> np.ndarray:
+    """Partial flattening.
+
+    Flattens those axes in the range [start:stop).
+
+    Parameters
+    ----------
+    arr : np.ndarray (...,L,M,N,...,P,Q,R,...)
+        Array to be partially flattened.
+    start : int, optional, default: 0
+        First axis of group to be flattened.
+    stop : int or None, optional, default: None
+        First axis *after* group to be flattened. Goes to end if it is None.
+
+    Returns
+    -------
+    new_arr : np.ndarray (...,L,M*N*...*P*Q,R,...)
+        Partially flattened array.
+
+    Raises
+    ------
+    ValueError
+        If `start > stop`.
+    """
+    if stop is None:
+        stop = arr.ndim
+    newshape = arr.shape[:start] + (-1,) + arr.shape[stop:]
+    if len(newshape) > arr.ndim + 1:
+        raise ValueError(f"start={start} > stop={stop}")
+    return np.reshape(arr, newshape)
+
+
+def _transpose(arr: np.ndarray) -> np.ndarray:
+    """Transpose last two axes.
+
+    Transposing last two axes fits better with `numpy.linalg`'s broadcasting,
+    which treats multi-dim arrays as stacks of matrices.
+
+    Parameters
+    ----------
+    arr : np.ndarray, (..., M, N)
+
+    Returns
+    -------
+    transposed : np.ndarray, (..., N, M)
+    """
+    if arr.ndim < 2:
+        return arr
+    return arr.swapaxes(-2, -1)
+
+
+def _col(arr: np.ndarray) -> np.ndarray:
+    """Treat multi-dim array as a stack of column vectors.
+
+    Achieves this by inserting a singleton dimension in last slot.
+    You'll have an extra singleton after any linear algebra operation from the
+    left.
+
+    Parameters
+    ----------
+    arr : np.ndarray, (..., N)
+
+    Returns
+    -------
+    expanded : np.ndarray, (..., N, 1)
+    """
+    return np.expand_dims(arr, -1)
+
+
+def _row(arr: np.ndarray) -> np.ndarray:
+    """Treat multi-dim array as a stack of row vectors.
+
+    Achieves this by inserting a singleton dimension in second-to-last slot.
+    You'll have an extra singleton after any linear algebra operation from the
+    right.
+
+    Parameters
+    ----------
+    arr : np.ndarray, (..., N)
+
+    Returns
+    -------
+    expanded : np.ndarray, (..., 1, N)
+    """
+    return np.expand_dims(arr, -2)
+
+
 # =============================================================================
 
 
-def isstochastic_c(mat: la.lnarray, thresh: float = 1e-5) -> bool:
+def isstochastic_c(mat: np.ndarray, thresh: float = 1e-5) -> bool:
     """Are row sums zero?
     """
-    nonneg = mat.ravelaxes(-2) >= -thresh
+    nonneg = _ravelaxes(mat, -2) >= -thresh
     nonneg[..., ::mat.shape[-1]+1] = True
     return nonneg.all() and (np.fabs(mat.sum(axis=-1)) < thresh).all()
 
 
-def isstochastic_d(mat: la.lnarray, thresh: float = 1e-5) -> bool:
+def isstochastic_d(mat: np.ndarray, thresh: float = 1e-5) -> bool:
     """Are row sums one?
     """
     return (np.fabs(mat.sum(axis=-1) - 1) < thresh).all() and (mat >= 0).all()
 
 
 def rand_trans(nst: int, npl: int = 1, sparsity: float = 1.,
-               rng: np.random.Generator = RNG, **kwds) -> la.lnarray:
+               rng: np.random.Generator = RNG, **kwds) -> np.ndarray:
     """
     Make a random transition matrix (continuous time).
 
@@ -74,7 +161,7 @@ def rand_trans(nst: int, npl: int = 1, sparsity: float = 1.,
 
     Returns
     -------
-    mat : la.lnarray
+    mat : np.ndarray
         transition matrix
     """
     params = rng.random((npl, num_param(nst, **kwds)))
@@ -85,7 +172,7 @@ def rand_trans(nst: int, npl: int = 1, sparsity: float = 1.,
 
 
 def rand_trans_d(nst: int, npl: int = 1, sparsity: float = 1.,
-                 rng: np.random.Generator = RNG, **kwds) -> la.lnarray:
+                 rng: np.random.Generator = RNG, **kwds) -> np.ndarray:
     """
     Make a random transition matrix (discrete time).
 
@@ -100,7 +187,7 @@ def rand_trans_d(nst: int, npl: int = 1, sparsity: float = 1.,
 
     Returns
     -------
-    mat : la.lnarray
+    mat : np.ndarray
         transition matrix
     """
     if any(kwds.get(opt, False) for opt in ('uniform', 'serial', 'ring')):
@@ -113,7 +200,7 @@ def rand_trans_d(nst: int, npl: int = 1, sparsity: float = 1.,
 
 
 def calc_peq(rates: np.ndarray,
-             luf: bool = False) -> Tuple[la.lnarray, Tuple[la.lnarray, ...]]:
+             luf: bool = False) -> Tuple[np.ndarray, Tuple[np.ndarray, ...]]:
     """Calculate steady state distribution.
 
     Parameters
@@ -121,25 +208,30 @@ def calc_peq(rates: np.ndarray,
     rates : np.ndarray (...,n,n) or tuple(np.ndarray) ((...,n,n), (...,n,))
         Continuous time stochastic matrix or LU factors of inverse fundamental.
     luf : bool, optional
-        Return LU factorisation of inverse fundamental as well? default: True
+        Return LU factorisation of inverse transpose fundamental matrix as
+        well? Will not broadcast if True. Default: False.
 
     Returns
     -------
-    peq : la.lnarray (...,n,)
+    peq : np.ndarray (...,n,)
         Steady-state distribution.
-    (z_lu, ipv) : tuple(la.lnarray) ((...,n,n),(...,n,))
-        LU factors of inverse fundamental matrix.
+    (z_lu, ipv) : tuple(np.ndarray) ((...,n,n),(...,n,))
+        LU factors of inverse transposed fundamental matrix.
     """
     if isinstance(rates, tuple):
-        z_lu, ipv = rates
+        z_lu, ipv = [np.asanyarray(r) for r in rates]
         evc = np.ones(z_lu.shape[0])
-        peq = la.gufuncs.rlu_solve(evc.r, z_lu, ipv).ur
     else:
+        rates = np.asanyarray(rates)
         evc = np.ones(rates.shape[0])
-        fund_inv = la.ones_like(rates) - rates
-        peq, z_lu, ipv = la.gufuncs.rsolve_lu(evc, fund_inv)
+        fund_inv = np.ones_like(rates) - rates
+        if not luf:
+            return np.linalg.solve(_transpose(fund_inv), evc)
+        zlu, ipv = sla.lu_factor(_transpose(fund_inv))
     # check for singular matrix
-    if not _allfinite(z_lu) or _tri_low_rank(z_lu):
+    if _allfinite(z_lu) and not _tri_low_rank(z_lu):
+        peq = sla.lu_solve((zlu, ipv), evc)
+    else:
         peq = np.full_like(evc, np.nan)
     if luf:
         return peq, (z_lu, ipv)
@@ -147,7 +239,7 @@ def calc_peq(rates: np.ndarray,
 
 
 def calc_peq_d(jump: np.ndarray,
-               luf: bool = False) -> Tuple[la.lnarray, Tuple[la.lnarray, ...]]:
+               luf: bool = False) -> Tuple[np.ndarray, Tuple[np.ndarray, ...]]:
     """Calculate steady state distribution.
 
     Parameters
@@ -159,38 +251,38 @@ def calc_peq_d(jump: np.ndarray,
 
     Returns
     -------
-    peq : la.lnarray (...,n,)
+    peq : np.ndarray (...,n,)
         Steady-state distribution.
-    (z_lu, ipv) : tuple(la.lnarray) ((...,n,n),(...,n,))
+    (z_lu, ipv) : tuple(np.ndarray) ((...,n,n),(...,n,))
         LU factors of inverse fundamental matrix.
     """
     if isinstance(jump, tuple):
         return calc_peq(jump, luf)
-    return calc_peq(jump - la.eye(jump.shape[-1]), luf)
+    return calc_peq(jump - np.eye(jump.shape[-1]), luf)
 
 
-def adjoint(tensor: la.lnarray, measure: la.lnarray) -> la.lnarray:
+def adjoint(tensor: np.ndarray, measure: np.ndarray) -> np.ndarray:
     """Adjoint with respect to L2 inner product with measure
 
     Parameters
     ----------
-    tensor : la.lnarray (...,n,n) or (...,1,n) or (...,n,1)
+    tensor : np.ndarray (...,n,n) or (...,1,n) or (...,n,1)
         The matrix/row/column vector to be adjointed.
-    measure : la.lnarray (...,n)
+    measure : np.ndarray (...,n)
         The measure for the inner-product wrt which we adjoint
 
     Parameters
     ----------
-    tensor : la.lnarray (...,n,n) or (...,n,1) or (...,1,n)
+    tensor : np.ndarray (...,n,n) or (...,n,1) or (...,1,n)
         The adjoint matrix/column/row vector.
     """
-    adj = tensor.copy().t
+    adj = _transpose(tensor.copy())
     if adj.shape[-1] == 1:  # row -> col
-        adj /= measure.c
+        adj /= _col(measure)
     elif adj.shape[-2] == 1:  # col -> row
-        adj *= measure.r
+        adj *= _row(measure)
     else:  # mat -> mat
-        adj *= measure.r / measure.c
+        adj *= _row(measure) / _col(measure)
     return adj
 
 
@@ -199,61 +291,61 @@ def mean_dwell(rates: np.ndarray, peq: Optional[np.ndarray] = None) -> float:
 
     Parameters
     ----------
-    rates : la.lnarray (n,n)
+    rates : np.ndarray (n,n)
         Continuous time stochastic matrix.
-    peq : la.lnarray (n,), optional
+    peq : np.ndarray (n,), optional
         Steady-state distribution, default: calculate frm `rates`.
     """
     if peq is None:
-        peq = calc_peq(rates)
+        peq = calc_peq(rates, False)
     dwell = -1. / np.diagonal(rates)
     return 1. / (peq / dwell).sum()
 
 
-def sim_markov_d(jump: la.lnarray, peq: Optional[np.ndarray] = None,
+def sim_markov_d(jump: np.ndarray, peq: Optional[np.ndarray] = None,
                  num_jump: int = 10, rng: np.random.Generator = RNG
-                 ) -> la.lnarray:
+                 ) -> np.ndarray:
     """Simulate Markov process trajectory.
 
     Parameters
     ----------
-    jump : la.lnarray (n,n)
+    jump : np.ndarray (n,n)
         Discrete time stochastic matrix.
-    peq : la.lnarray (n,), optional
+    peq : np.ndarray (n,), optional
         Initial-state distribution, default: use steady-state.
     num_jump : int, optional, default: 10
         Stop after this many jumps.
 
     Returns
     -------
-    states : la.lnarray (w,)
+    states : np.ndarray (w,)
         Vector of states visited.
     """
-    jump = la.asanyarray(jump)
+    jump = np.asanyarray(jump)
     if peq is None:
-        peq = calc_peq_d(jump)[0]
+        peq = calc_peq_d(jump, False)
 
-    state_inds = la.arange(len(peq))
-    states_from = la.array([rng.choice(state_inds, size=num_jump-1, p=p)
+    state_inds = np.arange(len(peq))
+    states_from = np.array([rng.choice(state_inds, size=num_jump-1, p=p)
                             for p in jump])
-    states = la.empty(num_jump)
+    states = np.empty(num_jump)
     states[0] = rng.choice(state_inds, p=peq)
     for num in range(num_jump-1):
         states[num+1] = states_from[states[num], num]
     return states
 
 
-def sim_markov_c(rates: la.lnarray, peq: Optional[np.ndarray] = None,
+def sim_markov_c(rates: np.ndarray, peq: Optional[np.ndarray] = None,
                  num_jump: Optional[int] = None,
                  max_time: Optional[float] = None,
-                 rng: np.random.Generator = RNG) -> Tuple[la.lnarray, ...]:
+                 rng: np.random.Generator = RNG) -> Tuple[np.ndarray, ...]:
     """Simulate Markov process trajectory.
 
     Parameters
     ----------
-    rates : la.lnarray (n,n)
+    rates : np.ndarray (n,n)
         Continuous time stochastic matrix.
-    peq : la.lnarray (n,), optional
+    peq : np.ndarray (n,), optional
         Initial-state distribution, default: use steady-state.
     num_jump : int, optional, default: None
         Stop after this many jumps.
@@ -262,17 +354,17 @@ def sim_markov_c(rates: la.lnarray, peq: Optional[np.ndarray] = None,
 
     Returns
     -------
-    states : la.lnarray (w,)
+    states : np.ndarray (w,)
         Vector of states visited.
-    dwells : la.lnarray (w,)
+    dwells : np.ndarray (w,)
         Time spent in each state.
     """
-    rates = la.asanyarray(rates)
+    rates = np.asanyarray(rates)
     if peq is None:
-        peq = calc_peq(rates)[0]
+        peq = calc_peq(rates, False)
     num_states = len(peq)
     dwell = -1. / np.diagonal(rates)
-    jump = rates * dwell.c
+    jump = rates * dwell[..., None]
     jump[np.diag_indices(num_states)] = 0.
 
     est_num = num_jump
@@ -284,9 +376,9 @@ def sim_markov_c(rates: la.lnarray, peq: Optional[np.ndarray] = None,
         max_time = np.inf
     est_num = max(est_num, 1)
 
-    dwells_from = - dwell.c * np.log(rng.random(est_num))
+    dwells_from = - dwell[..., None] * np.log(rng.random(est_num))
     states = sim_markov_d(jump, peq, est_num, rng)
-    dwells = dwells_from[states, la.arange(est_num)]
+    dwells = dwells_from[states, np.arange(est_num)]
 
     states, dwells = states[slice(num_jump)], dwells[slice(num_jump)]
     cum_dwell = np.cumsum(dwells)

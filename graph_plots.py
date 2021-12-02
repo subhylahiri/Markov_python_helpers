@@ -49,12 +49,12 @@ class ImageOptions(_op.AnyOptions):
     be valid keys, otherwise a `KeyError` is raised.
     """
     prop_attributes: _op.Attrs = ('cmap',)
-    _cmap: mpl.colors.Colormap = _op.later(mpl.cm.get_cmap, 'YlOrBr')
-    norm: mpl.colors.Normalize = _op.to_be(mpl.colors.Normalize, 0., 1.)
+    _cmap: mpl.colors.Colormap
+    norm: mpl.colors.Normalize
 
     def __init__(self, *args, **kwds) -> None:
-        self._cmap = _op.get_now(*self._cmap)
-        self.norm = _op.get_now(*self.norm)
+        self._cmap = mpl.cm.get_cmap('YlOrBr')
+        self.norm = mpl.colors.Normalize(0., 1.)
         super().__init__(*args, **kwds)
 
     @property
@@ -259,20 +259,20 @@ class GraphOptions(_op.Options):
     map_attributes: _op.Attrs = ('topology', 'nodes', 'edges')
     prop_attributes: _op.Attrs = ('layout',)
     # topology specifying options
-    topology: TopologyOptions = _op.to_be(TopologyOptions, serial=True)
-    nodes: StyleOptions = _op.to_be(StyleOptions, cmap='coolwarm', mult=600)
-    edges: StyleOptions = _op.to_be(StyleOptions, cmap='seismic', mult=5)
-    rad: ty.List[float] = _op.list_to_be(-0.7, 0.35)
+    topology: TopologyOptions
+    nodes: StyleOptions
+    edges: StyleOptions
+    rad: ty.List[float]
     judge: Optional[Judger]
     layout: Layout
 
     def __init__(self, *args, **kwds) -> None:
-        self.topology = _op.get_now(*self.topology)
-        self.nodes = _op.get_now(*self.nodes)
+        self.topology = TopologyOptions(serial=True)
+        self.nodes = StyleOptions(cmap='coolwarm', mult=600)
         self.nodes.entity = 'node'
-        self.edges = _op.get_now(*self.edges)
+        self.edges = StyleOptions(cmap='seismic', mult=5)
         self.edges.entity = 'edge'
-        self.rad = _op.get_now(*self.rad)
+        self.rad = [-0.7, 0.35]
         self.judge = good_direction
         self.layout = linear_layout
         super().__init__(*args, **kwds)

@@ -6,14 +6,14 @@ from __future__ import annotations
 import collections as _cn
 import operator as _op
 import typing as _ty
-import regex as _re
-from typing import Any, Dict, Optional, Tuple, Union
+import re as _re
 
 # import numpy as np
 import matplotlib as mpl
 
 # import numpy_linalg as la
 from . import _helpers as _mh
+
 # =============================================================================
 
 def _public(key: str) -> bool:
@@ -26,7 +26,7 @@ def _norm_str(norm: mpl.colors.Normalize) -> str:
     return norm.__class__.__name__ + f"({norm.vmin}, {norm.vmax})"
 
 
-def _fmt_sep(format_spec: str) -> Tuple[str, str, str]:
+def _fmt_sep(format_spec: str) -> _ty.Tuple[str, str, str]:
     """helper for Options.__format__: process `format_spec`."""
     if '#' not in format_spec:
         conv, next_spec = '', format_spec
@@ -37,7 +37,7 @@ def _fmt_sep(format_spec: str) -> Tuple[str, str, str]:
     return sep, conv, next_spec
 
 
-def _fmt_help(key: str, val: Any, conv: str, next_spec: str) -> str:
+def _fmt_help(key: str, val: _ty.Any, conv: str, next_spec: str) -> str:
     """helper for Options.__format__: entry for one item"""
     for cls, fun in _FIX_STR.items():
         if isinstance(val, cls):
@@ -53,8 +53,8 @@ def _fmt_help(key: str, val: Any, conv: str, next_spec: str) -> str:
 # =============================================================================
 
 
-def sort_dict(unordered: Dictable[Key, Val], order: _ty.Sequence[Key],
-              default: _ty.Optional[int] = None) -> Dict[Key, Val]:
+def _sort_dict(unordered: Dictable[Key, Val], order: _ty.Sequence[Key],
+              default: _ty.Optional[int] = None) -> _ty.Dict[Key, Val]:
     """Sort a dict by the order the keys appear in another list.
 
     Parameters
@@ -79,12 +79,12 @@ def sort_dict(unordered: Dictable[Key, Val], order: _ty.Sequence[Key],
 
     if isinstance(unordered, _cn.abc.Mapping):
         return dict(sorted(unordered.items(), key=key_fn))
-    return sort_dict(dict(unordered), order, default)
+    return _sort_dict(dict(unordered), order, default)
 
 
-def sort_ends_dict(unordered: Dictable[Key, Val],
+def _sort_ends_dict(unordered: Dictable[Key, Val],
                    to_start: _ty.Sequence[Key] = (),
-                   to_end: _ty.Sequence[Key] = ()) -> Dict[Key, Val]:
+                   to_end: _ty.Sequence[Key] = ()) -> _ty.Dict[Key, Val]:
     """Sort a dictionary so that some items are at the start, some at the end.
 
     Parameters
@@ -101,8 +101,8 @@ def sort_ends_dict(unordered: Dictable[Key, Val],
     ordered : Dict[Key, Val]
         The sorted dictionary copy.
     """
-    reordered = sort_dict(unordered, to_start, None)
-    return sort_dict(reordered, to_end, -1)
+    reordered = _sort_dict(unordered, to_start, None)
+    return _sort_dict(reordered, to_end, -1)
 
 
 # =============================================================================
@@ -165,10 +165,10 @@ class Options(_cn.abc.MutableMapping):
         If an invalid key is used when subscripting. This does not apply to use
         as attributes (either `obj.name` or `getattr(obj, 'name')`).
     """
-    map_attributes: _ty.ClassVar[Tuple[str, ...]] = ()
-    prop_attributes: _ty.ClassVar[Tuple[str, ...]] = ()
-    key_last: _ty.ClassVar[Tuple[str, ...]] = ()
-    key_first: _ty.ClassVar[Tuple[str, ...]] = ()
+    map_attributes: Attrs = ()
+    prop_attributes: Attrs = ()
+    key_last: Attrs = ()
+    key_first: Attrs = ()
 
     def __init__(self, *args, **kwds) -> None:
         """The recommended approach to a subclass constructor is
@@ -234,7 +234,7 @@ class Options(_cn.abc.MutableMapping):
     #     raise AttributeError(
     #         f"{type(self).__name__} has no item named {name}")
 
-    def __getitem__(self, key: str) -> Any:
+    def __getitem__(self, key: str) -> _ty.Any:
         """Get an attribute"""
         if '.' in key:
             *args, attr = key.split('.')
@@ -252,7 +252,7 @@ class Options(_cn.abc.MutableMapping):
                     pass
         raise KeyError(f"Unknown key: {key}.")
 
-    def __setitem__(self, key: str, value: Any) -> None:
+    def __setitem__(self, key: str, value: _ty.Any) -> None:
         """Set an existing attribute"""
         if '.' in key:
             *args, attr = key.split('.')
@@ -354,7 +354,7 @@ class Options(_cn.abc.MutableMapping):
         """Sort dicts given keys in order for start and end"""
         key_first = cls.key_first + cls.map_attributes
         key_last = cls.prop_attributes + cls.key_last
-        return [sort_ends_dict(arg, key_first, key_last) for arg in kwds]
+        return [_sort_ends_dict(arg, key_first, key_last) for arg in kwds]
 # pylint: enable=too-many-ancestors
 
 
@@ -369,7 +369,7 @@ class AnyOptions(Options):
 
     This can be used as a default place to store unknown items.
     """
-    def __setitem__(self, key: str, val: Any) -> None:
+    def __setitem__(self, key: str, val: _ty.Any) -> None:
         try:
             super().__setitem__(key, val)
         except KeyError:
@@ -413,7 +413,7 @@ class TopologyOptions(Options):
     serial: bool = False
     ring: bool = False
     uniform: bool = False
-    directions: Tuple[int, ...] = (0, 0)
+    directions: _ty.Tuple[int, ...] = (0, 0)
     discrete: bool = False
 
     def __init__(self, *args, **kwds) -> None:
@@ -429,8 +429,8 @@ class TopologyOptions(Options):
             if 'npl' in kwds:
                 self.npl = kwds['npl']
 
-    def directed(self, which: Union[int, slice, None] = slice(None), **kwds
-                 ) -> Dict[str, Any]:
+    def directed(self, which: _ty.Union[int, slice, None] = slice(None), **kwds
+                 ) -> _ty.Dict[str, _ty.Any]:
         """Dictionary of Markov parameter options
 
         Parameters
@@ -459,7 +459,7 @@ class TopologyOptions(Options):
         return any((self.serial, self.ring, self.uniform) + self.directions)
 
     @constrained.setter
-    def constrained(self, value: Optional[bool]) -> None:
+    def constrained(self, value: _ty.Optional[bool]) -> None:
         """Remove all constraints on topology by setting it `False`.
 
         Does nothing if `value` is `None`. Raises `ValueError if it is `True`.
@@ -481,7 +481,7 @@ class TopologyOptions(Options):
         return len(self.directions)
 
     @npl.setter
-    def npl(self, value: Optional[int]) -> None:
+    def npl(self, value: _ty.Optional[int]) -> None:
         """Set the number of transition matrices.
 
         Does nothing if `value` is `None`. Removes end elements of `directions`
