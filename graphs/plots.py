@@ -13,11 +13,11 @@ import matplotlib.pyplot as plt
 import networkx as nx
 import numpy as np
 
-from . import graph_tricks as gt
-from .graph_tricks import ArrayLike, Edge, GraphAttrs
-from .markov import options as _op
-from .markov import TopologyOptions
-from . import utilities as util
+from . import _tricks as gt
+from ._tricks import ArrayLike, Edge, GraphAttrs
+from .. import options as _op
+from ..markov import TopologyOptions
+from .. import utilities as util
 
 # =============================================================================
 # Options

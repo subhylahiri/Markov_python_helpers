@@ -11,9 +11,20 @@ from typing import Callable, Optional, Tuple, Union
 import networkx as nx
 import numpy as np
 
-from .markov import TopologyOptions
-from . import markov as ma
-from . import utilities as util
+from ..markov import TopologyOptions
+from .. import markov as ma
+from .. import utilities as util
+
+__all__ = [
+    'DiGraph',
+    'MultiDiGraph',
+    'mat_to_graph',
+    'param_to_graph',
+    'make_graph',
+    'list_node_attrs',
+    'list_edge_attrs',
+    'list_edge_keys'
+]
 # =============================================================================
 # Graph view class
 # =============================================================================
@@ -705,7 +716,7 @@ def param_to_graph(param: np.ndarray, node_values: Optional[np.ndarray] = None,
 def make_graph(node_keys: np.ndarray, node_values: np.ndarray,
                edge_keys: np.ndarray, edge_values: np.ndarray,
                edge_inds: ty.Tuple[np.ndarray, ...]) -> MultiDiGraph:
-    """Create a MultiDiGraph form node/edge data
+    """Create a MultiDiGraph from node/edge data
 
     Parameters
     ----------
