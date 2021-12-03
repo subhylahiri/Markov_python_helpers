@@ -1,4 +1,7 @@
-"""Utility functions
+"""General helper functions for the rest of the package.
+
+.. autosummary::
+   :toctree: markov_helpers
 """
 from __future__ import annotations
 

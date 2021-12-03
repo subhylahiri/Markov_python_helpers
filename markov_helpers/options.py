@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 """Class for specifying topology of Markovian models
+
+.. autosummary::
+   :toctree: markov_helpers
 """
 from __future__ import annotations
 
@@ -11,6 +14,11 @@ import re as _re
 # import numpy as np
 import matplotlib as mpl
 
+
+__all__ = [
+    'Options',
+    'AnyOptions',
+]
 # =============================================================================
 
 def _public(key: str) -> bool:

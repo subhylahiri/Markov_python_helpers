@@ -9,6 +9,7 @@ For a serial topology:
 For a ring topology:
     mat_01, mat_12, ..., mat_n-2,n-1, mat_n-1,0,
     mat_0,n-1, mat_10, mat_21, ..., mat_n-1,n-2.
+
 If `drn` is positive/negative, we only consider the upper/lower triangle.
 If `drn == 0`, we consider both.
 
@@ -150,8 +151,8 @@ def mat_update_params(mat: Array, params: np.ndarray, *, drn: IntOrSeq = 0,
     params : ndarray (n(n-1),) or (2(n-1),) or (2n,) or (2,) or half of them
         Vector of independent elements. For the order, see docs for `*_inds`.
 
-    Keyword only
-    ------------
+    Other Parameters
+    ----------------
     serial : bool, optional, default: False
         Is the rate vector meant for a model with the serial topology?
     ring : bool, optional, default: False

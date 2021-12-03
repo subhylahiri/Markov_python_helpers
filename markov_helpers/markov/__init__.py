@@ -1,4 +1,8 @@
-"""Utilities for Markov processes
+"""Utilities for working with and parameterising Markov processes
+
+
+.. autosummary::
+   :toctree: markov_helpers/markov
 """
 from . import indices, params
 from .options import TopologyOptions
