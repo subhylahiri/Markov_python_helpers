@@ -3,6 +3,8 @@
 .. autosummary::
    :toctree: markov_helpers/graphs
    :recursive:
+
+   plots
 """
 from . import plots
 from ._tricks import (DiGraph,

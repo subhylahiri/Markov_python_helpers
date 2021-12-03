@@ -48,6 +48,8 @@ autodoc_default_options = {
 autosummary_generate = True
 autosummary_imported_members = True
 
+numpydoc_edit_link = False
+
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
@@ -59,7 +61,7 @@ exclude_patterns = []
 # The reST default role (used for this markup: `text`) to use for all documents.
 default_role = "autolink"
 
-
+add_module_names = False
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
@@ -77,3 +79,7 @@ html_static_path = ['_static']
 html_css_files = [
     'css/custom.css',
 ]
+html_show_sourcelink = False
+# html_sidebars = {
+#    '**': ['localtoc.html', 'globaltoc.html', 'relations.html', 'searchbox.html'],
+# }
