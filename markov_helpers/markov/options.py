@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Class for specifying topology of Markovian models
+"""Base classes for storing options/settings.
 """
 from __future__ import annotations
 

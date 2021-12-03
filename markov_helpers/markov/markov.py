@@ -271,8 +271,8 @@ def adjoint(tensor: np.ndarray, measure: np.ndarray) -> np.ndarray:
     measure : np.ndarray (...,n)
         The measure for the inner-product wrt which we adjoint
 
-    Parameters
-    ----------
+    Returns
+    -------
     tensor : np.ndarray (...,n,n) or (...,n,1) or (...,1,n)
         The adjoint matrix/column/row vector.
     """
