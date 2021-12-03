@@ -71,7 +71,6 @@ instance/
 # Sphinx documentation
 docs/source/markov_helpers/
 docs/docs/
-# Reinclude website
 
 # PyBuilder
 target/
