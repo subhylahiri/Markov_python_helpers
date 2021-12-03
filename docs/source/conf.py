@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.abspath('../../..'))
 sys.path.insert(0, os.path.abspath('../..'))
 sys.path.insert(0, os.path.abspath('..'))
 sys.path.insert(0, os.path.abspath('.'))
-sys.path.insert(0, os.path.abspath('../../../Markov_python_helpers'))
+# sys.path.insert(0, os.path.abspath('../../../Markov_python_helpers'))
 # import markov_helpers
 
 
@@ -42,6 +42,7 @@ extensions = [
 autodoc_default_options = {
     'members': True,
     'undoc-members': True,
+    'member_order': "bysource",
 }
 
 autosummary_generate = True

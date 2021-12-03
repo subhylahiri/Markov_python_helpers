@@ -3,6 +3,7 @@
 
 .. autosummary::
    :toctree: markov_helpers/markov
+   :recursive:
 """
 from . import indices, params
 from .options import TopologyOptions
