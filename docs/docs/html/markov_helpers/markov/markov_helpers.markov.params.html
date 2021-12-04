@@ -14,6 +14,7 @@
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="markov_helpers.markov.indices" href="../markov_helpers.markov.indices.html" />
@@ -52,6 +53,10 @@ If <em class="xref py py-obj">drn == 0</em>, we consider both.</p>
 <p>When <em class="xref py py-obj">uniform</em>, we assume that all non-zero elements in the upper/lower
 triangle are equal. When extracting <em class="xref py py-obj">uniform</em> parameters we average them,
 unless <em class="xref py py-obj">grad</em> is <em class="xref py py-obj">True</em> when we take the sum.</p>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
+<p>This package assumes probability distributions are represented by row vectors,
+so <span class="math notranslate nohighlight">\(Q_{ij}\)</span> is the transition rate from <span class="math notranslate nohighlight">\(i\)</span> to <span class="math notranslate nohighlight">\(j\)</span>.</p>
 <p class="rubric">Functions</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -258,6 +263,7 @@ If False, return the mean.</p>
 </dd></dl>
 
 </section>
+</section>
 
 
           </div>
@@ -278,8 +284,14 @@ If False, return the mean.</p>
 <h3>Navigation</h3>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../markov_helpers.markov.html">markov_helpers.markov</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="markov_helpers.markov.indices.html">markov_helpers.markov.indices</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">markov_helpers.markov.params</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../markov_helpers.markov.html#notes">Notes</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.indices.html">markov_helpers.markov.indices</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">markov_helpers.markov.params</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#notes">Notes</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../markov_helpers.markov.indices.html">markov_helpers.markov.indices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../markov_helpers.markov.markov.html">markov_helpers.markov.markov</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../markov_helpers.markov.options.html">markov_helpers.markov.options</a></li>

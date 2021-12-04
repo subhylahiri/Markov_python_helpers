@@ -88,7 +88,7 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="../markov_helpers.graphs.plots.html#markov_helpers.graphs.plots.GraphPlots" title="markov_helpers.graphs.plots.GraphPlots"><code class="xref py py-obj docutils literal notranslate"><span class="pre">GraphPlots</span></code></a>(graph[, pos, axs, opts])</p></td>
 <td><p>Class for plotting model as a graph.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../markov_helpers.graphs.plots.html#markov_helpers.graphs.plots.ImageOptions" title="markov_helpers.graphs.plots.ImageOptions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ImageOptions</span></code></a>(*args, **kwds)</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">ImageOptions</span></code>(*args, **kwds)</p></td>
 <td><p>Options for heatmaps</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="../markov_helpers.graphs.plots.html#markov_helpers.graphs.plots.NodeCollection" title="markov_helpers.graphs.plots.NodeCollection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NodeCollection</span></code></a>(graph[, pos, axs, opts])</p></td>
@@ -608,139 +608,6 @@ oval. Positive -&gt; counter-clockwise.</p>
 </dl>
 </dd>
 </dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="markov_helpers.graphs.plots.ImageOptions">
-<em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">ImageOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#markov_helpers.graphs.plots.ImageOptions" title="Permalink to this definition">¶</a></dt>
-<dd><p>Options for heatmaps</p>
-<p>The individual options can be accessed as object instance attributes
-(e.g. <em class="xref py py-obj">obj.name</em>) or as dictionary items (e.g. <em class="xref py py-obj">obj[‘name’]</em>) for both
-getting and setting.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>cmap</strong><span class="classifier">str|Colormap</span></dt><dd><p>Colour map used to map numbers to colours. By default, <em class="xref py py-obj">‘YlOrBr’</em>.</p>
-</dd>
-<dt><strong>norm</strong><span class="classifier">Normalize</span></dt><dd><p>Maps heatmap values to interval <em class="xref py py-obj">[0, 1]</em> for <a class="reference internal" href="../markov_helpers.graphs.plots.html#markov_helpers.graphs.plots.ImageOptions.cmap" title="markov_helpers.graphs.plots.ImageOptions.cmap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cmap</span></code></a>.
-By default: <em class="xref py py-obj">Normalise(0, 1)</em>.</p>
-</dd>
-<dt><strong>vmin</strong><span class="classifier">float</span></dt><dd><p>Lower bound of <em class="xref py py-obj">norm</em>. By default: <em class="xref py py-obj">0</em>.</p>
-</dd>
-<dt><strong>vmax</strong><span class="classifier">float</span></dt><dd><p>Lower bound of <em class="xref py py-obj">norm</em>. By default: <em class="xref py py-obj">1</em>.</p>
-</dd>
-<dt><strong>All parameters are optional keywords. Any dictionary passed as positional</strong></dt><dd></dd>
-<dt><strong>parameters will be popped for the relevant items. Keyword parameters must</strong></dt><dd></dd>
-<dt><strong>be valid keys, otherwise a `KeyError` is raised.</strong></dt><dd></dd>
-</dl>
-</dd>
-<dt class="field-even">Attributes</dt>
-<dd class="field-even"><dl class="simple">
-<dt><a class="reference internal" href="../markov_helpers.graphs.plots.html#markov_helpers.graphs.plots.ImageOptions.cmap" title="markov_helpers.graphs.plots.ImageOptions.cmap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cmap</span></code></a></dt><dd><p>Get the colour map.</p>
-</dd>
-<dt><a class="reference internal" href="../markov_helpers.graphs.plots.html#markov_helpers.graphs.plots.ImageOptions.vmax" title="markov_helpers.graphs.plots.ImageOptions.vmax"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vmax</span></code></a></dt><dd><p>The upper bound for the colour map.</p>
-</dd>
-<dt><a class="reference internal" href="../markov_helpers.graphs.plots.html#markov_helpers.graphs.plots.ImageOptions.vmin" title="markov_helpers.graphs.plots.ImageOptions.vmin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vmin</span></code></a></dt><dd><p>The lower bound for the colour map.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<p class="rubric">Methods</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear</span></code>()</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code>()</p></td>
-<td><p>Get a shallow copy of the object.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code>(k[,d])</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">items</span></code>()</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">keys</span></code>()</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">order_keys</span></code>(*kwds)</p></td>
-<td><p>Sort dicts given keys in order for start and end</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">pop</span></code>(k[,d])</p></td>
-<td><p>If key is not found, d is returned if given, otherwise KeyError is raised.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">pop_my_args</span></code>(kwds)</p></td>
-<td><p>Pop any key from dict that can be set and use the value to set.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">popitem</span></code>()</p></td>
-<td><p>as a 2-tuple; but raise KeyError if D is empty.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setdefault</span></code>(k[,d])</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code>([_Options__m])</p></td>
-<td><p>Update from mappings/iterables</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="../markov_helpers.graphs.plots.html#markov_helpers.graphs.plots.ImageOptions.val_to_colour" title="markov_helpers.graphs.plots.ImageOptions.val_to_colour"><code class="xref py py-obj docutils literal notranslate"><span class="pre">val_to_colour</span></code></a>(values)</p></td>
-<td><p>Normalise and convert values to colours</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">values</span></code>()</p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
-<dl class="py property">
-<dt class="sig sig-object py" id="markov_helpers.graphs.plots.ImageOptions.cmap">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">cmap</span></span><em class="property"><span class="pre">:</span> <span class="pre">matplotlib.colors.Colormap</span></em><a class="headerlink" href="#markov_helpers.graphs.plots.ImageOptions.cmap" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get the colour map.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="markov_helpers.graphs.plots.ImageOptions.norm">
-<span class="sig-name descname"><span class="pre">norm</span></span><em class="property"><span class="pre">:</span> <span class="pre">mpl.colors.Normalize</span></em><a class="headerlink" href="#markov_helpers.graphs.plots.ImageOptions.norm" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="markov_helpers.graphs.plots.ImageOptions.prop_attributes">
-<span class="sig-name descname"><span class="pre">prop_attributes</span></span><em class="property"><span class="pre">:</span> <span class="pre">_op.Attrs</span></em><em class="property"> <span class="pre">=</span> <span class="pre">('cmap',)</span></em><a class="headerlink" href="#markov_helpers.graphs.plots.ImageOptions.prop_attributes" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="markov_helpers.graphs.plots.ImageOptions.val_to_colour">
-<span class="sig-name descname"><span class="pre">val_to_colour</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">numpy.ndarray</span></span></span><a class="headerlink" href="#markov_helpers.graphs.plots.ImageOptions.val_to_colour" title="Permalink to this definition">¶</a></dt>
-<dd><p>Normalise and convert values to colours</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>values</strong><span class="classifier">array_like (N,)</span></dt><dd><p>Values to convert to colours</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>cols</strong><span class="classifier">np.ndarray (N, 4)</span></dt><dd><p>RGBA array representing colours.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="markov_helpers.graphs.plots.ImageOptions.vmax">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">vmax</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#markov_helpers.graphs.plots.ImageOptions.vmax" title="Permalink to this definition">¶</a></dt>
-<dd><p>The upper bound for the colour map.</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="markov_helpers.graphs.plots.ImageOptions.vmin">
-<em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">vmin</span></span><em class="property"><span class="pre">:</span> <span class="pre">float</span></em><a class="headerlink" href="#markov_helpers.graphs.plots.ImageOptions.vmin" title="Permalink to this definition">¶</a></dt>
-<dd><p>The lower bound for the colour map.</p>
 </dd></dl>
 
 </dd></dl>
