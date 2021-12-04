@@ -15,7 +15,6 @@ import numbers as _nm
 import math as _math
 
 __all__ = [
-    "dummy",
     "default",
     "default_eval",
     "tuplify",

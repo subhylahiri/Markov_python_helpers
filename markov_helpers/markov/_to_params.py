@@ -10,6 +10,18 @@ from . import _helpers as _mh
 from . import indices as _in
 from ._helpers import Array, AxesOrSeq, IntOrSeq
 
+__all__ = [
+    "paramify",
+    "mat_to_params",
+    "gen_mat_to_params",
+    "ring_mat_to_params",
+    "serial_mat_to_params",
+    "cascade_mat_to_params",
+    "uni_gen_mat_to_params",
+    "uni_ring_mat_to_params",
+    "uni_serial_mat_to_params",
+    "std_cascade_mat_to_params",
+]
 # =============================================================================
 # Matrices to parameters
 # =============================================================================

@@ -7,6 +7,19 @@ import numpy as np
 from . import _helpers as _mh
 from . import indices as _in
 from ._helpers import IntOrSeq, Array
+
+__all__ = [
+    "matify",
+    "params_to_mat",
+    "gen_params_to_mat",
+    "ring_params_to_mat",
+    "serial_params_to_mat",
+    "cascade_params_to_mat",
+    "uni_gen_params_to_mat",
+    "uni_ring_params_to_mat",
+    "uni_serial_params_to_mat",
+    "std_cascade_params_to_mat",
+]
 # =============================================================================
 # Parameters to matrices
 # =============================================================================
