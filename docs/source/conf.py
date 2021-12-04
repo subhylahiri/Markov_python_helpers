@@ -38,17 +38,16 @@ extensions = [
     "sphinx.ext.autodoc",
     "numpydoc",
 ]
-
+# My options for extensions:
 autodoc_default_options = {
     'members': True,
     'undoc-members': True,
     'member_order': "bysource",
 }
-
 autosummary_generate = True
 autosummary_imported_members = True
-
 numpydoc_edit_link = False
+add_module_names = False
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -61,7 +60,6 @@ exclude_patterns = []
 # The reST default role (used for this markup: `text`) to use for all documents.
 default_role = "autolink"
 
-add_module_names = False
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
@@ -77,7 +75,7 @@ html_static_path = ['_static']
 # These paths are either relative to html_static_path
 # or fully qualified paths (eg. https://...)
 html_css_files = [
-    'css/custom.css',
+    'custom.css',
 ]
 html_show_sourcelink = False
 # html_sidebars = {
