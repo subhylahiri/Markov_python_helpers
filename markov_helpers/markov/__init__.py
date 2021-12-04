@@ -6,7 +6,7 @@ This package assumes probability distributions are represented by row vectors,
 so :math:`Q_{ij}` is the transition rate from :math:`i` to :math:`j`.
 
 .. autosummary::
-   :toctree: markov
+   :toctree: markov_helpers
    :recursive:
 
    indices

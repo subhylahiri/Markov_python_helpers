@@ -37,6 +37,7 @@ author = 'Subhaneil Lahiri'
 extensions = [
     "sphinx.ext.autodoc",
     "numpydoc",
+    "sphinx.ext.mathjax",
 ]
 # My options for extensions:
 autodoc_default_options = {
@@ -46,6 +47,7 @@ autodoc_default_options = {
 }
 autosummary_generate = True
 autosummary_imported_members = True
+autosummary_ignore_module_all = False
 numpydoc_edit_link = False
 add_module_names = False
 

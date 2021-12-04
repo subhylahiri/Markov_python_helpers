@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
 """Tools for plotting graphs.
-
-.. autosummary::
-   :toctree: markov_helpers/graphs
 """
 from __future__ import annotations
 
