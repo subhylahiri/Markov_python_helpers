@@ -1,4 +1,9 @@
 """Generate indices for parameters of Markov processes
+
+Notes
+-----
+This package assumes probability distributions are represented by row vectors,
+so :math:`Q_{ij}` is the transition rate from :math:`i` to :math:`j`.
 """
 from __future__ import annotations
 
@@ -8,13 +13,27 @@ from ._helpers import (IndsFun, IntOrSeq, Subs, SubsFun, sub_fun_bcast,
                        bcast_inds, bcast_subs, stack_inds)
 from .. import utilities as util
 
+__all__ = [
+    "param_inds",
+    "param_subs",
+    "offdiag_inds",
+    "offdiag_subs",
+    "offdiag_split_inds",
+    "offdiag_split_subs",
+    "ring_inds",
+    "ring_subs",
+    "serial_inds",
+    "serial_subs",
+    "cascade_inds",
+    "cascade_subs",
+]
 # =============================================================================
 # Indices of parameters
 # =============================================================================
 
 
 def offdiag_inds(nst: int, drn: IntOrSeq = 0, ravel: bool = True) -> np.ndarray:
-    """Indices of independent parameters of transition matrix.
+    """Ravel indices of independent parameters of transition matrix.
 
     Parameters
     ----------
@@ -43,7 +62,7 @@ def offdiag_inds(nst: int, drn: IntOrSeq = 0, ravel: bool = True) -> np.ndarray:
 
 
 def offdiag_subs(nst: int, drn: IntOrSeq = 0, ravel: bool = True) -> Subs:
-    """Indices of independent parameters of transition matrix.
+    """Row and column indices of independent parameters of transition matrix.
 
     Parameters
     ----------
@@ -80,7 +99,7 @@ def offdiag_subs(nst: int, drn: IntOrSeq = 0, ravel: bool = True) -> Subs:
 @sub_fun_bcast
 def offdiag_split_subs(nst: int, drn: IntOrSeq = 0, ravel: bool = True
                        ) -> Subs:
-    """Indices of independent parameters of transition matrix.
+    """Row and column indices of independent parameters of transition matrix.
 
     Parameters
     ----------
@@ -145,7 +164,7 @@ def ring_inds(nst: int, drn: IntOrSeq = 0, ravel: bool = True) -> np.ndarray:
 
 @sub_fun_bcast
 def ring_subs(nst: int, drn: IntOrSeq = 0, ravel: bool = True) -> Subs:
-    """Ravel indices of non-zero elements of ring transition matrix.
+    """Row and column indices of non-zero elements of ring transition matrix.
 
     Parameters
     ----------
@@ -209,7 +228,7 @@ def serial_inds(nst: int, drn: IntOrSeq = 0, ravel: bool = True) -> np.ndarray:
 
 @sub_fun_bcast
 def serial_subs(nst: int, drn: IntOrSeq = 0, ravel: bool = True) -> Subs:
-    """Ravel indices of non-zero elements of serial transition matrix.
+    """Row and column indices of non-zero elements of serial transition matrix.
 
     Parameters
     ----------
@@ -241,7 +260,7 @@ def serial_subs(nst: int, drn: IntOrSeq = 0, ravel: bool = True) -> Subs:
 
 @sub_fun_bcast
 def cascade_subs(nst: int, drn: IntOrSeq = 0, ravel: bool = True) -> Subs:
-    """Indices of transitions for the cascade model
+    """Row and column indices of non-zero elements of cascade transition matrix.
 
     Parameters
     ----------
@@ -277,7 +296,7 @@ def cascade_subs(nst: int, drn: IntOrSeq = 0, ravel: bool = True) -> Subs:
 
 
 def ind_fun(serial: bool, ring: bool, uniform: bool = False, **kws) -> IndsFun:
-    """Which index function to use
+    """Which ravel index function to use.
 
     Parameters
     ----------
@@ -306,7 +325,7 @@ def ind_fun(serial: bool, ring: bool, uniform: bool = False, **kws) -> IndsFun:
 
 
 def sub_fun(serial: bool, ring: bool, uniform: bool = False, **kws) -> SubsFun:
-    """which index function to use
+    """Which Row and column index function to use.
 
     Parameters
     ----------
@@ -409,15 +428,15 @@ def _unravel_ind_fun(func: IndsFun) -> SubsFun:
     Parameters
     ----------
     func : Callable[[int, int], np.ndarray]
-        Function that returns ravelled indices
+        Function that returns ravelled indices.
 
     Returns
     -------
     new_func : Callable[[int, int], Tuple[np.ndarray, np.ndarray]]
-        Function that returns unravelled indices
+        Function that returns unravelled indices.
     """
-    def new_func(nst: int, drn: IntOrSeq = 0, ravel: bool = True) -> Subs:
-        """Row and column indices of transitions
+    def new_fun(nst: int, drn: IntOrSeq = 0, ravel: bool = True) -> Subs:
+        """Row and column indices of \\1 of \\2 transition matrix.
 
         Parameters
         ----------
@@ -437,18 +456,25 @@ def _unravel_ind_fun(func: IndsFun) -> SubsFun:
             Which transition matrix, in a `(P,M,M)` array of matrices?
             Not returned if `drn` is an `int`.]
         rows : ndarray (PQ,)
-            Vector of row indices of nonzero nonzero off-diagonal elements.
+            Vector of row indices of independent parameters.
         cols : ndarray (PQ,)
-            Vector of column indices of nonzero nonzero off-diagonal elements.
+            Vector of column indices of independent parameters.
         """
         shape = (nst, nst) if isinstance(drn, int) else (len(drn), nst, nst)
         inds = func(nst, drn, ravel)
         return np.unravel_index(inds, shape)
-    doc_ind = func.__doc__.rfind("in order:")
-    new_func.__doc__ += func.__doc__[doc_ind:]
-    new_func.__name__ = func.__name__.replace('inds', 'subs')
-    new_func.__qualname__ = func.__qualname__.replace('inds', 'subs')
-    return new_func
+
+    doc_lines = func.__doc__.splitlines(keepends=True)
+    new_doc_lines = new_fun.__doc__.splitlines(keepends=True)
+    new_doc_lines[0] = doc_lines[0].replace("Ravel", "Row and column")
+    doc_ind = func.__doc__.rfind("in order:") + 10
+    line_ind = len(func.__doc__[doc_ind:].splitlines())
+    new_doc_lines.extend(doc_lines[-line_ind:])
+
+    new_fun.__doc__ = "".join(new_doc_lines) + func.__doc__[doc_ind:]
+    new_fun.__name__ = func.__name__.replace('inds', 'subs')
+    new_fun.__qualname__ = func.__qualname__.replace('inds', 'subs')
+    return new_fun
 
 
 def _ravel_sub_fun(func: SubsFun):
@@ -466,7 +492,7 @@ def _ravel_sub_fun(func: SubsFun):
         Function that returns ravelled indices
     """
     def new_fun(nst: int, drn: IntOrSeq = 0, ravel: bool = True) -> np.ndarray:
-        """Ravel indices of transitions
+        """Ravel indices of \\1 of \\2 transition matrix.
 
         Parameters
         ----------
@@ -483,13 +509,20 @@ def _ravel_sub_fun(func: SubsFun):
         Returns
         -------
         inds : ndarray (PQ,)
-            Vector of ravelled indices of nonzero off-diagonal elements.
+            Vector of ravelled indices of independent parameters.
         """
         shape = (nst, nst) if isinstance(drn, int) else (len(drn), nst, nst)
         subs = func(nst, drn, ravel)
         return np.ravel_multi_index(subs, shape)
-    doc_ind = func.__doc__.rfind("in order:")
-    new_fun.__doc__ += func.__doc__[doc_ind:]
+
+    doc_lines = func.__doc__.splitlines(keepends=True)
+    new_doc_lines = new_fun.__doc__.splitlines(keepends=True)
+    new_doc_lines[0] = doc_lines[0].replace("Row and column", "Ravel")
+    doc_ind = func.__doc__.rfind("in order:") + 10
+    line_ind = func.__doc__.count("\n", 0, doc_ind)
+    new_doc_lines.extend(doc_lines[line_ind:])
+
+    new_fun.__doc__ = "".join(new_doc_lines)
     new_fun.__name__ = func.__name__.replace('subs', 'inds')
     new_fun.__qualname__ = func.__qualname__.replace('subs', 'inds')
     return new_fun

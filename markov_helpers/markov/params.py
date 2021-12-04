@@ -16,6 +16,11 @@ If `drn == 0`, we consider both.
 When `uniform`, we assume that all non-zero elements in the upper/lower
 triangle are equal. When extracting `uniform` parameters we average them,
 unless `grad` is `True` when we take the sum.
+
+Notes
+-----
+This package assumes probability distributions are represented by row vectors,
+so :math:`Q_{ij}` is the transition rate from :math:`i` to :math:`j`.
 """
 from __future__ import annotations
 

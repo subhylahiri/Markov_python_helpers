@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
 """Utilities for Markov processes
+
+Notes
+-----
+This package assumes probability distributions are represented by row vectors,
+so :math:`Q_{ij}` is the transition rate from :math:`i` to :math:`j`.
 """
 from typing import Optional, Tuple
 
@@ -10,7 +15,22 @@ from ._helpers import num_param, stochastify_c, stochastify_d, stochastify_pd
 from .params import params_to_mat
 
 RNG: np.random.Generator = np.random.default_rng()
-assert any((True, stochastify_c))
+
+__all__ = [
+   "stochastify_c",
+   "stochastify_d",
+   'stochastify_pd',
+   "isstochastic_c",
+   "isstochastic_d",
+   "rand_trans",
+   "rand_trans_d",
+   "calc_peq",
+   "calc_peq_d",
+   "sim_markov_c",
+   "sim_markov_d",
+   "adjoint",
+   "mean_dwell",
+]
 # =============================================================================
 
 
