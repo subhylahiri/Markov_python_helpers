@@ -22,6 +22,18 @@ from .. import options as _op
 from ..markov import TopologyOptions
 from .. import utilities as util
 
+
+__all__ = [
+    "StyleOptions",
+    "GraphOptions",
+    "GraphPlots",
+    "NodeCollection",
+    "DiEdgeCollection",
+    "get_node_colours",
+    "get_edge_colours",
+    "linear_layout",
+    "good_direction",
+]
 # =============================================================================
 # Options
 # =============================================================================

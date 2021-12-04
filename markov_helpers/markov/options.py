@@ -15,6 +15,10 @@ import matplotlib as mpl
 from . import _helpers as _mh
 from ..options import Options
 
+
+__all__ = [
+    "TopologyOptions",
+]
 # =============================================================================
 
 def _norm_str(norm: mpl.colors.Normalize) -> str:
