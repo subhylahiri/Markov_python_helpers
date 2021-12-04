@@ -1,8 +1,7 @@
 """Utilities for working with and parameterising Markov processes
 
-
 .. autosummary::
-   :toctree: markov_helpers/markov
+   :toctree: markov
    :recursive:
 
    indices
@@ -30,5 +29,7 @@ __all__ = [
    "calc_peq_d",
    "sim_markov_c",
    "sim_markov_d",
+   "adjoint",
+   "mean_dwell",
    "TopologyOptions",
 ]

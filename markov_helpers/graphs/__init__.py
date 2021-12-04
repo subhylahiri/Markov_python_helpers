@@ -1,7 +1,7 @@
 """Utilities for Graphs
 
 .. autosummary::
-   :toctree: markov_helpers/graphs
+   :toctree: graphs
    :recursive:
 
    plots
