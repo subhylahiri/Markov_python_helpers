@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
 """Class for specifying topology of Markovian models
-
-.. autosummary::
-   :toctree: markov_helpers
 """
 from __future__ import annotations
 

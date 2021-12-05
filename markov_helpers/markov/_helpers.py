@@ -11,6 +11,20 @@ import numpy as np
 
 from .. import utilities as util
 
+__all__ = [
+    "stochastify_c",
+    "stochastify_d",
+    "stochastify_pd",
+    "stochastify",
+    "unstochastify_c",
+    "num_param",
+    "num_state",
+    "mat_type_siz",
+    "params_to_mat",
+    "mat_to_params",
+    "uni_to_any",
+    "to_uni",
+]
 # =============================================================================
 # Utilities
 # =============================================================================

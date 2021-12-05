@@ -1,7 +1,4 @@
 """General helper functions for the rest of the package.
-
-.. autosummary::
-   :toctree: markov_helpers
 """
 from __future__ import annotations
 
@@ -15,7 +12,6 @@ import numbers as _nm
 import math as _math
 
 __all__ = [
-    "dummy",
     "default",
     "default_eval",
     "tuplify",

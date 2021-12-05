@@ -5,12 +5,15 @@
 
 Welcome to Markov Python Helpers's documentation!
 =================================================
-
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
 
-.. automodule:: markov_helpers
+.. autosummary::
+   :toctree: markov_helpers
+   :recursive:
+
+   markov_helpers
+   markov_helpers.markov
+   markov_helpers.graphs
 
 Indices and tables
 ==================

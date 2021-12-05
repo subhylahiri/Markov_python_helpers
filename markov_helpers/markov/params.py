@@ -43,15 +43,34 @@ from ._to_params import (cascade_mat_to_params, gen_mat_to_params,
                          uni_gen_mat_to_params, uni_ring_mat_to_params,
                          uni_serial_mat_to_params)
 
-assert any((True, num_param, num_state))
-assert any((True, gen_params_to_mat, matify, params_to_mat, ring_params_to_mat,
-            serial_params_to_mat, uni_gen_params_to_mat,
-            uni_ring_params_to_mat, uni_serial_params_to_mat,
-            cascade_params_to_mat, std_cascade_params_to_mat))
-assert any((True, gen_mat_to_params, mat_to_params, paramify,
-            ring_mat_to_params, serial_mat_to_params, uni_gen_mat_to_params,
-            uni_ring_mat_to_params, uni_serial_mat_to_params,
-            cascade_mat_to_params, std_cascade_mat_to_params))
+__all__ = [
+    "num_param",
+    "num_state",
+    "matify",
+    "paramify",
+    "params_to_mat",
+    "mat_to_params",
+    "mat_update_params",
+    "mat_type_val",
+    "mat_type_siz",
+    "mat_type_dict",
+    "gen_params_to_mat",
+    "ring_params_to_mat",
+    "serial_params_to_mat",
+    "cascade_params_to_mat",
+    "uni_gen_params_to_mat",
+    "uni_ring_params_to_mat",
+    "uni_serial_params_to_mat",
+    "std_cascade_params_to_mat",
+    "gen_mat_to_params",
+    "ring_mat_to_params",
+    "serial_mat_to_params",
+    "cascade_mat_to_params",
+    "uni_gen_mat_to_params",
+    "uni_ring_mat_to_params",
+    "uni_serial_mat_to_params",
+    "std_cascade_mat_to_params",
+]
 # =============================================================================
 # Counts & types
 # =============================================================================
