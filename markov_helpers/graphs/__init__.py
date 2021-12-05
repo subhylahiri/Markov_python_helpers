@@ -1,10 +1,4 @@
 """Utilities for Graphs
-
-.. autosummary::
-   :toctree: markov_helpers
-   :recursive:
-
-   plots
 """
 from . import plots
 from ._tricks import (DiGraph,
