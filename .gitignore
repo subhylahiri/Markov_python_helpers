@@ -69,10 +69,10 @@ instance/
 .scrapy
 
 # Sphinx documentation
-/docs/source/markov_helpers/
-/docs/docs/doctrees/
-/docs/docs/html/_sources/
-/docs/docs/html/.buildinfo
+/source/markov_helpers/
+/docs/doctrees/
+/docs/html/_sources/
+/docs/html/.buildinfo
 # Reinclude website
 
 # PyBuilder
