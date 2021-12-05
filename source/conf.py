@@ -14,12 +14,8 @@
 #
 import os
 import sys
-# sys.path.insert(0, os.path.abspath('../../..'))
-# sys.path.insert(0, os.path.abspath('../..'))
 sys.path.insert(0, os.path.abspath('..'))
-# sys.path.insert(0, os.path.abspath('.'))
-# sys.path.insert(0, os.path.abspath('../../../Markov_python_helpers'))
-# import markov_helpers
+# pylint: disable=invalid-name
 
 
 # -- Project information -----------------------------------------------------
@@ -36,8 +32,10 @@ author = 'Subhaneil Lahiri'
 # ones.
 extensions = [
     "sphinx.ext.autodoc",
-    "numpydoc",
+    'sphinx.ext.intersphinx',  # Link to other project's documentation (see mapping below)
     "sphinx.ext.mathjax",
+    "numpydoc",
+    'sphinx_autodoc_typehints', # Automatically document param types (less noise in class signature)
 ]
 # My options for extensions:
 autodoc_default_options = {
@@ -45,11 +43,19 @@ autodoc_default_options = {
     'undoc-members': True,
     'member_order': "bysource",
 }
+autodoc_inherit_docstrings = True
 autosummary_generate = True
 autosummary_imported_members = True
 autosummary_ignore_module_all = False
 numpydoc_edit_link = False
 add_module_names = False
+# Mappings for sphinx.ext.intersphinx. Projects have to have Sphinx-generated doc! (.inv file)
+intersphinx_mapping = {
+    "python": ("https://docs.python.org/3/", None),
+    "numpy": ("https://numpy.org/doc/stable/", None),
+    "matplotlib": ("https://matplotlib.org/stable/", None),
+    "networkx": ("https://networkx.org/documentation/stable/", None),
+}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
