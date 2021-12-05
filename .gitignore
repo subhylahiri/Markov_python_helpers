@@ -69,7 +69,7 @@ instance/
 .scrapy
 
 # Sphinx documentation
-/source/markov_helpers/
+/source/_autosummary/
 /docs/doctrees/
 /docs/html/_sources/
 /docs/html/.buildinfo

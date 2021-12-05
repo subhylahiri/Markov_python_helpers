@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>markov_helpers.markov.indices.sub_fun_bcast &#8212; Markov Python Helpers  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="markov_helpers.markov.markov" href="markov_helpers.markov.markov.html" />
+    <link rel="prev" title="markov_helpers.markov.indices.sub_fun" href="markov_helpers.markov.indices.sub_fun.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="markov-helpers-markov-indices-sub-fun-bcast">
+<h1>markov_helpers.markov.indices.sub_fun_bcast<a class="headerlink" href="#markov-helpers-markov-indices-sub-fun-bcast" title="Permalink to this headline">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="markov_helpers.markov.indices.sub_fun_bcast">
+<span class="sig-name descname"><span class="pre">sub_fun_bcast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fun</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#markov_helpers.markov.indices.sub_fun_bcast" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decorate an unravelled-multi-index function for multiple directions</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>fun</strong><span class="classifier">Callable[(nst, drn)-&gt;(rows, cols)]</span></dt><dd><p>Function to make multi-indices when <em class="xref py py-obj">drn == +/-1</em>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>fun: Callable[(nst, drn, ravel)-&gt;([mats, ]rows, cols)]</dt><dd><p>Function to make multi-indices when <em class="xref py py-obj">drn == 0</em> or is a sequence.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Markov Python Helpers</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Home page</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="markov_helpers.html">API reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="markov_helpers.html#notes">Notes</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="markov_helpers.graphs.html">markov_helpers.graphs</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="markov_helpers.markov.html">markov_helpers.markov</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="markov_helpers.markov.html#notes">Notes</a><ul class="current">
+<li class="toctree-l5 current"><a class="reference internal" href="markov_helpers.markov.indices.html">markov_helpers.markov.indices</a><ul class="current">
+<li class="toctree-l6 current"><a class="reference internal" href="markov_helpers.markov.indices.html#notes">Notes</a><ul class="current">
+<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.indices.bcast_inds.html">markov_helpers.markov.indices.bcast_inds</a></li>
+<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.indices.bcast_subs.html">markov_helpers.markov.indices.bcast_subs</a></li>
+<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.indices.cascade_inds.html">markov_helpers.markov.indices.cascade_inds</a></li>
+<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.indices.cascade_subs.html">markov_helpers.markov.indices.cascade_subs</a></li>
+<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.indices.ind_fun.html">markov_helpers.markov.indices.ind_fun</a></li>
+<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.indices.offdiag_inds.html">markov_helpers.markov.indices.offdiag_inds</a></li>
+<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.indices.offdiag_split_inds.html">markov_helpers.markov.indices.offdiag_split_inds</a></li>
+<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.indices.offdiag_split_subs.html">markov_helpers.markov.indices.offdiag_split_subs</a></li>
+<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.indices.offdiag_subs.html">markov_helpers.markov.indices.offdiag_subs</a></li>
+<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.indices.param_inds.html">markov_helpers.markov.indices.param_inds</a></li>
+<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.indices.param_subs.html">markov_helpers.markov.indices.param_subs</a></li>
+<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.indices.ring_inds.html">markov_helpers.markov.indices.ring_inds</a></li>
+<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.indices.ring_subs.html">markov_helpers.markov.indices.ring_subs</a></li>
+<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.indices.serial_inds.html">markov_helpers.markov.indices.serial_inds</a></li>
+<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.indices.serial_subs.html">markov_helpers.markov.indices.serial_subs</a></li>
+<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.indices.stack_inds.html">markov_helpers.markov.indices.stack_inds</a></li>
+<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.indices.sub_fun.html">markov_helpers.markov.indices.sub_fun</a></li>
+<li class="toctree-l7 current"><a class="current reference internal" href="#">markov_helpers.markov.indices.sub_fun_bcast</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.markov.html">markov_helpers.markov.markov</a></li>
+<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.options.html">markov_helpers.markov.options</a></li>
+<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.params.html">markov_helpers.markov.params</a></li>
+<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.adjoint.html">markov_helpers.markov.adjoint</a></li>
+<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.calc_peq.html">markov_helpers.markov.calc_peq</a></li>
+<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.calc_peq_d.html">markov_helpers.markov.calc_peq_d</a></li>
+<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.isstochastic_c.html">markov_helpers.markov.isstochastic_c</a></li>
+<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.isstochastic_d.html">markov_helpers.markov.isstochastic_d</a></li>
+<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.mean_dwell.html">markov_helpers.markov.mean_dwell</a></li>
+<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.rand_trans.html">markov_helpers.markov.rand_trans</a></li>
+<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.rand_trans_d.html">markov_helpers.markov.rand_trans_d</a></li>
+<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.sim_markov_c.html">markov_helpers.markov.sim_markov_c</a></li>
+<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.sim_markov_d.html">markov_helpers.markov.sim_markov_d</a></li>
+<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.stochastify_c.html">markov_helpers.markov.stochastify_c</a></li>
+<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.stochastify_d.html">markov_helpers.markov.stochastify_d</a></li>
+<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.stochastify_pd.html">markov_helpers.markov.stochastify_pd</a></li>
+<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.unstochastify_c.html">markov_helpers.markov.unstochastify_c</a></li>
+<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.TopologyOptions.html">markov_helpers.markov.TopologyOptions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="markov_helpers.options.html">markov_helpers.options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="markov_helpers.utilities.html">markov_helpers.utilities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Home page</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="markov_helpers.html">API reference</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="markov_helpers.html">markov_helpers</a><ul>
+  <li><a href="markov_helpers.markov.html">markov_helpers.markov</a><ul>
+  <li><a href="markov_helpers.markov.indices.html">markov_helpers.markov.indices</a><ul>
+      <li>Previous: <a href="markov_helpers.markov.indices.sub_fun.html" title="previous chapter">markov_helpers.markov.indices.sub_fun</a></li>
+      <li>Next: <a href="markov_helpers.markov.markov.html" title="next chapter">markov_helpers.markov.markov</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Subhaneil Lahiri.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
