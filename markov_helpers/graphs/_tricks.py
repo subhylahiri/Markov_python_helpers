@@ -13,7 +13,7 @@ import numpy as np
 
 from ..markov import TopologyOptions
 from .. import markov as ma
-from .. import utilities as util
+from .. import _utilities as util
 
 __all__ = [
     'DiGraph',
@@ -322,6 +322,8 @@ class OutMultiEdgeView(nx.classes.reportviews.OutMultiEdgeView):
 class GraphAttrs(nx.Graph):
     """Mixin providing attribute array methods.
 
+    Base class for DiGraph and MultiDiGraph.
+
     This class provides methods for working with `np.ndarray`s of node/edge
     attribute: `has_node_attr`, `get_node_attr`, `set_node_attr`,
     `has_edge_attr`, `get_edge_attr`, `set_edge_attr`.
@@ -334,7 +336,7 @@ class GraphAttrs(nx.Graph):
         ----------
         key : str
             Name of attribute.
-        strict : bool, optopnal
+        strict : bool, optional
             Only `True` if every node has the attribute. By default `True`.
 
         Returns
@@ -428,8 +430,8 @@ class DiGraph(nx.DiGraph, GraphAttrs):
     """Custom directed graph class that remembers edge order (N,E)
 
     Iterating over edges is done in the order that the edges were first added.
-    It also provides methods for working with `np.ndarray`s of node/edge
-    attribute: `has_node_attr`, `get_node_attr`, `set_node_attr`,
+    It also provides methods for working with node/edge attributes in a
+    `numpy.ndarray`: `has_node_attr`, `get_node_attr`, `set_node_attr`,
     `has_edge_attr`, `get_edge_attr`, `set_edge_attr`.
     """
     edge_order: ty.List[Edge]

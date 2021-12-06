@@ -9,9 +9,9 @@ from __future__ import annotations
 
 import numpy as np
 
-from ._helpers import (IndsFun, IntOrSeq, Subs, SubsFun, sub_fun_bcast,
-                       bcast_inds, bcast_subs, stack_inds)
-from .. import utilities as util
+from . import _helpers as _h
+from ._helpers import IndsFun, IntOrSeq, Subs, SubsFun
+from .. import _utilities as _util
 
 __all__ = [
     "param_inds",
@@ -54,7 +54,7 @@ def offdiag_inds(nst: int, drn: IntOrSeq = 0, ravel: bool = True) -> np.ndarray:
         mat_01, mat_02, ..., mat_0n-1, mat10, mat_12, ..., mat_n-1,n-2.
     """
     if not isinstance(drn, int):
-        return bcast_inds(offdiag_inds, nst, drn, ravel)
+        return _h.bcast_inds(offdiag_inds, nst, drn, ravel)
     if drn:
         return offdiag_split_inds(nst, drn)
     # To get the next diagonal, down one, right one: nst + 1
@@ -88,7 +88,7 @@ def offdiag_subs(nst: int, drn: IntOrSeq = 0, ravel: bool = True) -> Subs:
         mat_01, mat_02, ..., mat_0n-1, mat10, mat_12, ..., mat_n-1,n-2.
     """
     if not isinstance(drn, int):
-        return bcast_subs(offdiag_subs, nst, drn, ravel)
+        return _h.bcast_subs(offdiag_subs, nst, drn, ravel)
     if drn:
         return offdiag_split_subs(nst, drn)
     grid = np.mgrid[:nst, :nst].reshape(2, -1)
@@ -96,7 +96,7 @@ def offdiag_subs(nst: int, drn: IntOrSeq = 0, ravel: bool = True) -> Subs:
     return tuple(np.delete(grid, np.s_[::nst+1], axis=-1))
 
 
-@sub_fun_bcast
+@_h.sub_fun_bcast
 def offdiag_split_subs(nst: int, drn: IntOrSeq = 0, ravel: bool = True
                        ) -> Subs:
     """Row and column indices of independent parameters of transition matrix.
@@ -127,7 +127,7 @@ def offdiag_split_subs(nst: int, drn: IntOrSeq = 0, ravel: bool = True
         - followed by the lower/left triangle -
         mat_10, mat_20, mat_21, ..., mat_n-2n-3, mat_n-10, ... mat_n-1n-2.
     """
-    util.dummy(ravel)
+    _util.dummy(ravel)
     return np.triu_indices(nst, 1) if drn > 0 else np.tril_indices(nst, -1)
 
 
@@ -154,15 +154,15 @@ def ring_inds(nst: int, drn: IntOrSeq = 0, ravel: bool = True) -> np.ndarray:
         mat_0,n-1, mat_10, mat_21, ..., mat_n-1,n-2.
     """
     if not isinstance(drn, int):
-        return bcast_inds(ring_inds, nst, drn, ravel)
+        return _h.bcast_inds(ring_inds, nst, drn, ravel)
     if drn > 0:
         return np.r_[1:nst**2:nst+1, nst*(nst-1)]
     if drn < 0:
         return np.r_[nst-1, 1:nst**2:nst+1]
-    return stack_inds(ring_inds, nst)
+    return _h.stack_inds(ring_inds, nst)
 
 
-@sub_fun_bcast
+@_h.sub_fun_bcast
 def ring_subs(nst: int, drn: IntOrSeq = 0, ravel: bool = True) -> Subs:
     """Row and column indices of non-zero elements of ring transition matrix.
 
@@ -190,7 +190,7 @@ def ring_subs(nst: int, drn: IntOrSeq = 0, ravel: bool = True) -> Subs:
         mat_01, mat_12, ..., mat_n-2,n-1, mat_n-1,0,
         mat_0,n-1, mat_10, mat_21, ..., mat_n-1,n-2.
     """
-    util.dummy(ravel)
+    _util.dummy(ravel)
     rows = np.arange(nst)
     return rows, np.roll(rows, -drn // abs(drn))
 
@@ -218,15 +218,15 @@ def serial_inds(nst: int, drn: IntOrSeq = 0, ravel: bool = True) -> np.ndarray:
         mat_10, mat_21, ..., mat_n-1,n-2.
     """
     if not isinstance(drn, int):
-        return bcast_inds(serial_inds, nst, drn, ravel)
+        return _h.bcast_inds(serial_inds, nst, drn, ravel)
     if drn > 0:
         return np.arange(1, nst**2, nst+1)
     if drn < 0:
         return np.arange(nst, nst**2, nst+1)
-    return stack_inds(serial_inds, nst)
+    return _h.stack_inds(serial_inds, nst)
 
 
-@sub_fun_bcast
+@_h.sub_fun_bcast
 def serial_subs(nst: int, drn: IntOrSeq = 0, ravel: bool = True) -> Subs:
     """Row and column indices of non-zero elements of serial transition matrix.
 
@@ -254,11 +254,11 @@ def serial_subs(nst: int, drn: IntOrSeq = 0, ravel: bool = True) -> Subs:
         mat_01, mat_12, ..., mat_n-2,n-1,
         mat_10, mat_21, ..., mat_n-1,n-2.
     """
-    util.dummy(ravel)
+    _util.dummy(ravel)
     return (np.arange(nst - 1), np.arange(1, nst))[::drn // abs(drn)]
 
 
-@sub_fun_bcast
+@_h.sub_fun_bcast
 def cascade_subs(nst: int, drn: IntOrSeq = 0, ravel: bool = True) -> Subs:
     """Row and column indices of non-zero elements of cascade transition matrix.
 
@@ -288,7 +288,7 @@ def cascade_subs(nst: int, drn: IntOrSeq = 0, ravel: bool = True) -> Subs:
         mat_2n-1,n-1, ..., mat_n+1,n-1, mat_n,n-1,
         mat_n-1,n-2, ..., mat_21, mat_10.
     """
-    util.dummy(ravel)
+    _util.dummy(ravel)
     npt = nst // 2
     rows = np.arange(nst-1)
     cols = np.r_[[npt] * npt, rows[npt:] + 1]

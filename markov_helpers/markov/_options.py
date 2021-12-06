@@ -13,7 +13,7 @@ import matplotlib as mpl
 
 # import numpy_linalg as la
 from . import _helpers as _mh
-from ..options import Options
+from .._options import Options
 
 
 __all__ = [
@@ -37,7 +37,8 @@ class TopologyOptions(Options):
 
     The individual options can be accessed as object instance attributes
     (e.g. `obj.name`) or as dictionary items (e.g. `obj['name']`) for both
-    getting and setting.
+    getting and setting. You can also subscript attributes of attributes with
+    dotted keys: `options['suboptions.name']`.
 
     Parameters
     ----------
@@ -49,21 +50,26 @@ class TopologyOptions(Options):
         Restrict to models with equal rates per direction? By default `False`.
     directions: Tuple[int] (P,), optional keyword
         If nonzero, only include transitions in direction `i -> i + sgn(drn)`,
-        one value for each plasticity type. By default `(0, 0)`.
-    discrete : bool
-        Are we kaking transition matrices for a discrete-time Markov process?
+        one value for each transition matrix. By default `(0,)`.
+    discrete : bool, optional keyword
+        Are the transition matrices for a discrete-time Markov process?
         By default `False`.
 
-    All parameters are optional keywords. Any dictionary passed as positional
-    parameters will be popped for the relevant items. Keyword parameters must
-    be valid keys, otherwise a `KeyError` is raised.
+        All parameters are optional keywords. Any dictionary passed as
+        positional parameters will be popped for the relevant items. Keyword
+        parameters must be valid keys, otherwise a `KeyError` is raised.
     """
     key_last: Attrs = ('directions', 'npl')
     serial: bool = False
+    """Restrict to models of serial topology?"""
     ring: bool = False
+    """Restrict to models of ring topology?"""
     uniform: bool = False
-    directions: _ty.Tuple[int, ...] = (0, 0)
+    """Restrict to models with equal rates per direction?"""
+    directions: _ty.Tuple[int, ...] = (0,)
+    """If nonzero, only use transitions in direction `i -> i + sgn(drn)`."""
     discrete: bool = False
+    """Are the transition matrices for a discrete-time Markov process?"""
 
     def __init__(self, *args, **kwds) -> None:
         self.serial = self.serial
@@ -87,7 +93,8 @@ class TopologyOptions(Options):
         which : int, slice, None, optional
             Which element of `self.directions` to use as the `'drn'` value,
             where `None` -> omit `'drn'` item. By default `slice(None)`
-        Extra arguments are default values or unknown keys in `opts`
+
+            Extra arguments are default values or unknown keys in `opts`
 
         Returns
         -------

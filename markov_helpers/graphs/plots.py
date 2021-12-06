@@ -6,21 +6,20 @@
 """
 from __future__ import annotations
 
-import typing as ty
-import functools as ft
-from numbers import Number
-from typing import Callable, Dict, Optional, Tuple, Union
+import typing as _ty
+import functools as _ft
+from numbers import Number as _Number
 
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import networkx as nx
 import numpy as np
 
-from . import _tricks as gt
-from ._tricks import ArrayLike, Edge, GraphAttrs
-from .. import options as _op
-from ..markov import TopologyOptions
-from .. import utilities as util
+from . import _tricks as _gt
+from ._tricks import ArrayLike, Edge
+from .. import _options as _op
+from .. import markov as _mk
+from .. import _utilities as _util
 
 
 __all__ = [
@@ -40,12 +39,13 @@ __all__ = [
 
 
 # pylint: disable=too-many-ancestors
-class ImageOptions(_op.AnyOptions):
+class _ImageOptions(_op.AnyOptions):
     """Options for heatmaps
 
     The individual options can be accessed as object instance attributes
     (e.g. `obj.name`) or as dictionary items (e.g. `obj['name']`) for both
-    getting and setting.
+    getting and setting. You can also subscript attributes of attributes with
+    dotted keys: `options['suboptions.name']`.
 
     Parameters
     ----------
@@ -66,6 +66,7 @@ class ImageOptions(_op.AnyOptions):
     prop_attributes: _op.Attrs = ('cmap',)
     _cmap: mpl.colors.Colormap
     norm: mpl.colors.Normalize
+    """Maps heatmap values to interval `[0, 1]` for `cmap`."""
 
     def __init__(self, *args, **kwds) -> None:
         self._cmap = mpl.cm.get_cmap('YlOrBr')
@@ -74,13 +75,13 @@ class ImageOptions(_op.AnyOptions):
 
     @property
     def cmap(self) -> mpl.colors.Colormap:
-        """Get the colour map.
+        """Get the colour map, used to map numbers to colours.
         """
         return self._cmap
 
     @cmap.setter
-    def cmap(self, value: Union[str, mpl.colors.Colormap]) -> None:
-        """Set the colour map.
+    def cmap(self, value: _ty.Union[str, mpl.colors.Colormap]) -> None:
+        """Set the colour map, used to map numbers to colours.
 
         Does nothing if `value` is `None`. Converts to `Colormap` if `str`.
         """
@@ -146,8 +147,13 @@ class ImageOptions(_op.AnyOptions):
 
 
 # pylint: disable=too-many-ancestors
-class StyleOptions(ImageOptions):
+class StyleOptions(_ImageOptions):
     """Options for node/edge colours when drawing graphs.
+
+    The individual options can be accessed as object instance attributes
+    (e.g. `obj.name`) or as dictionary items (e.g. `obj['name']`) for both
+    getting and setting. You can also subscript attributes of attributes with
+    dotted keys: `options['suboptions.name']`.
 
     Parameters
     ----------
@@ -160,9 +166,9 @@ class StyleOptions(ImageOptions):
         Lower bound of `norm`. By default `0`.
     vmax : float
         Lower bound of `norm`. By default `1`.
-    col_attr : str
+    key_attr : str
         Name of node/edge attribute used to determine colour.
-    siz_attr : str
+    val_attr : str
         Name of node/edge attribute used to determine area/width.
     mult : float
         Scale factor between `node/edge[siz_attr]` and area/width.
@@ -173,17 +179,21 @@ class StyleOptions(ImageOptions):
     entity : str
         Type of graph element, 'node' or 'edge'
 
-    All parameters are optional keywords. Any dictionary passed as positional
-    parameters will be popped for the relevant items. Keyword parameters must
-    be valid keys, otherwise a `KeyError` is raised.
+        All parameters are optional keywords. Any dictionary passed as
+        positional parameters will be popped for the relevant items. Keyword
+        parameters must be valid keys, otherwise a `KeyError` is raised.
     """
-    prop_attributes: _op.Attrs = ImageOptions.prop_attributes + ('entity',)
+    prop_attributes: _op.Attrs = _ImageOptions.prop_attributes + ('entity',)
     # topology specifying options
     _method: str = 'get_node_attr'
     key_attr: str = 'key'
+    """Name of node/edge attribute used to determine colour."""
     val_attr: str = 'value'
+    """Name of node/edge attribute used to determine area/width."""
     mut_scale: float = 2.
+    """Ratio of `FancyArrowPatch.mutation_scale` to `linewidth` (for edges)."""
     mult: float = 1.
+    """Scale factor between `node/edge[siz_attr]` and area/width."""
     thresh: float = 1e-3
 
     def __init__(self, *args, **kwds) -> None:
@@ -195,7 +205,7 @@ class StyleOptions(ImageOptions):
         self.thresh = self.thresh
         super().__init__(*args, **kwds)
 
-    def to_colour(self, graph: GraphAttrs) -> np.ndarray:
+    def to_colour(self, graph: _gt.GraphAttrs) -> np.ndarray:
         """Get sizes from graph attributes
 
         Parameters
@@ -211,7 +221,7 @@ class StyleOptions(ImageOptions):
         vals = getattr(graph, self._method)(self.key_attr)
         return self.val_to_colour(vals)
 
-    def to_size(self, graph: GraphAttrs) -> np.ndarray:
+    def to_size(self, graph: _gt.GraphAttrs) -> np.ndarray:
         """Get sizes from graph attributes
 
         Parameters
@@ -250,6 +260,11 @@ class StyleOptions(ImageOptions):
 class GraphOptions(_op.Options):
     """Options for drawing graphs.
 
+    The individual options can be accessed as object instance attributes
+    (e.g. `obj.name`) or as dictionary items (e.g. `obj['name']`) for both
+    getting and setting. You can also subscript attributes of attributes with
+    dotted keys: `options['suboptions.name']`.
+
     Parameters
     ----------
     topology : TopologyOptions
@@ -267,22 +282,28 @@ class GraphOptions(_op.Options):
     judge : Callable[[graph, toplogy] -> ndarray[bool]]
         Function that decides which edges are good and which are bad.
 
-    All parameters are optional keywords. Any dictionary passed as positional
-    parameters will be popped for the relevant items. Keyword parameters must
-    be valid keys, otherwise a `KeyError` is raised.
+        All parameters are optional keywords. Any dictionary passed as
+        positional parameters will be popped for the relevant items. Keyword
+        parameters must be valid keys, otherwise a `KeyError` is raised.
     """
     map_attributes: _op.Attrs = ('topology', 'nodes', 'edges')
     prop_attributes: _op.Attrs = ('layout',)
-    # topology specifying options
-    topology: TopologyOptions
+    topology: _mk.TopologyOptions
+    """Topology specifying options for creating graphs/for `judge`."""
     nodes: StyleOptions
+    """Options for mapping `node[attr]` to node colour/area."""
     edges: StyleOptions
-    rad: ty.List[float]
-    judge: Optional[Judger]
+    """Options for mapping `edge[attr]` to edge colour/thickness."""
+    rad: _ty.List[float]
+    """Curvature of edges: aspect ratio of the (isoceles) Bezier triangle for
+    [good, bad] directions. Positive -> anticlockwise."""
+    judge: _ty.Optional[Judger]
+    """Function that decides which edges are good and which are bad."""
     layout: Layout
+    """Function to compute node positions."""
 
     def __init__(self, *args, **kwds) -> None:
-        self.topology = TopologyOptions(serial=True)
+        self.topology = _mk.TopologyOptions(serial=True)
         self.nodes = StyleOptions(cmap='coolwarm', mult=600)
         self.nodes.entity = 'node'
         self.edges = StyleOptions(cmap='seismic', mult=5)
@@ -292,7 +313,7 @@ class GraphOptions(_op.Options):
         self.layout = linear_layout
         super().__init__(*args, **kwds)
 
-    def choose_rads(self, graph: gt.MultiDiGraph) -> np.ndarray:
+    def choose_rads(self, graph: _gt.MultiDiGraph) -> np.ndarray:
         """Choose curvature of each edge.
 
         Assigns `self.rad[0]` or `self.rad[1]` to each edge, depending on
@@ -319,7 +340,7 @@ class GraphOptions(_op.Options):
         if value is None:
             pass
         else:
-            self.layout = ft.partial(value, **kwds)
+            self.layout = _ft.partial(value, **kwds)
 # pylint: enable=too-many-ancestors
 
 
@@ -328,7 +349,7 @@ class GraphOptions(_op.Options):
 # =============================================================================
 
 
-def get_node_colours(graph: GraphAttrs, data: str) -> Dict[str, np.ndarray]:
+def get_node_colours(graph: _gt.GraphAttrs, data: str) -> _ty.Dict[str, np.ndarray]:
     """Collect values of node attributes for the colour
 
     Parameters
@@ -349,7 +370,7 @@ def get_node_colours(graph: GraphAttrs, data: str) -> Dict[str, np.ndarray]:
     return {'node_color': vals, 'vmin': vmin, 'vmax': vmax}
 
 
-def get_edge_colours(graph: GraphAttrs, data: str) -> Dict[str, np.ndarray]:
+def get_edge_colours(graph: _gt.GraphAttrs, data: str) -> _ty.Dict[str, np.ndarray]:
     """Collect values of edge attributes for the colour
 
     Parameters
@@ -365,7 +386,7 @@ def get_edge_colours(graph: GraphAttrs, data: str) -> Dict[str, np.ndarray]:
         Dictionary of keyword arguments for `nx.draw_networkx_edges` related to
         colour values: `{'edge_color', 'edge_vmin', 'edge_vmax'}`.
     """
-    if isinstance(graph, gt.MultiDiGraph) and data == 'key':
+    if isinstance(graph, _gt.MultiDiGraph) and data == 'key':
         vals = graph.edge_key()
     else:
         vals = graph.get_edge_attr(data)
@@ -388,14 +409,14 @@ def linear_layout(graph: nx.Graph, sep: ArrayLike = (1., 0.),
 
     Returns
     -------
-    pos : Dict[Node, np.ndarray]
+    pos : _ty.Dict[Node, np.ndarray]
         Dictionary of node ids -> position vectors.
     """
     sep, origin = np.asarray(sep), np.asarray(origin)
     return {node: origin + pos * sep for pos, node in enumerate(graph.nodes)}
 
 
-def good_direction(graph: gt.MultiDiGraph, ideal: TopologyOptions) -> np.ndarray:
+def good_direction(graph: _gt.MultiDiGraph, ideal: _mk.TopologyOptions) -> np.ndarray:
     """Which edges are in a good direction?
 
     Parameters
@@ -411,7 +432,7 @@ def good_direction(graph: gt.MultiDiGraph, ideal: TopologyOptions) -> np.ndarray
         True if the direction of the edge is similar to `ideal`.
     """
     edges = np.array(graph.edge_order)
-    _, key_inds = gt.list_edge_keys(graph, True)
+    _, key_inds = _gt.list_edge_keys(graph, True)
     best_drn = np.array(ideal.directions)[key_inds]
     real_drn = edges[:, 1] - edges[:, 0]
     if ideal.ring:
@@ -439,22 +460,25 @@ class NodeCollection:
     opts : GraphOptions|None, optional
         Options for drawing the graph, by default `None -> GraphOptions()`.
     """
-    _nodes: NodePlots
-    _node_ids: ty.List[gt.Node]
+    _nodes: _NodePlots
+    _node_ids: _ty.List[_gt.Node]
     style: StyleOptions
-    # actual sizes, after scaling by size.mult
+    """Options for drawing the nodes."""
     node_pos: NodePos
+    """Place to plot each node."""
     node_size: np.ndarray
+    """Actual node sizes, after scaling by size.mult"""
 
-    def __init__(self, graph: GraphAttrs, pos: Optional[NodePos] = None,
-                 axs: Optional[mpl.axes.Axes] = None,
-                 opts: Optional[GraphOptions] = None, **kwds) -> None:
+    def __init__(self, graph: _gt.GraphAttrs,
+                 pos: _ty.Optional[NodePos] = None,
+                 axs: _ty.Optional[mpl.axes.Axes] = None,
+                 opts: _ty.Optional[GraphOptions] = None, **kwds) -> None:
         self._node_ids = list(graph.nodes)
-        opts = util.default_eval(opts, GraphOptions)
-        axs = util.default_eval(axs, plt.gca)
+        opts = _util.default_eval(opts, GraphOptions)
+        axs = _util.default_eval(axs, plt.gca)
         opts.pop_my_args(kwds)
         self.style = opts.nodes
-        self.node_pos = util.default(pos, opts.layout)
+        self.node_pos = _util.default(pos, opts.layout)
         if callable(self.node_pos):
             self.node_pos = self.node_pos(graph)
 
@@ -468,11 +492,11 @@ class NodeCollection:
         self._nodes = nx.draw_networkx_nodes(graph, self.node_pos, **kwds)
 
     @property
-    def collection(self) -> NodePlots:
+    def collection(self) -> _NodePlots:
         """The underlying matplotlib objects"""
         return self._nodes
 
-    def set_color(self, col_vals: gt.ArrayLike) -> None:
+    def set_color(self, col_vals: ArrayLike) -> None:
         """Set node colour values
 
         Parameters
@@ -543,16 +567,17 @@ class DiEdgeCollection:
     opts : GraphOptions|None, optional
         Options for drawing the graph, by default `None -> GraphOptions()`.
     """
-    _edges: Dict[Edge, EdgePlot]
-    _node_ids: ty.List[gt.Node]
+    _edges: _ty.Dict[Edge, _EdgePlot]
+    _node_ids: _ty.List[_gt.Node]
     style: StyleOptions
+    """Options for drawing the edges."""
 
-    def __init__(self, graph: GraphAttrs, nodes: NodeCollection,
-                 axs: Optional[mpl.axes.Axes] = None,
-                 opts: Optional[GraphOptions] = None, **kwds) -> None:
+    def __init__(self, graph: _gt.GraphAttrs, nodes: NodeCollection,
+                 axs: _ty.Optional[mpl.axes.Axes] = None,
+                 opts: _ty.Optional[GraphOptions] = None, **kwds) -> None:
         self._node_ids = list(graph.nodes)
-        opts = util.default_eval(opts, GraphOptions)
-        axs = util.default_eval(axs, plt.gca)
+        opts = _util.default_eval(opts, GraphOptions)
+        axs = _util.default_eval(axs, plt.gca)
         opts.pop_my_args(kwds)
         self.style = opts.edges
 
@@ -570,32 +595,32 @@ class DiEdgeCollection:
         self.set_widths(edge_wid)
 
     @property
-    def collection(self) -> ty.List[EdgePlot]:
+    def collection(self) -> _ty.List[_EdgePlot]:
         """The underlying matplotlib objects"""
         return list(self.values())
 
     def __len__(self) -> int:
         return len(self._edges)
 
-    def __getitem__(self, key: Edge) -> EdgePlot:
+    def __getitem__(self, key: Edge) -> _EdgePlot:
         return self._edges[key]
 
-    def __iter__(self) -> ty.Iterable[Edge]:
+    def __iter__(self) -> _ty.Iterable[Edge]:
         return iter(self._edges)
 
-    def keys(self) -> ty.Iterable[Edge]:
+    def keys(self) -> _ty.Iterable[Edge]:
         """A view of edge dictionary keys"""
         return self._edges.keys()
 
-    def values(self) -> ty.Iterable[EdgePlot]:
+    def values(self) -> _ty.Iterable[_EdgePlot]:
         """An iterable view the underlying matplotlib objects"""
         return self._edges.values()
 
-    def items(self) -> ty.Iterable[Tuple[Edge, EdgePlot]]:
+    def items(self) -> _ty.Iterable[_ty.Tuple[Edge, _EdgePlot]]:
         """A view of edge dictionary items"""
         return self._edges.items()
 
-    def set_color(self, col_vals: gt.ArrayLike) -> None:
+    def set_color(self, col_vals: ArrayLike) -> None:
         """Set line colour values
 
         Parameters
@@ -631,7 +656,7 @@ class DiEdgeCollection:
         node_siz : ArrayLike[float] (N,)
             Node sizes after scaling to plot units.
         """
-        siz_dict = dict(zip(self._node_ids, util.repeatify(node_siz)))
+        siz_dict = dict(zip(self._node_ids, _util.repeatify(node_siz)))
         for edge, edge_plot in self.items():
             edge_plot.shrinkA = _to_marker_edge(siz_dict[edge[0]], 'o')
             edge_plot.shrinkB = _to_marker_edge(siz_dict[edge[1]], 'o')
@@ -661,7 +686,7 @@ class DiEdgeCollection:
             edge.set_connectionstyle('arc3', rad=rad)
 
 
-def _to_marker_edge(marker_size: Number, marker: str) -> Number:
+def _to_marker_edge(marker_size: _Number, marker: str) -> _Number:
     """Space to leave for node at end of fancy arrrow patch"""
     if marker in "s^>v<d":  # `large` markers need extra space
         return np.sqrt(2 * marker_size) / 2
@@ -669,7 +694,7 @@ def _to_marker_edge(marker_size: Number, marker: str) -> Number:
 
 
 class GraphPlots:
-    """Class for plotting model as a graph.
+    """Class for plotting markov process as a graph.
 
     Parameters
     ----------
@@ -687,26 +712,30 @@ class GraphPlots:
     `nx.draw_networkx_edges`.
     """
     nodes: NodeCollection
+    """The collection of node plots."""
     edges: DiEdgeCollection
+    """The collection of directed edge plots."""
     opts: GraphOptions
+    """Options for plotting the graph."""
 
-    def __init__(self, graph: GraphAttrs, pos: Optional[NodePos] = None,
-                 axs: Optional[mpl.axes.Axes] = None,
-                 opts: Optional[GraphOptions] = None, **kws) -> None:
-        self.opts = util.default_eval(opts, GraphOptions)
+    def __init__(self, graph: _gt.GraphAttrs,
+                 pos: _ty.Optional[NodePos] = None,
+                 axs: _ty.Optional[mpl.axes.Axes] = None,
+                 opts: _ty.Optional[GraphOptions] = None, **kws) -> None:
+        self.opts = _util.default_eval(opts, GraphOptions)
         self.opts.pop_my_args(kws)
-        axs = util.default_eval(axs, plt.gca)
+        axs = _util.default_eval(axs, plt.gca)
 
         self.nodes = NodeCollection(graph, pos, axs, self.opts, **kws)
         self.edges = DiEdgeCollection(graph, self.nodes, axs, self.opts, **kws)
 
     @property
-    def collection(self) -> ty.List[mpl.artist.Artist]:
+    def collection(self) -> _ty.List[mpl.artist.Artist]:
         """The underlying matplotlib objects"""
         return [self.nodes.collection] + self.edges.collection
 
-    def update(self, edge_vals: Optional[np.ndarray],
-               node_vals: Optional[np.ndarray]) -> None:
+    def update(self, edge_vals: _ty.Optional[np.ndarray],
+               node_vals: _ty.Optional[np.ndarray]) -> None:
         """Update plots.
 
         Parameters
@@ -721,7 +750,7 @@ class GraphPlots:
         if node_vals is not None:
             self.set_node_sizes(node_vals)
 
-    def update_from(self, graph: GraphAttrs) -> None:
+    def update_from(self, graph: _gt.GraphAttrs) -> None:
         """Update plots using a graph object.
 
         Parameters
@@ -734,7 +763,7 @@ class GraphPlots:
         node_val = graph.get_node_attr(self.opts.nodes.val_attr)
         self.update(edge_val, node_val)
 
-    def set_node_colors(self, cols: gt.ArrayLike) -> None:
+    def set_node_colors(self, cols: ArrayLike) -> None:
         """Set node colour values
 
         Parameters
@@ -744,7 +773,7 @@ class GraphPlots:
         """
         self.nodes.set_color(cols)
 
-    def set_edge_colors(self, cols: gt.ArrayLike) -> None:
+    def set_edge_colors(self, cols: ArrayLike) -> None:
         """Set line colour values
 
         Parameters
@@ -801,9 +830,9 @@ class GraphPlots:
 # =============================================================================
 # Aliases
 # =============================================================================
-NodePlots = mpl.collections.PathCollection
-EdgePlot = mpl.patches.FancyArrowPatch
-NodePos = Dict[gt.Node, ArrayLike]
-Layout = Callable[[nx.Graph], NodePos]
-Colour = Union[str, ty.Sequence[float]]
-Judger = Callable[[nx.Graph, TopologyOptions], np.ndarray]
+_NodePlots = mpl.collections.PathCollection
+_EdgePlot = mpl.patches.FancyArrowPatch
+NodePos = _ty.Dict[_gt.Node, ArrayLike]
+Layout = _ty.Callable[[nx.Graph], NodePos]
+Colour = _ty.Union[str, _ty.Sequence[float]]
+Judger = _ty.Callable[[nx.Graph, _mk.TopologyOptions], np.ndarray]
