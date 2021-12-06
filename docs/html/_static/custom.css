@@ -1,1 +1,115 @@
 /** css/custom.css **/
+
+:root {
+    --major-bg-color: #f7f7f9;
+    --major-fg-color: #000000;
+    --minor-bg-color: #cbdfff;
+    --minor-fg-color: #000000;
+    --title-bg-color: #e7e7e9;
+    --title-fg-color: var(--major-fg-color);
+    --links-bg-color: var(--title-bg-color);
+    --links-fg-color: #353550;
+}
+
+/* @media (prefers-color-scheme: dark) {
+    :root {
+        --major-bg-color: #353b44;
+        --major-fg-color: #a0b4d1;
+        --links-bg-color: #e7e7f5;
+        --links-fg-color: #7f90b3;
+        --minor-bg-color: #626c72;
+        --minor-fg-color: #efeafd;
+        }
+} */
+
+@media print {
+    :root {
+        --major-bg-color: #ffffff;
+        --major-fg-color: #000000;
+        --minor-bg-color: #ffffff;
+        --minor-fg-color: #43414b;
+        --title-bg-color: #ffffff;
+        --title-fg-color: #44676e;
+        --links-bg-color: var(--links-bg-color);
+        --links-fg-color: #353550;
+    }
+    div.sphinxsidebar {
+        width:  0;
+        display: none;
+    }
+    div.bodywrapper {
+        margin: 0 0 0 0;
+    }
+}
+
+/* Colours and style */
+
+html {
+    background-color: var(--minor-bg-color);
+    color: var(--minor-fg-color);
+}
+
+body {
+    background-color: var(--minor-bg-color);
+    color: var(--minor-fg-color);
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+div.body {
+    background-color: var(--major-bg-color);
+    color: var(--major-fg-color);
+}
+div.sphinxsidebar #searchbox input[type="text"] {
+    background-color: var(--major-bg-color);
+    color: var(--major-fg-color);
+}
+div.body h1 {
+    background-color: var(--title-bg-color);
+    color: var(--title-fg-color);
+}
+tt, code {
+    background-color: var(--major-bg-color);
+    color: var(--major-fg-color);
+}
+tt.xref, code.xref, a tt {
+    background-color: var(--major-bg-color);
+    border-bottom: 1px solid #fff;
+}
+a:hover {
+    background-color: var(--links-bg-color);
+    color: var(--links-fg-color);
+}
+dt:target {
+    background-color: var(--minor-bg-color);
+    color: var(--minor-fg-color);
+}
+dt.sig-object {
+    background-color: var(--title-bg-color);
+    color: var(--title-fg-color);
+}
+.sig-object {
+    margin-top: 0.5em;
+}
+
+/* Layout */
+
+@media (min-width: 600px) {
+    div.document {
+        width: 90%;
+    }
+    div.body {
+        max-width: 50em;
+        min-width: 26em;
+        width: fit-content;
+        min-height: 40em;
+    }
+    div.bodywrapper {
+        margin: 0 0 0 18em;
+    }
+    div.sphinxsidebar {
+        width:  18em;
+    }
+    div.footer {
+        width: 90%;
+    }
+}
