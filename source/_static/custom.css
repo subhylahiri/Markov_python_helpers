@@ -83,7 +83,7 @@ dt:target {
     background-color: var(--minor-bg-color);
     color: var(--minor-fg-color);
 }
-dt .sig-object {
+dt.sig-object {
     background-color: var(--title-bg-color);
     color: var(--title-fg-color);
 }
