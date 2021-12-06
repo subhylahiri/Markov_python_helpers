@@ -17,7 +17,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="markov_helpers.markov" href="markov_helpers.markov.html" />
-    <link rel="prev" title="markov_helpers.graphs.DiGraph" href="markov_helpers.graphs.DiGraph.html" />
+    <link rel="prev" title="markov_helpers.graphs.GraphAttrs" href="markov_helpers.graphs.GraphAttrs.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -39,7 +39,7 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="markov_helpers.graphs.MultiDiGraph">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">MultiDiGraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">incoming_graph_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">attr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#markov_helpers.graphs.MultiDiGraph" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="https://networkx.org/documentation/stable/reference/classes/multidigraph.html#networkx.MultiDiGraph" title="(in NetworkX v2.6.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">networkx.classes.multidigraph.MultiDiGraph</span></code></a>, <a class="reference internal" href="markov_helpers.graphs.plots.GraphAttrs.html#markov_helpers.graphs.plots.GraphAttrs" title="markov_helpers.graphs._tricks.GraphAttrs"><code class="xref py py-class docutils literal notranslate"><span class="pre">markov_helpers.graphs._tricks.GraphAttrs</span></code></a></p>
+<dd><p>Bases: <a class="reference external" href="https://networkx.org/documentation/stable/reference/classes/multidigraph.html#networkx.MultiDiGraph" title="(in NetworkX v2.6.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">networkx.classes.multidigraph.MultiDiGraph</span></code></a>, <a class="reference internal" href="markov_helpers.graphs.GraphAttrs.html#markov_helpers.graphs.GraphAttrs" title="markov_helpers.graphs._tricks.GraphAttrs"><code class="xref py py-class docutils literal notranslate"><span class="pre">markov_helpers.graphs._tricks.GraphAttrs</span></code></a></p>
 <p>Custom directed multi-graph class that remembers edge order (N,E)</p>
 <p>Iterating over edges is done in the order that the edges were first added.
 It also provides methods for working with <em class="xref py py-obj">np.ndarray`s of node/edge
@@ -1220,7 +1220,7 @@ or an edge tuple (u, v, key).</p>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>key</strong><span class="classifier">str</span></dt><dd><p>Name of attribute.</p>
 </dd>
-<dt><strong>strict</strong><span class="classifier">bool, optopnal</span></dt><dd><p>Only <em class="xref py py-obj">True</em> if every node has the attribute. By default <em class="xref py py-obj">True</em>.</p>
+<dt><strong>strict</strong><span class="classifier">bool, optional</span></dt><dd><p>Only <em class="xref py py-obj">True</em> if every node has the attribute. By default <em class="xref py py-obj">True</em>.</p>
 </dd>
 </dl>
 </dd>
@@ -2471,12 +2471,11 @@ be slightly different and require tweaks of these examples:</p>
 <li class="toctree-l4"><a class="reference internal" href="markov_helpers.graphs.mat_to_graph.html">markov_helpers.graphs.mat_to_graph</a></li>
 <li class="toctree-l4"><a class="reference internal" href="markov_helpers.graphs.param_to_graph.html">markov_helpers.graphs.param_to_graph</a></li>
 <li class="toctree-l4"><a class="reference internal" href="markov_helpers.graphs.DiGraph.html">markov_helpers.graphs.DiGraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="markov_helpers.graphs.GraphAttrs.html">markov_helpers.graphs.GraphAttrs</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">markov_helpers.graphs.MultiDiGraph</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.html">markov_helpers.markov</a></li>
-<li class="toctree-l3"><a class="reference internal" href="markov_helpers.options.html">markov_helpers.options</a></li>
-<li class="toctree-l3"><a class="reference internal" href="markov_helpers.utilities.html">markov_helpers.utilities</a></li>
 </ul>
 </li>
 </ul>
@@ -2493,7 +2492,7 @@ be slightly different and require tweaks of these examples:</p>
   <li><a href="../index.html">Documentation overview</a><ul>
   <li><a href="markov_helpers.html">markov_helpers</a><ul>
   <li><a href="markov_helpers.graphs.html">markov_helpers.graphs</a><ul>
-      <li>Previous: <a href="markov_helpers.graphs.DiGraph.html" title="previous chapter">markov_helpers.graphs.DiGraph</a></li>
+      <li>Previous: <a href="markov_helpers.graphs.GraphAttrs.html" title="previous chapter">markov_helpers.graphs.GraphAttrs</a></li>
       <li>Next: <a href="markov_helpers.markov.html" title="next chapter">markov_helpers.markov</a></li>
   </ul></li>
   </ul></li>

@@ -16,7 +16,6 @@
     <script src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="markov_helpers.options" href="markov_helpers.options.html" />
     <link rel="prev" title="markov_helpers.markov.unstochastify_c" href="markov_helpers.markov.unstochastify_c.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -39,14 +38,15 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="markov_helpers.markov.TopologyOptions">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">TopologyOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#markov_helpers.markov.TopologyOptions" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="markov_helpers.options.Options.html#markov_helpers.options.Options" title="markov_helpers.options.Options"><code class="xref py py-class docutils literal notranslate"><span class="pre">markov_helpers.options.Options</span></code></a></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">markov_helpers._options.Options</span></code></p>
 <p>Class that contains topology specifying options.</p>
 <p>The individual options can be accessed as object instance attributes
 (e.g. <em class="xref py py-obj">obj.name</em>) or as dictionary items (e.g. <em class="xref py py-obj">obj[‘name’]</em>) for both
-getting and setting.</p>
-<dl class="field-list simple">
+getting and setting. You can also subscript attributes of attributes with
+dotted keys: <em class="xref py py-obj">options[‘suboptions.name’]</em>.</p>
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>serial</strong><span class="classifier">bool, optional keyword</span></dt><dd><p>Restrict to models of serial topology? By default <em class="xref py py-obj">False</em>.</p>
 </dd>
 <dt><strong>ring</strong><span class="classifier">bool, optional keyword</span></dt><dd><p>Restrict to models of ring topology? By default <em class="xref py py-obj">False</em>.</p>
@@ -54,14 +54,14 @@ getting and setting.</p>
 <dt><strong>uniform</strong><span class="classifier">bool, optional keyword</span></dt><dd><p>Restrict to models with equal rates per direction? By default <em class="xref py py-obj">False</em>.</p>
 </dd>
 <dt><strong>directions: Tuple[int] (P,), optional keyword</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>,
-one value for each plasticity type. By default <em class="xref py py-obj">(0, 0)</em>.</p>
+one value for each transition matrix. By default <em class="xref py py-obj">(0,)</em>.</p>
 </dd>
-<dt><strong>discrete</strong><span class="classifier">bool</span></dt><dd><p>Are we kaking transition matrices for a discrete-time Markov process?
+<dt><strong>discrete</strong><span class="classifier">bool, optional keyword</span></dt><dd><p>Are the transition matrices for a discrete-time Markov process?
 By default <em class="xref py py-obj">False</em>.</p>
+<p>All parameters are optional keywords. Any dictionary passed as
+positional parameters will be popped for the relevant items. Keyword
+parameters must be valid keys, otherwise a <em class="xref py py-obj">KeyError</em> is raised.</p>
 </dd>
-<dt><strong>All parameters are optional keywords. Any dictionary passed as positional</strong></dt><dd></dd>
-<dt><strong>parameters will be popped for the relevant items. Keyword parameters must</strong></dt><dd></dd>
-<dt><strong>be valid keys, otherwise a `KeyError` is raised.</strong></dt><dd></dd>
 </dl>
 </dd>
 <dt class="field-even">Attributes</dt>
@@ -180,10 +180,10 @@ By default <em class="xref py py-obj">False</em>.</p>
 <td><p>Are there any constraints on the topology?</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#markov_helpers.markov.TopologyOptions.directions" title="markov_helpers.markov.TopologyOptions.directions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">directions</span></code></a></p></td>
-<td><p></p></td>
+<td><p>If nonzero, only use transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.markov.TopologyOptions.discrete" title="markov_helpers.markov.TopologyOptions.discrete"><code class="xref py py-obj docutils literal notranslate"><span class="pre">discrete</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Are the transition matrices for a discrete-time Markov process?</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#markov_helpers.markov.TopologyOptions.key_first" title="markov_helpers.markov.TopologyOptions.key_first"><code class="xref py py-obj docutils literal notranslate"><span class="pre">key_first</span></code></a></p></td>
 <td><p></p></td>
@@ -201,13 +201,13 @@ By default <em class="xref py py-obj">False</em>.</p>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.markov.TopologyOptions.ring" title="markov_helpers.markov.TopologyOptions.ring"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Restrict to models of ring topology?</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#markov_helpers.markov.TopologyOptions.serial" title="markov_helpers.markov.TopologyOptions.serial"><code class="xref py py-obj docutils literal notranslate"><span class="pre">serial</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Restrict to models of serial topology?</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.markov.TopologyOptions.uniform" title="markov_helpers.markov.TopologyOptions.uniform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uniform</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Restrict to models with equal rates per direction?</p></td>
 </tr>
 </tbody>
 </table>
@@ -234,7 +234,7 @@ By default <em class="xref py py-obj">False</em>.</p>
 <p>Only copies those attributes that appear when iterating.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="markov_helpers.options.Options.html#markov_helpers.options.Options" title="markov_helpers.options.Options"><code class="xref py py-class docutils literal notranslate"><span class="pre">Options</span></code></a></p>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Options</span></code></p>
 </dd>
 </dl>
 </dd></dl>
@@ -243,13 +243,13 @@ By default <em class="xref py py-obj">False</em>.</p>
 <dt class="sig sig-object py" id="markov_helpers.markov.TopologyOptions.directed">
 <span class="sig-name descname"><span class="pre">directed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">which</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">slice(None,</span> <span class="pre">None,</span> <span class="pre">None)</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#markov_helpers.markov.TopologyOptions.directed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Dictionary of Markov parameter options</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>which</strong><span class="classifier">int, slice, None, optional</span></dt><dd><p>Which element of <em class="xref py py-obj">self.directions</em> to use as the <em class="xref py py-obj">‘drn’</em> value,
 where <em class="xref py py-obj">None</em> -&gt; omit <em class="xref py py-obj">‘drn’</em> item. By default <em class="xref py py-obj">slice(None)</em></p>
+<p>Extra arguments are default values or unknown keys in <em class="xref py py-obj">opts</em></p>
 </dd>
-<dt><strong>Extra arguments are default values or unknown keys in `opts`</strong></dt><dd></dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -268,13 +268,15 @@ where <em class="xref py py-obj">None</em> -&gt; omit <em class="xref py py-obj"
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="markov_helpers.markov.TopologyOptions.directions">
-<span class="sig-name descname"><span class="pre">directions</span></span><em class="property"><span class="pre">:</span> <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">=</span> <span class="pre">(0,</span> <span class="pre">0)</span></em><a class="headerlink" href="#markov_helpers.markov.TopologyOptions.directions" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">directions</span></span><em class="property"><span class="pre">:</span> <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><span class="pre">int</span></a><span class="p"><span class="pre">,</span> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">=</span> <span class="pre">(0,)</span></em><a class="headerlink" href="#markov_helpers.markov.TopologyOptions.directions" title="Permalink to this definition">¶</a></dt>
+<dd><p>If nonzero, only use transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="markov_helpers.markov.TopologyOptions.discrete">
 <span class="sig-name descname"><span class="pre">discrete</span></span><em class="property"><span class="pre">:</span> <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#markov_helpers.markov.TopologyOptions.discrete" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Are the transition matrices for a discrete-time Markov process?</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="markov_helpers.markov.TopologyOptions.get">
@@ -359,12 +361,14 @@ where <em class="xref py py-obj">None</em> -&gt; omit <em class="xref py py-obj"
 <dl class="py attribute">
 <dt class="sig sig-object py" id="markov_helpers.markov.TopologyOptions.ring">
 <span class="sig-name descname"><span class="pre">ring</span></span><em class="property"><span class="pre">:</span> <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#markov_helpers.markov.TopologyOptions.ring" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Restrict to models of ring topology?</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="markov_helpers.markov.TopologyOptions.serial">
 <span class="sig-name descname"><span class="pre">serial</span></span><em class="property"><span class="pre">:</span> <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#markov_helpers.markov.TopologyOptions.serial" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Restrict to models of serial topology?</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="markov_helpers.markov.TopologyOptions.setdefault">
@@ -374,7 +378,8 @@ where <em class="xref py py-obj">None</em> -&gt; omit <em class="xref py py-obj"
 <dl class="py attribute">
 <dt class="sig sig-object py" id="markov_helpers.markov.TopologyOptions.uniform">
 <span class="sig-name descname"><span class="pre">uniform</span></span><em class="property"><span class="pre">:</span> <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#markov_helpers.markov.TopologyOptions.uniform" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Restrict to models with equal rates per direction?</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="markov_helpers.markov.TopologyOptions.update">
@@ -421,8 +426,6 @@ where <em class="xref py py-obj">None</em> -&gt; omit <em class="xref py py-obj"
 <li class="toctree-l3 current"><a class="reference internal" href="markov_helpers.markov.html">markov_helpers.markov</a><ul class="current">
 <li class="toctree-l4 current"><a class="reference internal" href="markov_helpers.markov.html#notes">Notes</a><ul class="current">
 <li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.indices.html">markov_helpers.markov.indices</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.markov.html">markov_helpers.markov.markov</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.options.html">markov_helpers.markov.options</a></li>
 <li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.params.html">markov_helpers.markov.params</a></li>
 <li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.adjoint.html">markov_helpers.markov.adjoint</a></li>
 <li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.calc_peq.html">markov_helpers.markov.calc_peq</a></li>
@@ -443,8 +446,6 @@ where <em class="xref py py-obj">None</em> -&gt; omit <em class="xref py py-obj"
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="markov_helpers.options.html">markov_helpers.options</a></li>
-<li class="toctree-l3"><a class="reference internal" href="markov_helpers.utilities.html">markov_helpers.utilities</a></li>
 </ul>
 </li>
 </ul>
@@ -462,7 +463,6 @@ where <em class="xref py py-obj">None</em> -&gt; omit <em class="xref py py-obj"
   <li><a href="markov_helpers.html">markov_helpers</a><ul>
   <li><a href="markov_helpers.markov.html">markov_helpers.markov</a><ul>
       <li>Previous: <a href="markov_helpers.markov.unstochastify_c.html" title="previous chapter">markov_helpers.markov.unstochastify_c</a></li>
-      <li>Next: <a href="markov_helpers.options.html" title="next chapter">markov_helpers.options</a></li>
   </ul></li>
   </ul></li>
   </ul></li>

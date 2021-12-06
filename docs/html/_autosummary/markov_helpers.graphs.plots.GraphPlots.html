@@ -16,7 +16,7 @@
     <script src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="markov_helpers.graphs.plots.ImageOptions" href="markov_helpers.graphs.plots.ImageOptions.html" />
+    <link rel="next" title="markov_helpers.graphs.plots.NodeCollection" href="markov_helpers.graphs.plots.NodeCollection.html" />
     <link rel="prev" title="markov_helpers.graphs.plots.GraphOptions" href="markov_helpers.graphs.plots.GraphOptions.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -40,7 +40,7 @@
 <dt class="sig sig-object py" id="markov_helpers.graphs.plots.GraphPlots">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">GraphPlots</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pos</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kws</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#markov_helpers.graphs.plots.GraphPlots" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<p>Class for plotting model as a graph.</p>
+<p>Class for plotting markov process as a graph.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
@@ -142,13 +142,13 @@ model was a <em class="xref py py-obj">SynapseParamModel</em>).</p>
 <td><p>The underlying matplotlib objects</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#markov_helpers.graphs.plots.GraphPlots.nodes" title="markov_helpers.graphs.plots.GraphPlots.nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodes</span></code></a></p></td>
-<td><p></p></td>
+<td><p>The collection of node plots.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.graphs.plots.GraphPlots.edges" title="markov_helpers.graphs.plots.GraphPlots.edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">edges</span></code></a></p></td>
-<td><p></p></td>
+<td><p>The collection of directed edge plots.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#markov_helpers.graphs.plots.GraphPlots.opts" title="markov_helpers.graphs.plots.GraphPlots.opts"><code class="xref py py-obj docutils literal notranslate"><span class="pre">opts</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Options for plotting the graph.</p></td>
 </tr>
 </tbody>
 </table>
@@ -166,17 +166,20 @@ model was a <em class="xref py py-obj">SynapseParamModel</em>).</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="markov_helpers.graphs.plots.GraphPlots.edges">
 <span class="sig-name descname"><span class="pre">edges</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="markov_helpers.graphs.plots.DiEdgeCollection.html#markov_helpers.graphs.plots.DiEdgeCollection" title="markov_helpers.graphs.plots.DiEdgeCollection"><span class="pre">markov_helpers.graphs.plots.DiEdgeCollection</span></a></em><a class="headerlink" href="#markov_helpers.graphs.plots.GraphPlots.edges" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The collection of directed edge plots.</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="markov_helpers.graphs.plots.GraphPlots.nodes">
 <span class="sig-name descname"><span class="pre">nodes</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="markov_helpers.graphs.plots.NodeCollection.html#markov_helpers.graphs.plots.NodeCollection" title="markov_helpers.graphs.plots.NodeCollection"><span class="pre">markov_helpers.graphs.plots.NodeCollection</span></a></em><a class="headerlink" href="#markov_helpers.graphs.plots.GraphPlots.nodes" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The collection of node plots.</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="markov_helpers.graphs.plots.GraphPlots.opts">
 <span class="sig-name descname"><span class="pre">opts</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="markov_helpers.graphs.plots.GraphOptions.html#markov_helpers.graphs.plots.GraphOptions" title="markov_helpers.graphs.plots.GraphOptions"><span class="pre">markov_helpers.graphs.plots.GraphOptions</span></a></em><a class="headerlink" href="#markov_helpers.graphs.plots.GraphPlots.opts" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Options for plotting the graph.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="markov_helpers.graphs.plots.GraphPlots.set_edge_colors">
@@ -366,16 +369,10 @@ oval. Positive -&gt; counter-clockwise.</p>
 <li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.good_direction.html">markov_helpers.graphs.plots.good_direction</a></li>
 <li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.linear_layout.html">markov_helpers.graphs.plots.linear_layout</a></li>
 <li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.DiEdgeCollection.html">markov_helpers.graphs.plots.DiEdgeCollection</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.EdgePlot.html">markov_helpers.graphs.plots.EdgePlot</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.GraphAttrs.html">markov_helpers.graphs.plots.GraphAttrs</a></li>
 <li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.GraphOptions.html">markov_helpers.graphs.plots.GraphOptions</a></li>
 <li class="toctree-l5 current"><a class="current reference internal" href="#">markov_helpers.graphs.plots.GraphPlots</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.ImageOptions.html">markov_helpers.graphs.plots.ImageOptions</a></li>
 <li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.NodeCollection.html">markov_helpers.graphs.plots.NodeCollection</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.NodePlots.html">markov_helpers.graphs.plots.NodePlots</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.Number.html">markov_helpers.graphs.plots.Number</a></li>
 <li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.StyleOptions.html">markov_helpers.graphs.plots.StyleOptions</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.TopologyOptions.html">markov_helpers.graphs.plots.TopologyOptions</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="markov_helpers.graphs.list_edge_attrs.html">markov_helpers.graphs.list_edge_attrs</a></li>
@@ -385,12 +382,11 @@ oval. Positive -&gt; counter-clockwise.</p>
 <li class="toctree-l4"><a class="reference internal" href="markov_helpers.graphs.mat_to_graph.html">markov_helpers.graphs.mat_to_graph</a></li>
 <li class="toctree-l4"><a class="reference internal" href="markov_helpers.graphs.param_to_graph.html">markov_helpers.graphs.param_to_graph</a></li>
 <li class="toctree-l4"><a class="reference internal" href="markov_helpers.graphs.DiGraph.html">markov_helpers.graphs.DiGraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="markov_helpers.graphs.GraphAttrs.html">markov_helpers.graphs.GraphAttrs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="markov_helpers.graphs.MultiDiGraph.html">markov_helpers.graphs.MultiDiGraph</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.html">markov_helpers.markov</a></li>
-<li class="toctree-l3"><a class="reference internal" href="markov_helpers.options.html">markov_helpers.options</a></li>
-<li class="toctree-l3"><a class="reference internal" href="markov_helpers.utilities.html">markov_helpers.utilities</a></li>
 </ul>
 </li>
 </ul>
@@ -409,7 +405,7 @@ oval. Positive -&gt; counter-clockwise.</p>
   <li><a href="markov_helpers.graphs.html">markov_helpers.graphs</a><ul>
   <li><a href="markov_helpers.graphs.plots.html">markov_helpers.graphs.plots</a><ul>
       <li>Previous: <a href="markov_helpers.graphs.plots.GraphOptions.html" title="previous chapter">markov_helpers.graphs.plots.GraphOptions</a></li>
-      <li>Next: <a href="markov_helpers.graphs.plots.ImageOptions.html" title="next chapter">markov_helpers.graphs.plots.ImageOptions</a></li>
+      <li>Next: <a href="markov_helpers.graphs.plots.NodeCollection.html" title="next chapter">markov_helpers.graphs.plots.NodeCollection</a></li>
   </ul></li>
   </ul></li>
   </ul></li>

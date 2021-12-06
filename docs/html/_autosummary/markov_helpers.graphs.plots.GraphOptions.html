@@ -17,7 +17,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="markov_helpers.graphs.plots.GraphPlots" href="markov_helpers.graphs.plots.GraphPlots.html" />
-    <link rel="prev" title="markov_helpers.graphs.plots.GraphAttrs" href="markov_helpers.graphs.plots.GraphAttrs.html" />
+    <link rel="prev" title="markov_helpers.graphs.plots.DiEdgeCollection" href="markov_helpers.graphs.plots.DiEdgeCollection.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -39,11 +39,15 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="markov_helpers.graphs.plots.GraphOptions">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">GraphOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#markov_helpers.graphs.plots.GraphOptions" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="markov_helpers.options.Options.html#markov_helpers.options.Options" title="markov_helpers.options.Options"><code class="xref py py-class docutils literal notranslate"><span class="pre">markov_helpers.options.Options</span></code></a></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">markov_helpers._options.Options</span></code></p>
 <p>Options for drawing graphs.</p>
-<dl class="field-list simple">
+<p>The individual options can be accessed as object instance attributes
+(e.g. <em class="xref py py-obj">obj.name</em>) or as dictionary items (e.g. <em class="xref py py-obj">obj[‘name’]</em>) for both
+getting and setting. You can also subscript attributes of attributes with
+dotted keys: <em class="xref py py-obj">options[‘suboptions.name’]</em>.</p>
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>topology</strong><span class="classifier">TopologyOptions</span></dt><dd><p>Topology specifying options, for creating graphs/reference for <em class="xref py py-obj">judge</em>.</p>
 </dd>
 <dt><strong>layout</strong><span class="classifier">Callable[DiGraph -&gt; Dict[Node, ArrayLike]]</span></dt><dd><p>Function to compute node positions. Keywords passed to <a class="reference internal" href="#markov_helpers.graphs.plots.GraphOptions.set_layout" title="markov_helpers.graphs.plots.GraphOptions.set_layout"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_layout</span></code></a>
@@ -57,10 +61,10 @@ are saved.</p>
 [good, bad] directions. Positive -&gt; anticlockwise.</p>
 </dd>
 <dt><strong>judge</strong><span class="classifier">Callable[[graph, toplogy] -&gt; ndarray[bool]]</span></dt><dd><p>Function that decides which edges are good and which are bad.</p>
+<p>All parameters are optional keywords. Any dictionary passed as
+positional parameters will be popped for the relevant items. Keyword
+parameters must be valid keys, otherwise a <em class="xref py py-obj">KeyError</em> is raised.</p>
 </dd>
-<dt><strong>All parameters are optional keywords. Any dictionary passed as positional</strong></dt><dd></dd>
-<dt><strong>parameters will be popped for the relevant items. Keyword parameters must</strong></dt><dd></dd>
-<dt><strong>be valid keys, otherwise a `KeyError` is raised.</strong></dt><dd></dd>
 </dl>
 </dd>
 </dl>
@@ -186,22 +190,22 @@ are saved.</p>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.graphs.plots.GraphOptions.topology" title="markov_helpers.graphs.plots.GraphOptions.topology"><code class="xref py py-obj docutils literal notranslate"><span class="pre">topology</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Topology specifying options for creating graphs/for <em class="xref py py-obj">judge</em>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#markov_helpers.graphs.plots.GraphOptions.nodes" title="markov_helpers.graphs.plots.GraphOptions.nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodes</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Options for mapping <em class="xref py py-obj">node[attr]</em> to node colour/area.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.graphs.plots.GraphOptions.edges" title="markov_helpers.graphs.plots.GraphOptions.edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">edges</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Options for mapping <em class="xref py py-obj">edge[attr]</em> to edge colour/thickness.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#markov_helpers.graphs.plots.GraphOptions.rad" title="markov_helpers.graphs.plots.GraphOptions.rad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rad</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Curvature of edges: aspect ratio of the (isoceles) Bezier triangle for [good, bad] directions.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.graphs.plots.GraphOptions.judge" title="markov_helpers.graphs.plots.GraphOptions.judge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">judge</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Function that decides which edges are good and which are bad.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#markov_helpers.graphs.plots.GraphOptions.layout" title="markov_helpers.graphs.plots.GraphOptions.layout"><code class="xref py py-obj docutils literal notranslate"><span class="pre">layout</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Function to compute node positions.</p></td>
 </tr>
 </tbody>
 </table>
@@ -240,7 +244,7 @@ oval. Positive -&gt; counter-clockwise.</p>
 <p>Only copies those attributes that appear when iterating.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="markov_helpers.options.Options.html#markov_helpers.options.Options" title="markov_helpers.options.Options"><code class="xref py py-class docutils literal notranslate"><span class="pre">Options</span></code></a></p>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Options</span></code></p>
 </dd>
 </dl>
 </dd></dl>
@@ -248,7 +252,8 @@ oval. Positive -&gt; counter-clockwise.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="markov_helpers.graphs.plots.GraphOptions.edges">
 <span class="sig-name descname"><span class="pre">edges</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="markov_helpers.graphs.plots.StyleOptions.html#markov_helpers.graphs.plots.StyleOptions" title="markov_helpers.graphs.plots.StyleOptions"><span class="pre">StyleOptions</span></a></em><a class="headerlink" href="#markov_helpers.graphs.plots.GraphOptions.edges" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Options for mapping <em class="xref py py-obj">edge[attr]</em> to edge colour/thickness.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="markov_helpers.graphs.plots.GraphOptions.get">
@@ -262,8 +267,9 @@ oval. Positive -&gt; counter-clockwise.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="markov_helpers.graphs.plots.GraphOptions.judge">
-<span class="sig-name descname"><span class="pre">judge</span></span><em class="property"><span class="pre">:</span> <span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Judger</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#markov_helpers.graphs.plots.GraphOptions.judge" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">judge</span></span><em class="property"><span class="pre">:</span> <span class="pre">_ty.Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Judger</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#markov_helpers.graphs.plots.GraphOptions.judge" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function that decides which edges are good and which are bad.</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="markov_helpers.graphs.plots.GraphOptions.key_first">
@@ -283,7 +289,8 @@ oval. Positive -&gt; counter-clockwise.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="markov_helpers.graphs.plots.GraphOptions.layout">
 <span class="sig-name descname"><span class="pre">layout</span></span><em class="property"><span class="pre">:</span> <span class="pre">Layout</span></em><a class="headerlink" href="#markov_helpers.graphs.plots.GraphOptions.layout" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Function to compute node positions.</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="markov_helpers.graphs.plots.GraphOptions.map_attributes">
@@ -293,7 +300,8 @@ oval. Positive -&gt; counter-clockwise.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="markov_helpers.graphs.plots.GraphOptions.nodes">
 <span class="sig-name descname"><span class="pre">nodes</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="markov_helpers.graphs.plots.StyleOptions.html#markov_helpers.graphs.plots.StyleOptions" title="markov_helpers.graphs.plots.StyleOptions"><span class="pre">StyleOptions</span></a></em><a class="headerlink" href="#markov_helpers.graphs.plots.GraphOptions.nodes" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Options for mapping <em class="xref py py-obj">node[attr]</em> to node colour/area.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="markov_helpers.graphs.plots.GraphOptions.order_keys">
@@ -336,8 +344,10 @@ oval. Positive -&gt; counter-clockwise.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="markov_helpers.graphs.plots.GraphOptions.rad">
-<span class="sig-name descname"><span class="pre">rad</span></span><em class="property"><span class="pre">:</span> <span class="pre">ty.List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#markov_helpers.graphs.plots.GraphOptions.rad" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">rad</span></span><em class="property"><span class="pre">:</span> <span class="pre">_ty.List</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#markov_helpers.graphs.plots.GraphOptions.rad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Curvature of edges: aspect ratio of the (isoceles) Bezier triangle for
+[good, bad] directions. Positive -&gt; anticlockwise.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="markov_helpers.graphs.plots.GraphOptions.set_layout">
@@ -358,8 +368,9 @@ oval. Positive -&gt; counter-clockwise.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="markov_helpers.graphs.plots.GraphOptions.topology">
-<span class="sig-name descname"><span class="pre">topology</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="markov_helpers.graphs.plots.TopologyOptions.html#markov_helpers.graphs.plots.TopologyOptions" title="markov_helpers.graphs.plots.TopologyOptions"><span class="pre">TopologyOptions</span></a></em><a class="headerlink" href="#markov_helpers.graphs.plots.GraphOptions.topology" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">topology</span></span><em class="property"><span class="pre">:</span> <span class="pre">_mk.TopologyOptions</span></em><a class="headerlink" href="#markov_helpers.graphs.plots.GraphOptions.topology" title="Permalink to this definition">¶</a></dt>
+<dd><p>Topology specifying options for creating graphs/for <em class="xref py py-obj">judge</em>.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="markov_helpers.graphs.plots.GraphOptions.update">
@@ -409,16 +420,10 @@ oval. Positive -&gt; counter-clockwise.</p>
 <li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.good_direction.html">markov_helpers.graphs.plots.good_direction</a></li>
 <li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.linear_layout.html">markov_helpers.graphs.plots.linear_layout</a></li>
 <li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.DiEdgeCollection.html">markov_helpers.graphs.plots.DiEdgeCollection</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.EdgePlot.html">markov_helpers.graphs.plots.EdgePlot</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.GraphAttrs.html">markov_helpers.graphs.plots.GraphAttrs</a></li>
 <li class="toctree-l5 current"><a class="current reference internal" href="#">markov_helpers.graphs.plots.GraphOptions</a></li>
 <li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.GraphPlots.html">markov_helpers.graphs.plots.GraphPlots</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.ImageOptions.html">markov_helpers.graphs.plots.ImageOptions</a></li>
 <li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.NodeCollection.html">markov_helpers.graphs.plots.NodeCollection</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.NodePlots.html">markov_helpers.graphs.plots.NodePlots</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.Number.html">markov_helpers.graphs.plots.Number</a></li>
 <li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.StyleOptions.html">markov_helpers.graphs.plots.StyleOptions</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.TopologyOptions.html">markov_helpers.graphs.plots.TopologyOptions</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="markov_helpers.graphs.list_edge_attrs.html">markov_helpers.graphs.list_edge_attrs</a></li>
@@ -428,12 +433,11 @@ oval. Positive -&gt; counter-clockwise.</p>
 <li class="toctree-l4"><a class="reference internal" href="markov_helpers.graphs.mat_to_graph.html">markov_helpers.graphs.mat_to_graph</a></li>
 <li class="toctree-l4"><a class="reference internal" href="markov_helpers.graphs.param_to_graph.html">markov_helpers.graphs.param_to_graph</a></li>
 <li class="toctree-l4"><a class="reference internal" href="markov_helpers.graphs.DiGraph.html">markov_helpers.graphs.DiGraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="markov_helpers.graphs.GraphAttrs.html">markov_helpers.graphs.GraphAttrs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="markov_helpers.graphs.MultiDiGraph.html">markov_helpers.graphs.MultiDiGraph</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.html">markov_helpers.markov</a></li>
-<li class="toctree-l3"><a class="reference internal" href="markov_helpers.options.html">markov_helpers.options</a></li>
-<li class="toctree-l3"><a class="reference internal" href="markov_helpers.utilities.html">markov_helpers.utilities</a></li>
 </ul>
 </li>
 </ul>
@@ -451,7 +455,7 @@ oval. Positive -&gt; counter-clockwise.</p>
   <li><a href="markov_helpers.html">markov_helpers</a><ul>
   <li><a href="markov_helpers.graphs.html">markov_helpers.graphs</a><ul>
   <li><a href="markov_helpers.graphs.plots.html">markov_helpers.graphs.plots</a><ul>
-      <li>Previous: <a href="markov_helpers.graphs.plots.GraphAttrs.html" title="previous chapter">markov_helpers.graphs.plots.GraphAttrs</a></li>
+      <li>Previous: <a href="markov_helpers.graphs.plots.DiEdgeCollection.html" title="previous chapter">markov_helpers.graphs.plots.DiEdgeCollection</a></li>
       <li>Next: <a href="markov_helpers.graphs.plots.GraphPlots.html" title="next chapter">markov_helpers.graphs.plots.GraphPlots</a></li>
   </ul></li>
   </ul></li>

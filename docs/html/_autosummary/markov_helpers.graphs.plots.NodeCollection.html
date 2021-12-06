@@ -16,8 +16,8 @@
     <script src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="markov_helpers.graphs.plots.NodePlots" href="markov_helpers.graphs.plots.NodePlots.html" />
-    <link rel="prev" title="markov_helpers.graphs.plots.ImageOptions" href="markov_helpers.graphs.plots.ImageOptions.html" />
+    <link rel="next" title="markov_helpers.graphs.plots.StyleOptions" href="markov_helpers.graphs.plots.StyleOptions.html" />
+    <link rel="prev" title="markov_helpers.graphs.plots.GraphPlots" href="markov_helpers.graphs.plots.GraphPlots.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -120,13 +120,13 @@
 <td><p>The underlying matplotlib objects</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#markov_helpers.graphs.plots.NodeCollection.style" title="markov_helpers.graphs.plots.NodeCollection.style"><code class="xref py py-obj docutils literal notranslate"><span class="pre">style</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Options for drawing the nodes.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.graphs.plots.NodeCollection.node_pos" title="markov_helpers.graphs.plots.NodeCollection.node_pos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">node_pos</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Place to plot each node.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#markov_helpers.graphs.plots.NodeCollection.node_size" title="markov_helpers.graphs.plots.NodeCollection.node_size"><code class="xref py py-obj docutils literal notranslate"><span class="pre">node_size</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Actual node sizes, after scaling by size.mult</p></td>
 </tr>
 </tbody>
 </table>
@@ -155,7 +155,7 @@
 </dl>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>[~Node, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.10)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference internal" href="markov_helpers.graphs.plots.Number.html#markov_helpers.graphs.plots.Number" title="numbers.Number"><code class="xref py py-class docutils literal notranslate"><span class="pre">Number</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference internal" href="markov_helpers.graphs.plots.Number.html#markov_helpers.graphs.plots.Number" title="numbers.Number"><code class="xref py py-class docutils literal notranslate"><span class="pre">Number</span></code></a>], <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>]]</p>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></a>[~Node, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Union" title="(in Python v3.10)"><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/numbers.html#numbers.Number" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Number</span></code></a>, <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Sequence" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sequence</span></code></a>[<a class="reference external" href="https://docs.python.org/3/library/numbers.html#numbers.Number" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Number</span></code></a>], <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></a>]]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -181,13 +181,15 @@
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="markov_helpers.graphs.plots.NodeCollection.node_pos">
-<span class="sig-name descname"><span class="pre">node_pos</span></span><em class="property"><span class="pre">:</span> <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">markov_helpers.graphs._tricks.Node</span><span class="p"><span class="pre">,</span> </span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="markov_helpers.graphs.plots.Number.html#markov_helpers.graphs.plots.Number" title="numbers.Number"><span class="pre">numbers.Number</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="markov_helpers.graphs.plots.Number.html#markov_helpers.graphs.plots.Number" title="numbers.Number"><span class="pre">numbers.Number</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#markov_helpers.graphs.plots.NodeCollection.node_pos" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">node_pos</span></span><em class="property"><span class="pre">:</span> <span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">markov_helpers.graphs._tricks.Node</span><span class="p"><span class="pre">,</span> </span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/numbers.html#numbers.Number" title="(in Python v3.10)"><span class="pre">numbers.Number</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/numbers.html#numbers.Number" title="(in Python v3.10)"><span class="pre">numbers.Number</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><span class="pre">numpy.ndarray</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#markov_helpers.graphs.plots.NodeCollection.node_pos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Place to plot each node.</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="markov_helpers.graphs.plots.NodeCollection.node_size">
 <span class="sig-name descname"><span class="pre">node_size</span></span><em class="property"><span class="pre">:</span> <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><span class="pre">numpy.ndarray</span></a></em><a class="headerlink" href="#markov_helpers.graphs.plots.NodeCollection.node_size" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Actual node sizes, after scaling by size.mult</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="markov_helpers.graphs.plots.NodeCollection.set_color">
@@ -249,7 +251,8 @@
 <dl class="py attribute">
 <dt class="sig sig-object py" id="markov_helpers.graphs.plots.NodeCollection.style">
 <span class="sig-name descname"><span class="pre">style</span></span><em class="property"><span class="pre">:</span> <a class="reference internal" href="markov_helpers.graphs.plots.StyleOptions.html#markov_helpers.graphs.plots.StyleOptions" title="markov_helpers.graphs.plots.StyleOptions"><span class="pre">markov_helpers.graphs.plots.StyleOptions</span></a></em><a class="headerlink" href="#markov_helpers.graphs.plots.NodeCollection.style" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Options for drawing the nodes.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -283,16 +286,10 @@
 <li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.good_direction.html">markov_helpers.graphs.plots.good_direction</a></li>
 <li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.linear_layout.html">markov_helpers.graphs.plots.linear_layout</a></li>
 <li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.DiEdgeCollection.html">markov_helpers.graphs.plots.DiEdgeCollection</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.EdgePlot.html">markov_helpers.graphs.plots.EdgePlot</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.GraphAttrs.html">markov_helpers.graphs.plots.GraphAttrs</a></li>
 <li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.GraphOptions.html">markov_helpers.graphs.plots.GraphOptions</a></li>
 <li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.GraphPlots.html">markov_helpers.graphs.plots.GraphPlots</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.ImageOptions.html">markov_helpers.graphs.plots.ImageOptions</a></li>
 <li class="toctree-l5 current"><a class="current reference internal" href="#">markov_helpers.graphs.plots.NodeCollection</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.NodePlots.html">markov_helpers.graphs.plots.NodePlots</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.Number.html">markov_helpers.graphs.plots.Number</a></li>
 <li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.StyleOptions.html">markov_helpers.graphs.plots.StyleOptions</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.TopologyOptions.html">markov_helpers.graphs.plots.TopologyOptions</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="markov_helpers.graphs.list_edge_attrs.html">markov_helpers.graphs.list_edge_attrs</a></li>
@@ -302,12 +299,11 @@
 <li class="toctree-l4"><a class="reference internal" href="markov_helpers.graphs.mat_to_graph.html">markov_helpers.graphs.mat_to_graph</a></li>
 <li class="toctree-l4"><a class="reference internal" href="markov_helpers.graphs.param_to_graph.html">markov_helpers.graphs.param_to_graph</a></li>
 <li class="toctree-l4"><a class="reference internal" href="markov_helpers.graphs.DiGraph.html">markov_helpers.graphs.DiGraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="markov_helpers.graphs.GraphAttrs.html">markov_helpers.graphs.GraphAttrs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="markov_helpers.graphs.MultiDiGraph.html">markov_helpers.graphs.MultiDiGraph</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.html">markov_helpers.markov</a></li>
-<li class="toctree-l3"><a class="reference internal" href="markov_helpers.options.html">markov_helpers.options</a></li>
-<li class="toctree-l3"><a class="reference internal" href="markov_helpers.utilities.html">markov_helpers.utilities</a></li>
 </ul>
 </li>
 </ul>
@@ -325,8 +321,8 @@
   <li><a href="markov_helpers.html">markov_helpers</a><ul>
   <li><a href="markov_helpers.graphs.html">markov_helpers.graphs</a><ul>
   <li><a href="markov_helpers.graphs.plots.html">markov_helpers.graphs.plots</a><ul>
-      <li>Previous: <a href="markov_helpers.graphs.plots.ImageOptions.html" title="previous chapter">markov_helpers.graphs.plots.ImageOptions</a></li>
-      <li>Next: <a href="markov_helpers.graphs.plots.NodePlots.html" title="next chapter">markov_helpers.graphs.plots.NodePlots</a></li>
+      <li>Previous: <a href="markov_helpers.graphs.plots.GraphPlots.html" title="previous chapter">markov_helpers.graphs.plots.GraphPlots</a></li>
+      <li>Next: <a href="markov_helpers.graphs.plots.StyleOptions.html" title="next chapter">markov_helpers.graphs.plots.StyleOptions</a></li>
   </ul></li>
   </ul></li>
   </ul></li>

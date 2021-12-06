@@ -17,7 +17,7 @@
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="markov_helpers.markov.indices.bcast_inds" href="markov_helpers.markov.indices.bcast_inds.html" />
+    <link rel="next" title="markov_helpers.markov.indices.cascade_inds" href="markov_helpers.markov.indices.cascade_inds.html" />
     <link rel="prev" title="markov_helpers.markov" href="markov_helpers.markov.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -49,12 +49,6 @@ so <span class="math notranslate nohighlight">\(Q_{ij}\)</span> is the transitio
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="markov_helpers.markov.indices.bcast_inds.html#markov_helpers.markov.indices.bcast_inds" title="markov_helpers.markov.indices.bcast_inds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bcast_inds</span></code></a></p></td>
-<td><p>Indices for an array of transition matrices, with different directions.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="markov_helpers.markov.indices.bcast_subs.html#markov_helpers.markov.indices.bcast_subs" title="markov_helpers.markov.indices.bcast_subs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bcast_subs</span></code></a></p></td>
-<td><p>Indices for an array of transition matrices, with different directions.</p></td>
-</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="markov_helpers.markov.indices.cascade_inds.html#markov_helpers.markov.indices.cascade_inds" title="markov_helpers.markov.indices.cascade_inds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cascade_inds</span></code></a></p></td>
 <td><p>Ravel indices of non-zero elements of cascade transition matrix.</p></td>
 </tr>
@@ -94,14 +88,8 @@ so <span class="math notranslate nohighlight">\(Q_{ij}\)</span> is the transitio
 <tr class="row-odd"><td><p><a class="reference internal" href="markov_helpers.markov.indices.serial_subs.html#markov_helpers.markov.indices.serial_subs" title="markov_helpers.markov.indices.serial_subs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">serial_subs</span></code></a></p></td>
 <td><p>Row and column indices of non-zero elements of serial transition matrix.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="markov_helpers.markov.indices.stack_inds.html#markov_helpers.markov.indices.stack_inds" title="markov_helpers.markov.indices.stack_inds"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stack_inds</span></code></a></p></td>
-<td><p>Stack ravel indices for each direction</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="markov_helpers.markov.indices.sub_fun.html#markov_helpers.markov.indices.sub_fun" title="markov_helpers.markov.indices.sub_fun"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sub_fun</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="markov_helpers.markov.indices.sub_fun.html#markov_helpers.markov.indices.sub_fun" title="markov_helpers.markov.indices.sub_fun"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sub_fun</span></code></a></p></td>
 <td><p>Which Row and column index function to use.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="markov_helpers.markov.indices.sub_fun_bcast.html#markov_helpers.markov.indices.sub_fun_bcast" title="markov_helpers.markov.indices.sub_fun_bcast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sub_fun_bcast</span></code></a></p></td>
-<td><p>Decorate an unravelled-multi-index function for multiple directions</p></td>
 </tr>
 </tbody>
 </table>
@@ -598,8 +586,6 @@ mat_10, mat_21, …, mat_n-1,n-2.</p>
 <li class="toctree-l4 current"><a class="reference internal" href="markov_helpers.markov.html#notes">Notes</a><ul class="current">
 <li class="toctree-l5 current"><a class="current reference internal" href="#">markov_helpers.markov.indices</a><ul>
 <li class="toctree-l6"><a class="reference internal" href="#notes">Notes</a><ul>
-<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.indices.bcast_inds.html">markov_helpers.markov.indices.bcast_inds</a></li>
-<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.indices.bcast_subs.html">markov_helpers.markov.indices.bcast_subs</a></li>
 <li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.indices.cascade_inds.html">markov_helpers.markov.indices.cascade_inds</a></li>
 <li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.indices.cascade_subs.html">markov_helpers.markov.indices.cascade_subs</a></li>
 <li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.indices.ind_fun.html">markov_helpers.markov.indices.ind_fun</a></li>
@@ -613,15 +599,11 @@ mat_10, mat_21, …, mat_n-1,n-2.</p>
 <li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.indices.ring_subs.html">markov_helpers.markov.indices.ring_subs</a></li>
 <li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.indices.serial_inds.html">markov_helpers.markov.indices.serial_inds</a></li>
 <li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.indices.serial_subs.html">markov_helpers.markov.indices.serial_subs</a></li>
-<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.indices.stack_inds.html">markov_helpers.markov.indices.stack_inds</a></li>
 <li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.indices.sub_fun.html">markov_helpers.markov.indices.sub_fun</a></li>
-<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.indices.sub_fun_bcast.html">markov_helpers.markov.indices.sub_fun_bcast</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.markov.html">markov_helpers.markov.markov</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.options.html">markov_helpers.markov.options</a></li>
 <li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.params.html">markov_helpers.markov.params</a></li>
 <li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.adjoint.html">markov_helpers.markov.adjoint</a></li>
 <li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.calc_peq.html">markov_helpers.markov.calc_peq</a></li>
@@ -642,8 +624,6 @@ mat_10, mat_21, …, mat_n-1,n-2.</p>
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="markov_helpers.options.html">markov_helpers.options</a></li>
-<li class="toctree-l3"><a class="reference internal" href="markov_helpers.utilities.html">markov_helpers.utilities</a></li>
 </ul>
 </li>
 </ul>
@@ -661,7 +641,7 @@ mat_10, mat_21, …, mat_n-1,n-2.</p>
   <li><a href="markov_helpers.html">markov_helpers</a><ul>
   <li><a href="markov_helpers.markov.html">markov_helpers.markov</a><ul>
       <li>Previous: <a href="markov_helpers.markov.html" title="previous chapter">markov_helpers.markov</a></li>
-      <li>Next: <a href="markov_helpers.markov.indices.bcast_inds.html" title="next chapter">markov_helpers.markov.indices.bcast_inds</a></li>
+      <li>Next: <a href="markov_helpers.markov.indices.cascade_inds.html" title="next chapter">markov_helpers.markov.indices.cascade_inds</a></li>
   </ul></li>
   </ul></li>
   </ul></li>

@@ -16,8 +16,8 @@
     <script src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="markov_helpers.graphs.plots.TopologyOptions" href="markov_helpers.graphs.plots.TopologyOptions.html" />
-    <link rel="prev" title="markov_helpers.graphs.plots.Number" href="markov_helpers.graphs.plots.Number.html" />
+    <link rel="next" title="markov_helpers.graphs.list_edge_attrs" href="markov_helpers.graphs.list_edge_attrs.html" />
+    <link rel="prev" title="markov_helpers.graphs.plots.NodeCollection" href="markov_helpers.graphs.plots.NodeCollection.html" />
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
@@ -39,11 +39,15 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="markov_helpers.graphs.plots.StyleOptions">
 <em class="property"><span class="pre">class</span> </em><span class="sig-name descname"><span class="pre">StyleOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwds</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#markov_helpers.graphs.plots.StyleOptions" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="markov_helpers.graphs.plots.ImageOptions.html#markov_helpers.graphs.plots.ImageOptions" title="markov_helpers.graphs.plots.ImageOptions"><code class="xref py py-class docutils literal notranslate"><span class="pre">markov_helpers.graphs.plots.ImageOptions</span></code></a></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">markov_helpers.graphs.plots._ImageOptions</span></code></p>
 <p>Options for node/edge colours when drawing graphs.</p>
-<dl class="field-list simple">
+<p>The individual options can be accessed as object instance attributes
+(e.g. <em class="xref py py-obj">obj.name</em>) or as dictionary items (e.g. <em class="xref py py-obj">obj[‘name’]</em>) for both
+getting and setting. You can also subscript attributes of attributes with
+dotted keys: <em class="xref py py-obj">options[‘suboptions.name’]</em>.</p>
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>cmap</strong><span class="classifier">str|Colormap</span></dt><dd><p>Maps the interval <em class="xref py py-obj">[0, 1]</em> to colours. By default <em class="xref py py-obj">‘YlOrBr’</em>.</p>
 </dd>
 <dt><strong>norm</strong><span class="classifier">Normalize</span></dt><dd><p>Maps heatmap values to the interval <em class="xref py py-obj">[0, 1]</em> for <a class="reference internal" href="#markov_helpers.graphs.plots.StyleOptions.cmap" title="markov_helpers.graphs.plots.StyleOptions.cmap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cmap</span></code></a>.
@@ -53,9 +57,9 @@ By default: <em class="xref py py-obj">Normalise(0, 1)</em>.</p>
 </dd>
 <dt><strong>vmax</strong><span class="classifier">float</span></dt><dd><p>Lower bound of <em class="xref py py-obj">norm</em>. By default <em class="xref py py-obj">1</em>.</p>
 </dd>
-<dt><strong>col_attr</strong><span class="classifier">str</span></dt><dd><p>Name of node/edge attribute used to determine colour.</p>
+<dt><strong>key_attr</strong><span class="classifier">str</span></dt><dd><p>Name of node/edge attribute used to determine colour.</p>
 </dd>
-<dt><strong>siz_attr</strong><span class="classifier">str</span></dt><dd><p>Name of node/edge attribute used to determine area/width.</p>
+<dt><strong>val_attr</strong><span class="classifier">str</span></dt><dd><p>Name of node/edge attribute used to determine area/width.</p>
 </dd>
 <dt><strong>mult</strong><span class="classifier">float</span></dt><dd><p>Scale factor between <em class="xref py py-obj">node/edge[siz_attr]</em> and area/width.</p>
 </dd>
@@ -64,15 +68,15 @@ By default: <em class="xref py py-obj">Normalise(0, 1)</em>.</p>
 <dt><strong>thresh</strong><span class="classifier">float</span></dt><dd><p>Threshold on size value to be made visible.</p>
 </dd>
 <dt><strong>entity</strong><span class="classifier">str</span></dt><dd><p>Type of graph element, ‘node’ or ‘edge’</p>
+<p>All parameters are optional keywords. Any dictionary passed as
+positional parameters will be popped for the relevant items. Keyword
+parameters must be valid keys, otherwise a <em class="xref py py-obj">KeyError</em> is raised.</p>
 </dd>
-<dt><strong>All parameters are optional keywords. Any dictionary passed as positional</strong></dt><dd></dd>
-<dt><strong>parameters will be popped for the relevant items. Keyword parameters must</strong></dt><dd></dd>
-<dt><strong>be valid keys, otherwise a `KeyError` is raised.</strong></dt><dd></dd>
 </dl>
 </dd>
 <dt class="field-even">Attributes</dt>
 <dd class="field-even"><dl class="simple">
-<dt><a class="reference internal" href="#markov_helpers.graphs.plots.StyleOptions.cmap" title="markov_helpers.graphs.plots.StyleOptions.cmap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cmap</span></code></a></dt><dd><p>Get the colour map.</p>
+<dt><a class="reference internal" href="#markov_helpers.graphs.plots.StyleOptions.cmap" title="markov_helpers.graphs.plots.StyleOptions.cmap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cmap</span></code></a></dt><dd><p>Get the colour map, used to map numbers to colours.</p>
 </dd>
 <dt><a class="reference internal" href="#markov_helpers.graphs.plots.StyleOptions.entity" title="markov_helpers.graphs.plots.StyleOptions.entity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">entity</span></code></a></dt><dd><p>Type of graph element, ‘node’ or ‘edge’.</p>
 </dd>
@@ -199,13 +203,13 @@ By default: <em class="xref py py-obj">Normalise(0, 1)</em>.</p>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.graphs.plots.StyleOptions.cmap" title="markov_helpers.graphs.plots.StyleOptions.cmap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cmap</span></code></a></p></td>
-<td><p>Get the colour map.</p></td>
+<td><p>Get the colour map, used to map numbers to colours.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#markov_helpers.graphs.plots.StyleOptions.entity" title="markov_helpers.graphs.plots.StyleOptions.entity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">entity</span></code></a></p></td>
 <td><p>Type of graph element, 'node' or 'edge'.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.graphs.plots.StyleOptions.key_attr" title="markov_helpers.graphs.plots.StyleOptions.key_attr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">key_attr</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Name of node/edge attribute used to determine colour.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#markov_helpers.graphs.plots.StyleOptions.key_first" title="markov_helpers.graphs.plots.StyleOptions.key_first"><code class="xref py py-obj docutils literal notranslate"><span class="pre">key_first</span></code></a></p></td>
 <td><p></p></td>
@@ -217,10 +221,10 @@ By default: <em class="xref py py-obj">Normalise(0, 1)</em>.</p>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.graphs.plots.StyleOptions.mult" title="markov_helpers.graphs.plots.StyleOptions.mult"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mult</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Scale factor between <em class="xref py py-obj">node/edge[siz_attr]</em> and area/width.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#markov_helpers.graphs.plots.StyleOptions.mut_scale" title="markov_helpers.graphs.plots.StyleOptions.mut_scale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mut_scale</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Ratio of <em class="xref py py-obj">FancyArrowPatch.mutation_scale</em> to <em class="xref py py-obj">linewidth</em> (for edges).</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.graphs.plots.StyleOptions.prop_attributes" title="markov_helpers.graphs.plots.StyleOptions.prop_attributes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prop_attributes</span></code></a></p></td>
 <td><p></p></td>
@@ -229,7 +233,7 @@ By default: <em class="xref py py-obj">Normalise(0, 1)</em>.</p>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.graphs.plots.StyleOptions.val_attr" title="markov_helpers.graphs.plots.StyleOptions.val_attr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">val_attr</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Name of node/edge attribute used to determine area/width.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#markov_helpers.graphs.plots.StyleOptions.vmax" title="markov_helpers.graphs.plots.StyleOptions.vmax"><code class="xref py py-obj docutils literal notranslate"><span class="pre">vmax</span></code></a></p></td>
 <td><p>The upper bound for the colour map.</p></td>
@@ -247,7 +251,7 @@ By default: <em class="xref py py-obj">Normalise(0, 1)</em>.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="markov_helpers.graphs.plots.StyleOptions.cmap">
 <em class="property"><span class="pre">property</span> </em><span class="sig-name descname"><span class="pre">cmap</span></span><em class="property"><span class="pre">:</span> <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.colors.Colormap.html#matplotlib.colors.Colormap" title="(in Matplotlib v3.5.0)"><span class="pre">matplotlib.colors.Colormap</span></a></em><a class="headerlink" href="#markov_helpers.graphs.plots.StyleOptions.cmap" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get the colour map.</p>
+<dd><p>Get the colour map, used to map numbers to colours.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.colors.Colormap.html#matplotlib.colors.Colormap" title="(in Matplotlib v3.5.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Colormap</span></code></a></p>
@@ -262,7 +266,7 @@ By default: <em class="xref py py-obj">Normalise(0, 1)</em>.</p>
 <p>Only copies those attributes that appear when iterating.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="markov_helpers.options.Options.html#markov_helpers.options.Options" title="markov_helpers.options.Options"><code class="xref py py-class docutils literal notranslate"><span class="pre">Options</span></code></a></p>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Options</span></code></p>
 </dd>
 </dl>
 </dd></dl>
@@ -291,7 +295,8 @@ By default: <em class="xref py py-obj">Normalise(0, 1)</em>.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="markov_helpers.graphs.plots.StyleOptions.key_attr">
 <span class="sig-name descname"><span class="pre">key_attr</span></span><em class="property"><span class="pre">:</span> <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><em class="property"> <span class="pre">=</span> <span class="pre">'key'</span></em><a class="headerlink" href="#markov_helpers.graphs.plots.StyleOptions.key_attr" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Name of node/edge attribute used to determine colour.</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="markov_helpers.graphs.plots.StyleOptions.key_first">
@@ -316,17 +321,20 @@ By default: <em class="xref py py-obj">Normalise(0, 1)</em>.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="markov_helpers.graphs.plots.StyleOptions.mult">
 <span class="sig-name descname"><span class="pre">mult</span></span><em class="property"><span class="pre">:</span> <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><span class="pre">float</span></a></em><em class="property"> <span class="pre">=</span> <span class="pre">1.0</span></em><a class="headerlink" href="#markov_helpers.graphs.plots.StyleOptions.mult" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Scale factor between <em class="xref py py-obj">node/edge[siz_attr]</em> and area/width.</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="markov_helpers.graphs.plots.StyleOptions.mut_scale">
 <span class="sig-name descname"><span class="pre">mut_scale</span></span><em class="property"><span class="pre">:</span> <a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><span class="pre">float</span></a></em><em class="property"> <span class="pre">=</span> <span class="pre">2.0</span></em><a class="headerlink" href="#markov_helpers.graphs.plots.StyleOptions.mut_scale" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Ratio of <em class="xref py py-obj">FancyArrowPatch.mutation_scale</em> to <em class="xref py py-obj">linewidth</em> (for edges).</p>
+</dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="markov_helpers.graphs.plots.StyleOptions.norm">
 <span class="sig-name descname"><span class="pre">norm</span></span><em class="property"><span class="pre">:</span> <span class="pre">mpl.colors.Normalize</span></em><a class="headerlink" href="#markov_helpers.graphs.plots.StyleOptions.norm" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Maps heatmap values to interval <em class="xref py py-obj">[0, 1]</em> for <a class="reference internal" href="#markov_helpers.graphs.plots.StyleOptions.cmap" title="markov_helpers.graphs.plots.StyleOptions.cmap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cmap</span></code></a>.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="markov_helpers.graphs.plots.StyleOptions.order_keys">
@@ -441,7 +449,8 @@ By default: <em class="xref py py-obj">Normalise(0, 1)</em>.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="markov_helpers.graphs.plots.StyleOptions.val_attr">
 <span class="sig-name descname"><span class="pre">val_attr</span></span><em class="property"><span class="pre">:</span> <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a></em><em class="property"> <span class="pre">=</span> <span class="pre">'value'</span></em><a class="headerlink" href="#markov_helpers.graphs.plots.StyleOptions.val_attr" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Name of node/edge attribute used to determine area/width.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="markov_helpers.graphs.plots.StyleOptions.val_to_colour">
@@ -527,16 +536,10 @@ By default: <em class="xref py py-obj">Normalise(0, 1)</em>.</p>
 <li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.good_direction.html">markov_helpers.graphs.plots.good_direction</a></li>
 <li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.linear_layout.html">markov_helpers.graphs.plots.linear_layout</a></li>
 <li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.DiEdgeCollection.html">markov_helpers.graphs.plots.DiEdgeCollection</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.EdgePlot.html">markov_helpers.graphs.plots.EdgePlot</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.GraphAttrs.html">markov_helpers.graphs.plots.GraphAttrs</a></li>
 <li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.GraphOptions.html">markov_helpers.graphs.plots.GraphOptions</a></li>
 <li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.GraphPlots.html">markov_helpers.graphs.plots.GraphPlots</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.ImageOptions.html">markov_helpers.graphs.plots.ImageOptions</a></li>
 <li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.NodeCollection.html">markov_helpers.graphs.plots.NodeCollection</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.NodePlots.html">markov_helpers.graphs.plots.NodePlots</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.Number.html">markov_helpers.graphs.plots.Number</a></li>
 <li class="toctree-l5 current"><a class="current reference internal" href="#">markov_helpers.graphs.plots.StyleOptions</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.graphs.plots.TopologyOptions.html">markov_helpers.graphs.plots.TopologyOptions</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="markov_helpers.graphs.list_edge_attrs.html">markov_helpers.graphs.list_edge_attrs</a></li>
@@ -546,12 +549,11 @@ By default: <em class="xref py py-obj">Normalise(0, 1)</em>.</p>
 <li class="toctree-l4"><a class="reference internal" href="markov_helpers.graphs.mat_to_graph.html">markov_helpers.graphs.mat_to_graph</a></li>
 <li class="toctree-l4"><a class="reference internal" href="markov_helpers.graphs.param_to_graph.html">markov_helpers.graphs.param_to_graph</a></li>
 <li class="toctree-l4"><a class="reference internal" href="markov_helpers.graphs.DiGraph.html">markov_helpers.graphs.DiGraph</a></li>
+<li class="toctree-l4"><a class="reference internal" href="markov_helpers.graphs.GraphAttrs.html">markov_helpers.graphs.GraphAttrs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="markov_helpers.graphs.MultiDiGraph.html">markov_helpers.graphs.MultiDiGraph</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.html">markov_helpers.markov</a></li>
-<li class="toctree-l3"><a class="reference internal" href="markov_helpers.options.html">markov_helpers.options</a></li>
-<li class="toctree-l3"><a class="reference internal" href="markov_helpers.utilities.html">markov_helpers.utilities</a></li>
 </ul>
 </li>
 </ul>
@@ -569,8 +571,8 @@ By default: <em class="xref py py-obj">Normalise(0, 1)</em>.</p>
   <li><a href="markov_helpers.html">markov_helpers</a><ul>
   <li><a href="markov_helpers.graphs.html">markov_helpers.graphs</a><ul>
   <li><a href="markov_helpers.graphs.plots.html">markov_helpers.graphs.plots</a><ul>
-      <li>Previous: <a href="markov_helpers.graphs.plots.Number.html" title="previous chapter">markov_helpers.graphs.plots.Number</a></li>
-      <li>Next: <a href="markov_helpers.graphs.plots.TopologyOptions.html" title="next chapter">markov_helpers.graphs.plots.TopologyOptions</a></li>
+      <li>Previous: <a href="markov_helpers.graphs.plots.NodeCollection.html" title="previous chapter">markov_helpers.graphs.plots.NodeCollection</a></li>
+      <li>Next: <a href="markov_helpers.graphs.list_edge_attrs.html" title="next chapter">markov_helpers.graphs.list_edge_attrs</a></li>
   </ul></li>
   </ul></li>
   </ul></li>
