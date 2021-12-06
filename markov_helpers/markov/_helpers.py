@@ -9,7 +9,7 @@ from collections.abc import Iterable, Sequence
 
 import numpy as np
 
-from .. import utilities as util
+from .. import _utilities as util
 
 __all__ = [
     "stochastify_c",

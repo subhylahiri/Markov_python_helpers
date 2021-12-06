@@ -3,6 +3,7 @@
 from . import plots
 from ._tricks import (DiGraph,
                       MultiDiGraph,
+                      GraphAttrs,
                       mat_to_graph,
                       param_to_graph,
                       make_graph,
@@ -11,6 +12,7 @@ from ._tricks import (DiGraph,
                       list_edge_keys)
 __all__ = [
    "plots",
+   "GraphAttrs",
    "DiGraph",
    "MultiDiGraph",
    "mat_to_graph",

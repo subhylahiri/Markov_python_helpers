@@ -28,7 +28,7 @@ from typing import Tuple
 
 import numpy as np
 
-from . import _helpers as _mh
+from . import _helpers as _h
 from . import indices as _in
 from ._helpers import (Array, Axes, AxesOrSeq, IntOrSeq, Sized,
                        mat_type_siz, num_param, num_state)
@@ -218,12 +218,12 @@ def mat_update_params(mat: Array, params: np.ndarray, *, drn: IntOrSeq = 0,
         paxis, std_axes = (paxis,), std_axes[1:]
     else:
         paxis, maxes = (pdaxis, paxis), (mdaxis,) + tuple(maxes)
-    stochastifier = kwds.pop('stochastifier', _mh.stochastify)
+    stochastifier = kwds.pop('stochastifier', _h.stochastify)
     params = np.moveaxis(np.asanyarray(params), paxis, std_axes[1:])
     nmat = np.moveaxis(mat, maxes, std_axes)
     nst = nmat.shape[-1]
     if kwds.get('uniform', False):
-        params = _mh.uni_to_any(params, nst, **kwds)
+        params = _h.uni_to_any(params, nst, **kwds)
     kwds.update(drn=drn, ravel=False)
     nmat[_in.param_subs(nst, **kwds)] = params
     stochastifier(nmat)

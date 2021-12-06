@@ -118,14 +118,13 @@ class Options(_cn.abc.MutableMapping):
 
     The individual options can be accessed as object instance attributes
     (e.g. `obj.name`) or as dictionary items (e.g. `obj['name']`) for both
-    getting and setting.
+    getting and setting. You can also subscript attributes of attributes with
+    dotted keys: `options['suboptions.name']`.
 
-    You can also subscript attributes of attributes with dotted keys:
-    `options['suboptions.name']`. If an attribute's name is found in
-    `map_attributes`, the attribute is updated when set rather than replaced
-    like other attributes. This statement does not apply to setting as
-    an attribute. New keys may be added by setting as attributes, e.g.
-    `obj.name=val` or `setattr(obj,'name',val)`.
+    If an attribute's name is found in `map_attributes`, the attribute is
+    updated when set rather than replaced like other attributes. This
+    statement does not apply to setting as an attribute. New keys may be added
+    by setting as attributes, e.g. `obj.name=val` or `setattr(obj,'name',val)`.
 
     Iterating and unpacking does not include properties and private
     attributes, unless their names are included in `prop_attributes`.
@@ -136,9 +135,9 @@ class Options(_cn.abc.MutableMapping):
 
     Parameters
     ----------
-    All parameters are optional keywords. Any dictionary passed as positional
-    parameters will be popped for the relevant items. Keyword parameters must
-    be valid keys, otherwise a `KeyError` is raised.
+        All parameters are optional keywords. Any dictionary passed as
+        positional parameters will be popped for the relevant items. Keyword
+        parameters must be valid keys, otherwise a `KeyError` is raised.
 
     Raises
     ------
