@@ -1,0 +1,7 @@
+python
+numpy
+matplotlib
+networkx
+sphinx
+sphinx-autodoc-typehints
+numpydoc
