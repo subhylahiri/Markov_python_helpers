@@ -145,10 +145,22 @@ class Options(_cn.abc.MutableMapping):
         If an invalid key is used when subscripting. This does not apply to use
         as attributes (either `obj.name` or `getattr(obj, 'name')`).
     """
-    map_attributes: Attrs = ()
-    prop_attributes: Attrs = ()
-    key_last: Attrs = ()
-    key_first: Attrs = ()
+    _map_attributes: Attrs = ()
+    _prop_attributes: Attrs = ()
+    _key_last: Attrs = ()
+    _key_first: Attrs = ()
+
+    def __init_subclass__(cls,
+                          map_attributes: PropNames = (),
+                          prop_attributes: PropNames = (),
+                          key_last: PropNames = (),
+                          key_first: PropNames = (),
+                          **kwds) -> None:
+        cls._map_attributes += map_attributes
+        cls._prop_attributes += prop_attributes
+        cls._key_first += key_first
+        cls._key_last += key_last
+        return super().__init_subclass__(**kwds)
 
     def __init__(self, *args, **kwds) -> None:
         """The recommended approach to a subclass constructor is
@@ -217,13 +229,13 @@ class Options(_cn.abc.MutableMapping):
                 obj = getattr(obj, arg)
             obj[attr] = value
             return
-        if key in self.map_attributes:
+        if key in self._map_attributes:
             self[key].update(value)
         else:
             setattr(self, key, value)
 
     def __delitem__(self, key: str) -> None:
-        if key in self.map_attributes + self.prop_attributes:
+        if key in self._map_attributes + self._prop_attributes:
             raise TypeError(f"`del {type(self).__name__}['{key}']` disallowed")
         if '.' in key:
             *args, attr = key.split('.')
@@ -246,7 +258,7 @@ class Options(_cn.abc.MutableMapping):
 
     def __iter__(self) -> _ty.Iterator[str]:
         yield from filter(_public, self.__dict__)
-        yield from self.prop_attributes
+        yield from self._prop_attributes
 
     def update(self, __m: StrDictable = (), /, **kwargs) -> None:
         """Update from mappings/iterables"""
@@ -283,8 +295,8 @@ class Options(_cn.abc.MutableMapping):
     @classmethod
     def order_keys(cls, *kwds: StrDict) -> _ty.List[StrDict]:
         """Sort dicts given keys in order for start and end"""
-        key_first = cls.key_first + cls.map_attributes
-        key_last = cls.prop_attributes + cls.key_last
+        key_first = cls._key_first + cls._map_attributes
+        key_last = cls._prop_attributes + cls._key_last
         return [_sort_ends_dict(arg, key_first, key_last) for arg in kwds]
 # pylint: enable=too-many-ancestors
 
@@ -319,4 +331,5 @@ Val = _ty.TypeVar('Val')
 Dictable = _ty.Union[_ty.Mapping[Key, Val], _ty.Iterable[_ty.Tuple[Key, Val]]]
 StrDict = _ty.Dict[str, Val]
 StrDictable = Dictable[str, Val]
-Attrs = _ty.ClassVar[_ty.Tuple[str, ...]]
+PropNames = _ty.Tuple[str, ...]
+Attrs = _ty.ClassVar[PropNames]

@@ -35,6 +35,7 @@ extensions = [
     'sphinx.ext.intersphinx',  # Link to other project's documentation (see mapping below)
     "sphinx.ext.mathjax",
     "numpydoc",
+    # 'sphinx.ext.napoleon',
     'sphinx_autodoc_typehints', # Automatically document param types (less noise in class signature)
 ]
 # My options for extensions:
@@ -49,6 +50,8 @@ autosummary_imported_members = True
 autosummary_ignore_module_all = False
 numpydoc_edit_link = False
 add_module_names = False
+# numpydoc_xref_param_type = True
+# numpydoc_class_members_toctree = False
 # Mappings for sphinx.ext.intersphinx. Projects have to have Sphinx-generated doc! (.inv file)
 intersphinx_mapping = {
     "python": ("https://docs.python.org/3/", None),

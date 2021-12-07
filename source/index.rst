@@ -17,11 +17,10 @@
 Welcome to Markov Python Helpers's documentation!
 =================================================
 
-.. toctree::
-   :maxdepth: 1
+Tools for working with Markov processes in `numpy`
+and drawing them as graphs using `networkx`.
 
-   Home page <self>
-   API reference <_autosummary/markov_helpers>
+   `API reference <markov_helpers>`
 
 
 Indices and tables

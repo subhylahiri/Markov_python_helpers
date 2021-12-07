@@ -6,7 +6,7 @@ from typing import Optional
 
 import numpy as np
 
-from . import _helpers as _mh
+from . import _helpers as _h
 from . import indices as _in
 from ._helpers import Array, AxesOrSeq, IntOrSeq
 
@@ -54,7 +54,7 @@ def gen_mat_to_params(mat: Array, drn: IntOrSeq = 0,
     --------
     offdiag_subs, gen_params_to_mat
     """
-    return _mh.mat_to_params(mat, _in.offdiag_subs, drn, axes, daxis)
+    return _h.mat_to_params(mat, _in.offdiag_subs, drn, axes, daxis)
 
 
 def uni_gen_mat_to_params(mat: Array, grad: bool = True, drn: IntOrSeq = 0,
@@ -91,12 +91,12 @@ def uni_gen_mat_to_params(mat: Array, grad: bool = True, drn: IntOrSeq = 0,
     --------
     offdiag_split_subs, uni_gen_params_to_mat
     """
-    if _mh.unpack_nest(drn):
-        return _mh.to_uni(gen_mat_to_params(mat, drn, axes, daxis),
+    if _h.unpack_nest(drn):
+        return _h.to_uni(gen_mat_to_params(mat, drn, axes, daxis),
                           drn, grad, axes)
     # need to separate pos, neg
-    params = _mh.mat_to_params(mat, _in.offdiag_split_subs, drn, axes, daxis)
-    return _mh.to_uni(params, drn, grad, axes)
+    params = _h.mat_to_params(mat, _in.offdiag_split_subs, drn, axes, daxis)
+    return _h.to_uni(params, drn, grad, axes)
 
 
 def ring_mat_to_params(mat: Array, drn: IntOrSeq = 0,
@@ -127,7 +127,7 @@ def ring_mat_to_params(mat: Array, drn: IntOrSeq = 0,
     --------
     ring_subs, ring_params_to_mat
     """
-    return _mh.mat_to_params(mat, _in.ring_subs, drn, axes, daxis)
+    return _h.mat_to_params(mat, _in.ring_subs, drn, axes, daxis)
 
 
 def uni_ring_mat_to_params(mat: Array, grad: bool = True,
@@ -164,7 +164,7 @@ def uni_ring_mat_to_params(mat: Array, grad: bool = True,
     --------
     ring_subs, uni_ring_params_to_mat
     """
-    return _mh.to_uni(ring_mat_to_params(mat, drn, axes, daxis),
+    return _h.to_uni(ring_mat_to_params(mat, drn, axes, daxis),
                       drn, grad, axes)
 
 
@@ -196,7 +196,7 @@ def serial_mat_to_params(mat: Array, drn: IntOrSeq = 0,
     --------
     serial_subs, serial_params_to_mat
     """
-    return _mh.mat_to_params(mat, _in.serial_subs, drn, axes, daxis)
+    return _h.mat_to_params(mat, _in.serial_subs, drn, axes, daxis)
 
 
 def uni_serial_mat_to_params(mat: Array, grad: bool = True,
@@ -233,7 +233,7 @@ def uni_serial_mat_to_params(mat: Array, grad: bool = True,
     --------
     serial_subs, uni_serial_params_to_mat
     """
-    return _mh.to_uni(serial_mat_to_params(mat, drn, axes, daxis),
+    return _h.to_uni(serial_mat_to_params(mat, drn, axes, daxis),
                       drn, grad, axes)
 
 
@@ -267,7 +267,7 @@ def cascade_mat_to_params(mat: Array, drn: IntOrSeq = 0,
     --------
     ring_subs, ring_params_to_mat
     """
-    return _mh.mat_to_params(mat, _in.cascade_subs, drn, axes, daxis)
+    return _h.mat_to_params(mat, _in.cascade_subs, drn, axes, daxis)
 
 
 def std_cascade_mat_to_params(mat: Array,
@@ -306,7 +306,7 @@ def std_cascade_mat_to_params(mat: Array,
     cascade_subs, std_cascade_params_to_mat
     """
     if not isinstance(axes[0], int):
-        return _mh.bcast_axes(std_cascade_mat_to_params, mat, param, grad=grad,
+        return _h.bcast_axes(std_cascade_mat_to_params, mat, param, grad=grad,
                               drn=drn, drn_axis=daxis, fun_axis=axes)
     rates = cascade_mat_to_params(np.asanyarray(mat), drn, axes, daxis)
     axis = min(axs % mat.ndim for axs in axes)
@@ -316,8 +316,8 @@ def std_cascade_mat_to_params(mat: Array,
     numer, denom = np.arange(1, npt), np.arange(npt, 2*npt - 1)
     if not grad:
         # (...,2,n-2) -> (...,2)
-        par = np.mean(_mh.diff_like(np.true_divide, rates[..., numer], -1), -1)
-        par += np.mean(_mh.diff_like(np.true_divide, rates[..., denom], 1), -1)
+        par = np.mean(_h.diff_like(np.true_divide, rates[..., numer], -1), -1)
+        par += np.mean(_h.diff_like(np.true_divide, rates[..., denom], 1), -1)
         # (...,2,...)
         return np.moveaxis(par / 2, -1, axis)
     denom = np.r_[0, denom]
@@ -373,10 +373,10 @@ def mat_to_params(mat: Array, *, serial: bool = False, ring: bool = False,
     --------
     param_subs, params_to_mat
     """
-    params = _mh.mat_to_params(mat, _in.sub_fun(serial, ring, uniform),
+    params = _h.mat_to_params(mat, _in.sub_fun(serial, ring, uniform),
                                drn, axes, daxis)
     if uniform:
-        return _mh.to_uni(params, drn, grad, axes)
+        return _h.to_uni(params, drn, grad, axes)
     return params
 
 

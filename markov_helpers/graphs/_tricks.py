@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Tools for working with graphs and plotting them
+"""Tools for working with graphs and plotting them.
 """
 from __future__ import annotations
 
@@ -435,6 +435,7 @@ class DiGraph(nx.DiGraph, GraphAttrs):
     `has_edge_attr`, `get_edge_attr`, `set_edge_attr`.
     """
     edge_order: ty.List[Edge]
+    """Edge ids in the order they were added."""
 
     def __init__(self, incoming_graph_data=None, **attr) -> None:
         super().__init__(incoming_graph_data=incoming_graph_data, **attr)
@@ -511,6 +512,7 @@ class MultiDiGraph(nx.MultiDiGraph, GraphAttrs):
     `has_edge_attr`, `get_edge_attr`, `set_edge_attr`.
     """
     edge_order: ty.List[Edge]
+    """Edge ids in the order they were added."""
 
     def __init__(self, incoming_graph_data=None, **attr) -> None:
         super().__init__(incoming_graph_data=incoming_graph_data, **attr)
@@ -630,7 +632,7 @@ class MultiDiGraph(nx.MultiDiGraph, GraphAttrs):
 def mat_to_graph(mat: np.ndarray, node_values: Optional[np.ndarray] = None,
                  node_keys: Optional[np.ndarray] = None,
                  edge_keys: Optional[np.ndarray] = None) -> MultiDiGraph:
-    """Create a directed multi-graph from a parameters of a Markov model.
+    """Create a directed multi-graph from a Markov transition matrix.
 
     Parameters
     ----------
@@ -645,7 +647,7 @@ def mat_to_graph(mat: np.ndarray, node_values: Optional[np.ndarray] = None,
 
     Returns
     -------
-    graph : DiGraph
+    graph : MultiDiGraph
         Graph describing model.
     """
     mat = mat[None] if mat.ndim == 2 else mat
@@ -663,7 +665,7 @@ def param_to_graph(param: np.ndarray, node_values: Optional[np.ndarray] = None,
                    node_keys: Optional[np.ndarray] = None,
                    edge_keys: Optional[np.ndarray] = None,
                    topology: Optional[TopologyOptions] = None) -> MultiDiGraph:
-    """Create a directed multi-graph from a parameters of a Markov model.
+    """Create a directed multi-graph from the parameters of a Markov model.
 
     Parameters
     ----------
@@ -680,7 +682,7 @@ def param_to_graph(param: np.ndarray, node_values: Optional[np.ndarray] = None,
 
     Returns
     -------
-    graph : DiGraph
+    graph : MultiDiGraph
         Graph describing model.
     """
     topology = topology or TopologyOptions()
@@ -793,10 +795,10 @@ def list_edge_keys(graph: MultiDiGraph, get_inv: bool = False) -> np.ndarray:
     `graph.edge_key() == keys[inv]`.
     """
     key_vec = graph.edge_key()
-    return _unique_unsorted(key_vec, get_inv)
+    return _unique_unsort(key_vec, get_inv)
 
 
-def _unique_unsorted(sequence: np.ndarray, get_inv: bool = False) -> np.ndarray:
+def _unique_unsort(sequence: np.ndarray, get_inv: bool = False) -> np.ndarray:
     """Remove repetitions without changing the order
 
     Parameters

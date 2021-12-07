@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-"""Utilities for parameterising Markov processes
+"""Tools for parameterising Markov processes
 
 For general topology, the parameters are:
-    mat_01, mat_02, ..., mat_0n-1, mat10, mat_12, ..., mat_n-2,n-1.
+    mat_01, mat_02, ..., mat_0n-1, mat_10, mat_12, ..., mat_n-2,n-1.
 For a serial topology:
     mat_01, mat_12, ..., mat_n-2,n-1,
     mat_10, mat_21, ..., mat_n-1,n-2.
@@ -17,8 +17,6 @@ When `uniform`, we assume that all non-zero elements in the upper/lower
 triangle are equal. When extracting `uniform` parameters we average them,
 unless `grad` is `True` when we take the sum.
 
-Notes
------
 This package assumes probability distributions are represented by row vectors,
 so :math:`Q_{ij}` is the transition rate from :math:`i` to :math:`j`.
 """
