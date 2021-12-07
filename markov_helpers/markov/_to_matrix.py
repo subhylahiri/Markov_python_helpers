@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import numpy as np
 
-from . import _helpers as _mh
+from . import _helpers as _h
 from . import indices as _in
 from ._helpers import IntOrSeq, Array
 
@@ -51,7 +51,7 @@ def gen_params_to_mat(params: Array, drn: IntOrSeq = 0, axis: IntOrSeq = -1,
     --------
     offdiag_subs, gen_mat_to_params
     """
-    return _mh.params_to_mat(params, _in.offdiag_subs, drn, axis, daxis, **kwds)
+    return _h.params_to_mat(params, _in.offdiag_subs, drn, axis, daxis, **kwds)
 
 
 def uni_gen_params_to_mat(params: Array, num_st: int, drn: IntOrSeq = 0,
@@ -85,8 +85,9 @@ def uni_gen_params_to_mat(params: Array, num_st: int, drn: IntOrSeq = 0,
     --------
     offdiag_split_subs, uni_gen_mat_to_params
     """
-    params = _mh.uni_to_any(params, num_st, axis=axis, **kwds)
-    return _mh.params_to_mat(params, _in.offdiag_split_subs, drn, axis, daxis, **kwds)
+    params = _h.uni_to_any(params, num_st, axis=axis, **kwds)
+    return _h.params_to_mat(params, _in.offdiag_split_subs,
+                             drn, axis, daxis, **kwds)
 
 
 def ring_params_to_mat(params: Array, drn: IntOrSeq = 0, axis: IntOrSeq = -1,
@@ -117,7 +118,7 @@ def ring_params_to_mat(params: Array, drn: IntOrSeq = 0, axis: IntOrSeq = -1,
     ring_subs, ring_mat_to_params
     """
     kwds['ring'] = True
-    return _mh.params_to_mat(params, _in.ring_subs, drn, axis, daxis, **kwds)
+    return _h.params_to_mat(params, _in.ring_subs, drn, axis, daxis, **kwds)
 
 
 def uni_ring_params_to_mat(params: Array, num_st: int, drn: IntOrSeq = 0,
@@ -152,7 +153,7 @@ def uni_ring_params_to_mat(params: Array, num_st: int, drn: IntOrSeq = 0,
     ring_subs, uni_ring_mat_to_params
     """
     kwds['ring'] = True
-    ring_params = _mh.uni_to_any(params, num_st, axis=axis, **kwds)
+    ring_params = _h.uni_to_any(params, num_st, axis=axis, **kwds)
     return ring_params_to_mat(ring_params, drn, axis, daxis, **kwds)
 
 
@@ -185,7 +186,7 @@ def serial_params_to_mat(params: Array, drn: IntOrSeq = 0,
     serial_subs, serial_mat_to_params
     """
     kwds['serial'] = True
-    return _mh.params_to_mat(params, _in.serial_subs, drn, axis, daxis, **kwds)
+    return _h.params_to_mat(params, _in.serial_subs, drn, axis, daxis, **kwds)
 
 
 def uni_serial_params_to_mat(params: Array, num_st: int, drn: IntOrSeq = 0,
@@ -220,7 +221,7 @@ def uni_serial_params_to_mat(params: Array, num_st: int, drn: IntOrSeq = 0,
     serial_subs, uni_serial_mat_to_params
     """
     kwds['serial'] = True
-    ser_params = _mh.uni_to_any(params, num_st, axis=axis, **kwds)
+    ser_params = _h.uni_to_any(params, num_st, axis=axis, **kwds)
     return serial_params_to_mat(ser_params, drn, axis, daxis, **kwds)
 
 
@@ -255,7 +256,7 @@ def cascade_params_to_mat(params: Array, drn: IntOrSeq = 0,
     """
     # cascade topology has same number of transitions as
     kwds['serial'] = True
-    return _mh.params_to_mat(params, _in.cascade_subs, drn, axis, daxis,
+    return _h.params_to_mat(params, _in.cascade_subs, drn, axis, daxis,
                              **kwds)
 
 
@@ -290,7 +291,7 @@ def std_cascade_params_to_mat(params: Array, num_st: int,
     cascade_subs, cascade_params_to_mat
     """
     if not isinstance(axis, int):
-        return _mh.bcast_axes(std_cascade_params_to_mat, params, num_st,
+        return _h.bcast_axes(std_cascade_params_to_mat, params, num_st,
                               drn=drn, drn_axis=daxis, fun_axis=axis,
                               to_mat=True, **kwds)
     npt = num_st // 2
@@ -349,8 +350,8 @@ def params_to_mat(params: Array, *, serial: bool = False,
     """
     kwds.update({'serial': serial, 'ring': ring})
     if uniform:
-        params = _mh.uni_to_any(params, nst, axis=axis, **kwds)
-    return _mh.params_to_mat(params, _in.sub_fun(serial, ring, uniform),
+        params = _h.uni_to_any(params, nst, axis=axis, **kwds)
+    return _h.params_to_mat(params, _in.sub_fun(serial, ring, uniform),
                              drn, axis, daxis, **kwds)
 
 

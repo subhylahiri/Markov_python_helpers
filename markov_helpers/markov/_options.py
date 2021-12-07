@@ -11,8 +11,7 @@ import re as _re
 # import numpy as np
 import matplotlib as mpl
 
-# import numpy_linalg as la
-from . import _helpers as _mh
+from . import _helpers as _h
 from .._options import Options
 
 
@@ -32,7 +31,7 @@ def _norm_str(norm: mpl.colors.Normalize) -> str:
 
 
 # pylint: disable=too-many-ancestors
-class TopologyOptions(Options):
+class TopologyOptions(Options, key_last=('directions', 'npl')):
     """Class that contains topology specifying options.
 
     The individual options can be accessed as object instance attributes
@@ -59,7 +58,6 @@ class TopologyOptions(Options):
         positional parameters will be popped for the relevant items. Keyword
         parameters must be valid keys, otherwise a `KeyError` is raised.
     """
-    key_last: Attrs = ('directions', 'npl')
     serial: bool = False
     """Restrict to models of serial topology?"""
     ring: bool = False
@@ -105,7 +103,7 @@ class TopologyOptions(Options):
             kwds['drn'] = self.directions[which]
         kwds.update(serial=self.serial, ring=self.ring, uniform=self.uniform)
         if self.discrete:
-            kwds['stochastifier'] = _mh.stochastify_pd
+            kwds['stochastifier'] = _h.stochastify_pd
         return kwds
 
     @property

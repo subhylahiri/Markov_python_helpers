@@ -258,7 +258,7 @@ def serial_subs(nst: int, drn: IntOrSeq = 0, ravel: bool = True) -> Subs:
 
 @_h.sub_fun_bcast
 def cascade_subs(nst: int, drn: IntOrSeq = 0, ravel: bool = True) -> Subs:
-    """Row and column indices of non-zero elements of cascade transition matrix.
+    """Row and column indices of non-zero elements of cascade transition matrix
 
     Parameters
     ----------

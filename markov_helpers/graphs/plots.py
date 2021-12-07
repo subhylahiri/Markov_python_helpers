@@ -36,7 +36,7 @@ __all__ = [
 
 
 # pylint: disable=too-many-ancestors
-class _ImageOptions(_op.AnyOptions):
+class _ImageOptions(_op.AnyOptions, prop_attributes=('cmap',)):
     """Options for heatmaps
 
     The individual options can be accessed as object instance attributes
@@ -60,7 +60,6 @@ class _ImageOptions(_op.AnyOptions):
     parameters will be popped for the relevant items. Keyword parameters must
     be valid keys, otherwise a `KeyError` is raised.
     """
-    prop_attributes: _op.Attrs = ('cmap',)
     _cmap: mpl.colors.Colormap
     norm: mpl.colors.Normalize
     """Maps heatmap values to interval `[0, 1]` for `cmap`."""
@@ -144,7 +143,7 @@ class _ImageOptions(_op.AnyOptions):
 
 
 # pylint: disable=too-many-ancestors
-class StyleOptions(_ImageOptions):
+class StyleOptions(_ImageOptions, prop_attributes=('entity',)):
     """Options for node/edge colours when drawing graphs.
 
     The individual options can be accessed as object instance attributes
@@ -180,8 +179,6 @@ class StyleOptions(_ImageOptions):
         positional parameters will be popped for the relevant items. Keyword
         parameters must be valid keys, otherwise a `KeyError` is raised.
     """
-    prop_attributes: _op.Attrs = _ImageOptions.prop_attributes + ('entity',)
-    # topology specifying options
     _method: str = 'get_node_attr'
     key_attr: str = 'key'
     """Name of node/edge attribute used to determine colour."""
@@ -192,6 +189,7 @@ class StyleOptions(_ImageOptions):
     mult: float = 1.
     """Scale factor between `node/edge[siz_attr]` and area/width."""
     thresh: float = 1e-3
+    """Threshold on size value to be made visible."""
 
     def __init__(self, *args, **kwds) -> None:
         self._method = self._method
@@ -254,7 +252,9 @@ class StyleOptions(_ImageOptions):
 
 
 # pylint: disable=too-many-ancestors
-class GraphOptions(_op.Options):
+class GraphOptions(_op.Options,
+                   map_attributes=('topology', 'nodes', 'edges'),
+                   prop_attributes=('layout',)):
     """Options for drawing graphs.
 
     The individual options can be accessed as object instance attributes
@@ -283,8 +283,6 @@ class GraphOptions(_op.Options):
         positional parameters will be popped for the relevant items. Keyword
         parameters must be valid keys, otherwise a `KeyError` is raised.
     """
-    map_attributes: _op.Attrs = ('topology', 'nodes', 'edges')
-    prop_attributes: _op.Attrs = ('layout',)
     topology: _mk.TopologyOptions
     """Topology specifying options for creating graphs/for `judge`."""
     nodes: StyleOptions
@@ -346,7 +344,8 @@ class GraphOptions(_op.Options):
 # =============================================================================
 
 
-def get_node_colours(graph: _gt.GraphAttrs, data: str) -> _ty.Dict[str, np.ndarray]:
+def get_node_colours(graph: _gt.GraphAttrs,
+                     data: str) -> _ty.Dict[str, np.ndarray]:
     """Collect values of node attributes for the colour
 
     Parameters
@@ -367,7 +366,8 @@ def get_node_colours(graph: _gt.GraphAttrs, data: str) -> _ty.Dict[str, np.ndarr
     return {'node_color': vals, 'vmin': vmin, 'vmax': vmax}
 
 
-def get_edge_colours(graph: _gt.GraphAttrs, data: str) -> _ty.Dict[str, np.ndarray]:
+def get_edge_colours(graph: _gt.GraphAttrs,
+                     data: str) -> _ty.Dict[str, np.ndarray]:
     """Collect values of edge attributes for the colour
 
     Parameters
@@ -413,7 +413,8 @@ def linear_layout(graph: nx.Graph, sep: ArrayLike = (1., 0.),
     return {node: origin + pos * sep for pos, node in enumerate(graph.nodes)}
 
 
-def good_direction(graph: _gt.MultiDiGraph, ideal: _mk.TopologyOptions) -> np.ndarray:
+def good_direction(graph: _gt.MultiDiGraph,
+                   ideal: _mk.TopologyOptions) -> np.ndarray:
     """Which edges are in a good direction?
 
     Parameters
