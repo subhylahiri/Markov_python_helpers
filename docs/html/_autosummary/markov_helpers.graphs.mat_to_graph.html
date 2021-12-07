@@ -39,7 +39,7 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="markov_helpers.graphs.mat_to_graph">
 <span class="sig-name descname"><span class="pre">mat_to_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node_keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edge_keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#markov_helpers.graphs.mat_to_graph" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create a directed multi-graph from a parameters of a Markov model.</p>
+<dd><p>Create a directed multi-graph from a Markov transition matrix.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
@@ -55,7 +55,7 @@
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>graph</strong><span class="classifier">DiGraph</span></dt><dd><p>Graph describing model.</p>
+<dt><strong>graph</strong><span class="classifier">MultiDiGraph</span></dt><dd><p>Graph describing model.</p>
 </dd>
 </dl>
 </dd>
@@ -89,8 +89,8 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Home page</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="markov_helpers.html">API reference</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="markov_helpers.html#notes">Notes</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="markov_helpers.graphs.html">markov_helpers.graphs</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="markov_helpers.graphs.html">markov_helpers.graphs</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="markov_helpers.graphs.html#see-also">See Also</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="markov_helpers.graphs.plots.html">markov_helpers.graphs.plots</a></li>
 <li class="toctree-l4"><a class="reference internal" href="markov_helpers.graphs.list_edge_attrs.html">markov_helpers.graphs.list_edge_attrs</a></li>
 <li class="toctree-l4"><a class="reference internal" href="markov_helpers.graphs.list_edge_keys.html">markov_helpers.graphs.list_edge_keys</a></li>
@@ -103,15 +103,11 @@
 <li class="toctree-l4"><a class="reference internal" href="markov_helpers.graphs.MultiDiGraph.html">markov_helpers.graphs.MultiDiGraph</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.html">markov_helpers.markov</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="markov_helpers.markov.html">markov_helpers.markov</a></li>
 </ul>
 </li>
-</ul>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Home page</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="markov_helpers.html">API reference</a></li>
 </ul>
 
 <div class="relations">

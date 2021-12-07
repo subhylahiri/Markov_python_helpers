@@ -37,9 +37,9 @@
             
   <section id="module-markov_helpers.markov.params">
 <span id="markov-helpers-markov-params"></span><h1>markov_helpers.markov.params<a class="headerlink" href="#module-markov_helpers.markov.params" title="Permalink to this headline">¶</a></h1>
-<p>Utilities for parameterising Markov processes</p>
+<p>Tools for parameterising Markov processes</p>
 <dl class="simple">
-<dt>For general topology, the parameters are:</dt><dd><p>mat_01, mat_02, …, mat_0n-1, mat10, mat_12, …, mat_n-2,n-1.</p>
+<dt>For general topology, the parameters are:</dt><dd><p>mat_01, mat_02, …, mat_0n-1, mat_10, mat_12, …, mat_n-2,n-1.</p>
 </dd>
 <dt>For a serial topology:</dt><dd><p>mat_01, mat_12, …, mat_n-2,n-1,
 mat_10, mat_21, …, mat_n-1,n-2.</p>
@@ -53,8 +53,6 @@ If <em class="xref py py-obj">drn == 0</em>, we consider both.</p>
 <p>When <em class="xref py py-obj">uniform</em>, we assume that all non-zero elements in the upper/lower
 triangle are equal. When extracting <em class="xref py py-obj">uniform</em> parameters we average them,
 unless <em class="xref py py-obj">grad</em> is <em class="xref py py-obj">True</em> when we take the sum.</p>
-<section id="notes">
-<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
 <p>This package assumes probability distributions are represented by row vectors,
 so <span class="math notranslate nohighlight">\(Q_{ij}\)</span> is the transition rate from <span class="math notranslate nohighlight">\(i\)</span> to <span class="math notranslate nohighlight">\(j\)</span>.</p>
 <p class="rubric">Functions</p>
@@ -64,25 +62,25 @@ so <span class="math notranslate nohighlight">\(Q_{ij}\)</span> is the transitio
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.markov.params.cascade_mat_to_params" title="markov_helpers.markov.params.cascade_mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cascade_mat_to_params</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="markov_helpers.markov.params.cascade_mat_to_params.html#markov_helpers.markov.params.cascade_mat_to_params" title="markov_helpers.markov.params.cascade_mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cascade_mat_to_params</span></code></a></p></td>
 <td><p>Non-zero transition rates of transition matrix with cascade topology.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#markov_helpers.markov.params.cascade_params_to_mat" title="markov_helpers.markov.params.cascade_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cascade_params_to_mat</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="markov_helpers.markov.params.cascade_params_to_mat.html#markov_helpers.markov.params.cascade_params_to_mat" title="markov_helpers.markov.params.cascade_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cascade_params_to_mat</span></code></a></p></td>
 <td><p>Transition matrix with cascade topology from non-zero transition rates.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.markov.params.gen_mat_to_params" title="markov_helpers.markov.params.gen_mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_mat_to_params</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="markov_helpers.markov.params.gen_mat_to_params.html#markov_helpers.markov.params.gen_mat_to_params" title="markov_helpers.markov.params.gen_mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_mat_to_params</span></code></a></p></td>
 <td><p>Independent parameters of transition matrix.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#markov_helpers.markov.params.gen_params_to_mat" title="markov_helpers.markov.params.gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_params_to_mat</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="markov_helpers.markov.params.gen_params_to_mat.html#markov_helpers.markov.params.gen_params_to_mat" title="markov_helpers.markov.params.gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_params_to_mat</span></code></a></p></td>
 <td><p>Transition matrix from independent parameters.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.markov.params.mat_to_params" title="markov_helpers.markov.params.mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mat_to_params</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="markov_helpers.markov.params.mat_to_params.html#markov_helpers.markov.params.mat_to_params" title="markov_helpers.markov.params.mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mat_to_params</span></code></a></p></td>
 <td><p>Independent parameters of transition matrix.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="markov_helpers.markov.params.mat_type_dict.html#markov_helpers.markov.params.mat_type_dict" title="markov_helpers.markov.params.mat_type_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mat_type_dict</span></code></a></p></td>
 <td><p>Is it a (uniform) ring</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="markov_helpers.markov.params.mat_type_siz.html#markov_helpers.markov.params.mat_type_siz" title="markov_helpers.markov.params.mat_type_siz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mat_type_siz</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.markov.params.mat_type_siz" title="markov_helpers.markov.params.mat_type_siz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mat_type_siz</span></code></a></p></td>
 <td><p>Is process (uniform) ring/serial/.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="markov_helpers.markov.params.mat_type_val.html#markov_helpers.markov.params.mat_type_val" title="markov_helpers.markov.params.mat_type_val"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mat_type_val</span></code></a></p></td>
@@ -91,55 +89,55 @@ so <span class="math notranslate nohighlight">\(Q_{ij}\)</span> is the transitio
 <tr class="row-odd"><td><p><a class="reference internal" href="markov_helpers.markov.params.mat_update_params.html#markov_helpers.markov.params.mat_update_params" title="markov_helpers.markov.params.mat_update_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mat_update_params</span></code></a></p></td>
 <td><p>Change independent parameters of transition matrix.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#markov_helpers.markov.params.matify" title="markov_helpers.markov.params.matify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matify</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="markov_helpers.markov.params.matify.html#markov_helpers.markov.params.matify" title="markov_helpers.markov.params.matify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matify</span></code></a></p></td>
 <td><p>Transition matrix from independent parameters, if not already so.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="markov_helpers.markov.params.num_param.html#markov_helpers.markov.params.num_param" title="markov_helpers.markov.params.num_param"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_param</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.markov.params.num_param" title="markov_helpers.markov.params.num_param"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_param</span></code></a></p></td>
 <td><p>Number of independent rates per matrix</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="markov_helpers.markov.params.num_state.html#markov_helpers.markov.params.num_state" title="markov_helpers.markov.params.num_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_state</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#markov_helpers.markov.params.num_state" title="markov_helpers.markov.params.num_state"><code class="xref py py-obj docutils literal notranslate"><span class="pre">num_state</span></code></a></p></td>
 <td><p>Number of states from rate vector</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.markov.params.paramify" title="markov_helpers.markov.params.paramify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">paramify</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="markov_helpers.markov.params.paramify.html#markov_helpers.markov.params.paramify" title="markov_helpers.markov.params.paramify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">paramify</span></code></a></p></td>
 <td><p>Independent parameters of transition matrix, if not already so.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#markov_helpers.markov.params.params_to_mat" title="markov_helpers.markov.params.params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">params_to_mat</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="markov_helpers.markov.params.params_to_mat.html#markov_helpers.markov.params.params_to_mat" title="markov_helpers.markov.params.params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">params_to_mat</span></code></a></p></td>
 <td><p>Transition matrix from independent parameters.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.markov.params.ring_mat_to_params" title="markov_helpers.markov.params.ring_mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_mat_to_params</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="markov_helpers.markov.params.ring_mat_to_params.html#markov_helpers.markov.params.ring_mat_to_params" title="markov_helpers.markov.params.ring_mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_mat_to_params</span></code></a></p></td>
 <td><p>Independent parameters of ring transition matrix.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#markov_helpers.markov.params.ring_params_to_mat" title="markov_helpers.markov.params.ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_params_to_mat</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="markov_helpers.markov.params.ring_params_to_mat.html#markov_helpers.markov.params.ring_params_to_mat" title="markov_helpers.markov.params.ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_params_to_mat</span></code></a></p></td>
 <td><p>Ring transition matrix from independent parameters.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.markov.params.serial_mat_to_params" title="markov_helpers.markov.params.serial_mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">serial_mat_to_params</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="markov_helpers.markov.params.serial_mat_to_params.html#markov_helpers.markov.params.serial_mat_to_params" title="markov_helpers.markov.params.serial_mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">serial_mat_to_params</span></code></a></p></td>
 <td><p>Independent parameters of serial transition matrix.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#markov_helpers.markov.params.serial_params_to_mat" title="markov_helpers.markov.params.serial_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">serial_params_to_mat</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="markov_helpers.markov.params.serial_params_to_mat.html#markov_helpers.markov.params.serial_params_to_mat" title="markov_helpers.markov.params.serial_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">serial_params_to_mat</span></code></a></p></td>
 <td><p>Serial transition matrix from independent parameters.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.markov.params.std_cascade_mat_to_params" title="markov_helpers.markov.params.std_cascade_mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">std_cascade_mat_to_params</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="markov_helpers.markov.params.std_cascade_mat_to_params.html#markov_helpers.markov.params.std_cascade_mat_to_params" title="markov_helpers.markov.params.std_cascade_mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">std_cascade_mat_to_params</span></code></a></p></td>
 <td><p>(Gradient wrt) parameters of cascade transition matrix.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#markov_helpers.markov.params.std_cascade_params_to_mat" title="markov_helpers.markov.params.std_cascade_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">std_cascade_params_to_mat</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="markov_helpers.markov.params.std_cascade_params_to_mat.html#markov_helpers.markov.params.std_cascade_params_to_mat" title="markov_helpers.markov.params.std_cascade_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">std_cascade_params_to_mat</span></code></a></p></td>
 <td><p>Cascade transition matrix with standard transition rates.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.markov.params.uni_gen_mat_to_params" title="markov_helpers.markov.params.uni_gen_mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uni_gen_mat_to_params</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="markov_helpers.markov.params.uni_gen_mat_to_params.html#markov_helpers.markov.params.uni_gen_mat_to_params" title="markov_helpers.markov.params.uni_gen_mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uni_gen_mat_to_params</span></code></a></p></td>
 <td><p>Independent parameters of uniform transition matrix.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#markov_helpers.markov.params.uni_gen_params_to_mat" title="markov_helpers.markov.params.uni_gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uni_gen_params_to_mat</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="markov_helpers.markov.params.uni_gen_params_to_mat.html#markov_helpers.markov.params.uni_gen_params_to_mat" title="markov_helpers.markov.params.uni_gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uni_gen_params_to_mat</span></code></a></p></td>
 <td><p>Uniform transition matrix from independent parameters.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.markov.params.uni_ring_mat_to_params" title="markov_helpers.markov.params.uni_ring_mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uni_ring_mat_to_params</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="markov_helpers.markov.params.uni_ring_mat_to_params.html#markov_helpers.markov.params.uni_ring_mat_to_params" title="markov_helpers.markov.params.uni_ring_mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uni_ring_mat_to_params</span></code></a></p></td>
 <td><p>Independent parameters of ring transition matrix.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#markov_helpers.markov.params.uni_ring_params_to_mat" title="markov_helpers.markov.params.uni_ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uni_ring_params_to_mat</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="markov_helpers.markov.params.uni_ring_params_to_mat.html#markov_helpers.markov.params.uni_ring_params_to_mat" title="markov_helpers.markov.params.uni_ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uni_ring_params_to_mat</span></code></a></p></td>
 <td><p>Ring transition matrix from independent parameters.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.markov.params.uni_serial_mat_to_params" title="markov_helpers.markov.params.uni_serial_mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uni_serial_mat_to_params</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="markov_helpers.markov.params.uni_serial_mat_to_params.html#markov_helpers.markov.params.uni_serial_mat_to_params" title="markov_helpers.markov.params.uni_serial_mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uni_serial_mat_to_params</span></code></a></p></td>
 <td><p>Independent parameters of uniform serial transition matrix.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#markov_helpers.markov.params.uni_serial_params_to_mat" title="markov_helpers.markov.params.uni_serial_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uni_serial_params_to_mat</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="markov_helpers.markov.params.uni_serial_params_to_mat.html#markov_helpers.markov.params.uni_serial_params_to_mat" title="markov_helpers.markov.params.uni_serial_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uni_serial_params_to_mat</span></code></a></p></td>
 <td><p>Uniform serial transition matrix from independent parameters.</p></td>
 </tr>
 </tbody>
@@ -176,7 +174,7 @@ Elements lie across the earlier axis of <em class="xref py py-obj">axes</em>.</p
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_subs</span></code>, <a class="reference internal" href="#markov_helpers.markov.params.ring_params_to_mat" title="markov_helpers.markov.params.ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_params_to_mat</span></code></a></dt><dd></dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_subs</span></code>, <a class="reference internal" href="markov_helpers.markov.params.ring_params_to_mat.html#markov_helpers.markov.params.ring_params_to_mat" title="markov_helpers.markov.params.ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_params_to_mat</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <dl class="field-list simple">
@@ -217,7 +215,7 @@ The extra axis in (from,to) is inserted after <em class="xref py py-obj">axis</e
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">cascade_subs</span></code>, <a class="reference internal" href="#markov_helpers.markov.params.cascade_mat_to_params" title="markov_helpers.markov.params.cascade_mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cascade_mat_to_params</span></code></a></dt><dd></dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">cascade_subs</span></code>, <a class="reference internal" href="markov_helpers.markov.params.cascade_mat_to_params.html#markov_helpers.markov.params.cascade_mat_to_params" title="markov_helpers.markov.params.cascade_mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cascade_mat_to_params</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <dl class="field-list simple">
@@ -256,7 +254,7 @@ Elements lie across the earlier axis of <em class="xref py py-obj">axes</em>.</p
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">offdiag_subs</span></code>, <a class="reference internal" href="#markov_helpers.markov.params.gen_params_to_mat" title="markov_helpers.markov.params.gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_params_to_mat</span></code></a></dt><dd></dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">offdiag_subs</span></code>, <a class="reference internal" href="markov_helpers.markov.params.gen_params_to_mat.html#markov_helpers.markov.params.gen_params_to_mat" title="markov_helpers.markov.params.gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_params_to_mat</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <dl class="field-list simple">
@@ -295,7 +293,7 @@ The extra axis in (from,to) is inserted after <em class="xref py py-obj">axis</e
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">offdiag_subs</span></code>, <a class="reference internal" href="#markov_helpers.markov.params.gen_mat_to_params" title="markov_helpers.markov.params.gen_mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_mat_to_params</span></code></a></dt><dd></dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">offdiag_subs</span></code>, <a class="reference internal" href="markov_helpers.markov.params.gen_mat_to_params.html#markov_helpers.markov.params.gen_mat_to_params" title="markov_helpers.markov.params.gen_mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_mat_to_params</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <dl class="field-list simple">
@@ -314,16 +312,16 @@ The extra axis in (from,to) is inserted after <em class="xref py py-obj">axis</e
 <dd class="field-odd"><dl class="simple">
 <dt><strong>mat</strong><span class="classifier">ndarray (n,n)</span></dt><dd><p>Continuous time stochastic matrix.</p>
 </dd>
-<dt><strong>serial</strong><span class="classifier">bool, optional, default: False</span></dt><dd><p>Is the rate vector meant for <a class="reference internal" href="#markov_helpers.markov.params.serial_params_to_mat" title="markov_helpers.markov.params.serial_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">serial_params_to_mat</span></code></a> or
-<a class="reference internal" href="#markov_helpers.markov.params.gen_params_to_mat" title="markov_helpers.markov.params.gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_params_to_mat</span></code></a>?</p>
+<dt><strong>serial</strong><span class="classifier">bool, optional, default: False</span></dt><dd><p>Is the rate vector meant for <a class="reference internal" href="markov_helpers.markov.params.serial_params_to_mat.html#markov_helpers.markov.params.serial_params_to_mat" title="markov_helpers.markov.params.serial_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">serial_params_to_mat</span></code></a> or
+<a class="reference internal" href="markov_helpers.markov.params.gen_params_to_mat.html#markov_helpers.markov.params.gen_params_to_mat" title="markov_helpers.markov.params.gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_params_to_mat</span></code></a>?</p>
 </dd>
-<dt><strong>ring</strong><span class="classifier">bool, optional, default: False</span></dt><dd><p>Is the rate vector meant for <a class="reference internal" href="#markov_helpers.markov.params.ring_params_to_mat" title="markov_helpers.markov.params.ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_params_to_mat</span></code></a> or
-<a class="reference internal" href="#markov_helpers.markov.params.gen_params_to_mat" title="markov_helpers.markov.params.gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_params_to_mat</span></code></a>?</p>
+<dt><strong>ring</strong><span class="classifier">bool, optional, default: False</span></dt><dd><p>Is the rate vector meant for <a class="reference internal" href="markov_helpers.markov.params.ring_params_to_mat.html#markov_helpers.markov.params.ring_params_to_mat" title="markov_helpers.markov.params.ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_params_to_mat</span></code></a> or
+<a class="reference internal" href="markov_helpers.markov.params.gen_params_to_mat.html#markov_helpers.markov.params.gen_params_to_mat" title="markov_helpers.markov.params.gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_params_to_mat</span></code></a>?</p>
 </dd>
 <dt><strong>drn: int, optional, default: 0</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.</p>
 </dd>
-<dt><strong>uniform</strong><span class="classifier">bool, optional, default: False</span></dt><dd><p>Is the rate vector meant for <a class="reference internal" href="#markov_helpers.markov.params.ring_params_to_mat" title="markov_helpers.markov.params.ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_params_to_mat</span></code></a> or
-<a class="reference internal" href="#markov_helpers.markov.params.uni_ring_params_to_mat" title="markov_helpers.markov.params.uni_ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uni_ring_params_to_mat</span></code></a>?</p>
+<dt><strong>uniform</strong><span class="classifier">bool, optional, default: False</span></dt><dd><p>Is the rate vector meant for <a class="reference internal" href="markov_helpers.markov.params.ring_params_to_mat.html#markov_helpers.markov.params.ring_params_to_mat" title="markov_helpers.markov.params.ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_params_to_mat</span></code></a> or
+<a class="reference internal" href="markov_helpers.markov.params.uni_ring_params_to_mat.html#markov_helpers.markov.params.uni_ring_params_to_mat" title="markov_helpers.markov.params.uni_ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uni_ring_params_to_mat</span></code></a>?</p>
 </dd>
 <dt><strong>grad</strong><span class="classifier">bool, optional, default: True</span></dt><dd><p>Is the output for a gradient (True) or a transition matrix (False).
 If True, return sum of each group of equal transitions.
@@ -346,7 +344,7 @@ Elements lie across the earlier axis of <em class="xref py py-obj">axes</em>.</p
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">param_subs</span></code>, <a class="reference internal" href="#markov_helpers.markov.params.params_to_mat" title="markov_helpers.markov.params.params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">params_to_mat</span></code></a></dt><dd></dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">param_subs</span></code>, <a class="reference internal" href="markov_helpers.markov.params.params_to_mat.html#markov_helpers.markov.params.params_to_mat" title="markov_helpers.markov.params.params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">params_to_mat</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <dl class="field-list simple">
@@ -372,11 +370,11 @@ Elements lie across the earlier axis of <em class="xref py py-obj">axes</em>.</p
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
 <dt>dict containing:</dt><dd><dl class="simple">
-<dt>serial<span class="classifier">bool</span></dt><dd><p>Is the rate vector meant for <a class="reference internal" href="#markov_helpers.markov.params.serial_params_to_mat" title="markov_helpers.markov.params.serial_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">serial_params_to_mat</span></code></a> or
-<a class="reference internal" href="#markov_helpers.markov.params.gen_params_to_mat" title="markov_helpers.markov.params.gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_params_to_mat</span></code></a>?</p>
+<dt>serial<span class="classifier">bool</span></dt><dd><p>Is the rate vector meant for <a class="reference internal" href="markov_helpers.markov.params.serial_params_to_mat.html#markov_helpers.markov.params.serial_params_to_mat" title="markov_helpers.markov.params.serial_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">serial_params_to_mat</span></code></a> or
+<a class="reference internal" href="markov_helpers.markov.params.gen_params_to_mat.html#markov_helpers.markov.params.gen_params_to_mat" title="markov_helpers.markov.params.gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_params_to_mat</span></code></a>?</p>
 </dd>
-<dt>ring<span class="classifier">bool</span></dt><dd><p>Is the rate vector meant for <a class="reference internal" href="#markov_helpers.markov.params.ring_params_to_mat" title="markov_helpers.markov.params.ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_params_to_mat</span></code></a> or
-<a class="reference internal" href="#markov_helpers.markov.params.gen_params_to_mat" title="markov_helpers.markov.params.gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_params_to_mat</span></code></a>?</p>
+<dt>ring<span class="classifier">bool</span></dt><dd><p>Is the rate vector meant for <a class="reference internal" href="markov_helpers.markov.params.ring_params_to_mat.html#markov_helpers.markov.params.ring_params_to_mat" title="markov_helpers.markov.params.ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_params_to_mat</span></code></a> or
+<a class="reference internal" href="markov_helpers.markov.params.gen_params_to_mat.html#markov_helpers.markov.params.gen_params_to_mat" title="markov_helpers.markov.params.gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_params_to_mat</span></code></a>?</p>
 </dd>
 <dt>drn: bool</dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i-&gt;i+sgn(drn)</em>.
 Can only determine <em class="xref py py-obj">|drn|</em>, not its sign.</p>
@@ -413,11 +411,11 @@ looking at matrix elements.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>serial</strong><span class="classifier">bool</span></dt><dd><p>Is the rate vector meant for <a class="reference internal" href="#markov_helpers.markov.params.serial_params_to_mat" title="markov_helpers.markov.params.serial_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">serial_params_to_mat</span></code></a> or
-<a class="reference internal" href="#markov_helpers.markov.params.gen_params_to_mat" title="markov_helpers.markov.params.gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_params_to_mat</span></code></a>?</p>
+<dt><strong>serial</strong><span class="classifier">bool</span></dt><dd><p>Is the rate vector meant for <a class="reference internal" href="markov_helpers.markov.params.serial_params_to_mat.html#markov_helpers.markov.params.serial_params_to_mat" title="markov_helpers.markov.params.serial_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">serial_params_to_mat</span></code></a> or
+<a class="reference internal" href="markov_helpers.markov.params.gen_params_to_mat.html#markov_helpers.markov.params.gen_params_to_mat" title="markov_helpers.markov.params.gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_params_to_mat</span></code></a>?</p>
 </dd>
-<dt><strong>ring</strong><span class="classifier">bool</span></dt><dd><p>Is the rate vector meant for <a class="reference internal" href="#markov_helpers.markov.params.ring_params_to_mat" title="markov_helpers.markov.params.ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_params_to_mat</span></code></a> or
-<a class="reference internal" href="#markov_helpers.markov.params.gen_params_to_mat" title="markov_helpers.markov.params.gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_params_to_mat</span></code></a>?</p>
+<dt><strong>ring</strong><span class="classifier">bool</span></dt><dd><p>Is the rate vector meant for <a class="reference internal" href="markov_helpers.markov.params.ring_params_to_mat.html#markov_helpers.markov.params.ring_params_to_mat" title="markov_helpers.markov.params.ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_params_to_mat</span></code></a> or
+<a class="reference internal" href="markov_helpers.markov.params.gen_params_to_mat.html#markov_helpers.markov.params.gen_params_to_mat" title="markov_helpers.markov.params.gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_params_to_mat</span></code></a>?</p>
 </dd>
 <dt>drn: bool</dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.
 Can only determine <em class="xref py py-obj">|drn|</em>, not its sign.</p>
@@ -450,11 +448,11 @@ Can only determine <em class="xref py py-obj">|drn|</em>, not its sign.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>serial</strong><span class="classifier">bool</span></dt><dd><p>Is the rate vector meant for <a class="reference internal" href="#markov_helpers.markov.params.serial_params_to_mat" title="markov_helpers.markov.params.serial_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">serial_params_to_mat</span></code></a> or
-<a class="reference internal" href="#markov_helpers.markov.params.gen_params_to_mat" title="markov_helpers.markov.params.gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_params_to_mat</span></code></a>?</p>
+<dt><strong>serial</strong><span class="classifier">bool</span></dt><dd><p>Is the rate vector meant for <a class="reference internal" href="markov_helpers.markov.params.serial_params_to_mat.html#markov_helpers.markov.params.serial_params_to_mat" title="markov_helpers.markov.params.serial_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">serial_params_to_mat</span></code></a> or
+<a class="reference internal" href="markov_helpers.markov.params.gen_params_to_mat.html#markov_helpers.markov.params.gen_params_to_mat" title="markov_helpers.markov.params.gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_params_to_mat</span></code></a>?</p>
 </dd>
-<dt><strong>ring</strong><span class="classifier">bool</span></dt><dd><p>Is the rate vector meant for <a class="reference internal" href="#markov_helpers.markov.params.ring_params_to_mat" title="markov_helpers.markov.params.ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_params_to_mat</span></code></a> or
-<a class="reference internal" href="#markov_helpers.markov.params.gen_params_to_mat" title="markov_helpers.markov.params.gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_params_to_mat</span></code></a>?</p>
+<dt><strong>ring</strong><span class="classifier">bool</span></dt><dd><p>Is the rate vector meant for <a class="reference internal" href="markov_helpers.markov.params.ring_params_to_mat.html#markov_helpers.markov.params.ring_params_to_mat" title="markov_helpers.markov.params.ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_params_to_mat</span></code></a> or
+<a class="reference internal" href="markov_helpers.markov.params.gen_params_to_mat.html#markov_helpers.markov.params.gen_params_to_mat" title="markov_helpers.markov.params.gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_params_to_mat</span></code></a>?</p>
 </dd>
 <dt>drn: int</dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.</p>
 </dd>
@@ -518,7 +516,7 @@ If False, return the mean.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">param_inds</span></code>, <a class="reference internal" href="#markov_helpers.markov.params.mat_to_params" title="markov_helpers.markov.params.mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mat_to_params</span></code></a></dt><dd></dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">param_inds</span></code>, <a class="reference internal" href="markov_helpers.markov.params.mat_to_params.html#markov_helpers.markov.params.mat_to_params" title="markov_helpers.markov.params.mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mat_to_params</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <dl class="field-list simple">
@@ -536,7 +534,7 @@ If False, return the mean.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>params_or_mat</strong><span class="classifier">ndarray (np,) or (n,n)</span></dt><dd><p>Either vector of independent elements (in order that depends on flags,
-see docs for <a class="reference internal" href="#markov_helpers.markov.params.params_to_mat" title="markov_helpers.markov.params.params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">params_to_mat</span></code></a>) or continuous time stochastic matrix.</p>
+see docs for <a class="reference internal" href="markov_helpers.markov.params.params_to_mat.html#markov_helpers.markov.params.params_to_mat" title="markov_helpers.markov.params.params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">params_to_mat</span></code></a>) or continuous time stochastic matrix.</p>
 </dd>
 <dt><strong>Other arguments passed to `params_to_mat`</strong></dt><dd></dd>
 </dl>
@@ -551,7 +549,7 @@ see docs for <a class="reference internal" href="#markov_helpers.markov.params.p
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference internal" href="#markov_helpers.markov.params.params_to_mat" title="markov_helpers.markov.params.params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">params_to_mat</span></code></a>, <a class="reference internal" href="#markov_helpers.markov.params.paramify" title="markov_helpers.markov.params.paramify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">paramify</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="markov_helpers.markov.params.params_to_mat.html#markov_helpers.markov.params.params_to_mat" title="markov_helpers.markov.params.params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">params_to_mat</span></code></a>, <a class="reference internal" href="markov_helpers.markov.params.paramify.html#markov_helpers.markov.params.paramify" title="markov_helpers.markov.params.paramify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">paramify</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <dl class="field-list simple">
@@ -570,14 +568,14 @@ see docs for <a class="reference internal" href="#markov_helpers.markov.params.p
 <dd class="field-odd"><dl class="simple">
 <dt><strong>states</strong><span class="classifier">int or ndarray (n,…)</span></dt><dd><p>Number of states, or array over states.</p>
 </dd>
-<dt><strong>serial</strong><span class="classifier">bool, optional, default: False</span></dt><dd><p>Is the rate vector meant for <a class="reference internal" href="#markov_helpers.markov.params.serial_params_to_mat" title="markov_helpers.markov.params.serial_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">serial_params_to_mat</span></code></a> or
-<a class="reference internal" href="#markov_helpers.markov.params.gen_params_to_mat" title="markov_helpers.markov.params.gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_params_to_mat</span></code></a>?</p>
+<dt><strong>serial</strong><span class="classifier">bool, optional, default: False</span></dt><dd><p>Is the rate vector meant for <a class="reference internal" href="markov_helpers.markov.params.serial_params_to_mat.html#markov_helpers.markov.params.serial_params_to_mat" title="markov_helpers.markov.params.serial_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">serial_params_to_mat</span></code></a> or
+<a class="reference internal" href="markov_helpers.markov.params.gen_params_to_mat.html#markov_helpers.markov.params.gen_params_to_mat" title="markov_helpers.markov.params.gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_params_to_mat</span></code></a>?</p>
 </dd>
-<dt><strong>ring</strong><span class="classifier">bool, optional, default: False</span></dt><dd><p>Is the rate vector meant for <a class="reference internal" href="#markov_helpers.markov.params.ring_params_to_mat" title="markov_helpers.markov.params.ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_params_to_mat</span></code></a> or
-<a class="reference internal" href="#markov_helpers.markov.params.gen_params_to_mat" title="markov_helpers.markov.params.gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_params_to_mat</span></code></a>?</p>
+<dt><strong>ring</strong><span class="classifier">bool, optional, default: False</span></dt><dd><p>Is the rate vector meant for <a class="reference internal" href="markov_helpers.markov.params.ring_params_to_mat.html#markov_helpers.markov.params.ring_params_to_mat" title="markov_helpers.markov.params.ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_params_to_mat</span></code></a> or
+<a class="reference internal" href="markov_helpers.markov.params.gen_params_to_mat.html#markov_helpers.markov.params.gen_params_to_mat" title="markov_helpers.markov.params.gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_params_to_mat</span></code></a>?</p>
 </dd>
-<dt><strong>uniform</strong><span class="classifier">bool, optional, default: False</span></dt><dd><p>Is the rate vector meant for <a class="reference internal" href="#markov_helpers.markov.params.ring_params_to_mat" title="markov_helpers.markov.params.ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_params_to_mat</span></code></a> or
-<a class="reference internal" href="#markov_helpers.markov.params.uni_ring_params_to_mat" title="markov_helpers.markov.params.uni_ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uni_ring_params_to_mat</span></code></a>?</p>
+<dt><strong>uniform</strong><span class="classifier">bool, optional, default: False</span></dt><dd><p>Is the rate vector meant for <a class="reference internal" href="markov_helpers.markov.params.ring_params_to_mat.html#markov_helpers.markov.params.ring_params_to_mat" title="markov_helpers.markov.params.ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_params_to_mat</span></code></a> or
+<a class="reference internal" href="markov_helpers.markov.params.uni_ring_params_to_mat.html#markov_helpers.markov.params.uni_ring_params_to_mat" title="markov_helpers.markov.params.uni_ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uni_ring_params_to_mat</span></code></a>?</p>
 </dd>
 <dt><strong>drn: int, optional, default: 0</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.</p>
 </dd>
@@ -606,11 +604,11 @@ see docs for <a class="reference internal" href="#markov_helpers.markov.params.p
 <dd class="field-odd"><dl class="simple">
 <dt><strong>params</strong><span class="classifier">int or ndarray (n,)</span></dt><dd><p>Number of rate parameters, or vector of rates.</p>
 </dd>
-<dt><strong>serial</strong><span class="classifier">bool, optional, default: False</span></dt><dd><p>Is the rate vector meant for <a class="reference internal" href="#markov_helpers.markov.params.serial_params_to_mat" title="markov_helpers.markov.params.serial_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">serial_params_to_mat</span></code></a> or
-<a class="reference internal" href="#markov_helpers.markov.params.gen_params_to_mat" title="markov_helpers.markov.params.gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_params_to_mat</span></code></a>?</p>
+<dt><strong>serial</strong><span class="classifier">bool, optional, default: False</span></dt><dd><p>Is the rate vector meant for <a class="reference internal" href="markov_helpers.markov.params.serial_params_to_mat.html#markov_helpers.markov.params.serial_params_to_mat" title="markov_helpers.markov.params.serial_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">serial_params_to_mat</span></code></a> or
+<a class="reference internal" href="markov_helpers.markov.params.gen_params_to_mat.html#markov_helpers.markov.params.gen_params_to_mat" title="markov_helpers.markov.params.gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_params_to_mat</span></code></a>?</p>
 </dd>
-<dt><strong>ring</strong><span class="classifier">bool, optional, default: True</span></dt><dd><p>Is the rate vector meant for <a class="reference internal" href="#markov_helpers.markov.params.ring_params_to_mat" title="markov_helpers.markov.params.ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_params_to_mat</span></code></a> or
-<a class="reference internal" href="#markov_helpers.markov.params.gen_params_to_mat" title="markov_helpers.markov.params.gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_params_to_mat</span></code></a>?</p>
+<dt><strong>ring</strong><span class="classifier">bool, optional, default: True</span></dt><dd><p>Is the rate vector meant for <a class="reference internal" href="markov_helpers.markov.params.ring_params_to_mat.html#markov_helpers.markov.params.ring_params_to_mat" title="markov_helpers.markov.params.ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_params_to_mat</span></code></a> or
+<a class="reference internal" href="markov_helpers.markov.params.gen_params_to_mat.html#markov_helpers.markov.params.gen_params_to_mat" title="markov_helpers.markov.params.gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_params_to_mat</span></code></a>?</p>
 </dd>
 <dt><strong>drn: int, optional, default: 0</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.</p>
 </dd>
@@ -638,7 +636,7 @@ see docs for <a class="reference internal" href="#markov_helpers.markov.params.p
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>params_or_mat</strong><span class="classifier">ndarray (np,) or (n,n)</span></dt><dd><p>Either vector of independent elements (in order that depends on flags,
-see docs for <a class="reference internal" href="#markov_helpers.markov.params.params_to_mat" title="markov_helpers.markov.params.params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">params_to_mat</span></code></a>) or continuous time stochastic matrix.</p>
+see docs for <a class="reference internal" href="markov_helpers.markov.params.params_to_mat.html#markov_helpers.markov.params.params_to_mat" title="markov_helpers.markov.params.params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">params_to_mat</span></code></a>) or continuous time stochastic matrix.</p>
 </dd>
 <dt><strong>other arguments passed to `mat_to_params`</strong></dt><dd></dd>
 </dl>
@@ -654,7 +652,7 @@ see docs for <em class="xref py py-obj">*_subs</em> for details).</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><a class="reference internal" href="#markov_helpers.markov.params.mat_to_params" title="markov_helpers.markov.params.mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mat_to_params</span></code></a>, <a class="reference internal" href="#markov_helpers.markov.params.matify" title="markov_helpers.markov.params.matify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matify</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="markov_helpers.markov.params.mat_to_params.html#markov_helpers.markov.params.mat_to_params" title="markov_helpers.markov.params.mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mat_to_params</span></code></a>, <a class="reference internal" href="markov_helpers.markov.params.matify.html#markov_helpers.markov.params.matify" title="markov_helpers.markov.params.matify"><code class="xref py py-obj docutils literal notranslate"><span class="pre">matify</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <dl class="field-list simple">
@@ -675,11 +673,11 @@ see docs for <em class="xref py py-obj">*_subs</em> for details).</p>
 See docs for <em class="xref py py-obj">*_subs</em> for details.
 If <em class="xref py py-obj">uniform and drn == 0</em>, we need 2 parameters, one for each direction</p>
 </dd>
-<dt><strong>serial</strong><span class="classifier">bool, optional, default: False</span></dt><dd><p>Is the rate vector meant for <a class="reference internal" href="#markov_helpers.markov.params.serial_params_to_mat" title="markov_helpers.markov.params.serial_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">serial_params_to_mat</span></code></a> or
-<a class="reference internal" href="#markov_helpers.markov.params.gen_params_to_mat" title="markov_helpers.markov.params.gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_params_to_mat</span></code></a>?</p>
+<dt><strong>serial</strong><span class="classifier">bool, optional, default: False</span></dt><dd><p>Is the rate vector meant for <a class="reference internal" href="markov_helpers.markov.params.serial_params_to_mat.html#markov_helpers.markov.params.serial_params_to_mat" title="markov_helpers.markov.params.serial_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">serial_params_to_mat</span></code></a> or
+<a class="reference internal" href="markov_helpers.markov.params.gen_params_to_mat.html#markov_helpers.markov.params.gen_params_to_mat" title="markov_helpers.markov.params.gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_params_to_mat</span></code></a>?</p>
 </dd>
-<dt><strong>ring</strong><span class="classifier">bool, optional, default: False</span></dt><dd><p>Is the rate vector meant for <a class="reference internal" href="#markov_helpers.markov.params.ring_params_to_mat" title="markov_helpers.markov.params.ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_params_to_mat</span></code></a> or
-<a class="reference internal" href="#markov_helpers.markov.params.gen_params_to_mat" title="markov_helpers.markov.params.gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_params_to_mat</span></code></a>?</p>
+<dt><strong>ring</strong><span class="classifier">bool, optional, default: False</span></dt><dd><p>Is the rate vector meant for <a class="reference internal" href="markov_helpers.markov.params.ring_params_to_mat.html#markov_helpers.markov.params.ring_params_to_mat" title="markov_helpers.markov.params.ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_params_to_mat</span></code></a> or
+<a class="reference internal" href="markov_helpers.markov.params.gen_params_to_mat.html#markov_helpers.markov.params.gen_params_to_mat" title="markov_helpers.markov.params.gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_params_to_mat</span></code></a>?</p>
 </dd>
 <dt><strong>uniform</strong><span class="classifier">bool, optional, default: False</span></dt><dd><p>Is the rate vector for <em class="xref py py-obj">*_params_to_mat</em> or <em class="xref py py-obj">uni_*_params_to_mat</em>?
 * = general, serial or ring.</p>
@@ -705,7 +703,7 @@ The extra axis in (from,to) is inserted after <em class="xref py py-obj">axis</e
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">param_subs</span></code>, <a class="reference internal" href="#markov_helpers.markov.params.mat_to_params" title="markov_helpers.markov.params.mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mat_to_params</span></code></a></dt><dd></dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">param_subs</span></code>, <a class="reference internal" href="markov_helpers.markov.params.mat_to_params.html#markov_helpers.markov.params.mat_to_params" title="markov_helpers.markov.params.mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mat_to_params</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <dl class="field-list simple">
@@ -745,7 +743,7 @@ Elements lie across the earlier axis of <em class="xref py py-obj">axes</em>.</p
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_subs</span></code>, <a class="reference internal" href="#markov_helpers.markov.params.ring_params_to_mat" title="markov_helpers.markov.params.ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_params_to_mat</span></code></a></dt><dd></dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_subs</span></code>, <a class="reference internal" href="markov_helpers.markov.params.ring_params_to_mat.html#markov_helpers.markov.params.ring_params_to_mat" title="markov_helpers.markov.params.ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_params_to_mat</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <dl class="field-list simple">
@@ -785,7 +783,7 @@ The extra axis in (from,to) is inserted after <em class="xref py py-obj">axis</e
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_subs</span></code>, <a class="reference internal" href="#markov_helpers.markov.params.ring_mat_to_params" title="markov_helpers.markov.params.ring_mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_mat_to_params</span></code></a></dt><dd></dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_subs</span></code>, <a class="reference internal" href="markov_helpers.markov.params.ring_mat_to_params.html#markov_helpers.markov.params.ring_mat_to_params" title="markov_helpers.markov.params.ring_mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_mat_to_params</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <dl class="field-list simple">
@@ -825,7 +823,7 @@ Elements lie across the earlier axis of <em class="xref py py-obj">axes</em>.</p
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">serial_subs</span></code>, <a class="reference internal" href="#markov_helpers.markov.params.serial_params_to_mat" title="markov_helpers.markov.params.serial_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">serial_params_to_mat</span></code></a></dt><dd></dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">serial_subs</span></code>, <a class="reference internal" href="markov_helpers.markov.params.serial_params_to_mat.html#markov_helpers.markov.params.serial_params_to_mat" title="markov_helpers.markov.params.serial_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">serial_params_to_mat</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <dl class="field-list simple">
@@ -865,7 +863,7 @@ The extra axis in (from,to) is inserted after <em class="xref py py-obj">axis</e
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">serial_subs</span></code>, <a class="reference internal" href="#markov_helpers.markov.params.serial_mat_to_params" title="markov_helpers.markov.params.serial_mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">serial_mat_to_params</span></code></a></dt><dd></dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">serial_subs</span></code>, <a class="reference internal" href="markov_helpers.markov.params.serial_mat_to_params.html#markov_helpers.markov.params.serial_mat_to_params" title="markov_helpers.markov.params.serial_mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">serial_mat_to_params</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <dl class="field-list simple">
@@ -910,7 +908,7 @@ Elements lie across the earlier axis of <em class="xref py py-obj">axes</em>.</p
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">cascade_subs</span></code>, <a class="reference internal" href="#markov_helpers.markov.params.std_cascade_params_to_mat" title="markov_helpers.markov.params.std_cascade_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">std_cascade_params_to_mat</span></code></a></dt><dd></dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">cascade_subs</span></code>, <a class="reference internal" href="markov_helpers.markov.params.std_cascade_params_to_mat.html#markov_helpers.markov.params.std_cascade_params_to_mat" title="markov_helpers.markov.params.std_cascade_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">std_cascade_params_to_mat</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <dl class="field-list simple">
@@ -952,7 +950,7 @@ The extra axis in (from,to) is inserted after <em class="xref py py-obj">axis</e
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">cascade_subs</span></code>, <a class="reference internal" href="#markov_helpers.markov.params.cascade_params_to_mat" title="markov_helpers.markov.params.cascade_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cascade_params_to_mat</span></code></a></dt><dd></dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">cascade_subs</span></code>, <a class="reference internal" href="markov_helpers.markov.params.cascade_params_to_mat.html#markov_helpers.markov.params.cascade_params_to_mat" title="markov_helpers.markov.params.cascade_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cascade_params_to_mat</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <dl class="field-list simple">
@@ -998,7 +996,7 @@ Elements lie across the earlier axis of <em class="xref py py-obj">axes</em>.</p
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">offdiag_split_subs</span></code>, <a class="reference internal" href="#markov_helpers.markov.params.uni_gen_params_to_mat" title="markov_helpers.markov.params.uni_gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uni_gen_params_to_mat</span></code></a></dt><dd></dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">offdiag_split_subs</span></code>, <a class="reference internal" href="markov_helpers.markov.params.uni_gen_params_to_mat.html#markov_helpers.markov.params.uni_gen_params_to_mat" title="markov_helpers.markov.params.uni_gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uni_gen_params_to_mat</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <dl class="field-list simple">
@@ -1041,7 +1039,7 @@ The extra axis in (from,to) is inserted after <em class="xref py py-obj">axis</e
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">offdiag_split_subs</span></code>, <a class="reference internal" href="#markov_helpers.markov.params.uni_gen_mat_to_params" title="markov_helpers.markov.params.uni_gen_mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uni_gen_mat_to_params</span></code></a></dt><dd></dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">offdiag_split_subs</span></code>, <a class="reference internal" href="markov_helpers.markov.params.uni_gen_mat_to_params.html#markov_helpers.markov.params.uni_gen_mat_to_params" title="markov_helpers.markov.params.uni_gen_mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uni_gen_mat_to_params</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <dl class="field-list simple">
@@ -1089,7 +1087,7 @@ mat_0n-1 + mat10 + mat_21 + … + mat_n-1,n-2.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_subs</span></code>, <a class="reference internal" href="#markov_helpers.markov.params.uni_ring_params_to_mat" title="markov_helpers.markov.params.uni_ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uni_ring_params_to_mat</span></code></a></dt><dd></dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_subs</span></code>, <a class="reference internal" href="markov_helpers.markov.params.uni_ring_params_to_mat.html#markov_helpers.markov.params.uni_ring_params_to_mat" title="markov_helpers.markov.params.uni_ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uni_ring_params_to_mat</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <dl class="field-list simple">
@@ -1132,7 +1130,7 @@ The extra axis in (from,to) is inserted after <em class="xref py py-obj">axis</e
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_subs</span></code>, <a class="reference internal" href="#markov_helpers.markov.params.uni_ring_mat_to_params" title="markov_helpers.markov.params.uni_ring_mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uni_ring_mat_to_params</span></code></a></dt><dd></dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_subs</span></code>, <a class="reference internal" href="markov_helpers.markov.params.uni_ring_mat_to_params.html#markov_helpers.markov.params.uni_ring_mat_to_params" title="markov_helpers.markov.params.uni_ring_mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uni_ring_mat_to_params</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <dl class="field-list simple">
@@ -1180,7 +1178,7 @@ mat_10 + mat_21 + … + mat_n-1,n-2.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">serial_subs</span></code>, <a class="reference internal" href="#markov_helpers.markov.params.uni_serial_params_to_mat" title="markov_helpers.markov.params.uni_serial_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uni_serial_params_to_mat</span></code></a></dt><dd></dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">serial_subs</span></code>, <a class="reference internal" href="markov_helpers.markov.params.uni_serial_params_to_mat.html#markov_helpers.markov.params.uni_serial_params_to_mat" title="markov_helpers.markov.params.uni_serial_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uni_serial_params_to_mat</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <dl class="field-list simple">
@@ -1223,7 +1221,7 @@ The extra axis in (from,to) is inserted after <em class="xref py py-obj">axis</e
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">serial_subs</span></code>, <a class="reference internal" href="#markov_helpers.markov.params.uni_serial_mat_to_params" title="markov_helpers.markov.params.uni_serial_mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uni_serial_mat_to_params</span></code></a></dt><dd></dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">serial_subs</span></code>, <a class="reference internal" href="markov_helpers.markov.params.uni_serial_mat_to_params.html#markov_helpers.markov.params.uni_serial_mat_to_params" title="markov_helpers.markov.params.uni_serial_mat_to_params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uni_serial_mat_to_params</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <dl class="field-list simple">
@@ -1233,7 +1231,6 @@ The extra axis in (from,to) is inserted after <em class="xref py py-obj">axis</e
 </dl>
 </dd></dl>
 
-</section>
 </section>
 
 
@@ -1256,70 +1253,57 @@ The extra axis in (from,to) is inserted after <em class="xref py py-obj">axis</e
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Home page</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="markov_helpers.html">API reference</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="markov_helpers.html#notes">Notes</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="markov_helpers.graphs.html">markov_helpers.graphs</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="markov_helpers.markov.html">markov_helpers.markov</a><ul class="current">
-<li class="toctree-l4 current"><a class="reference internal" href="markov_helpers.markov.html#notes">Notes</a><ul class="current">
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.indices.html">markov_helpers.markov.indices</a></li>
-<li class="toctree-l5 current"><a class="current reference internal" href="#">markov_helpers.markov.params</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#notes">Notes</a><ul>
-<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.params.cascade_mat_to_params.html">markov_helpers.markov.params.cascade_mat_to_params</a></li>
-<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.params.cascade_params_to_mat.html">markov_helpers.markov.params.cascade_params_to_mat</a></li>
-<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.params.gen_mat_to_params.html">markov_helpers.markov.params.gen_mat_to_params</a></li>
-<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.params.gen_params_to_mat.html">markov_helpers.markov.params.gen_params_to_mat</a></li>
-<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.params.mat_to_params.html">markov_helpers.markov.params.mat_to_params</a></li>
-<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.params.mat_type_dict.html">markov_helpers.markov.params.mat_type_dict</a></li>
-<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.params.mat_type_siz.html">markov_helpers.markov.params.mat_type_siz</a></li>
-<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.params.mat_type_val.html">markov_helpers.markov.params.mat_type_val</a></li>
-<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.params.mat_update_params.html">markov_helpers.markov.params.mat_update_params</a></li>
-<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.params.matify.html">markov_helpers.markov.params.matify</a></li>
-<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.params.num_param.html">markov_helpers.markov.params.num_param</a></li>
-<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.params.num_state.html">markov_helpers.markov.params.num_state</a></li>
-<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.params.paramify.html">markov_helpers.markov.params.paramify</a></li>
-<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.params.params_to_mat.html">markov_helpers.markov.params.params_to_mat</a></li>
-<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.params.ring_mat_to_params.html">markov_helpers.markov.params.ring_mat_to_params</a></li>
-<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.params.ring_params_to_mat.html">markov_helpers.markov.params.ring_params_to_mat</a></li>
-<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.params.serial_mat_to_params.html">markov_helpers.markov.params.serial_mat_to_params</a></li>
-<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.params.serial_params_to_mat.html">markov_helpers.markov.params.serial_params_to_mat</a></li>
-<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.params.std_cascade_mat_to_params.html">markov_helpers.markov.params.std_cascade_mat_to_params</a></li>
-<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.params.std_cascade_params_to_mat.html">markov_helpers.markov.params.std_cascade_params_to_mat</a></li>
-<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.params.uni_gen_mat_to_params.html">markov_helpers.markov.params.uni_gen_mat_to_params</a></li>
-<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.params.uni_gen_params_to_mat.html">markov_helpers.markov.params.uni_gen_params_to_mat</a></li>
-<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.params.uni_ring_mat_to_params.html">markov_helpers.markov.params.uni_ring_mat_to_params</a></li>
-<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.params.uni_ring_params_to_mat.html">markov_helpers.markov.params.uni_ring_params_to_mat</a></li>
-<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.params.uni_serial_mat_to_params.html">markov_helpers.markov.params.uni_serial_mat_to_params</a></li>
-<li class="toctree-l7"><a class="reference internal" href="markov_helpers.markov.params.uni_serial_params_to_mat.html">markov_helpers.markov.params.uni_serial_params_to_mat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="markov_helpers.graphs.html">markov_helpers.graphs</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="markov_helpers.markov.html">markov_helpers.markov</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.indices.html">markov_helpers.markov.indices</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">markov_helpers.markov.params</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="markov_helpers.markov.params.cascade_mat_to_params.html">markov_helpers.markov.params.cascade_mat_to_params</a></li>
+<li class="toctree-l4"><a class="reference internal" href="markov_helpers.markov.params.cascade_params_to_mat.html">markov_helpers.markov.params.cascade_params_to_mat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="markov_helpers.markov.params.gen_mat_to_params.html">markov_helpers.markov.params.gen_mat_to_params</a></li>
+<li class="toctree-l4"><a class="reference internal" href="markov_helpers.markov.params.gen_params_to_mat.html">markov_helpers.markov.params.gen_params_to_mat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="markov_helpers.markov.params.mat_to_params.html">markov_helpers.markov.params.mat_to_params</a></li>
+<li class="toctree-l4"><a class="reference internal" href="markov_helpers.markov.params.mat_type_dict.html">markov_helpers.markov.params.mat_type_dict</a></li>
+<li class="toctree-l4"><a class="reference internal" href="markov_helpers.markov.params.mat_type_siz.html">markov_helpers.markov.params.mat_type_siz</a></li>
+<li class="toctree-l4"><a class="reference internal" href="markov_helpers.markov.params.mat_type_val.html">markov_helpers.markov.params.mat_type_val</a></li>
+<li class="toctree-l4"><a class="reference internal" href="markov_helpers.markov.params.mat_update_params.html">markov_helpers.markov.params.mat_update_params</a></li>
+<li class="toctree-l4"><a class="reference internal" href="markov_helpers.markov.params.matify.html">markov_helpers.markov.params.matify</a></li>
+<li class="toctree-l4"><a class="reference internal" href="markov_helpers.markov.params.num_param.html">markov_helpers.markov.params.num_param</a></li>
+<li class="toctree-l4"><a class="reference internal" href="markov_helpers.markov.params.num_state.html">markov_helpers.markov.params.num_state</a></li>
+<li class="toctree-l4"><a class="reference internal" href="markov_helpers.markov.params.paramify.html">markov_helpers.markov.params.paramify</a></li>
+<li class="toctree-l4"><a class="reference internal" href="markov_helpers.markov.params.params_to_mat.html">markov_helpers.markov.params.params_to_mat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="markov_helpers.markov.params.ring_mat_to_params.html">markov_helpers.markov.params.ring_mat_to_params</a></li>
+<li class="toctree-l4"><a class="reference internal" href="markov_helpers.markov.params.ring_params_to_mat.html">markov_helpers.markov.params.ring_params_to_mat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="markov_helpers.markov.params.serial_mat_to_params.html">markov_helpers.markov.params.serial_mat_to_params</a></li>
+<li class="toctree-l4"><a class="reference internal" href="markov_helpers.markov.params.serial_params_to_mat.html">markov_helpers.markov.params.serial_params_to_mat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="markov_helpers.markov.params.std_cascade_mat_to_params.html">markov_helpers.markov.params.std_cascade_mat_to_params</a></li>
+<li class="toctree-l4"><a class="reference internal" href="markov_helpers.markov.params.std_cascade_params_to_mat.html">markov_helpers.markov.params.std_cascade_params_to_mat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="markov_helpers.markov.params.uni_gen_mat_to_params.html">markov_helpers.markov.params.uni_gen_mat_to_params</a></li>
+<li class="toctree-l4"><a class="reference internal" href="markov_helpers.markov.params.uni_gen_params_to_mat.html">markov_helpers.markov.params.uni_gen_params_to_mat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="markov_helpers.markov.params.uni_ring_mat_to_params.html">markov_helpers.markov.params.uni_ring_mat_to_params</a></li>
+<li class="toctree-l4"><a class="reference internal" href="markov_helpers.markov.params.uni_ring_params_to_mat.html">markov_helpers.markov.params.uni_ring_params_to_mat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="markov_helpers.markov.params.uni_serial_mat_to_params.html">markov_helpers.markov.params.uni_serial_mat_to_params</a></li>
+<li class="toctree-l4"><a class="reference internal" href="markov_helpers.markov.params.uni_serial_params_to_mat.html">markov_helpers.markov.params.uni_serial_params_to_mat</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.adjoint.html">markov_helpers.markov.adjoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.calc_peq.html">markov_helpers.markov.calc_peq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.calc_peq_d.html">markov_helpers.markov.calc_peq_d</a></li>
+<li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.isstochastic_c.html">markov_helpers.markov.isstochastic_c</a></li>
+<li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.isstochastic_d.html">markov_helpers.markov.isstochastic_d</a></li>
+<li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.mean_dwell.html">markov_helpers.markov.mean_dwell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.rand_trans.html">markov_helpers.markov.rand_trans</a></li>
+<li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.rand_trans_d.html">markov_helpers.markov.rand_trans_d</a></li>
+<li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.sim_markov_c.html">markov_helpers.markov.sim_markov_c</a></li>
+<li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.sim_markov_d.html">markov_helpers.markov.sim_markov_d</a></li>
+<li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.stochastify_c.html">markov_helpers.markov.stochastify_c</a></li>
+<li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.stochastify_d.html">markov_helpers.markov.stochastify_d</a></li>
+<li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.stochastify_pd.html">markov_helpers.markov.stochastify_pd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.unstochastify_c.html">markov_helpers.markov.unstochastify_c</a></li>
+<li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.TopologyOptions.html">markov_helpers.markov.TopologyOptions</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.adjoint.html">markov_helpers.markov.adjoint</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.calc_peq.html">markov_helpers.markov.calc_peq</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.calc_peq_d.html">markov_helpers.markov.calc_peq_d</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.isstochastic_c.html">markov_helpers.markov.isstochastic_c</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.isstochastic_d.html">markov_helpers.markov.isstochastic_d</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.mean_dwell.html">markov_helpers.markov.mean_dwell</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.rand_trans.html">markov_helpers.markov.rand_trans</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.rand_trans_d.html">markov_helpers.markov.rand_trans_d</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.sim_markov_c.html">markov_helpers.markov.sim_markov_c</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.sim_markov_d.html">markov_helpers.markov.sim_markov_d</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.stochastify_c.html">markov_helpers.markov.stochastify_c</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.stochastify_d.html">markov_helpers.markov.stochastify_d</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.stochastify_pd.html">markov_helpers.markov.stochastify_pd</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.unstochastify_c.html">markov_helpers.markov.unstochastify_c</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.TopologyOptions.html">markov_helpers.markov.TopologyOptions</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Home page</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="markov_helpers.html">API reference</a></li>
 </ul>
 
 <div class="relations">

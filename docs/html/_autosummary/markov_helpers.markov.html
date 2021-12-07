@@ -38,8 +38,6 @@
   <section id="module-markov_helpers.markov">
 <span id="markov-helpers-markov"></span><h1>markov_helpers.markov<a class="headerlink" href="#module-markov_helpers.markov" title="Permalink to this headline">¶</a></h1>
 <p>Tools for working with and parameterising Markov processes</p>
-<section id="notes">
-<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
 <p>This package assumes probability distributions are represented by row vectors,
 so <span class="math notranslate nohighlight">\(Q_{ij}\)</span> is the transition rate from <span class="math notranslate nohighlight">\(i\)</span> to <span class="math notranslate nohighlight">\(j\)</span>.</p>
 <table class="longtable docutils align-default">
@@ -52,7 +50,7 @@ so <span class="math notranslate nohighlight">\(Q_{ij}\)</span> is the transitio
 <td><p>Generate indices for parameters of Markov processes</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="markov_helpers.markov.params.html#module-markov_helpers.markov.params" title="markov_helpers.markov.params"><code class="xref py py-obj docutils literal notranslate"><span class="pre">markov_helpers.markov.params</span></code></a></p></td>
-<td><p>Utilities for parameterising Markov processes</p></td>
+<td><p>Tools for parameterising Markov processes</p></td>
 </tr>
 </tbody>
 </table>
@@ -63,47 +61,47 @@ so <span class="math notranslate nohighlight">\(Q_{ij}\)</span> is the transitio
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="markov_helpers.markov.adjoint.html#markov_helpers.markov.adjoint" title="markov_helpers.markov.adjoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">adjoint</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.markov.adjoint" title="markov_helpers.markov.adjoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">adjoint</span></code></a></p></td>
 <td><p>Adjoint with respect to L2 inner product with measure</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="markov_helpers.markov.calc_peq.html#markov_helpers.markov.calc_peq" title="markov_helpers.markov.calc_peq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_peq</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#markov_helpers.markov.calc_peq" title="markov_helpers.markov.calc_peq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_peq</span></code></a></p></td>
 <td><p>Calculate steady state distribution.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="markov_helpers.markov.calc_peq_d.html#markov_helpers.markov.calc_peq_d" title="markov_helpers.markov.calc_peq_d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_peq_d</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.markov.calc_peq_d" title="markov_helpers.markov.calc_peq_d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_peq_d</span></code></a></p></td>
 <td><p>Calculate steady state distribution.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="markov_helpers.markov.isstochastic_c.html#markov_helpers.markov.isstochastic_c" title="markov_helpers.markov.isstochastic_c"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isstochastic_c</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#markov_helpers.markov.isstochastic_c" title="markov_helpers.markov.isstochastic_c"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isstochastic_c</span></code></a></p></td>
 <td><p>Are row sums zero?</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="markov_helpers.markov.isstochastic_d.html#markov_helpers.markov.isstochastic_d" title="markov_helpers.markov.isstochastic_d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isstochastic_d</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.markov.isstochastic_d" title="markov_helpers.markov.isstochastic_d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isstochastic_d</span></code></a></p></td>
 <td><p>Are row sums one?</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="markov_helpers.markov.mean_dwell.html#markov_helpers.markov.mean_dwell" title="markov_helpers.markov.mean_dwell"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean_dwell</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#markov_helpers.markov.mean_dwell" title="markov_helpers.markov.mean_dwell"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean_dwell</span></code></a></p></td>
 <td><p>Mean time spent in any state.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="markov_helpers.markov.rand_trans.html#markov_helpers.markov.rand_trans" title="markov_helpers.markov.rand_trans"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rand_trans</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.markov.rand_trans" title="markov_helpers.markov.rand_trans"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rand_trans</span></code></a></p></td>
 <td><p>Make a random transition matrix (continuous time).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="markov_helpers.markov.rand_trans_d.html#markov_helpers.markov.rand_trans_d" title="markov_helpers.markov.rand_trans_d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rand_trans_d</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#markov_helpers.markov.rand_trans_d" title="markov_helpers.markov.rand_trans_d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rand_trans_d</span></code></a></p></td>
 <td><p>Make a random transition matrix (discrete time).</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="markov_helpers.markov.sim_markov_c.html#markov_helpers.markov.sim_markov_c" title="markov_helpers.markov.sim_markov_c"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim_markov_c</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.markov.sim_markov_c" title="markov_helpers.markov.sim_markov_c"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim_markov_c</span></code></a></p></td>
 <td><p>Simulate Markov process trajectory.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="markov_helpers.markov.sim_markov_d.html#markov_helpers.markov.sim_markov_d" title="markov_helpers.markov.sim_markov_d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim_markov_d</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#markov_helpers.markov.sim_markov_d" title="markov_helpers.markov.sim_markov_d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sim_markov_d</span></code></a></p></td>
 <td><p>Simulate Markov process trajectory.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="markov_helpers.markov.stochastify_c.html#markov_helpers.markov.stochastify_c" title="markov_helpers.markov.stochastify_c"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stochastify_c</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.markov.stochastify_c" title="markov_helpers.markov.stochastify_c"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stochastify_c</span></code></a></p></td>
 <td><p>Make a matrix the generator of a continuous time Markov process.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="markov_helpers.markov.stochastify_d.html#markov_helpers.markov.stochastify_d" title="markov_helpers.markov.stochastify_d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stochastify_d</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#markov_helpers.markov.stochastify_d" title="markov_helpers.markov.stochastify_d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stochastify_d</span></code></a></p></td>
 <td><p>Make a matrix the generator of a discrete time Markov process by scaling.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="markov_helpers.markov.stochastify_pd.html#markov_helpers.markov.stochastify_pd" title="markov_helpers.markov.stochastify_pd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stochastify_pd</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.markov.stochastify_pd" title="markov_helpers.markov.stochastify_pd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stochastify_pd</span></code></a></p></td>
 <td><p>Make a matrix the generator of a discrete time Markov process by shifting.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="markov_helpers.markov.unstochastify_c.html#markov_helpers.markov.unstochastify_c" title="markov_helpers.markov.unstochastify_c"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unstochastify_c</span></code></a></p></td>
-<td><p>Undo the effect of <a class="reference internal" href="markov_helpers.markov.stochastify_c.html#markov_helpers.markov.stochastify_c" title="markov_helpers.markov.stochastify_c"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stochastify_c</span></code></a> or <a class="reference internal" href="markov_helpers.markov.stochastify_pd.html#markov_helpers.markov.stochastify_pd" title="markov_helpers.markov.stochastify_pd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stochastify_pd</span></code></a>.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#markov_helpers.markov.unstochastify_c" title="markov_helpers.markov.unstochastify_c"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unstochastify_c</span></code></a></p></td>
+<td><p>Undo the effect of <a class="reference internal" href="#markov_helpers.markov.stochastify_c" title="markov_helpers.markov.stochastify_c"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stochastify_c</span></code></a> or <a class="reference internal" href="#markov_helpers.markov.stochastify_pd" title="markov_helpers.markov.stochastify_pd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stochastify_pd</span></code></a>.</p></td>
 </tr>
 </tbody>
 </table>
@@ -163,43 +161,43 @@ parameters must be valid keys, otherwise a <em class="xref py py-obj">KeyError</
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="markov_helpers.markov.TopologyOptions.html#markov_helpers.markov.TopologyOptions.clear" title="markov_helpers.markov.TopologyOptions.clear"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear</span></code>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="markov_helpers.markov.TopologyOptions.html#markov_helpers.markov.TopologyOptions.copy" title="markov_helpers.markov.TopologyOptions.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a>()</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code>()</p></td>
 <td><p>Get a shallow copy of the object.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="markov_helpers.markov.TopologyOptions.html#markov_helpers.markov.TopologyOptions.directed" title="markov_helpers.markov.TopologyOptions.directed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">directed</span></code></a>([which])</p></td>
 <td><p>Dictionary of Markov parameter options</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="markov_helpers.markov.TopologyOptions.html#markov_helpers.markov.TopologyOptions.get" title="markov_helpers.markov.TopologyOptions.get"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code></a>(k[,d])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get</span></code>(k[,d])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="markov_helpers.markov.TopologyOptions.html#markov_helpers.markov.TopologyOptions.items" title="markov_helpers.markov.TopologyOptions.items"><code class="xref py py-obj docutils literal notranslate"><span class="pre">items</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">items</span></code>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="markov_helpers.markov.TopologyOptions.html#markov_helpers.markov.TopologyOptions.keys" title="markov_helpers.markov.TopologyOptions.keys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keys</span></code></a>()</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">keys</span></code>()</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="markov_helpers.markov.TopologyOptions.html#markov_helpers.markov.TopologyOptions.order_keys" title="markov_helpers.markov.TopologyOptions.order_keys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">order_keys</span></code></a>(*kwds)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">order_keys</span></code>(*kwds)</p></td>
 <td><p>Sort dicts given keys in order for start and end</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="markov_helpers.markov.TopologyOptions.html#markov_helpers.markov.TopologyOptions.pop" title="markov_helpers.markov.TopologyOptions.pop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pop</span></code></a>(k[,d])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">pop</span></code>(k[,d])</p></td>
 <td><p>If key is not found, d is returned if given, otherwise KeyError is raised.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="markov_helpers.markov.TopologyOptions.html#markov_helpers.markov.TopologyOptions.pop_my_args" title="markov_helpers.markov.TopologyOptions.pop_my_args"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pop_my_args</span></code></a>(kwds)</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">pop_my_args</span></code>(kwds)</p></td>
 <td><p>Pop any key from dict that can be set and use the value to set.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="markov_helpers.markov.TopologyOptions.html#markov_helpers.markov.TopologyOptions.popitem" title="markov_helpers.markov.TopologyOptions.popitem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">popitem</span></code></a>()</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">popitem</span></code>()</p></td>
 <td><p>as a 2-tuple; but raise KeyError if D is empty.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="markov_helpers.markov.TopologyOptions.html#markov_helpers.markov.TopologyOptions.setdefault" title="markov_helpers.markov.TopologyOptions.setdefault"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setdefault</span></code></a>(k[,d])</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">setdefault</span></code>(k[,d])</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="markov_helpers.markov.TopologyOptions.html#markov_helpers.markov.TopologyOptions.update" title="markov_helpers.markov.TopologyOptions.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code></a>([_Options__m])</p></td>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code>([_Options__m])</p></td>
 <td><p>Update from mappings/iterables</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="markov_helpers.markov.TopologyOptions.html#markov_helpers.markov.TopologyOptions.values" title="markov_helpers.markov.TopologyOptions.values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">values</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">values</span></code>()</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -253,11 +251,6 @@ where <em class="xref py py-obj">None</em> -&gt; omit <em class="xref py py-obj"
 <span class="sig-name descname"><span class="pre">discrete</span></span><em class="property"><span class="pre">:</span> <a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><span class="pre">bool</span></a></em><em class="property"> <span class="pre">=</span> <span class="pre">False</span></em><a class="headerlink" href="#markov_helpers.markov.TopologyOptions.discrete" title="Permalink to this definition">¶</a></dt>
 <dd><p>Are the transition matrices for a discrete-time Markov process?</p>
 </dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="markov_helpers.markov.TopologyOptions.key_last">
-<span class="sig-name descname"><span class="pre">key_last</span></span><em class="property"><span class="pre">:</span> <span class="pre">ClassVar</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><em class="property"> <span class="pre">=</span> <span class="pre">('directions',</span> <span class="pre">'npl')</span></em><a class="headerlink" href="#markov_helpers.markov.TopologyOptions.key_last" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="markov_helpers.markov.TopologyOptions.npl">
@@ -421,7 +414,7 @@ well? Will not broadcast if True. Default: False.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="markov_helpers.markov.rand_trans">
-<span class="sig-name descname"><span class="pre">rand_trans</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">nst</span></em>, <em class="sig-param"><span class="pre">npl=1</span></em>, <em class="sig-param"><span class="pre">sparsity=1.0</span></em>, <em class="sig-param"><span class="pre">rng=Generator(PCG64)</span> <span class="pre">at</span> <span class="pre">0x1EF06253E40</span></em>, <em class="sig-param"><span class="pre">**kwds</span></em><span class="sig-paren">)</span><a class="headerlink" href="#markov_helpers.markov.rand_trans" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">rand_trans</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">nst</span></em>, <em class="sig-param"><span class="pre">npl=1</span></em>, <em class="sig-param"><span class="pre">sparsity=1.0</span></em>, <em class="sig-param"><span class="pre">rng=Generator(PCG64)</span> <span class="pre">at</span> <span class="pre">0x1FBB908A9E0</span></em>, <em class="sig-param"><span class="pre">**kwds</span></em><span class="sig-paren">)</span><a class="headerlink" href="#markov_helpers.markov.rand_trans" title="Permalink to this definition">¶</a></dt>
 <dd><p>Make a random transition matrix (continuous time).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -450,7 +443,7 @@ well? Will not broadcast if True. Default: False.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="markov_helpers.markov.rand_trans_d">
-<span class="sig-name descname"><span class="pre">rand_trans_d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">nst</span></em>, <em class="sig-param"><span class="pre">npl=1</span></em>, <em class="sig-param"><span class="pre">sparsity=1.0</span></em>, <em class="sig-param"><span class="pre">rng=Generator(PCG64)</span> <span class="pre">at</span> <span class="pre">0x1EF06253E40</span></em>, <em class="sig-param"><span class="pre">**kwds</span></em><span class="sig-paren">)</span><a class="headerlink" href="#markov_helpers.markov.rand_trans_d" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">rand_trans_d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">nst</span></em>, <em class="sig-param"><span class="pre">npl=1</span></em>, <em class="sig-param"><span class="pre">sparsity=1.0</span></em>, <em class="sig-param"><span class="pre">rng=Generator(PCG64)</span> <span class="pre">at</span> <span class="pre">0x1FBB908A9E0</span></em>, <em class="sig-param"><span class="pre">**kwds</span></em><span class="sig-paren">)</span><a class="headerlink" href="#markov_helpers.markov.rand_trans_d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Make a random transition matrix (discrete time).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -479,7 +472,7 @@ well? Will not broadcast if True. Default: False.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="markov_helpers.markov.sim_markov_c">
-<span class="sig-name descname"><span class="pre">sim_markov_c</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">rates</span></em>, <em class="sig-param"><span class="pre">peq=None</span></em>, <em class="sig-param"><span class="pre">num_jump=None</span></em>, <em class="sig-param"><span class="pre">max_time=None</span></em>, <em class="sig-param"><span class="pre">rng=Generator(PCG64)</span> <span class="pre">at</span> <span class="pre">0x1EF06253E40</span></em><span class="sig-paren">)</span><a class="headerlink" href="#markov_helpers.markov.sim_markov_c" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">sim_markov_c</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">rates</span></em>, <em class="sig-param"><span class="pre">peq=None</span></em>, <em class="sig-param"><span class="pre">num_jump=None</span></em>, <em class="sig-param"><span class="pre">max_time=None</span></em>, <em class="sig-param"><span class="pre">rng=Generator(PCG64)</span> <span class="pre">at</span> <span class="pre">0x1FBB908A9E0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#markov_helpers.markov.sim_markov_c" title="Permalink to this definition">¶</a></dt>
 <dd><p>Simulate Markov process trajectory.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -512,7 +505,7 @@ well? Will not broadcast if True. Default: False.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="markov_helpers.markov.sim_markov_d">
-<span class="sig-name descname"><span class="pre">sim_markov_d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">jump</span></em>, <em class="sig-param"><span class="pre">peq=None</span></em>, <em class="sig-param"><span class="pre">num_jump=10</span></em>, <em class="sig-param"><span class="pre">rng=Generator(PCG64)</span> <span class="pre">at</span> <span class="pre">0x1EF06253E40</span></em><span class="sig-paren">)</span><a class="headerlink" href="#markov_helpers.markov.sim_markov_d" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">sim_markov_d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">jump</span></em>, <em class="sig-param"><span class="pre">peq=None</span></em>, <em class="sig-param"><span class="pre">num_jump=10</span></em>, <em class="sig-param"><span class="pre">rng=Generator(PCG64)</span> <span class="pre">at</span> <span class="pre">0x1FBB908A9E0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#markov_helpers.markov.sim_markov_d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Simulate Markov process trajectory.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -593,7 +586,7 @@ well? Will not broadcast if True. Default: False.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="markov_helpers.markov.unstochastify_c">
 <span class="sig-name descname"><span class="pre">unstochastify_c</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#markov_helpers.markov.unstochastify_c" title="Permalink to this definition">¶</a></dt>
-<dd><p>Undo the effect of <a class="reference internal" href="markov_helpers.markov.stochastify_c.html#markov_helpers.markov.stochastify_c" title="markov_helpers.markov.stochastify_c"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stochastify_c</span></code></a> or <a class="reference internal" href="markov_helpers.markov.stochastify_pd.html#markov_helpers.markov.stochastify_pd" title="markov_helpers.markov.stochastify_pd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stochastify_pd</span></code></a>.</p>
+<dd><p>Undo the effect of <a class="reference internal" href="#markov_helpers.markov.stochastify_c" title="markov_helpers.markov.stochastify_c"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stochastify_c</span></code></a> or <a class="reference internal" href="#markov_helpers.markov.stochastify_pd" title="markov_helpers.markov.stochastify_pd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stochastify_pd</span></code></a>.</p>
 <p>Makes diagonal elements zero.
 <strong>Modifies</strong> in place, <strong>does not</strong> return.</p>
 <dl class="field-list simple">
@@ -607,7 +600,6 @@ well? Will not broadcast if True. Default: False.</p>
 </dl>
 </dd></dl>
 
-</section>
 </section>
 
 
@@ -630,39 +622,29 @@ well? Will not broadcast if True. Default: False.</p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Home page</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="markov_helpers.html">API reference</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="markov_helpers.html#notes">Notes</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="markov_helpers.graphs.html">markov_helpers.graphs</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">markov_helpers.markov</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#notes">Notes</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.indices.html">markov_helpers.markov.indices</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.params.html">markov_helpers.markov.params</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.adjoint.html">markov_helpers.markov.adjoint</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.calc_peq.html">markov_helpers.markov.calc_peq</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.calc_peq_d.html">markov_helpers.markov.calc_peq_d</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.isstochastic_c.html">markov_helpers.markov.isstochastic_c</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.isstochastic_d.html">markov_helpers.markov.isstochastic_d</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.mean_dwell.html">markov_helpers.markov.mean_dwell</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.rand_trans.html">markov_helpers.markov.rand_trans</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.rand_trans_d.html">markov_helpers.markov.rand_trans_d</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.sim_markov_c.html">markov_helpers.markov.sim_markov_c</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.sim_markov_d.html">markov_helpers.markov.sim_markov_d</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.stochastify_c.html">markov_helpers.markov.stochastify_c</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.stochastify_d.html">markov_helpers.markov.stochastify_d</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.stochastify_pd.html">markov_helpers.markov.stochastify_pd</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.unstochastify_c.html">markov_helpers.markov.unstochastify_c</a></li>
-<li class="toctree-l5"><a class="reference internal" href="markov_helpers.markov.TopologyOptions.html">markov_helpers.markov.TopologyOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="markov_helpers.graphs.html">markov_helpers.graphs</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">markov_helpers.markov</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.indices.html">markov_helpers.markov.indices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.params.html">markov_helpers.markov.params</a></li>
+<li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.adjoint.html">markov_helpers.markov.adjoint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.calc_peq.html">markov_helpers.markov.calc_peq</a></li>
+<li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.calc_peq_d.html">markov_helpers.markov.calc_peq_d</a></li>
+<li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.isstochastic_c.html">markov_helpers.markov.isstochastic_c</a></li>
+<li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.isstochastic_d.html">markov_helpers.markov.isstochastic_d</a></li>
+<li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.mean_dwell.html">markov_helpers.markov.mean_dwell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.rand_trans.html">markov_helpers.markov.rand_trans</a></li>
+<li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.rand_trans_d.html">markov_helpers.markov.rand_trans_d</a></li>
+<li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.sim_markov_c.html">markov_helpers.markov.sim_markov_c</a></li>
+<li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.sim_markov_d.html">markov_helpers.markov.sim_markov_d</a></li>
+<li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.stochastify_c.html">markov_helpers.markov.stochastify_c</a></li>
+<li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.stochastify_d.html">markov_helpers.markov.stochastify_d</a></li>
+<li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.stochastify_pd.html">markov_helpers.markov.stochastify_pd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.unstochastify_c.html">markov_helpers.markov.unstochastify_c</a></li>
+<li class="toctree-l3"><a class="reference internal" href="markov_helpers.markov.TopologyOptions.html">markov_helpers.markov.TopologyOptions</a></li>
 </ul>
 </li>
 </ul>
 </li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../index.html">Home page</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="markov_helpers.html">API reference</a></li>
 </ul>
 
 <div class="relations">
