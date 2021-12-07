@@ -433,10 +433,6 @@ class DiGraph(nx.DiGraph, GraphAttrs):
     It also provides methods for working with node/edge attributes in a
     `numpy.ndarray`: `has_node_attr`, `get_node_attr`, `set_node_attr`,
     `has_edge_attr`, `get_edge_attr`, `set_edge_attr`.
-
-    See Also
-    --------
-    `networkx.DiGraph`
     """
     edge_order: ty.List[Edge]
     """Edge ids in the order they were added."""
@@ -514,10 +510,6 @@ class MultiDiGraph(nx.MultiDiGraph, GraphAttrs):
     It also provides methods for working with `np.ndarray`s of node/edge
     attribute: `has_node_attr`, `get_node_attr`, `set_node_attr`,
     `has_edge_attr`, `get_edge_attr`, `set_edge_attr`.
-
-    See Also
-    --------
-    `networkx.MultiDiGraph`
     """
     edge_order: ty.List[Edge]
     """Edge ids in the order they were added."""

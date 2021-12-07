@@ -2,7 +2,8 @@
 
 See Also
 --------
-`networkx`
+`networkx.DiGraph`,
+`networkx.MultiDiGraph`.
 """
 from . import plots
 from ._tricks import (DiGraph,
