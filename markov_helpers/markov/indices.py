@@ -1,7 +1,5 @@
 """Generate indices for parameters of Markov processes
 
-Notes
------
 This package assumes probability distributions are represented by row vectors,
 so :math:`Q_{ij}` is the transition rate from :math:`i` to :math:`j`.
 """
@@ -260,7 +258,7 @@ def serial_subs(nst: int, drn: IntOrSeq = 0, ravel: bool = True) -> Subs:
 
 @_h.sub_fun_bcast
 def cascade_subs(nst: int, drn: IntOrSeq = 0, ravel: bool = True) -> Subs:
-    """Row and column indices of non-zero elements of cascade transition matrix.
+    """Row and column indices of non-zero elements of cascade transition matrix
 
     Parameters
     ----------
