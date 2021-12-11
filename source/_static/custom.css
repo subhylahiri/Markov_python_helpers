@@ -63,7 +63,7 @@ body {
     font-family: Helvetica, Arial, sans-serif;
 }
 
-div.body {
+div.body, div.seealso, div.note {
     background-color: var(--major-bg-color);
     color: var(--major-fg-color);
 }
@@ -93,7 +93,7 @@ div.sphinxsidebar #searchbox input[type="text"] {
     background-color: var(--major-bg-color);
     color: var(--major-fg-color);
 }
-tt, code, tt.xref, code.xref {
+tt, code, tt.xref, code.xref, div.admonition code.xref {
     background-color: inherit;
     color: var(--major-fg-color);
     border-bottom: none;
