@@ -44,14 +44,14 @@ autodoc_default_options = {
     'undoc-members': True,
     'member_order': "bysource",
 }
+add_module_names = False
 autodoc_inherit_docstrings = True
 autosummary_generate = True
 autosummary_imported_members = True
 autosummary_ignore_module_all = False
 numpydoc_edit_link = False
-add_module_names = False
+numpydoc_show_class_members = False
 # numpydoc_xref_param_type = True
-# numpydoc_class_members_toctree = False
 # Mappings for sphinx.ext.intersphinx. Projects have to have Sphinx-generated doc! (.inv file)
 intersphinx_mapping = {
     "python": ("https://docs.python.org/3/", None),
@@ -59,7 +59,11 @@ intersphinx_mapping = {
     "matplotlib": ("https://matplotlib.org/stable/", None),
     "networkx": ("https://networkx.org/documentation/stable/", None),
 }
-
+modindex_common_prefix = [
+    "markov_helpers.",
+    "markov_helpers.markov.",
+    "markov_helpers.graphs."
+]
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
