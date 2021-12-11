@@ -282,6 +282,8 @@ class GraphOptions(_op.Options,
         All parameters are optional keywords. Any dictionary passed as
         positional parameters will be popped for the relevant items. Keyword
         parameters must be valid keys, otherwise a `KeyError` is raised.
+
+        The notion of good and bad edges only matters for `MultiDiGraph`s.
     """
     topology: _mk.TopologyOptions
     """Topology specifying options for creating graphs/for `judge`."""
@@ -406,7 +408,7 @@ def linear_layout(graph: nx.Graph, sep: ArrayLike = (1., 0.),
 
     Returns
     -------
-    pos : _ty.Dict[Node, np.ndarray]
+    pos : Dict[Node, np.ndarray]
         Dictionary of node ids -> position vectors.
     """
     sep, origin = np.asarray(sep), np.asarray(origin)
@@ -739,9 +741,9 @@ class GraphPlots:
         Parameters
         ----------
         edge_vals : None|np.ndarray (E,)
-            Edge line widths.
+            Edge line widths, or `None` to leave unchanged.
         node_vals : None|np.ndarray (N,)
-            Equilibrium distribution,for nodes sizes (area)
+            Nodes sizes (area), or `None` to leave unchanged.
         """
         if edge_vals is not None:
             self.set_widths(edge_vals)
