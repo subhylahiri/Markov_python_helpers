@@ -58,46 +58,7 @@ model was a <em class="xref py py-obj">SynapseParamModel</em>).</p>
 <dt><strong>`nx.draw_networkx_edges`.</strong></dt><dd></dd>
 </dl>
 </dd>
-<dt class="field-even">Attributes</dt>
-<dd class="field-even"><dl class="simple">
-<dt><a class="reference internal" href="#markov_helpers.graphs.plots.GraphPlots.collection" title="markov_helpers.graphs.plots.GraphPlots.collection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">collection</span></code></a></dt><dd><p>The underlying matplotlib objects</p>
-</dd>
 </dl>
-</dd>
-</dl>
-<p class="rubric">Methods</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.graphs.plots.GraphPlots.set_edge_colors" title="markov_helpers.graphs.plots.GraphPlots.set_edge_colors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_edge_colors</span></code></a>(cols)</p></td>
-<td><p>Set line colour values</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#markov_helpers.graphs.plots.GraphPlots.set_node_colors" title="markov_helpers.graphs.plots.GraphPlots.set_node_colors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_node_colors</span></code></a>(cols)</p></td>
-<td><p>Set node colour values</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.graphs.plots.GraphPlots.set_node_pos" title="markov_helpers.graphs.plots.GraphPlots.set_node_pos"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_node_pos</span></code></a>(pos)</p></td>
-<td><p>Set positions of of nodes</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#markov_helpers.graphs.plots.GraphPlots.set_node_sizes" title="markov_helpers.graphs.plots.GraphPlots.set_node_sizes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_node_sizes</span></code></a>(node_vals)</p></td>
-<td><p>Set node sizes</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.graphs.plots.GraphPlots.set_rads" title="markov_helpers.graphs.plots.GraphPlots.set_rads"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_rads</span></code></a>(rads)</p></td>
-<td><p>Set the curvature of the edges.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#markov_helpers.graphs.plots.GraphPlots.set_widths" title="markov_helpers.graphs.plots.GraphPlots.set_widths"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_widths</span></code></a>(edge_vals)</p></td>
-<td><p>Set line widths of edges</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.graphs.plots.GraphPlots.update" title="markov_helpers.graphs.plots.GraphPlots.update"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code></a>(edge_vals, node_vals)</p></td>
-<td><p>Update plots.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#markov_helpers.graphs.plots.GraphPlots.update_from" title="markov_helpers.graphs.plots.GraphPlots.update_from"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_from</span></code></a>(graph)</p></td>
-<td><p>Update plots using a graph object.</p></td>
-</tr>
-</tbody>
-</table>
 <p class="rubric">Methods</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -303,9 +264,9 @@ oval. Positive -&gt; counter-clockwise.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>edge_vals</strong><span class="classifier">None|np.ndarray (E,)</span></dt><dd><p>Edge line widths.</p>
+<dt><strong>edge_vals</strong><span class="classifier">None|np.ndarray (E,)</span></dt><dd><p>Edge line widths, or <em class="xref py py-obj">None</em> to leave unchanged.</p>
 </dd>
-<dt><strong>node_vals</strong><span class="classifier">None|np.ndarray (N,)</span></dt><dd><p>Equilibrium distribution,for nodes sizes (area)</p>
+<dt><strong>node_vals</strong><span class="classifier">None|np.ndarray (N,)</span></dt><dd><p>Nodes sizes (area), or <em class="xref py py-obj">None</em> to leave unchanged.</p>
 </dd>
 </dl>
 </dd>

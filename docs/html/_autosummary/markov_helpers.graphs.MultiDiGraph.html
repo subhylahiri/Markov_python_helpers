@@ -42,202 +42,9 @@
 <dd><p>Bases: <a class="reference external" href="https://networkx.org/documentation/stable/reference/classes/multidigraph.html#networkx.MultiDiGraph" title="(in NetworkX v2.6.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">networkx.classes.multidigraph.MultiDiGraph</span></code></a>, <a class="reference internal" href="markov_helpers.graphs.GraphAttrs.html#markov_helpers.graphs.GraphAttrs" title="markov_helpers.graphs._tricks.GraphAttrs"><code class="xref py py-class docutils literal notranslate"><span class="pre">markov_helpers.graphs._tricks.GraphAttrs</span></code></a></p>
 <p>Custom directed multi-graph class that remembers edge order (N,E)</p>
 <p>Iterating over edges is done in the order that the edges were first added.
-It also provides methods for working with <em class="xref py py-obj">np.ndarray`s of node/edge
-attribute: `has_node_attr</em>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">get_node_attr</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">set_node_attr</span></code>,
+It also provides methods for working with node/edge attributes in a
+<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.21)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code></a>: <code class="xref py py-obj docutils literal notranslate"><span class="pre">has_node_attr</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">get_node_attr</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">set_node_attr</span></code>,
 <code class="xref py py-obj docutils literal notranslate"><span class="pre">has_edge_attr</span></code>, <a class="reference internal" href="#markov_helpers.graphs.MultiDiGraph.get_edge_attr" title="markov_helpers.graphs.MultiDiGraph.get_edge_attr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_edge_attr</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">set_edge_attr</span></code>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Attributes</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">adj</span></code></dt><dd><p>Graph adjacency object holding the neighbors of each node.</p>
-</dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">degree</span></code></dt><dd><p>A DegreeView for the Graph as G.degree or G.degree().</p>
-</dd>
-<dt><a class="reference internal" href="#markov_helpers.graphs.MultiDiGraph.edges" title="markov_helpers.graphs.MultiDiGraph.edges"><code class="xref py py-obj docutils literal notranslate"><span class="pre">edges</span></code></a></dt><dd><p>OutMultiEdgeView of the MultiDiGraph as G.edges or G.edges(…).</p>
-</dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">in_degree</span></code></dt><dd><p>A DegreeView for (node, in_degree) or in_degree for single node.</p>
-</dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">in_edges</span></code></dt><dd><p>An InMultiEdgeView of the Graph as G.in_edges or G.in_edges().</p>
-</dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></dt><dd><p>String identifier of the graph.</p>
-</dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">nodes</span></code></dt><dd><p>A NodeView of the Graph as G.nodes or G.nodes().</p>
-</dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">out_degree</span></code></dt><dd><p>Returns an iterator for (node, out-degree) or out-degree for single node.</p>
-</dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">out_edges</span></code></dt><dd><p>An OutMultiEdgeView of the Graph as G.edges or G.edges().</p>
-</dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">pred</span></code></dt><dd><p>Graph adjacency object holding the predecessors of each node.</p>
-</dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">succ</span></code></dt><dd><p>Graph adjacency object holding the successors of each node.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-<p class="rubric">Methods</p>
-<table class="longtable docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.graphs.MultiDiGraph.add_edge" title="markov_helpers.graphs.MultiDiGraph.add_edge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_edge</span></code></a>(u_for_edge, v_for_edge[, key])</p></td>
-<td><p>Add/modify an edge</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_edges_from</span></code>(ebunch_to_add, **attr)</p></td>
-<td><p>Add all the edges in ebunch_to_add.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_node</span></code>(node_for_adding, **attr)</p></td>
-<td><p>Add a single node <em class="xref py py-obj">node_for_adding</em> and update node attributes.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_nodes_from</span></code>(nodes_for_adding, **attr)</p></td>
-<td><p>Add multiple nodes.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_weighted_edges_from</span></code>(ebunch_to_add[, weight])</p></td>
-<td><p>Add weighted edges in <em class="xref py py-obj">ebunch_to_add</em> with specified weight attr</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">adjacency</span></code>()</p></td>
-<td><p>Returns an iterator over (node, adjacency dict) tuples for all nodes.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">adjlist_inner_dict_factory</span></code></p></td>
-<td><p>alias of <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">adjlist_outer_dict_factory</span></code></p></td>
-<td><p>alias of <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear</span></code>()</p></td>
-<td><p>Remove all nodes and edges from the graph.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">clear_edges</span></code>()</p></td>
-<td><p>Remove all edges from the graph without altering nodes.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code>([as_view])</p></td>
-<td><p>Returns a copy of the graph.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">edge_attr_dict_factory</span></code></p></td>
-<td><p>alias of <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.graphs.MultiDiGraph.edge_attr_matrix" title="markov_helpers.graphs.MultiDiGraph.edge_attr_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">edge_attr_matrix</span></code></a>(data[, fill])</p></td>
-<td><p>Collect values of edge attributes in an array of matrices.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#markov_helpers.graphs.MultiDiGraph.edge_key" title="markov_helpers.graphs.MultiDiGraph.edge_key"><code class="xref py py-obj docutils literal notranslate"><span class="pre">edge_key</span></code></a>()</p></td>
-<td><p>Vector of edge keys</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">edge_key_dict_factory</span></code></p></td>
-<td><p>alias of <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">edge_subgraph</span></code>(edges)</p></td>
-<td><p>Returns the subgraph induced by the specified edges.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.graphs.MultiDiGraph.get_edge_attr" title="markov_helpers.graphs.MultiDiGraph.get_edge_attr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_edge_attr</span></code></a>(data[, default])</p></td>
-<td><p>Collect values of edge attributes.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_edge_data</span></code>(u, v[, key, default])</p></td>
-<td><p>Returns the attribute dictionary associated with edge (u, v).</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_node_attr</span></code>(data[, default])</p></td>
-<td><p>Collect values of node attributes.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">graph_attr_dict_factory</span></code></p></td>
-<td><p>alias of <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_edge</span></code>(u, v[, key])</p></td>
-<td><p>Returns True if the graph has an edge between nodes u and v.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_edge_attr</span></code>(data[, strict])</p></td>
-<td><p>Test for existence of edge attributes.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_node</span></code>(n)</p></td>
-<td><p>Returns True if the graph contains the node n.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_node_attr</span></code>(data[, strict])</p></td>
-<td><p>Test for existence of node attributes.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_predecessor</span></code>(u, v)</p></td>
-<td><p>Returns True if node u has predecessor v.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">has_successor</span></code>(u, v)</p></td>
-<td><p>Returns True if node u has successor v.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_directed</span></code>()</p></td>
-<td><p>Returns True if graph is directed, False otherwise.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_multigraph</span></code>()</p></td>
-<td><p>Returns True if graph is a multigraph, False otherwise.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">nbunch_iter</span></code>([nbunch])</p></td>
-<td><p>Returns an iterator over nodes contained in nbunch that are also in the graph.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">neighbors</span></code>(n)</p></td>
-<td><p>Returns an iterator over successor nodes of n.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">new_edge_key</span></code>(u, v)</p></td>
-<td><p>Returns an unused key for edges between nodes <em class="xref py py-obj">u</em> and <em class="xref py py-obj">v</em>.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">node_attr_dict_factory</span></code></p></td>
-<td><p>alias of <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">node_dict_factory</span></code></p></td>
-<td><p>alias of <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.10)"><code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></a></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_edges</span></code>([u, v])</p></td>
-<td><p>Returns the number of edges between two nodes.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">number_of_nodes</span></code>()</p></td>
-<td><p>Returns the number of nodes in the graph.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">order</span></code>()</p></td>
-<td><p>Returns the number of nodes in the graph.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">predecessors</span></code>(n)</p></td>
-<td><p>Returns an iterator over predecessor nodes of n.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edge</span></code>(u, v[, key])</p></td>
-<td><p>Remove an edge between u and v.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_edges_from</span></code>(ebunch)</p></td>
-<td><p>Remove all edges specified in ebunch.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_node</span></code>(n)</p></td>
-<td><p>Remove node n.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_nodes_from</span></code>(nodes)</p></td>
-<td><p>Remove multiple nodes.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">reverse</span></code>([copy])</p></td>
-<td><p>Returns the reverse of the graph.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_edge_attr</span></code>(data, values)</p></td>
-<td><p>Collect values of edge attributes.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_node_attr</span></code>(data, values)</p></td>
-<td><p>Change values of node attributes.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">size</span></code>([weight])</p></td>
-<td><p>Returns the number of edges or total of all edge weights.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">subgraph</span></code>(nodes)</p></td>
-<td><p>Returns a SubGraph view of the subgraph induced on <code class="xref py py-obj docutils literal notranslate"><span class="pre">nodes</span></code>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">successors</span></code>(n)</p></td>
-<td><p>Returns an iterator over successor nodes of n.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_directed</span></code>([as_view])</p></td>
-<td><p>Returns a directed representation of the graph.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_directed_class</span></code>()</p></td>
-<td><p>Returns the class to use for empty directed copies.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_undirected</span></code>([reciprocal, as_view])</p></td>
-<td><p>Returns an undirected representation of the digraph.</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_undirected_class</span></code>()</p></td>
-<td><p>Returns the class to use for empty undirected copies.</p></td>
-</tr>
-<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">update</span></code>([edges, nodes])</p></td>
-<td><p>Update the graph using nodes/edges/graphs as input.</p></td>
-</tr>
-</tbody>
-</table>
 <p class="rubric">Methods</p>
 <table class="longtable docutils align-default">
 <colgroup>
@@ -276,7 +83,7 @@ attribute: `has_node_attr</em>, <code class="xref py py-obj docutils literal not
 <td><p>Collect values of edge attributes in an array of matrices.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#markov_helpers.graphs.MultiDiGraph.edge_key" title="markov_helpers.graphs.MultiDiGraph.edge_key"><code class="xref py py-obj docutils literal notranslate"><span class="pre">edge_key</span></code></a></p></td>
-<td><p>Vector of edge keys</p></td>
+<td><p>Vector of edge keys.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">edge_subgraph</span></code></p></td>
 <td><p>Returns the subgraph induced by the specified edges.</p></td>
@@ -494,7 +301,7 @@ corresponds to a value of <em class="xref py py-obj">list_edge_keys(self)</em>, 
 <dl class="py method">
 <dt class="sig sig-object py" id="markov_helpers.graphs.MultiDiGraph.edge_key">
 <span class="sig-name descname"><span class="pre">edge_key</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#markov_helpers.graphs.MultiDiGraph.edge_key" title="Permalink to this definition">¶</a></dt>
-<dd><p>Vector of edge keys</p>
+<dd><p>Vector of edge keys.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><dl class="simple">
