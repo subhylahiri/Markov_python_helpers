@@ -49,7 +49,7 @@ def gen_params_to_mat(params: Array, drn: IntOrSeq = 0, axis: IntOrSeq = -1,
 
     See Also
     --------
-    indices.offdiag_subs, gen_mat_to_params
+    .indices.offdiag_subs, gen_mat_to_params
     """
     return _h.params_to_mat(params, _in.offdiag_subs, drn, axis, daxis, **kwds)
 
@@ -83,7 +83,7 @@ def uni_gen_params_to_mat(params: Array, num_st: int, drn: IntOrSeq = 0,
 
     See Also
     --------
-    indices.offdiag_split_subs, uni_gen_mat_to_params
+    .indices.offdiag_split_subs, uni_gen_mat_to_params
     """
     params = _h.uni_to_any(params, num_st, axis=axis, **kwds)
     return _h.params_to_mat(params, _in.offdiag_split_subs,
@@ -115,7 +115,7 @@ def ring_params_to_mat(params: Array, drn: IntOrSeq = 0, axis: IntOrSeq = -1,
 
     See Also
     --------
-    indices.ring_subs, ring_mat_to_params
+    .indices.ring_subs, ring_mat_to_params
     """
     kwds['ring'] = True
     return _h.params_to_mat(params, _in.ring_subs, drn, axis, daxis, **kwds)
@@ -150,7 +150,7 @@ def uni_ring_params_to_mat(params: Array, num_st: int, drn: IntOrSeq = 0,
 
     See Also
     --------
-    indices.ring_subs, uni_ring_mat_to_params
+    .indices.ring_subs, uni_ring_mat_to_params
     """
     kwds['ring'] = True
     ring_params = _h.uni_to_any(params, num_st, axis=axis, **kwds)
@@ -183,7 +183,7 @@ def serial_params_to_mat(params: Array, drn: IntOrSeq = 0,
 
     See Also
     --------
-    indices.serial_subs, serial_mat_to_params
+    .indices.serial_subs, serial_mat_to_params
     """
     kwds['serial'] = True
     return _h.params_to_mat(params, _in.serial_subs, drn, axis, daxis, **kwds)
@@ -218,7 +218,7 @@ def uni_serial_params_to_mat(params: Array, num_st: int, drn: IntOrSeq = 0,
 
     See Also
     --------
-    indices.serial_subs, uni_serial_mat_to_params
+    .indices.serial_subs, uni_serial_mat_to_params
     """
     kwds['serial'] = True
     ser_params = _h.uni_to_any(params, num_st, axis=axis, **kwds)
@@ -252,7 +252,7 @@ def cascade_params_to_mat(params: Array, drn: IntOrSeq = 0,
 
     See Also
     --------
-    indices.cascade_subs, cascade_mat_to_params
+    .indices.cascade_subs, cascade_mat_to_params
     """
     # cascade topology has same number of transitions as
     kwds['serial'] = True
@@ -346,7 +346,7 @@ def params_to_mat(params: Array, *, serial: bool = False,
 
     See Also
     --------
-    ..indices.param_subs, mat_to_params
+    .indices.param_subs, mat_to_params
     """
     kwds.update({'serial': serial, 'ring': ring})
     if uniform:
