@@ -71,6 +71,7 @@ instance/
 # Sphinx documentation
 /source/_autosummary/
 /docs/doctrees/
+/docs/.doctrees/
 /docs/html/_sources/
 /docs/html/.buildinfo
 # Reinclude website
