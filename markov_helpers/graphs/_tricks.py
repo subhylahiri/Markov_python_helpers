@@ -324,8 +324,8 @@ class GraphAttrs(nx.Graph):
 
     Base class for DiGraph and MultiDiGraph.
 
-    This class provides methods for working with `np.ndarray`s of node/edge
-    attribute: `has_node_attr`, `get_node_attr`, `set_node_attr`,
+    This class provides methods for working with node/edge attributes in a
+    `numpy.ndarray`: `has_node_attr`, `get_node_attr`, `set_node_attr`,
     `has_edge_attr`, `get_edge_attr`, `set_edge_attr`.
     """
 
@@ -507,8 +507,8 @@ class MultiDiGraph(nx.MultiDiGraph, GraphAttrs):
     """Custom directed multi-graph class that remembers edge order (N,E)
 
     Iterating over edges is done in the order that the edges were first added.
-    It also provides methods for working with `np.ndarray`s of node/edge
-    attribute: `has_node_attr`, `get_node_attr`, `set_node_attr`,
+    It also provides methods for working with node/edge attributes in a
+    `numpy.ndarray`: `has_node_attr`, `get_node_attr`, `set_node_attr`,
     `has_edge_attr`, `get_edge_attr`, `set_edge_attr`.
     """
     edge_order: ty.List[Edge]

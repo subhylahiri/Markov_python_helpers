@@ -52,7 +52,7 @@ def gen_mat_to_params(mat: Array, drn: IntOrSeq = 0,
 
     See Also
     --------
-    offdiag_subs, gen_params_to_mat
+    indices.offdiag_subs, gen_params_to_mat
     """
     return _h.mat_to_params(mat, _in.offdiag_subs, drn, axes, daxis)
 
@@ -89,7 +89,7 @@ def uni_gen_mat_to_params(mat: Array, grad: bool = True, drn: IntOrSeq = 0,
 
     See Also
     --------
-    offdiag_split_subs, uni_gen_params_to_mat
+    indices.offdiag_split_subs, uni_gen_params_to_mat
     """
     if _h.unpack_nest(drn):
         return _h.to_uni(gen_mat_to_params(mat, drn, axes, daxis),
@@ -125,7 +125,7 @@ def ring_mat_to_params(mat: Array, drn: IntOrSeq = 0,
 
     See Also
     --------
-    ring_subs, ring_params_to_mat
+    indices.ring_subs, ring_params_to_mat
     """
     return _h.mat_to_params(mat, _in.ring_subs, drn, axes, daxis)
 
@@ -162,7 +162,7 @@ def uni_ring_mat_to_params(mat: Array, grad: bool = True,
 
     See Also
     --------
-    ring_subs, uni_ring_params_to_mat
+    indices.ring_subs, uni_ring_params_to_mat
     """
     return _h.to_uni(ring_mat_to_params(mat, drn, axes, daxis),
                       drn, grad, axes)
@@ -194,7 +194,7 @@ def serial_mat_to_params(mat: Array, drn: IntOrSeq = 0,
 
     See Also
     --------
-    serial_subs, serial_params_to_mat
+    indices.serial_subs, serial_params_to_mat
     """
     return _h.mat_to_params(mat, _in.serial_subs, drn, axes, daxis)
 
@@ -231,7 +231,7 @@ def uni_serial_mat_to_params(mat: Array, grad: bool = True,
 
     See Also
     --------
-    serial_subs, uni_serial_params_to_mat
+    indices.serial_subs, uni_serial_params_to_mat
     """
     return _h.to_uni(serial_mat_to_params(mat, drn, axes, daxis),
                       drn, grad, axes)
@@ -265,7 +265,7 @@ def cascade_mat_to_params(mat: Array, drn: IntOrSeq = 0,
 
     See Also
     --------
-    ring_subs, ring_params_to_mat
+    indices.cascade_subs, cascade_params_to_mat
     """
     return _h.mat_to_params(mat, _in.cascade_subs, drn, axes, daxis)
 
@@ -303,7 +303,7 @@ def std_cascade_mat_to_params(mat: Array,
 
     See Also
     --------
-    cascade_subs, std_cascade_params_to_mat
+    indices.cascade_subs, std_cascade_params_to_mat
     """
     if not isinstance(axes[0], int):
         return _h.bcast_axes(std_cascade_mat_to_params, mat, param, grad=grad,
@@ -371,7 +371,7 @@ def mat_to_params(mat: Array, *, serial: bool = False, ring: bool = False,
 
     See Also
     --------
-    param_subs, params_to_mat
+    indices.param_subs, params_to_mat
     """
     params = _h.mat_to_params(mat, _in.sub_fun(serial, ring, uniform),
                                drn, axes, daxis)

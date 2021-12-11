@@ -203,7 +203,7 @@ def mat_update_params(mat: Array, params: np.ndarray, *, drn: IntOrSeq = 0,
 
     See Also
     --------
-    param_inds, mat_to_params
+    indices.param_inds, mat_to_params
     """
     if not isinstance(paxis, int):
         keys = ('maxes', 'paxis', 'mdaxis', 'pdaxis')
