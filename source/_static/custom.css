@@ -93,16 +93,17 @@ div.sphinxsidebar #searchbox input[type="text"] {
     background-color: var(--major-bg-color);
     color: var(--major-fg-color);
 }
-tt, code {
-    background-color: var(--major-bg-color);
-    color: var(--major-fg-color);
-}
-tt.xref, code.xref, a tt {
+tt, code, tt.xref, code.xref {
     background-color: inherit;
     color: var(--major-fg-color);
+    border-bottom: none;
+}
+a tt.xref, a code.xref, a tt {
+    background-color: inherit;
+    color: var(--links-fg-color);
     border-bottom: 1px solid var(--links-bg-color);
 }
-tt.xref:hover, code.xref:hover, a:hover tt, a:hover, div.body a:hover, div.sphinxsidebar a:hover {
+a:hover tt.xref, a:hover code.xref, a:hover tt, a:hover, div.body a:hover, div.sphinxsidebar a:hover {
     background-color: var(--hover-bg-color);
     color: var(--hover-fg-color);
     border-bottom: 1px solid var(--links-bg-color);
