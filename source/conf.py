@@ -59,7 +59,11 @@ intersphinx_mapping = {
     "matplotlib": ("https://matplotlib.org/stable/", None),
     "networkx": ("https://networkx.org/documentation/stable/", None),
 }
-
+modindex_common_prefix = [
+    "markov_helpers.",
+    "markov_helpers.markov.",
+    "markov_helpers.graphs."
+]
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
