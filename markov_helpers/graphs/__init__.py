@@ -1,9 +1,4 @@
-"""Tools for Graphs representing Markov processes.
-
-See Also
---------
-`networkx.DiGraph`,
-`networkx.MultiDiGraph`.
+"""Tools for Graphs representing Markov processes using `networkx`.
 """
 from . import plots
 from ._tricks import (DiGraph,
