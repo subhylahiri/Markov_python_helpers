@@ -20,7 +20,7 @@ sys.path.insert(0, os.path.abspath('..'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'Markov Python Helpers'
+project = 'Markov Helpers'
 copyright = '2021, Subhaneil Lahiri'
 author = 'Subhaneil Lahiri'
 
