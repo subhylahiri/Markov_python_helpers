@@ -14,8 +14,8 @@
    Home page <self>
    API reference <_autosummary/markov_helpers>
 
-Welcome to Markov Python Helpers's documentation!
-=================================================
+Welcome to the documentation for Markov Helpers!
+================================================
 
 Tools for working with Markov processes in `numpy`
 and drawing them as graphs using `networkx`.
