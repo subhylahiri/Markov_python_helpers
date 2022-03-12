@@ -283,7 +283,7 @@ class GraphOptions(_op.Options,
         positional parameters will be popped for the relevant items. Keyword
         parameters must be valid keys, otherwise a `KeyError` is raised.
 
-        The notion of good and bad edges only matters for `MultiDiGraph`s.
+        The notion of good and bad edges only matters for `MultiDiGraph`.
     """
     topology: _mk.TopologyOptions
     """Topology specifying options for creating graphs/for `judge`."""
