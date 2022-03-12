@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 """Base classes for storing options/settings.
+
+:noindex:
 """
 from __future__ import annotations
 

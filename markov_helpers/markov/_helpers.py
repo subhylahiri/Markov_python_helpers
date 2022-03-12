@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-"""Utilities for module markov_param
+"""Utilities for module markov.params
+
+:noindex:
 """
 from __future__ import annotations
 

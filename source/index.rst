@@ -19,6 +19,7 @@ Welcome to the documentation for Markov Helpers!
 
 Tools for working with Markov processes in `numpy`
 and drawing them as graphs using `networkx`.
+The code itself can be found at https://github.com/subhylahiri/Markov_python_helpers
 
    `API reference <markov_helpers>`
 

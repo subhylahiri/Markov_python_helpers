@@ -1,4 +1,6 @@
 """Utilities to convert parameters to Markov matrices
+
+:noindex:
 """
 from __future__ import annotations
 
