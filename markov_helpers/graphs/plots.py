@@ -283,7 +283,7 @@ class GraphOptions(_op.Options,
     judge : Callable[[graph, toplogy] -> ndarray[bool]]
         Function that decides which edges are good and which are bad.
 
-        The notion of good and bad edges only matters for `MultiDiGraph`s.
+        The notion of good and bad edges only matters for `MultiDiGraph`.
     """
     topology: _mk.TopologyOptions
     """Topology specifying options for creating graphs/for `judge`."""
