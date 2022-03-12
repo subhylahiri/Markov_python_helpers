@@ -33,7 +33,7 @@ def gen_params_to_mat(params: Array, drn: IntOrSeq = 0, axis: IntOrSeq = -1,
 
     Parameters
     ----------
-    params : ndarray (n(n-1),)
+    params : np.ndarray (n(n-1),)
         Vector of off-diagonal elements, in order:
         mat_01, mat_02, ..., mat_0n-1, mat10, mat_12, ..., mat_n-2,n-1.
     drn : int|Sequence[int], optional, default: 0
@@ -46,7 +46,7 @@ def gen_params_to_mat(params: Array, drn: IntOrSeq = 0, axis: IntOrSeq = -1,
 
     Returns
     -------
-    mat : ndarray (n,n)
+    mat : np.ndarray (n,n)
         Continuous time stochastic matrix.
         The extra axis in (from,to) is inserted after `axis`.
 
@@ -64,7 +64,7 @@ def uni_gen_params_to_mat(params: Array, num_st: int, drn: IntOrSeq = 0,
 
     Parameters
     ----------
-    params : ndarray (2,) or (1,)
+    params : np.ndarray (2,) or (1,)
         Vector of independent elements, in order:
         mat_01 = ... = mat_0n-1 = mat_12 = ... mat_1n-1 = ... = mat_n-2,n-1,
         mat_10 = mat_20 = mat_21 = mat_30 = ... = mat_n-10 = ... = mat_n-1,n-2.
@@ -81,7 +81,7 @@ def uni_gen_params_to_mat(params: Array, num_st: int, drn: IntOrSeq = 0,
 
     Returns
     -------
-    mat : ndarray (n,n)
+    mat : np.ndarray (n,n)
         Continuous time stochastic matrix.
         The extra axis in (from,to) is inserted after `axis`.
 
@@ -100,7 +100,7 @@ def ring_params_to_mat(params: Array, drn: IntOrSeq = 0, axis: IntOrSeq = -1,
 
     Parameters
     ----------
-    params : ndarray (2n,)
+    params : np.ndarray (2n,)
         Vector of independent elements, in order:
         mat_01, mat_12, ..., mat_n-2,n-1, mat_n-1,0,
         mat_0,n-1, mat_10, mat_21, ..., mat_n-1,n-2.
@@ -114,7 +114,7 @@ def ring_params_to_mat(params: Array, drn: IntOrSeq = 0, axis: IntOrSeq = -1,
 
     Returns
     -------
-    mat : ndarray (n,n)
+    mat : np.ndarray (n,n)
         Continuous time stochastic matrix.
         The extra axis in (from,to) is inserted after `axis`.
 
@@ -133,7 +133,7 @@ def uni_ring_params_to_mat(params: Array, num_st: int, drn: IntOrSeq = 0,
 
     Parameters
     ----------
-    params : ndarray (2,) or (1,)
+    params : np.ndarray (2,) or (1,)
         Vector of independent elements, in order:
         mat_01 = mat_12 = ... = mat_n-2,n-1 = mat_n-1,0,
         mat_0,n-1 = mat_10 = mat_21 = ... = mat_n-1,n-2.
@@ -150,7 +150,7 @@ def uni_ring_params_to_mat(params: Array, num_st: int, drn: IntOrSeq = 0,
 
     Returns
     -------
-    mat : ndarray (n,n)
+    mat : np.ndarray (n,n)
         Continuous time stochastic matrix.
         The extra axis in (from,to) is inserted after `axis`.
 
@@ -170,7 +170,7 @@ def serial_params_to_mat(params: Array, drn: IntOrSeq = 0,
 
     Parameters
     ----------
-    params : ndarray (2(n-1),)
+    params : np.ndarray (2(n-1),)
         Vector of independent elements, in order:
         mat_01, mat_12, ..., mat_n-2,n-1,
         mat_10, mat_21, ..., mat_n-1,n-2.
@@ -184,7 +184,7 @@ def serial_params_to_mat(params: Array, drn: IntOrSeq = 0,
 
     Returns
     -------
-    mat : ndarray (n,n)
+    mat : np.ndarray (n,n)
         Continuous time stochastic matrix.
         The extra axis in (from,to) is inserted after `axis`.
 
@@ -203,7 +203,7 @@ def uni_serial_params_to_mat(params: Array, num_st: int, drn: IntOrSeq = 0,
 
     Parameters
     ----------
-    params : ndarray (2,) or (1,)
+    params : np.ndarray (2,) or (1,)
         Vector of independent elements, in order:
         mat_01 = mat_12 = ... = mat_n-2,n-1,
         mat_10 = mat_21 = ... = mat_n-1,n-2.
@@ -220,7 +220,7 @@ def uni_serial_params_to_mat(params: Array, num_st: int, drn: IntOrSeq = 0,
 
     Returns
     -------
-    mat : ndarray (n,n)
+    mat : np.ndarray (n,n)
         Continuous time stochastic matrix.
         The extra axis in (from,to) is inserted after `axis`.
 
@@ -240,7 +240,7 @@ def cascade_params_to_mat(params: Array, drn: IntOrSeq = 0,
 
     Parameters
     ----------
-    params : ndarray (2n-2,)
+    params : np.ndarray (2n-2,)
         Vector of elements, in order:
         mat_0n, mat_1n, ..., madrnmat_n,n+1, mat_n+1,n+2, ..., mat_2n-2,2n-1,
         mat_2n-1,n-1, ..., mat_n+1,n-1, mat_n,n-1,
@@ -255,7 +255,7 @@ def cascade_params_to_mat(params: Array, drn: IntOrSeq = 0,
 
     Returns
     -------
-    mat : ndarray (n,n)
+    mat : np.ndarray (n,n)
         Continuous time stochastic matrix.
         The extra axis in (from,to) is inserted after `axis`.
 
@@ -276,7 +276,7 @@ def std_cascade_params_to_mat(params: Array, num_st: int,
 
     Parameters
     ----------
-    params : ndarray (2,)
+    params : np.ndarray (2,)
         Vector of elements, `x` so that:
         [mat_0n, mat_1n, ..., mat_n-1,n] = [x**n-1/(1-x), x**n-2, ..., 1],
         [mat_n,n+1, ..., mat_2n-2,2n-1] = [x/(1-x), ..., x**n-2/(1-x)],
@@ -292,7 +292,7 @@ def std_cascade_params_to_mat(params: Array, num_st: int,
 
     Returns
     -------
-    mat : ndarray (n,n)
+    mat : np.ndarray (n,n)
         Continuous time stochastic matrix.
         The extra axis in (from,to) is inserted after `axis`.
 
@@ -326,7 +326,7 @@ def params_to_mat(params: Array, *, serial: bool = False,
 
     Parameters
     ----------
-    params : ndarray (n(n-1),) or (2(n-1),) or (2n,) or (2,)
+    params : np.ndarray (n(n-1),) or (2(n-1),) or (2n,) or (2,)
         Vector of independent elements, in order that depends on flags below.
         See docs for `*_subs` for details.
         If `uniform and drn == 0`, we need 2 parameters, one for each direction
@@ -351,7 +351,7 @@ def params_to_mat(params: Array, *, serial: bool = False,
 
     Returns
     -------
-    mat : ndarray (n,n)
+    mat : np.ndarray (n,n)
         Continuous time stochastic matrix.
         The extra axis in (from,to) is inserted after `axis`.
 
@@ -371,14 +371,14 @@ def matify(params_or_mat: Array, *args, **kwds) -> Array:
 
     Parameters
     ----------
-    params_or_mat : ndarray (np,) or (n,n)
+    params_or_mat : np.ndarray (np,) or (n,n)
         Either vector of independent elements (in order that depends on flags,
         see docs for `params_to_mat`) or continuous time stochastic matrix.
     Other arguments passed to `params_to_mat`
 
     Returns
     -------
-    mat : ndarray (n,n)
+    mat : np.ndarray (n,n)
         Continuous time stochastic matrix.
 
     See Also

@@ -80,7 +80,7 @@ def mat_type_val(mat: np.ndarray, axes: Axes = (-2, -1), **kwds
 
     Parameters
     ----------
-    mat : ndarray (...,n,n)
+    mat : np.ndarray (...,n,n)
         Continuous time stochastic matrix.
     axes : Tuple[int, int] or None
         Axes to treat as (from, to) axes, by default: (-2, -1)
@@ -168,9 +168,9 @@ def mat_update_params(mat: Array, params: np.ndarray, *, drn: IntOrSeq = 0,
 
     Parameters
     ----------
-    mat : ndarray (n,n)
+    mat : np.ndarray (n,n)
         Continuous time stochastic matrix.
-    params : ndarray (n(n-1),) or (2(n-1),) or (2n,) or (2,) or half of them
+    params : np.ndarray (n(n-1),) or (2(n-1),) or (2n,) or (2,) or half of them
         Vector of independent elements. For the order, see docs for `*_inds`.
 
     Other Parameters
