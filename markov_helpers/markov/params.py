@@ -93,7 +93,7 @@ def mat_type_val(mat: np.ndarray, axes: Axes = (-2, -1), **kwds
     ring : bool
         Is the rate vector meant for `ring_params_to_mat` or
         `gen_params_to_mat`?
-    drn: int
+    drn : int
         If nonzero, only include transitions in direction `i -> i + sgn(drn)`.
     uniform : bool
         Is the matrix from `*_params_to_mat` or `uni_*_params_to_mat`?
@@ -181,8 +181,9 @@ def mat_update_params(mat: Array, params: np.ndarray, *, drn: IntOrSeq = 0,
         Is the rate vector meant for a model with the ring topology?
     uniform : bool, optional, default: False
         Do the nonzero transition rates (in one direction) have the same value?
-    drn: int, optional, default: 0
+    drn : int|Sequence[int], optional, default: 0
         If nonzero, only include transitions in direction `i -> i + sgn(drn)`.
+        If a sequence of length `P`, we have a `(P,M,M)` array of matrices.
     grad : bool, optional, default: True
         Is the output for a gradient (True) or a transition matrix (False).
         If True, return sum of each group of equal transitions.

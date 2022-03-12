@@ -38,7 +38,7 @@ def diff_like(fun: _ty.Callable[[Array, Array], Array],
     ----------
     fun : callable
         Function to perform on elements, as in `fun(arr[i + step], arr[i])`.
-    arr : array (...,n,...)
+    arr : ndarray (...,n,...)
         array to perform operation on
     step : int, optional
         Perform operation on elemnts `step` apart, by default: 1.
@@ -47,7 +47,7 @@ def diff_like(fun: _ty.Callable[[Array, Array], Array],
 
     Returns
     -------
-    out_arr : array (...,n-step,...)
+    out_arr : ndarray (...,n-step,...)
         Output of `fun` for each pair of elements.
     """
     arr = np.moveaxis(arr, axis, -1)
@@ -73,7 +73,7 @@ def stochastify_c(mat: np.ndarray):  # make cts time stochastic
 
     Parameters
     ----------
-    mat : la.lnarray (...,n,n)
+    mat : ndarray (...,n,n)
         Square matrix with non-negative off-diagonal elements.
         **Modified** in place.
     """
@@ -88,7 +88,7 @@ def unstochastify_c(mat: np.ndarray):  # make cts time stochastic
 
     Parameters
     ----------
-    mat : la.lnarray (...,n,n)
+    mat : ndarray (...,n,n)
         Square matrix with non-negative off-diagonal elements.
         **Modified** in place.
     """
@@ -104,7 +104,7 @@ def stochastify_pd(mat: np.ndarray):  # make dscr time stochastic
 
     Parameters
     ----------
-    mat : la.lnarray (...,n,n)
+    mat : ndarray (...,n,n)
         Square matrix with non-negative off-diagonals and row sums below 1.
         **Modified** in place.
     """
@@ -120,7 +120,7 @@ def stochastify_d(mat: np.ndarray):  # make dscr time stochastic
 
     Parameters
     ----------
-    mat : la.lnarray (...,n,n)
+    mat : ndarray (...,n,n)
         Square matrix with non-negative elements.
         **Modified** in place.
     """
@@ -173,7 +173,7 @@ def num_param(states: Sized, *, serial: bool = False, ring: bool = False,
     uniform : bool, optional, default: False
         Is the rate vector meant for `ring_params_to_mat` or
         `uni_ring_params_to_mat`?
-    drn: int, optional, default: 0
+    drn : int|Sequence[int], optional, default: 0
         If nonzero, only include transitions in direction `i -> i + sgn(drn)`.
 
     Returns
@@ -207,7 +207,7 @@ def num_state(params: Sized, *, serial: bool = False, ring: bool = False,
     ring : bool, optional, default: True
         Is the rate vector meant for `ring_params_to_mat` or
         `gen_params_to_mat`?
-    drn: int, optional, default: 0
+    drn : int|Sequence[int], optional, default: 0
         If nonzero, only include transitions in direction `i -> i + sgn(drn)`.
 
     Returns
@@ -310,6 +310,8 @@ def bcast_axes(fun: _ty.Callable[..., Array], arr: Array, *args,
         Additional positional arguments for `fun` after `arr`.
     drn : int|Sequence[int], optional
         If nonzero only include transitions `i -> i+sgn(drn)`, by default `0`.
+        If it is a sequence of length `P`, we have a `(P,M,M)` array of
+        matrices. By default 0.
     drn_axis : Sequence[int], optional
         If `drn` is a sequence, the axis to iterate over for each element,
         by default `(0,)`.
@@ -454,7 +456,7 @@ def sub_fun_bcast(fun: SubFun):
         ----------
         nst : int
             Number of states, `M`.
-        drn: int|Sequence[int], optional
+        drn : int|Sequence[int], optional
             If nonzero only include transitions in direction `i -> i+sgn(drn)`.
             If it is a sequence of length `P`, return the subscripts for a
             `(P,M,M)` array of matrices. By default 0.
@@ -533,8 +535,10 @@ def params_to_mat(params: Array, fun: SubFun, drn: IntOrSeq,
         See docs for `*_inds` for details.
     nst : int
         Number of states.
-    drn : int
+    drn : int|Sequence[int]
         If nonzero, only include transitions in direction `i -> i + sgn(drn)`.
+        If it is a sequence of length `P`, return a `(P,M,M)` array of
+        matrices. By default 0.
     axis : int, optional
         Axis along which each set of parameters lie, by default -1.
     daxis : int, optional
@@ -543,7 +547,7 @@ def params_to_mat(params: Array, fun: SubFun, drn: IntOrSeq,
 
     Returns
     -------
-    mat : array (n,n)
+    mat : ndarray (n,n)
         Continuous time stochastic matrix.
         The extra axis in (from,to) is inserted after `axis`.
     """
@@ -612,8 +616,10 @@ def mat_to_params(mat: Array, fun: IndFun, drn: IntOrSeq, axes: AxesOrSeq,
         Function that takes `(nst,drn,ravel)->inds`.
     mat : ndarray (...,n,n)
         Continuous time stochastic matrix.
-    drn : int
+    drn : int|Sequence[int]
         If nonzero, only include transitions in direction `i -> i + sgn(drn)`.
+        If it is a sequence of length `P`, we have a `(P,M,M)` array of
+        matrices. By default 0.
     axes : Tuple[int, int]
         Axes to treat as (from, to) axes.
     daxis : int
@@ -637,8 +643,10 @@ def to_uni(params: Array, drn: IntOrSeq, grad: bool, axes: AxesOrSeq,
     params : ndarray (n(n-1),) or (2(n-1),) or (2n,) or half of <-
         Vector of independent elements, in order that depends on flags below.
         See docs for `*_inds` for details.
-    drn : int
+    drn : int|Sequence[int]
         If nonzero, only include transitions in direction `i -> i + sgn(drn)`.
+        If it is a sequence of length `P`, we have a `(P,M,M)` array of
+        matrices. By default 0.
     grad : bool
         Is the output for a gradient (True) or a transition matrix (False).
         If True, return sum of values in each direction, else, return mean.

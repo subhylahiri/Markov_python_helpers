@@ -36,8 +36,9 @@ def gen_mat_to_params(mat: Array, drn: IntOrSeq = 0,
     ----------
     mat : ndarray (...,n,n)
         Continuous time stochastic matrix.
-    drn: int, optional, default: 0
+    drn : int|Sequence[int], optional, default: 0
         If nonzero, only include transitions in direction `i -> i + sgn(drn)`.
+        If a sequence of length `P`, we have a `(P,M,M)` array of matrices.
     axes : Tuple[int, int] or None
         Axes to treat as (from, to) axes, by default: (-2, -1)
     daxis : int, optional
@@ -66,8 +67,9 @@ def uni_gen_mat_to_params(mat: Array, grad: bool = True, drn: IntOrSeq = 0,
     ----------
     mat : ndarray (n,n)
         Continuous time stochastic matrix.
-    drn: int, optional, default: 0
+    drn : int|Sequence[int], optional, default: 0
         If nonzero, only include transitions in direction `i -> i + sgn(drn)`.
+        If a sequence of length `P`, we have a `(P,M,M)` array of matrices.
     grad : bool, optional, default: True
         Is the output for a gradient (True) or a transition matrix (False).
         If True, return sum of values in each direction, else, return mean.
@@ -108,8 +110,9 @@ def ring_mat_to_params(mat: Array, drn: IntOrSeq = 0,
     ----------
     mat : ndarray (n,n)
         Continuous time stochastic matrix.
-    drn: int, optional, default: 0
+    drn : int|Sequence[int], optional, default: 0
         If nonzero, only include transitions in direction `i -> i + sgn(drn)`.
+        If a sequence of length `P`, we have a `(P,M,M)` array of matrices.
     axes : Tuple[int, int] or None
         Axes to treat as (from, to) axes, by default: (-2, -1)
     daxis : int, optional
@@ -139,8 +142,9 @@ def uni_ring_mat_to_params(mat: Array, grad: bool = True,
     ----------
     mat : ndarray (n,n)
         Continuous time stochastic matrix.
-    drn: int, optional, default: 0
+    drn : int|Sequence[int], optional, default: 0
         If nonzero, only include transitions in direction `i -> i + sgn(drn)`.
+        If a sequence of length `P`, we have a `(P,M,M)` array of matrices.
     grad : bool, optional, default: True
         Is the output for a gradient (True) or a transition matrix (False).
         If True, return sum of (anti)clockwise values, else, return mean.
@@ -177,8 +181,9 @@ def serial_mat_to_params(mat: Array, drn: IntOrSeq = 0,
     ----------
     mat : ndarray (n,n)
         Continuous time stochastic matrix.
-    drn: int, optional, default: 0
+    drn : int|Sequence[int], optional, default: 0
         If nonzero, only include transitions in direction `i -> i + sgn(drn)`.
+        If a sequence of length `P`, we have a `(P,M,M)` array of matrices.
     axes : Tuple[int, int] or None
         Axes to treat as (from, to) axes, by default: (-2, -1)
     daxis : int, optional
@@ -208,8 +213,9 @@ def uni_serial_mat_to_params(mat: Array, grad: bool = True,
     ----------
     mat : ndarray (n,n)
         Continuous time stochastic matrix.
-    drn: int, optional, default: 0
+    drn : int|Sequence[int], optional, default: 0
         If nonzero, only include transitions in direction `i -> i + sgn(drn)`.
+        If a sequence of length `P`, we have a `(P,M,M)` array of matrices.
     grad : bool, optional, default: True
         Is the output for a gradient (True) or a transition matrix (False).
         If True, return sum of values in each direction, else, return mean.
@@ -246,8 +252,9 @@ def cascade_mat_to_params(mat: Array, drn: IntOrSeq = 0,
     ----------
     mat : ndarray (n,n)
         Continuous time stochastic matrix.
-    drn: int, optional, default: 0
+    drn : int|Sequence[int], optional, default: 0
         If nonzero, only include transitions in direction `i -> i + sgn(drn)`.
+        If a sequence of length `P`, we have a `(P,M,M)` array of matrices.
     axes : Tuple[int, int] or Nnarr
         Axes todrnat as (from, to) axes, by default: (-2, -1)
     daxis : int, optional
@@ -285,8 +292,9 @@ def std_cascade_mat_to_params(mat: Array,
         The parameter of the cascade model, needed when taking gradients.
         Can be omitted when `grad = False`.
         Elements should lie across the earlier axis of `axes`.
-    drn: int, optional, default: 0
+    drn : int|Sequence[int], optional, default: 0
         If nonzero, only include transitions in direction `i -> i + sgn(drn)`.
+        If a sequence of length `P`, we have a `(P,M,M)` array of matrices.
     grad : bool, optional, default: True
         Is the output for a gradient (True) or a transition matrix (False).
         If True, return sum of values in each direction, else, return mean.
@@ -349,8 +357,9 @@ def mat_to_params(mat: Array, *, serial: bool = False, ring: bool = False,
     ring : bool, optional, default: False
         Is the rate vector meant for `ring_params_to_mat` or
         `gen_params_to_mat`?
-    drn: int, optional, default: 0
+    drn : int|Sequence[int], optional, default: 0
         If nonzero, only include transitions in direction `i -> i + sgn(drn)`.
+        If a sequence of length `P`, we have a `(P,M,M)` array of matrices.
     uniform : bool, optional, default: False
         Is the rate vector meant for `ring_params_to_mat` or
         `uni_ring_params_to_mat`?
