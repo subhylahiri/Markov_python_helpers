@@ -151,7 +151,8 @@ so <span class="math notranslate nohighlight">\(Q_{ij}\)</span> is the transitio
 <dd class="field-odd"><dl class="simple">
 <dt><strong>mat</strong><span class="classifier">ndarray (n,n)</span></dt><dd><p>Continuous time stochastic matrix.</p>
 </dd>
-<dt><strong>drn: int, optional, default: 0</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.</p>
+<dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional, default: 0</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.
+If a sequence of length <em class="xref py py-obj">P</em>, we have a <em class="xref py py-obj">(P,M,M)</em> array of matrices.</p>
 </dd>
 <dt><strong>axes</strong><span class="classifier">Tuple[int, int] or Nnarr</span></dt><dd><p>Axes todrnat as (from, to) axes, by default: (-2, -1)</p>
 </dd>
@@ -196,7 +197,8 @@ mat_0n, mat_1n, …, madrnmat_n,n+1, mat_n+1,n+2, …, mat_2n-2,2n-1,
 mat_2n-1,n-1, …, mat_n+1,n-1, mat_n,n-1,
 mat_n-1,n-2, …, mat_21, mat_10.</p>
 </dd>
-<dt><strong>drn: int, optional, default: 0</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.</p>
+<dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional, default: 0</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.
+If a sequence of length <em class="xref py py-obj">P</em>, return a <em class="xref py py-obj">(P,M,M)</em> array of matrices.</p>
 </dd>
 <dt><strong>axis</strong><span class="classifier">int, optional</span></dt><dd><p>Axis along which each set of parameters lie, by default -1.</p>
 </dd>
@@ -206,7 +208,7 @@ mat_n-1,n-2, …, mat_21, mat_10.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>mat</strong><span class="classifier">array (n,n)</span></dt><dd><p>Continuous time stochastic matrix.
+<dt><strong>mat</strong><span class="classifier">ndarray (n,n)</span></dt><dd><p>Continuous time stochastic matrix.
 The extra axis in (from,to) is inserted after <em class="xref py py-obj">axis</em>.</p>
 </dd>
 </dl>
@@ -234,7 +236,8 @@ The extra axis in (from,to) is inserted after <em class="xref py py-obj">axis</e
 <dd class="field-odd"><dl class="simple">
 <dt><strong>mat</strong><span class="classifier">ndarray (…,n,n)</span></dt><dd><p>Continuous time stochastic matrix.</p>
 </dd>
-<dt><strong>drn: int, optional, default: 0</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.</p>
+<dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional, default: 0</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.
+If a sequence of length <em class="xref py py-obj">P</em>, we have a <em class="xref py py-obj">(P,M,M)</em> array of matrices.</p>
 </dd>
 <dt><strong>axes</strong><span class="classifier">Tuple[int, int] or None</span></dt><dd><p>Axes to treat as (from, to) axes, by default: (-2, -1)</p>
 </dd>
@@ -274,7 +277,8 @@ Elements lie across the earlier axis of <em class="xref py py-obj">axes</em>.</p
 <dt><strong>params</strong><span class="classifier">ndarray (n(n-1),)</span></dt><dd><p>Vector of off-diagonal elements, in order:
 mat_01, mat_02, …, mat_0n-1, mat10, mat_12, …, mat_n-2,n-1.</p>
 </dd>
-<dt><strong>drn: int, optional, default: 0</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.</p>
+<dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional, default: 0</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.
+If a sequence of length <em class="xref py py-obj">P</em>, return a <em class="xref py py-obj">(P,M,M)</em> array of matrices.</p>
 </dd>
 <dt><strong>axis</strong><span class="classifier">int, optional</span></dt><dd><p>Axis along which each set of parameters lie, by default -1.</p>
 </dd>
@@ -284,7 +288,7 @@ mat_01, mat_02, …, mat_0n-1, mat10, mat_12, …, mat_n-2,n-1.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>mat</strong><span class="classifier">array (n,n)</span></dt><dd><p>Continuous time stochastic matrix.
+<dt><strong>mat</strong><span class="classifier">ndarray (n,n)</span></dt><dd><p>Continuous time stochastic matrix.
 The extra axis in (from,to) is inserted after <em class="xref py py-obj">axis</em>.</p>
 </dd>
 </dl>
@@ -318,7 +322,8 @@ The extra axis in (from,to) is inserted after <em class="xref py py-obj">axis</e
 <dt><strong>ring</strong><span class="classifier">bool, optional, default: False</span></dt><dd><p>Is the rate vector meant for <a class="reference internal" href="markov_helpers.markov.params.ring_params_to_mat.html#markov_helpers.markov.params.ring_params_to_mat" title="markov_helpers.markov.params.ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_params_to_mat</span></code></a> or
 <a class="reference internal" href="markov_helpers.markov.params.gen_params_to_mat.html#markov_helpers.markov.params.gen_params_to_mat" title="markov_helpers.markov.params.gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_params_to_mat</span></code></a>?</p>
 </dd>
-<dt><strong>drn: int, optional, default: 0</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.</p>
+<dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional, default: 0</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.
+If a sequence of length <em class="xref py py-obj">P</em>, we have a <em class="xref py py-obj">(P,M,M)</em> array of matrices.</p>
 </dd>
 <dt><strong>uniform</strong><span class="classifier">bool, optional, default: False</span></dt><dd><p>Is the rate vector meant for <a class="reference internal" href="markov_helpers.markov.params.ring_params_to_mat.html#markov_helpers.markov.params.ring_params_to_mat" title="markov_helpers.markov.params.ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_params_to_mat</span></code></a> or
 <a class="reference internal" href="markov_helpers.markov.params.uni_ring_params_to_mat.html#markov_helpers.markov.params.uni_ring_params_to_mat" title="markov_helpers.markov.params.uni_ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uni_ring_params_to_mat</span></code></a>?</p>
@@ -454,7 +459,7 @@ Can only determine <em class="xref py py-obj">|drn|</em>, not its sign.</p>
 <dt><strong>ring</strong><span class="classifier">bool</span></dt><dd><p>Is the rate vector meant for <a class="reference internal" href="markov_helpers.markov.params.ring_params_to_mat.html#markov_helpers.markov.params.ring_params_to_mat" title="markov_helpers.markov.params.ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_params_to_mat</span></code></a> or
 <a class="reference internal" href="markov_helpers.markov.params.gen_params_to_mat.html#markov_helpers.markov.params.gen_params_to_mat" title="markov_helpers.markov.params.gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_params_to_mat</span></code></a>?</p>
 </dd>
-<dt>drn: int</dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.</p>
+<dt><strong>drn</strong><span class="classifier">int</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.</p>
 </dd>
 <dt><strong>uniform</strong><span class="classifier">bool</span></dt><dd><p>Is the matrix from <em class="xref py py-obj">*_params_to_mat</em> or <em class="xref py py-obj">uni_*_params_to_mat</em>?
 * = gen, serial or ring.</p>
@@ -496,7 +501,8 @@ Can only determine <em class="xref py py-obj">|drn|</em>, not its sign.</p>
 </dd>
 <dt><strong>uniform</strong><span class="classifier">bool, optional, default: False</span></dt><dd><p>Do the nonzero transition rates (in one direction) have the same value?</p>
 </dd>
-<dt><strong>drn: int, optional, default: 0</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.</p>
+<dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional, default: 0</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.
+If a sequence of length <em class="xref py py-obj">P</em>, we have a <em class="xref py py-obj">(P,M,M)</em> array of matrices.</p>
 </dd>
 <dt><strong>grad</strong><span class="classifier">bool, optional, default: True</span></dt><dd><p>Is the output for a gradient (True) or a transition matrix (False).
 If True, return sum of each group of equal transitions.
@@ -541,7 +547,7 @@ see docs for <a class="reference internal" href="markov_helpers.markov.params.pa
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>mat</strong><span class="classifier">array (n,n)</span></dt><dd><p>Continuous time stochastic matrix.</p>
+<dt><strong>mat</strong><span class="classifier">ndarray (n,n)</span></dt><dd><p>Continuous time stochastic matrix.</p>
 </dd>
 </dl>
 </dd>
@@ -577,7 +583,7 @@ see docs for <a class="reference internal" href="markov_helpers.markov.params.pa
 <dt><strong>uniform</strong><span class="classifier">bool, optional, default: False</span></dt><dd><p>Is the rate vector meant for <a class="reference internal" href="markov_helpers.markov.params.ring_params_to_mat.html#markov_helpers.markov.params.ring_params_to_mat" title="markov_helpers.markov.params.ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_params_to_mat</span></code></a> or
 <a class="reference internal" href="markov_helpers.markov.params.uni_ring_params_to_mat.html#markov_helpers.markov.params.uni_ring_params_to_mat" title="markov_helpers.markov.params.uni_ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uni_ring_params_to_mat</span></code></a>?</p>
 </dd>
-<dt><strong>drn: int, optional, default: 0</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.</p>
+<dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional, default: 0</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.</p>
 </dd>
 </dl>
 </dd>
@@ -610,7 +616,7 @@ see docs for <a class="reference internal" href="markov_helpers.markov.params.pa
 <dt><strong>ring</strong><span class="classifier">bool, optional, default: True</span></dt><dd><p>Is the rate vector meant for <a class="reference internal" href="markov_helpers.markov.params.ring_params_to_mat.html#markov_helpers.markov.params.ring_params_to_mat" title="markov_helpers.markov.params.ring_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ring_params_to_mat</span></code></a> or
 <a class="reference internal" href="markov_helpers.markov.params.gen_params_to_mat.html#markov_helpers.markov.params.gen_params_to_mat" title="markov_helpers.markov.params.gen_params_to_mat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_params_to_mat</span></code></a>?</p>
 </dd>
-<dt><strong>drn: int, optional, default: 0</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.</p>
+<dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional, default: 0</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.</p>
 </dd>
 </dl>
 </dd>
@@ -682,7 +688,8 @@ If <em class="xref py py-obj">uniform and drn == 0</em>, we need 2 parameters, o
 <dt><strong>uniform</strong><span class="classifier">bool, optional, default: False</span></dt><dd><p>Is the rate vector for <em class="xref py py-obj">*_params_to_mat</em> or <em class="xref py py-obj">uni_*_params_to_mat</em>?
 * = general, serial or ring.</p>
 </dd>
-<dt><strong>drn: int, optional, default: 0</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.</p>
+<dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional, default: 0</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.
+If a sequence of length <em class="xref py py-obj">P</em>, return a <em class="xref py py-obj">(P,M,M)</em> array of matrices.</p>
 </dd>
 <dt><strong>nst</strong><span class="classifier">int, optional, default: 2</span></dt><dd><p>Number of states. Only needed when <em class="xref py py-obj">uniform</em> is <em class="xref py py-obj">True</em>.</p>
 </dd>
@@ -694,7 +701,7 @@ If <em class="xref py py-obj">uniform and drn == 0</em>, we need 2 parameters, o
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>mat</strong><span class="classifier">array (n,n)</span></dt><dd><p>Continuous time stochastic matrix.
+<dt><strong>mat</strong><span class="classifier">ndarray (n,n)</span></dt><dd><p>Continuous time stochastic matrix.
 The extra axis in (from,to) is inserted after <em class="xref py py-obj">axis</em>.</p>
 </dd>
 </dl>
@@ -722,7 +729,8 @@ The extra axis in (from,to) is inserted after <em class="xref py py-obj">axis</e
 <dd class="field-odd"><dl class="simple">
 <dt><strong>mat</strong><span class="classifier">ndarray (n,n)</span></dt><dd><p>Continuous time stochastic matrix.</p>
 </dd>
-<dt><strong>drn: int, optional, default: 0</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.</p>
+<dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional, default: 0</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.
+If a sequence of length <em class="xref py py-obj">P</em>, we have a <em class="xref py py-obj">(P,M,M)</em> array of matrices.</p>
 </dd>
 <dt><strong>axes</strong><span class="classifier">Tuple[int, int] or None</span></dt><dd><p>Axes to treat as (from, to) axes, by default: (-2, -1)</p>
 </dd>
@@ -764,7 +772,8 @@ Elements lie across the earlier axis of <em class="xref py py-obj">axes</em>.</p
 mat_01, mat_12, …, mat_n-2,n-1, mat_n-1,0,
 mat_0,n-1, mat_10, mat_21, …, mat_n-1,n-2.</p>
 </dd>
-<dt><strong>drn: int, optional, default: 0</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.</p>
+<dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional, default: 0</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.
+If a sequence of length <em class="xref py py-obj">P</em>, return a <em class="xref py py-obj">(P,M,M)</em> array of matrices.</p>
 </dd>
 <dt><strong>axis</strong><span class="classifier">int, optional</span></dt><dd><p>Axis along which each set of parameters lie, by default -1.</p>
 </dd>
@@ -774,7 +783,7 @@ mat_0,n-1, mat_10, mat_21, …, mat_n-1,n-2.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>mat</strong><span class="classifier">array (n,n)</span></dt><dd><p>Continuous time stochastic matrix.
+<dt><strong>mat</strong><span class="classifier">ndarray (n,n)</span></dt><dd><p>Continuous time stochastic matrix.
 The extra axis in (from,to) is inserted after <em class="xref py py-obj">axis</em>.</p>
 </dd>
 </dl>
@@ -802,7 +811,8 @@ The extra axis in (from,to) is inserted after <em class="xref py py-obj">axis</e
 <dd class="field-odd"><dl class="simple">
 <dt><strong>mat</strong><span class="classifier">ndarray (n,n)</span></dt><dd><p>Continuous time stochastic matrix.</p>
 </dd>
-<dt><strong>drn: int, optional, default: 0</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.</p>
+<dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional, default: 0</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.
+If a sequence of length <em class="xref py py-obj">P</em>, we have a <em class="xref py py-obj">(P,M,M)</em> array of matrices.</p>
 </dd>
 <dt><strong>axes</strong><span class="classifier">Tuple[int, int] or None</span></dt><dd><p>Axes to treat as (from, to) axes, by default: (-2, -1)</p>
 </dd>
@@ -844,7 +854,8 @@ Elements lie across the earlier axis of <em class="xref py py-obj">axes</em>.</p
 mat_01, mat_12, …, mat_n-2,n-1,
 mat_10, mat_21, …, mat_n-1,n-2.</p>
 </dd>
-<dt><strong>drn: int, optional, default: 0</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.</p>
+<dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional, default: 0</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.
+If a sequence of length <em class="xref py py-obj">P</em>, return a <em class="xref py py-obj">(P,M,M)</em> array of matrices.</p>
 </dd>
 <dt><strong>axis</strong><span class="classifier">int, optional</span></dt><dd><p>Axis along which each set of parameters lie, by default -1.</p>
 </dd>
@@ -854,7 +865,7 @@ mat_10, mat_21, …, mat_n-1,n-2.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>mat</strong><span class="classifier">array (n,n)</span></dt><dd><p>Continuous time stochastic matrix.
+<dt><strong>mat</strong><span class="classifier">ndarray (n,n)</span></dt><dd><p>Continuous time stochastic matrix.
 The extra axis in (from,to) is inserted after <em class="xref py py-obj">axis</em>.</p>
 </dd>
 </dl>
@@ -886,7 +897,8 @@ The extra axis in (from,to) is inserted after <em class="xref py py-obj">axis</e
 Can be omitted when <em class="xref py py-obj">grad = False</em>.
 Elements should lie across the earlier axis of <em class="xref py py-obj">axes</em>.</p>
 </dd>
-<dt><strong>drn: int, optional, default: 0</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.</p>
+<dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional, default: 0</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.
+If a sequence of length <em class="xref py py-obj">P</em>, we have a <em class="xref py py-obj">(P,M,M)</em> array of matrices.</p>
 </dd>
 <dt><strong>grad</strong><span class="classifier">bool, optional, default: True</span></dt><dd><p>Is the output for a gradient (True) or a transition matrix (False).
 If True, return sum of values in each direction, else, return mean.</p>
@@ -931,7 +943,8 @@ Elements lie across the earlier axis of <em class="xref py py-obj">axes</em>.</p
 mat_2n-1,n-1, …, mat_n+1,n-1, mat_n,n-1 = [x**n-1/(1-x), …, 1],
 mat_n-1,n-2, …, mat_21, mat_10 = [x/(1-x), …, x**n-2/(1-x)].</p>
 </dd>
-<dt><strong>drn: int, optional, default: 0</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.</p>
+<dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional, default: 0</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.
+If a sequence of length <em class="xref py py-obj">P</em>, return a <em class="xref py py-obj">(P,M,M)</em> array of matrices.</p>
 </dd>
 <dt><strong>axis</strong><span class="classifier">int, optional</span></dt><dd><p>Axis along which each set of parameters lie, by default -1.</p>
 </dd>
@@ -941,7 +954,7 @@ mat_n-1,n-2, …, mat_21, mat_10 = [x/(1-x), …, x**n-2/(1-x)].</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>mat</strong><span class="classifier">array (n,n)</span></dt><dd><p>Continuous time stochastic matrix.
+<dt><strong>mat</strong><span class="classifier">ndarray (n,n)</span></dt><dd><p>Continuous time stochastic matrix.
 The extra axis in (from,to) is inserted after <em class="xref py py-obj">axis</em>.</p>
 </dd>
 </dl>
@@ -969,7 +982,8 @@ The extra axis in (from,to) is inserted after <em class="xref py py-obj">axis</e
 <dd class="field-odd"><dl class="simple">
 <dt><strong>mat</strong><span class="classifier">ndarray (n,n)</span></dt><dd><p>Continuous time stochastic matrix.</p>
 </dd>
-<dt><strong>drn: int, optional, default: 0</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.</p>
+<dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional, default: 0</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.
+If a sequence of length <em class="xref py py-obj">P</em>, we have a <em class="xref py py-obj">(P,M,M)</em> array of matrices.</p>
 </dd>
 <dt><strong>grad</strong><span class="classifier">bool, optional, default: True</span></dt><dd><p>Is the output for a gradient (True) or a transition matrix (False).
 If True, return sum of values in each direction, else, return mean.</p>
@@ -1020,7 +1034,8 @@ If <em class="xref py py-obj">drn == 0</em>, you must provide 2 parameters, one 
 </dd>
 <dt><strong>num_st</strong><span class="classifier">int</span></dt><dd><p>Number of states.</p>
 </dd>
-<dt><strong>drn: int, optional, default: 0</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.</p>
+<dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional, default: 0</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.
+If a sequence of length <em class="xref py py-obj">P</em>, return a <em class="xref py py-obj">(P,M,M)</em> array of matrices.</p>
 </dd>
 <dt><strong>axis</strong><span class="classifier">int, optional</span></dt><dd><p>Axis along which each set of parameters lie, by default -1.</p>
 </dd>
@@ -1030,7 +1045,7 @@ If <em class="xref py py-obj">drn == 0</em>, you must provide 2 parameters, one 
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>mat</strong><span class="classifier">array (n,n)</span></dt><dd><p>Continuous time stochastic matrix.
+<dt><strong>mat</strong><span class="classifier">ndarray (n,n)</span></dt><dd><p>Continuous time stochastic matrix.
 The extra axis in (from,to) is inserted after <em class="xref py py-obj">axis</em>.</p>
 </dd>
 </dl>
@@ -1058,7 +1073,8 @@ The extra axis in (from,to) is inserted after <em class="xref py py-obj">axis</e
 <dd class="field-odd"><dl class="simple">
 <dt><strong>mat</strong><span class="classifier">ndarray (n,n)</span></dt><dd><p>Continuous time stochastic matrix.</p>
 </dd>
-<dt><strong>drn: int, optional, default: 0</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.</p>
+<dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional, default: 0</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.
+If a sequence of length <em class="xref py py-obj">P</em>, we have a <em class="xref py py-obj">(P,M,M)</em> array of matrices.</p>
 </dd>
 <dt><strong>grad</strong><span class="classifier">bool, optional, default: True</span></dt><dd><p>Is the output for a gradient (True) or a transition matrix (False).
 If True, return sum of (anti)clockwise values, else, return mean.</p>
@@ -1111,7 +1127,8 @@ If <em class="xref py py-obj">drn == 0</em>, you must provide 2 parameters, one 
 </dd>
 <dt><strong>num_st</strong><span class="classifier">int</span></dt><dd><p>Number of states.</p>
 </dd>
-<dt><strong>drn: int or Sequence[int], optional, default: 0</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.</p>
+<dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional, default: 0</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.
+If a sequence of length <em class="xref py py-obj">P</em>, return a <em class="xref py py-obj">(P,M,M)</em> array of matrices.</p>
 </dd>
 <dt><strong>axis</strong><span class="classifier">int, optional</span></dt><dd><p>Axis along which each set of parameters lie, by default -1.</p>
 </dd>
@@ -1121,7 +1138,7 @@ If <em class="xref py py-obj">drn == 0</em>, you must provide 2 parameters, one 
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>mat</strong><span class="classifier">array (n,n)</span></dt><dd><p>Continuous time stochastic matrix.
+<dt><strong>mat</strong><span class="classifier">ndarray (n,n)</span></dt><dd><p>Continuous time stochastic matrix.
 The extra axis in (from,to) is inserted after <em class="xref py py-obj">axis</em>.</p>
 </dd>
 </dl>
@@ -1149,7 +1166,8 @@ The extra axis in (from,to) is inserted after <em class="xref py py-obj">axis</e
 <dd class="field-odd"><dl class="simple">
 <dt><strong>mat</strong><span class="classifier">ndarray (n,n)</span></dt><dd><p>Continuous time stochastic matrix.</p>
 </dd>
-<dt><strong>drn: int, optional, default: 0</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.</p>
+<dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional, default: 0</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.
+If a sequence of length <em class="xref py py-obj">P</em>, we have a <em class="xref py py-obj">(P,M,M)</em> array of matrices.</p>
 </dd>
 <dt><strong>grad</strong><span class="classifier">bool, optional, default: True</span></dt><dd><p>Is the output for a gradient (True) or a transition matrix (False).
 If True, return sum of values in each direction, else, return mean.</p>
@@ -1202,7 +1220,8 @@ If <em class="xref py py-obj">drn == 0</em>, you must provide 2 parameters, one 
 </dd>
 <dt><strong>num_st</strong><span class="classifier">int</span></dt><dd><p>Number of states.</p>
 </dd>
-<dt><strong>drn: int, optional, default: 0</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.</p>
+<dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional, default: 0</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.
+If a sequence of length <em class="xref py py-obj">P</em>, return a <em class="xref py py-obj">(P,M,M)</em> array of matrices.</p>
 </dd>
 <dt><strong>axis</strong><span class="classifier">int, optional</span></dt><dd><p>Axis along which each set of parameters lie, by default -1.</p>
 </dd>
@@ -1212,7 +1231,7 @@ If <em class="xref py py-obj">drn == 0</em>, you must provide 2 parameters, one 
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>mat</strong><span class="classifier">array (n,n)</span></dt><dd><p>Continuous time stochastic matrix.
+<dt><strong>mat</strong><span class="classifier">ndarray (n,n)</span></dt><dd><p>Continuous time stochastic matrix.
 The extra axis in (from,to) is inserted after <em class="xref py py-obj">axis</em>.</p>
 </dd>
 </dl>

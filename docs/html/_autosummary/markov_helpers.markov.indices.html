@@ -100,7 +100,7 @@ so <span class="math notranslate nohighlight">\(Q_{ij}\)</span> is the transitio
 <dd class="field-odd"><dl class="simple">
 <dt><strong>nst</strong><span class="classifier">int</span></dt><dd><p>Number of states, <em class="xref py py-obj">M</em>.</p>
 </dd>
-<dt><strong>drn: int|Sequence[int], optional, default: 0</strong></dt><dd><p>If nonzero only include transitions in direction <em class="xref py py-obj">i -&gt; i+sgn(drn)</em>.
+<dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional, default: 0</span></dt><dd><p>If nonzero only include transitions in direction <em class="xref py py-obj">i -&gt; i+sgn(drn)</em>.
 If it is a sequence of length <em class="xref py py-obj">P</em>, return the subscripts for a
 <em class="xref py py-obj">(P,M,M)</em> array of matrices</p>
 </dd>
@@ -138,7 +138,7 @@ if <em class="xref py py-obj">drn</em> is a sequence. By default <em class="xref
 <dd class="field-odd"><dl class="simple">
 <dt><strong>nst</strong><span class="classifier">int</span></dt><dd><p>Number of states, <em class="xref py py-obj">M == 2n</em>.</p>
 </dd>
-<dt><strong>drn: int|Sequence[int], optional</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i+sgn(drn)</em>.
+<dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i+sgn(drn)</em>.
 If a sequence of length <em class="xref py py-obj">P</em>, return indices for a <em class="xref py py-obj">(P,M,M)</em> array.
 By default 0.</p>
 </dd>
@@ -179,7 +179,7 @@ mat_n-1,n-2, …, mat_21, mat_10.</p>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>nst</strong><span class="classifier">int</span></dt><dd><p>Number of states, <em class="xref py py-obj">M</em>.</p>
 </dd>
-<dt><strong>drn: int|Sequence[int], optional</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i+sgn(drn)</em>.
+<dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i+sgn(drn)</em>.
 If a sequence of length <em class="xref py py-obj">P</em>, return indices for a <em class="xref py py-obj">(P,M,M)</em> array.
 By default 0.</p>
 </dd>
@@ -212,7 +212,7 @@ mat_01, mat_02, …, mat_0n-1, mat10, mat_12, …, mat_n-1,n-2.</p>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>nst</strong><span class="classifier">int</span></dt><dd><p>Number of states, <em class="xref py py-obj">M</em>.</p>
 </dd>
-<dt><strong>drn: int|Sequence[int], optional, default: 0</strong></dt><dd><p>If nonzero only include transitions in direction <em class="xref py py-obj">i -&gt; i+sgn(drn)</em>.
+<dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional, default: 0</span></dt><dd><p>If nonzero only include transitions in direction <em class="xref py py-obj">i -&gt; i+sgn(drn)</em>.
 If it is a sequence of length <em class="xref py py-obj">P</em>, return the subscripts for a
 <em class="xref py py-obj">(P,M,M)</em> array of matrices</p>
 </dd>
@@ -257,7 +257,7 @@ if <em class="xref py py-obj">drn</em> is a sequence. By default <em class="xref
 <dd class="field-odd"><dl class="simple">
 <dt><strong>nst</strong><span class="classifier">int</span></dt><dd><p>Number of states, <em class="xref py py-obj">M</em>.</p>
 </dd>
-<dt><strong>drn: int|Sequence[int], optional</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i+sgn(drn)</em>.
+<dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i+sgn(drn)</em>.
 If a sequence of length <em class="xref py py-obj">P</em>, return indices for a <em class="xref py py-obj">(P,M,M)</em> array.
 By default 0.</p>
 </dd>
@@ -298,7 +298,7 @@ mat_10, mat_20, mat_21, …, mat_n-2n-3, mat_n-10, … mat_n-1n-2.</p>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>nst</strong><span class="classifier">int</span></dt><dd><p>Number of states, <em class="xref py py-obj">M</em>.</p>
 </dd>
-<dt><strong>drn: int|Sequence[int], optional</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i+sgn(drn)</em>.
+<dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i+sgn(drn)</em>.
 If a sequence of length <em class="xref py py-obj">P</em>, return indices for a <em class="xref py py-obj">(P,M,M)</em> array.
 By default 0.</p>
 </dd>
@@ -342,7 +342,7 @@ mat_01, mat_02, …, mat_0n-1, mat10, mat_12, …, mat_n-1,n-2.</p>
 </dd>
 <dt><strong>uniform</strong><span class="classifier">bool, optional, default: False</span></dt><dd><p>Do the nonzero transition rates (in one direction) have the same value?</p>
 </dd>
-<dt><strong>drn: int|Sequence[int], optional</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i+sgn(drn)</em>.
+<dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i+sgn(drn)</em>.
 If a sequence of length <em class="xref py py-obj">P</em>, return indices for a <em class="xref py py-obj">(P,M,M)</em> array.
 By default 0.</p>
 </dd>
@@ -380,7 +380,7 @@ By default 0.</p>
 </dd>
 <dt><strong>uniform</strong><span class="classifier">bool, optional, default: False</span></dt><dd><p>Do the nonzero transition rates (in one direction) have the same value?</p>
 </dd>
-<dt><strong>drn: int|Sequence[int], optional</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i+sgn(drn)</em>.
+<dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i+sgn(drn)</em>.
 If a sequence of length <em class="xref py py-obj">P</em>, return indices for a <em class="xref py py-obj">(P,M,M)</em> array.
 By default 0.</p>
 </dd>
@@ -418,7 +418,7 @@ Not returned if <em class="xref py py-obj">drn</em> is an <em class="xref py py-
 <dd class="field-odd"><dl class="simple">
 <dt><strong>nst</strong><span class="classifier">int</span></dt><dd><p>Number of states, <em class="xref py py-obj">M</em>.</p>
 </dd>
-<dt><strong>drn: int|Sequence[int], optional</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i+sgn(drn)</em>.
+<dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i+sgn(drn)</em>.
 If a sequence of length <em class="xref py py-obj">P</em>, return indices for a <em class="xref py py-obj">(P,M,M)</em> array.
 By default 0.</p>
 </dd>
@@ -452,7 +452,7 @@ mat_0,n-1, mat_10, mat_21, …, mat_n-1,n-2.</p>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>nst</strong><span class="classifier">int</span></dt><dd><p>Number of states, <em class="xref py py-obj">M</em>.</p>
 </dd>
-<dt><strong>drn: int|Sequence[int], optional</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i+sgn(drn)</em>.
+<dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i+sgn(drn)</em>.
 If a sequence of length <em class="xref py py-obj">P</em>, return indices for a <em class="xref py py-obj">(P,M,M)</em> array.
 By default 0.</p>
 </dd>
@@ -491,7 +491,7 @@ mat_0,n-1, mat_10, mat_21, …, mat_n-1,n-2.</p>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>nst</strong><span class="classifier">int</span></dt><dd><p>Number of states, <em class="xref py py-obj">M</em>.</p>
 </dd>
-<dt><strong>drn: int|Sequence[int], optional</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i+sgn(drn)</em>.
+<dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i+sgn(drn)</em>.
 If a sequence of length <em class="xref py py-obj">P</em>, return indices for a <em class="xref py py-obj">(P,M,M)</em> array.
 By default 0.</p>
 </dd>
@@ -525,7 +525,7 @@ mat_10, mat_21, …, mat_n-1,n-2.</p>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>nst</strong><span class="classifier">int</span></dt><dd><p>Number of states, <em class="xref py py-obj">M</em>.</p>
 </dd>
-<dt><strong>drn: int|Sequence[int], optional</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i+sgn(drn)</em>.
+<dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i+sgn(drn)</em>.
 If a sequence of length <em class="xref py py-obj">P</em>, return indices for a <em class="xref py py-obj">(P,M,M)</em> array.
 By default 0.</p>
 </dd>

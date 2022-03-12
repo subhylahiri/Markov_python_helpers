@@ -56,7 +56,8 @@ If <em class="xref py py-obj">uniform and drn == 0</em>, we need 2 parameters, o
 <dt><strong>uniform</strong><span class="classifier">bool, optional, default: False</span></dt><dd><p>Is the rate vector for <em class="xref py py-obj">*_params_to_mat</em> or <em class="xref py py-obj">uni_*_params_to_mat</em>?
 * = general, serial or ring.</p>
 </dd>
-<dt><strong>drn: int, optional, default: 0</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.</p>
+<dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional, default: 0</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.
+If a sequence of length <em class="xref py py-obj">P</em>, return a <em class="xref py py-obj">(P,M,M)</em> array of matrices.</p>
 </dd>
 <dt><strong>nst</strong><span class="classifier">int, optional, default: 2</span></dt><dd><p>Number of states. Only needed when <em class="xref py py-obj">uniform</em> is <em class="xref py py-obj">True</em>.</p>
 </dd>
@@ -68,7 +69,7 @@ If <em class="xref py py-obj">uniform and drn == 0</em>, we need 2 parameters, o
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>mat</strong><span class="classifier">array (n,n)</span></dt><dd><p>Continuous time stochastic matrix.
+<dt><strong>mat</strong><span class="classifier">ndarray (n,n)</span></dt><dd><p>Continuous time stochastic matrix.
 The extra axis in (from,to) is inserted after <em class="xref py py-obj">axis</em>.</p>
 </dd>
 </dl>

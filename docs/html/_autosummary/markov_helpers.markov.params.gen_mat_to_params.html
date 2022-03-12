@@ -45,7 +45,8 @@
 <dd class="field-odd"><dl class="simple">
 <dt><strong>mat</strong><span class="classifier">ndarray (…,n,n)</span></dt><dd><p>Continuous time stochastic matrix.</p>
 </dd>
-<dt><strong>drn: int, optional, default: 0</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.</p>
+<dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional, default: 0</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.
+If a sequence of length <em class="xref py py-obj">P</em>, we have a <em class="xref py py-obj">(P,M,M)</em> array of matrices.</p>
 </dd>
 <dt><strong>axes</strong><span class="classifier">Tuple[int, int] or None</span></dt><dd><p>Axes to treat as (from, to) axes, by default: (-2, -1)</p>
 </dd>

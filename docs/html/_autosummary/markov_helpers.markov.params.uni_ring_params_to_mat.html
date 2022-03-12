@@ -50,7 +50,8 @@ If <em class="xref py py-obj">drn == 0</em>, you must provide 2 parameters, one 
 </dd>
 <dt><strong>num_st</strong><span class="classifier">int</span></dt><dd><p>Number of states.</p>
 </dd>
-<dt><strong>drn: int or Sequence[int], optional, default: 0</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.</p>
+<dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional, default: 0</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.
+If a sequence of length <em class="xref py py-obj">P</em>, return a <em class="xref py py-obj">(P,M,M)</em> array of matrices.</p>
 </dd>
 <dt><strong>axis</strong><span class="classifier">int, optional</span></dt><dd><p>Axis along which each set of parameters lie, by default -1.</p>
 </dd>
@@ -60,7 +61,7 @@ If <em class="xref py py-obj">drn == 0</em>, you must provide 2 parameters, one 
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>mat</strong><span class="classifier">array (n,n)</span></dt><dd><p>Continuous time stochastic matrix.
+<dt><strong>mat</strong><span class="classifier">ndarray (n,n)</span></dt><dd><p>Continuous time stochastic matrix.
 The extra axis in (from,to) is inserted after <em class="xref py py-obj">axis</em>.</p>
 </dd>
 </dl>

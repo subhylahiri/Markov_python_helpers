@@ -49,7 +49,8 @@
 Can be omitted when <em class="xref py py-obj">grad = False</em>.
 Elements should lie across the earlier axis of <em class="xref py py-obj">axes</em>.</p>
 </dd>
-<dt><strong>drn: int, optional, default: 0</strong></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.</p>
+<dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional, default: 0</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.
+If a sequence of length <em class="xref py py-obj">P</em>, we have a <em class="xref py py-obj">(P,M,M)</em> array of matrices.</p>
 </dd>
 <dt><strong>grad</strong><span class="classifier">bool, optional, default: True</span></dt><dd><p>Is the output for a gradient (True) or a transition matrix (False).
 If True, return sum of values in each direction, else, return mean.</p>
