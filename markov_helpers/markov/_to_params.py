@@ -82,11 +82,13 @@ def uni_gen_mat_to_params(mat: Array, grad: bool = True, drn: IntOrSeq = 0,
     -------
     params : np.ndarray (2,)
         Vector of independent elements, in order (grad=False):
-        mat_01 = ... = mat_0n-1 = mat_12 = ... mat_1n-1 = ... = mat_n-2,n-1,
-        mat_10 = mat_20 = mat_21 = mat_30 = ... = mat_n-10 = ... = mat_n-1,n-2.
+            mat_01 = ... = mat_0n-1 = mat_12 = ... mat_1n-1 = ... = mat_n-2n-1,
+            mat_10 = mat_20 = mat_21 = ... = mat_n-10 = ... = mat_n-1n-2.
+
         Or, in order (grad=True):
-        mat_01 + ... + mat_0n-1 + mat_12 + ... mat_1n-1 + ... + mat_n-2,n-1,
-        mat_10 + mat_20 + mat_21 + mat_30 + ... + mat_n-10 + ... + mat_n-1,n-2.
+            mat_01 + ... + mat_0n-1 + mat_12 + ... mat_1n-1 + ... + mat_n-2n-1,
+            mat_10 + mat_20 + mat_21 + ... + mat_n-10 + ... + mat_n-1n-2.
+
         Elements lie across the earlier axis of `axes`.
 
     See Also
@@ -136,7 +138,7 @@ def ring_mat_to_params(mat: Array, drn: IntOrSeq = 0,
 def uni_ring_mat_to_params(mat: Array, grad: bool = True,
                            drn: IntOrSeq = 0, axes: AxesOrSeq = (-2, -1),
                            daxis: IntOrSeq = 0) -> Array:
-    """Independent parameters of ring transition matrix.
+    """Independent parameters of uniform ring transition matrix.
 
     Parameters
     ----------
@@ -156,12 +158,14 @@ def uni_ring_mat_to_params(mat: Array, grad: bool = True,
     Returns
     -------
     params : np.ndarray (2,)
-        Vector of independent elements, in ordrn
+        Vector of independent elements, in order
             mat_01 = mat_12 = ... = mat_n-2,n-1 = mat_n-10,
             mat_0n-1 = mat10 = mat_21 = ... = mat_n-1,n-2.
+
         Or, in order (grad=True):
             mat_01 + mat_12 + ... + mat_n-2,n-1 + mat_n-10,
             mat_0n-1 + mat10 + mat_21 + ... + mat_n-1,n-2.
+
         Elements lie across the earlier axis of `axes`.
 
     See Also
@@ -230,9 +234,11 @@ def uni_serial_mat_to_params(mat: Array, grad: bool = True,
         Vector of independent elements, in order (grad=False):
             mat_01 = mat_12 = ... = mat_n-2,n-1,
             mat_10 = mat_21 = ... = mat_n-1,n-2.
+
         Or, in order (grad=True):
             mat_01 + mat_12 + ... + mat_n-2,n-1,
             mat_10 + mat_21 + ... + mat_n-1,n-2.
+
         Elements lie across the earlier axis of `axes`.
 
     See Also
