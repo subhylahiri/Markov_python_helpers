@@ -1,4 +1,6 @@
 """Utilities to convert parameters to Markov matrices
+
+:noindex:
 """
 from __future__ import annotations
 
@@ -34,8 +36,9 @@ def gen_params_to_mat(params: Array, drn: IntOrSeq = 0, axis: IntOrSeq = -1,
     params : ndarray (n(n-1),)
         Vector of off-diagonal elements, in order:
         mat_01, mat_02, ..., mat_0n-1, mat10, mat_12, ..., mat_n-2,n-1.
-    drn: int, optional, default: 0
+    drn : int|Sequence[int], optional, default: 0
         If nonzero, only include transitions in direction `i -> i + sgn(drn)`.
+        If a sequence of length `P`, return a `(P,M,M)` array of matrices.
     axis : int, optional
         Axis along which each set of parameters lie, by default -1.
     daxis : int, optional
@@ -43,7 +46,7 @@ def gen_params_to_mat(params: Array, drn: IntOrSeq = 0, axis: IntOrSeq = -1,
 
     Returns
     -------
-    mat : array (n,n)
+    mat : ndarray (n,n)
         Continuous time stochastic matrix.
         The extra axis in (from,to) is inserted after `axis`.
 
@@ -68,8 +71,9 @@ def uni_gen_params_to_mat(params: Array, num_st: int, drn: IntOrSeq = 0,
         If `drn == 0`, you must provide 2 parameters, one for each direction.
     num_st : int
         Number of states.
-    drn: int, optional, default: 0
+    drn : int|Sequence[int], optional, default: 0
         If nonzero, only include transitions in direction `i -> i + sgn(drn)`.
+        If a sequence of length `P`, return a `(P,M,M)` array of matrices.
     axis : int, optional
         Axis along which each set of parameters lie, by default -1.
     daxis : int, optional
@@ -77,7 +81,7 @@ def uni_gen_params_to_mat(params: Array, num_st: int, drn: IntOrSeq = 0,
 
     Returns
     -------
-    mat : array (n,n)
+    mat : ndarray (n,n)
         Continuous time stochastic matrix.
         The extra axis in (from,to) is inserted after `axis`.
 
@@ -100,8 +104,9 @@ def ring_params_to_mat(params: Array, drn: IntOrSeq = 0, axis: IntOrSeq = -1,
         Vector of independent elements, in order:
         mat_01, mat_12, ..., mat_n-2,n-1, mat_n-1,0,
         mat_0,n-1, mat_10, mat_21, ..., mat_n-1,n-2.
-    drn: int, optional, default: 0
+    drn : int|Sequence[int], optional, default: 0
         If nonzero, only include transitions in direction `i -> i + sgn(drn)`.
+        If a sequence of length `P`, return a `(P,M,M)` array of matrices.
     axis : int, optional
         Axis along which each set of parameters lie, by default -1.
     daxis : int, optional
@@ -109,7 +114,7 @@ def ring_params_to_mat(params: Array, drn: IntOrSeq = 0, axis: IntOrSeq = -1,
 
     Returns
     -------
-    mat : array (n,n)
+    mat : ndarray (n,n)
         Continuous time stochastic matrix.
         The extra axis in (from,to) is inserted after `axis`.
 
@@ -135,8 +140,9 @@ def uni_ring_params_to_mat(params: Array, num_st: int, drn: IntOrSeq = 0,
         If `drn == 0`, you must provide 2 parameters, one for each direction.
     num_st : int
         Number of states.
-    drn: int or Sequence[int], optional, default: 0
+    drn : int|Sequence[int], optional, default: 0
         If nonzero, only include transitions in direction `i -> i + sgn(drn)`.
+        If a sequence of length `P`, return a `(P,M,M)` array of matrices.
     axis : int, optional
         Axis along which each set of parameters lie, by default -1.
     daxis : int, optional
@@ -144,7 +150,7 @@ def uni_ring_params_to_mat(params: Array, num_st: int, drn: IntOrSeq = 0,
 
     Returns
     -------
-    mat : array (n,n)
+    mat : ndarray (n,n)
         Continuous time stochastic matrix.
         The extra axis in (from,to) is inserted after `axis`.
 
@@ -168,8 +174,9 @@ def serial_params_to_mat(params: Array, drn: IntOrSeq = 0,
         Vector of independent elements, in order:
         mat_01, mat_12, ..., mat_n-2,n-1,
         mat_10, mat_21, ..., mat_n-1,n-2.
-    drn: int, optional, default: 0
+    drn : int|Sequence[int], optional, default: 0
         If nonzero, only include transitions in direction `i -> i + sgn(drn)`.
+        If a sequence of length `P`, return a `(P,M,M)` array of matrices.
     axis : int, optional
         Axis along which each set of parameters lie, by default -1.
     daxis : int, optional
@@ -177,7 +184,7 @@ def serial_params_to_mat(params: Array, drn: IntOrSeq = 0,
 
     Returns
     -------
-    mat : array (n,n)
+    mat : ndarray (n,n)
         Continuous time stochastic matrix.
         The extra axis in (from,to) is inserted after `axis`.
 
@@ -203,8 +210,9 @@ def uni_serial_params_to_mat(params: Array, num_st: int, drn: IntOrSeq = 0,
         If `drn == 0`, you must provide 2 parameters, one for each direction.
     num_st : int
         Number of states.
-    drn: int, optional, default: 0
+    drn : int|Sequence[int], optional, default: 0
         If nonzero, only include transitions in direction `i -> i + sgn(drn)`.
+        If a sequence of length `P`, return a `(P,M,M)` array of matrices.
     axis : int, optional
         Axis along which each set of parameters lie, by default -1.
     daxis : int, optional
@@ -212,7 +220,7 @@ def uni_serial_params_to_mat(params: Array, num_st: int, drn: IntOrSeq = 0,
 
     Returns
     -------
-    mat : array (n,n)
+    mat : ndarray (n,n)
         Continuous time stochastic matrix.
         The extra axis in (from,to) is inserted after `axis`.
 
@@ -237,8 +245,9 @@ def cascade_params_to_mat(params: Array, drn: IntOrSeq = 0,
         mat_0n, mat_1n, ..., madrnmat_n,n+1, mat_n+1,n+2, ..., mat_2n-2,2n-1,
         mat_2n-1,n-1, ..., mat_n+1,n-1, mat_n,n-1,
         mat_n-1,n-2, ..., mat_21, mat_10.
-    drn: int, optional, default: 0
+    drn : int|Sequence[int], optional, default: 0
         If nonzero, only include transitions in direction `i -> i + sgn(drn)`.
+        If a sequence of length `P`, return a `(P,M,M)` array of matrices.
     axis : int, optional
         Axis along which each set of parameters lie, by default -1.
     daxis : int, optional
@@ -246,7 +255,7 @@ def cascade_params_to_mat(params: Array, drn: IntOrSeq = 0,
 
     Returns
     -------
-    mat : array (n,n)
+    mat : ndarray (n,n)
         Continuous time stochastic matrix.
         The extra axis in (from,to) is inserted after `axis`.
 
@@ -273,8 +282,9 @@ def std_cascade_params_to_mat(params: Array, num_st: int,
         [mat_n,n+1, ..., mat_2n-2,2n-1] = [x/(1-x), ..., x**n-2/(1-x)],
         mat_2n-1,n-1, ..., mat_n+1,n-1, mat_n,n-1 = [x**n-1/(1-x), ..., 1],
         mat_n-1,n-2, ..., mat_21, mat_10 = [x/(1-x), ..., x**n-2/(1-x)].
-    drn: int, optional, default: 0
+    drn : int|Sequence[int], optional, default: 0
         If nonzero, only include transitions in direction `i -> i + sgn(drn)`.
+        If a sequence of length `P`, return a `(P,M,M)` array of matrices.
     axis : int, optional
         Axis along which each set of parameters lie, by default -1.
     daxis : int, optional
@@ -282,7 +292,7 @@ def std_cascade_params_to_mat(params: Array, num_st: int,
 
     Returns
     -------
-    mat : array (n,n)
+    mat : ndarray (n,n)
         Continuous time stochastic matrix.
         The extra axis in (from,to) is inserted after `axis`.
 
@@ -329,8 +339,9 @@ def params_to_mat(params: Array, *, serial: bool = False,
     uniform : bool, optional, default: False
         Is the rate vector for `*_params_to_mat` or `uni_*_params_to_mat`?
         * = general, serial or ring.
-    drn: int, optional, default: 0
+    drn : int|Sequence[int], optional, default: 0
         If nonzero, only include transitions in direction `i -> i + sgn(drn)`.
+        If a sequence of length `P`, return a `(P,M,M)` array of matrices.
     nst : int, optional, default: 2
         Number of states. Only needed when `uniform` is `True`.
     axis : int, optional
@@ -340,7 +351,7 @@ def params_to_mat(params: Array, *, serial: bool = False,
 
     Returns
     -------
-    mat : array (n,n)
+    mat : ndarray (n,n)
         Continuous time stochastic matrix.
         The extra axis in (from,to) is inserted after `axis`.
 
@@ -367,7 +378,7 @@ def matify(params_or_mat: Array, *args, **kwds) -> Array:
 
     Returns
     -------
-    mat : array (n,n)
+    mat : ndarray (n,n)
         Continuous time stochastic matrix.
 
     See Also

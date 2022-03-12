@@ -37,7 +37,7 @@ def offdiag_inds(nst: int, drn: IntOrSeq = 0, ravel: bool = True) -> np.ndarray:
     ----------
     nst : int
         Number of states, `M`.
-    drn: int|Sequence[int], optional
+    drn : int|Sequence[int], optional
         If nonzero, only include transitions in direction `i -> i+sgn(drn)`.
         If a sequence of length `P`, return indices for a `(P,M,M)` array.
         By default 0.
@@ -66,7 +66,7 @@ def offdiag_subs(nst: int, drn: IntOrSeq = 0, ravel: bool = True) -> Subs:
     ----------
     nst : int
         Number of states, `M`.
-    drn: int|Sequence[int], optional
+    drn : int|Sequence[int], optional
         If nonzero, only include transitions in direction `i -> i+sgn(drn)`.
         If a sequence of length `P`, return indices for a `(P,M,M)` array.
         By default 0.
@@ -103,7 +103,7 @@ def offdiag_split_subs(nst: int, drn: IntOrSeq = 0, ravel: bool = True
     ----------
     nst : int
         Number of states, `M`.
-    drn: int|Sequence[int], optional
+    drn : int|Sequence[int], optional
         If nonzero, only include transitions in direction `i -> i+sgn(drn)`.
         If a sequence of length `P`, return indices for a `(P,M,M)` array.
         By default 0.
@@ -136,7 +136,7 @@ def ring_inds(nst: int, drn: IntOrSeq = 0, ravel: bool = True) -> np.ndarray:
     ----------
     nst : int
         Number of states, `M`.
-    drn: int|Sequence[int], optional
+    drn : int|Sequence[int], optional
         If nonzero, only include transitions in direction `i -> i+sgn(drn)`.
         If a sequence of length `P`, return indices for a `(P,M,M)` array.
         By default 0.
@@ -168,7 +168,7 @@ def ring_subs(nst: int, drn: IntOrSeq = 0, ravel: bool = True) -> Subs:
     ----------
     nst : int
         Number of states, `M`.
-    drn: int|Sequence[int], optional
+    drn : int|Sequence[int], optional
         If nonzero, only include transitions in direction `i -> i+sgn(drn)`.
         If a sequence of length `P`, return indices for a `(P,M,M)` array.
         By default 0.
@@ -200,7 +200,7 @@ def serial_inds(nst: int, drn: IntOrSeq = 0, ravel: bool = True) -> np.ndarray:
     ----------
     nst : int
         Number of states, `M`.
-    drn: int|Sequence[int], optional
+    drn : int|Sequence[int], optional
         If nonzero, only include transitions in direction `i -> i+sgn(drn)`.
         If a sequence of length `P`, return indices for a `(P,M,M)` array.
         By default 0.
@@ -232,7 +232,7 @@ def serial_subs(nst: int, drn: IntOrSeq = 0, ravel: bool = True) -> Subs:
     ----------
     nst : int
         Number of states, `M`.
-    drn: int|Sequence[int], optional
+    drn : int|Sequence[int], optional
         If nonzero, only include transitions in direction `i -> i+sgn(drn)`.
         If a sequence of length `P`, return indices for a `(P,M,M)` array.
         By default 0.
@@ -264,7 +264,7 @@ def cascade_subs(nst: int, drn: IntOrSeq = 0, ravel: bool = True) -> Subs:
     ----------
     nst : int
         Number of states, `M == 2n`.
-    drn: int|Sequence[int], optional
+    drn : int|Sequence[int], optional
         If nonzero, only include transitions in direction `i -> i+sgn(drn)`.
         If a sequence of length `P`, return indices for a `(P,M,M)` array.
         By default 0.
@@ -366,7 +366,7 @@ def param_inds(nst: int, *, serial: bool = False, ring: bool = False,
         Is the rate vector meant for a model with the ring topology?
     uniform : bool, optional, default: False
         Do the nonzero transition rates (in one direction) have the same value?
-    drn: int|Sequence[int], optional
+    drn : int|Sequence[int], optional
         If nonzero, only include transitions in direction `i -> i+sgn(drn)`.
         If a sequence of length `P`, return indices for a `(P,M,M)` array.
         By default 0.
@@ -397,7 +397,7 @@ def param_subs(nst: int, *, serial: bool = False, ring: bool = False,
         Is the rate vector meant for a model with the ring topology?
     uniform : bool, optional, default: False
         Do the nonzero transition rates (in one direction) have the same value?
-    drn: int|Sequence[int], optional
+    drn : int|Sequence[int], optional
         If nonzero, only include transitions in direction `i -> i+sgn(drn)`.
         If a sequence of length `P`, return indices for a `(P,M,M)` array.
         By default 0.
@@ -440,7 +440,7 @@ def _unravel_ind_fun(func: IndsFun) -> SubsFun:
         ----------
         nst : int
             Number of states, `M`.
-        drn: int|Sequence[int], optional
+        drn : int|Sequence[int], optional
             If nonzero only include transitions in direction `i -> i+sgn(drn)`.
             If it is a sequence of length `P`, return the indices for a
             `(P,M,M)` array of matrices. By default 0.
@@ -496,7 +496,7 @@ def _ravel_sub_fun(func: SubsFun):
         ----------
         nst : int
             Number of states, `M`.
-        drn: int|Sequence[int], optional, default: 0
+        drn : int|Sequence[int], optional, default: 0
             If nonzero only include transitions in direction `i -> i+sgn(drn)`.
             If it is a sequence of length `P`, return the subscripts for a
             `(P,M,M)` array of matrices
