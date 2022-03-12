@@ -319,7 +319,7 @@ class GraphOptions(_op.Options,
 
         Returns
         -------
-        rads : ndarray[float] (E,)
+        rads : np.ndarray[float] (E,)
             Curvature assigned to each edge: aspect ratio of the containing
             oval. Positive -> counter-clockwise.
         """
@@ -677,7 +677,7 @@ class DiEdgeCollection:
 
         Parameters
         ----------
-        rads : ndarray[float] (E,)
+        rads : np.ndarray[float] (E,)
             Curvature assigned to each edge: aspect ratio of the containing
             oval. Positive -> counter-clockwise.
         """
@@ -820,7 +820,7 @@ class GraphPlots:
 
         Parameters
         ----------
-        rads : ndarray[float] (E,)
+        rads : np.ndarray[float] (E,)
             Curvature assigned to each edge: aspect ratio of the containing
             oval. Positive -> counter-clockwise.
         """
