@@ -1,6 +1,6 @@
 """Utilities to convert Markov matrices to parameters
 
-:noindex:
+.. py:currentmodule:: markov_helpers.markov.params
 """
 from __future__ import annotations
 

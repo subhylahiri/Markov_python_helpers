@@ -4,3 +4,5 @@
 
 .. autofunction:: {{ objname }}
 
+.. autosummary::
+

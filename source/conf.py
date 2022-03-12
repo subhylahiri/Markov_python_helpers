@@ -21,7 +21,7 @@ sys.path.insert(0, os.path.abspath('..'))
 # -- Project information -----------------------------------------------------
 
 project = 'Markov Helpers'
-copyright = '2021, Subhaneil Lahiri'
+project_copyright = '2021, Subhaneil Lahiri'
 author = 'Subhaneil Lahiri'
 
 
@@ -36,7 +36,8 @@ extensions = [
     "sphinx.ext.mathjax",
     "numpydoc",
     # 'sphinx.ext.napoleon',
-    'sphinx_autodoc_typehints', # Automatically document param types (less noise in class signature)
+    'sphinx_autodoc_typehints',  # Automatically document param types (less noise in signature)
+    'sphinx.ext.githubpages',  # auto create .nojekyll
 ]
 # My options for extensions:
 autodoc_default_options = {
@@ -46,6 +47,9 @@ autodoc_default_options = {
 }
 add_module_names = False
 autodoc_inherit_docstrings = True
+autodoc_type_aliases = {
+    'Array': 'np.ndarray',
+}
 autosummary_generate = True
 autosummary_imported_members = True
 autosummary_ignore_module_all = False

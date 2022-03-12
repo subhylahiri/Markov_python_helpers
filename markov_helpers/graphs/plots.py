@@ -44,6 +44,10 @@ class _ImageOptions(_op.AnyOptions, prop_attributes=('cmap',)):
     getting and setting. You can also subscript attributes of attributes with
     dotted keys: `options['suboptions.name']`.
 
+    All parameters are optional keywords. Any dictionary passed as positional
+    parameters will be popped for the relevant items. Keyword parameters must
+    be valid keys, otherwise a `KeyError` is raised.
+
     Parameters
     ----------
     cmap : str|Colormap
@@ -55,10 +59,6 @@ class _ImageOptions(_op.AnyOptions, prop_attributes=('cmap',)):
         Lower bound of `norm`. By default: `0`.
     vmax : float
         Lower bound of `norm`. By default: `1`.
-
-    All parameters are optional keywords. Any dictionary passed as positional
-    parameters will be popped for the relevant items. Keyword parameters must
-    be valid keys, otherwise a `KeyError` is raised.
     """
     _cmap: mpl.colors.Colormap
     norm: mpl.colors.Normalize
@@ -151,6 +151,10 @@ class StyleOptions(_ImageOptions, prop_attributes=('entity',)):
     getting and setting. You can also subscript attributes of attributes with
     dotted keys: `options['suboptions.name']`.
 
+    All parameters are optional keywords. Any dictionary passed as positional
+    parameters will be popped for the relevant items. Keyword parameters must
+    be valid keys, otherwise a `KeyError` is raised.
+
     Parameters
     ----------
     cmap : str|Colormap
@@ -174,10 +178,6 @@ class StyleOptions(_ImageOptions, prop_attributes=('entity',)):
         Threshold on size value to be made visible.
     entity : str
         Type of graph element, 'node' or 'edge'
-
-        All parameters are optional keywords. Any dictionary passed as
-        positional parameters will be popped for the relevant items. Keyword
-        parameters must be valid keys, otherwise a `KeyError` is raised.
     """
     _method: str = 'get_node_attr'
     key_attr: str = 'key'
@@ -262,6 +262,10 @@ class GraphOptions(_op.Options,
     getting and setting. You can also subscript attributes of attributes with
     dotted keys: `options['suboptions.name']`.
 
+    All parameters are optional keywords. Any dictionary passed as positional
+    parameters will be popped for the relevant items. Keyword parameters must
+    be valid keys, otherwise a `KeyError` is raised.
+
     Parameters
     ----------
     topology : TopologyOptions
@@ -279,10 +283,6 @@ class GraphOptions(_op.Options,
     judge : Callable[[graph, toplogy] -> ndarray[bool]]
         Function that decides which edges are good and which are bad.
 
-        All parameters are optional keywords. Any dictionary passed as
-        positional parameters will be popped for the relevant items. Keyword
-        parameters must be valid keys, otherwise a `KeyError` is raised.
-
         The notion of good and bad edges only matters for `MultiDiGraph`s.
     """
     topology: _mk.TopologyOptions
@@ -292,8 +292,9 @@ class GraphOptions(_op.Options,
     edges: StyleOptions
     """Options for mapping `edge[attr]` to edge colour/thickness."""
     rad: _ty.List[float]
-    """Curvature of edges: aspect ratio of the (isoceles) Bezier triangle for
-    [good, bad] directions. Positive -> anticlockwise."""
+    """Curvature of edges:
+    aspect ratio of the (isoceles) Bezier triangle for [good, bad] directions.
+    Positive -> anticlockwise."""
     judge: _ty.Optional[Judger]
     """Function that decides which edges are good and which are bad."""
     layout: Layout

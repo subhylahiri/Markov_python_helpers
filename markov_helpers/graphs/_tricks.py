@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 """Tools for working with graphs and plotting them.
+
+.. py:currentmodule:: markov_helpers.graphs
 """
 from __future__ import annotations
 
