@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Utilities for module markov.params
 
-:noindex:
+.. py:currentmodule:: markov_helpers.markov
 """
 from __future__ import annotations
 
@@ -40,7 +40,7 @@ def diff_like(fun: _ty.Callable[[Array, Array], Array],
     ----------
     fun : callable
         Function to perform on elements, as in `fun(arr[i + step], arr[i])`.
-    arr : ndarray (...,n,...)
+    arr : np.ndarray (...,n,...)
         array to perform operation on
     step : int, optional
         Perform operation on elemnts `step` apart, by default: 1.
@@ -49,7 +49,7 @@ def diff_like(fun: _ty.Callable[[Array, Array], Array],
 
     Returns
     -------
-    out_arr : ndarray (...,n-step,...)
+    out_arr : np.ndarray (...,n-step,...)
         Output of `fun` for each pair of elements.
     """
     arr = np.moveaxis(arr, axis, -1)
@@ -75,7 +75,7 @@ def stochastify_c(mat: np.ndarray):  # make cts time stochastic
 
     Parameters
     ----------
-    mat : ndarray (...,n,n)
+    mat : np.ndarray (...,n,n)
         Square matrix with non-negative off-diagonal elements.
         **Modified** in place.
     """
@@ -90,7 +90,7 @@ def unstochastify_c(mat: np.ndarray):  # make cts time stochastic
 
     Parameters
     ----------
-    mat : ndarray (...,n,n)
+    mat : np.ndarray (...,n,n)
         Square matrix with non-negative off-diagonal elements.
         **Modified** in place.
     """
@@ -106,7 +106,7 @@ def stochastify_pd(mat: np.ndarray):  # make dscr time stochastic
 
     Parameters
     ----------
-    mat : ndarray (...,n,n)
+    mat : np.ndarray (...,n,n)
         Square matrix with non-negative off-diagonals and row sums below 1.
         **Modified** in place.
     """
@@ -122,7 +122,7 @@ def stochastify_d(mat: np.ndarray):  # make dscr time stochastic
 
     Parameters
     ----------
-    mat : ndarray (...,n,n)
+    mat : np.ndarray (...,n,n)
         Square matrix with non-negative elements.
         **Modified** in place.
     """
@@ -381,11 +381,11 @@ def bcast_subs(sfun: SubFun, nst: int, drn: _ty.Sequence[int],
 
     Returns
     -------
-    mats : ndarray (PQ,)
+    mats : np.ndarray (PQ,)
         Which transition matrix, in a `(P,M,M)` array of matrices?
-    rows : ndarray (PQ,)
+    rows : np.ndarray (PQ,)
         Vector of row indices of off-diagonal elements.
-    cols : ndarray (PQ,)
+    cols : np.ndarray (PQ,)
         Vector of column indices of off-diagonal elements.
     """
     subs = [sfun(nst, dirn) for dirn in drn]
@@ -407,9 +407,9 @@ def stack_inds(ifun: IndFun, nst) -> np.ndarray:
 
     Returns
     -------
-    rows : ndarray (PQ,)
+    rows : np.ndarray (PQ,)
         Vector of row indices of off-diagonal elements.
-    cols : ndarray (PQ,)
+    cols : np.ndarray (PQ,)
         Vector of column indices of off-diagonal elements.
     """
     return np.concatenate([ifun(nst, dirn) for dirn in (1, -1)])
@@ -427,9 +427,9 @@ def stack_subs(sfun: SubFun, nst) -> Subs:
 
     Returns
     -------
-    rows : ndarray (PQ,)
+    rows : np.ndarray (PQ,)
         Vector of row indices of off-diagonal elements.
-    cols : ndarray (PQ,)
+    cols : np.ndarray (PQ,)
         Vector of column indices of off-diagonal elements.
     """
     subs = [sfun(nst, dirn) for dirn in (1, -1)]
@@ -468,12 +468,12 @@ def sub_fun_bcast(fun: SubFun):
 
         Returns
         -------
-        [mats : ndarray (PQ,)
+        [mats : np.ndarray (PQ,)
             Which transition matrix, in a `(P,M,M)` array of matrices?
             Not returned if `drn` is an `int`.]
-        rows : ndarray (PQ,)
+        rows : np.ndarray (PQ,)
             Vector of row indices of off-diagonal elements.
-        cols : ndarray (PQ,)
+        cols : np.ndarray (PQ,)
             Vector of column indices of off-diagonal elements.
         For the order of elements, see docs for `*_subs`.
         """
@@ -532,7 +532,7 @@ def params_to_mat(params: Array, fun: SubFun, drn: IntOrSeq,
     ----------
     fun : callable
         Function that takes `(nst,drn)->subs`.
-    params : ndarray (n(n-1),) or (2(n-1),) or (2n,) or (2,)
+    params : np.ndarray (n(n-1),) or (2(n-1),) or (2n,) or (2,)
         Vector of independent elements, in order that depends on flags below.
         See docs for `*_inds` for details.
     nst : int
@@ -549,7 +549,7 @@ def params_to_mat(params: Array, fun: SubFun, drn: IntOrSeq,
 
     Returns
     -------
-    mat : ndarray (n,n)
+    mat : np.ndarray (n,n)
         Continuous time stochastic matrix.
         The extra axis in (from,to) is inserted after `axis`.
     """
@@ -572,7 +572,7 @@ def uni_to_any(params: np.ndarray, nst: int, axis: IntOrSeq, **kwds
 
     Parameters
     ----------
-    params : ndarray (1,) or (2,)
+    params : np.ndarray (1,) or (2,)
         Vector of independent elements, in order that depends on flags below.
         If `drn == 0`, you must provide 2 parameters, one for each direction.
         See docs for `*_inds` for details.
@@ -584,7 +584,7 @@ def uni_to_any(params: np.ndarray, nst: int, axis: IntOrSeq, **kwds
 
     Returns
     -------
-    params : ndarray (n(n-1),) or (2(n-1),) or (2n,) or (2,)
+    params : np.ndarray (n(n-1),) or (2(n-1),) or (2n,) or (2,)
         Vector of independent elements, in order that depends on flags above.
         See docs for `*_inds` for details.
     """
@@ -616,7 +616,7 @@ def mat_to_params(mat: Array, fun: IndFun, drn: IntOrSeq, axes: AxesOrSeq,
     ----------
     fun : callable
         Function that takes `(nst,drn,ravel)->inds`.
-    mat : ndarray (...,n,n)
+    mat : np.ndarray (...,n,n)
         Continuous time stochastic matrix.
     drn : int|Sequence[int]
         If nonzero, only include transitions in direction `i -> i + sgn(drn)`.
@@ -642,7 +642,7 @@ def to_uni(params: Array, drn: IntOrSeq, grad: bool, axes: AxesOrSeq,
 
     Parameters
     ----------
-    params : ndarray (n(n-1),) or (2(n-1),) or (2n,) or half of <-
+    params : np.ndarray (n(n-1),) or (2(n-1),) or (2n,) or half of <-
         Vector of independent elements, in order that depends on flags below.
         See docs for `*_inds` for details.
     drn : int|Sequence[int]

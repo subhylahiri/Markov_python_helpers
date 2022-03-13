@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Base classes for storing options/settings.
 
-:noindex:
+.. py:currentmodule:: markov_helpers.markov
 """
 from __future__ import annotations
 

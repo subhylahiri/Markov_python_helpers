@@ -6,7 +6,7 @@ Notes
 This package assumes probability distributions are represented by row vectors,
 so :math:`Q_{ij}` is the transition rate from :math:`i` to :math:`j`.
 
-:noindex:
+.. py:currentmodule:: markov_helpers.markov
 """
 from typing import Optional, Tuple
 

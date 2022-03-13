@@ -18,11 +18,11 @@
         --major-bg-color: #282c33;
         --major-fg-color: #e7e7f5;
         --minor-bg-color: #373f44;
-        --minor-fg-color: #d4cde7;
+        --minor-fg-color: #d5cee8;
         --title-bg-color: #453169;
         --title-fg-color: var(--minor-fg-color);
         --links-bg-color: var(--title-bg-color);
-        --links-fg-color: #a69eb9;
+        --links-fg-color: #a2b988;
         --hover-bg-color: var(--title-bg-color);
         --hover-fg-color: var(--links-fg-color);
         }
@@ -79,6 +79,7 @@ div.body h1 {
 div.body a {
     background-color: inherit;
     color: var(--links-fg-color);
+    border-bottom: 1px solid var(--links-fg-color);
 }
 div.sphinxsidebar, div.sphinxsidebar h1, div.sphinxsidebar h3 {
     background-color: var(--minor-bg-color);
@@ -87,26 +88,36 @@ div.sphinxsidebar, div.sphinxsidebar h1, div.sphinxsidebar h3 {
 div.sphinxsidebar a {
     background-color: var(--minor-bg-color);
     color: var(--links-fg-color);
-    border-bottom: 1px solid var(--links-bg-color);
+    border-bottom: 1px solid var(--links-fg-color);
 }
 div.sphinxsidebar #searchbox input[type="text"] {
     background-color: var(--major-bg-color);
     color: var(--major-fg-color);
 }
+div.footer {
+    color: inherit;
+    background-color: inherit;
+}
+div.footer a {
+    color: var(--links-fg-color);
+    background-color: inherit;
+}
 tt, code, tt.xref, code.xref, div.admonition code.xref {
     background-color: inherit;
     color: var(--major-fg-color);
     border-bottom: none;
+    font-size: inherit;
 }
 a tt.xref, a code.xref, a tt {
     background-color: inherit;
     color: var(--links-fg-color);
-    border-bottom: 1px solid var(--links-bg-color);
+    border-bottom: 1px solid var(--links-fg-color);
 }
 a:hover tt.xref, a:hover code.xref, a:hover tt, a:hover, div.body a:hover, div.sphinxsidebar a:hover {
     background-color: var(--hover-bg-color);
     color: var(--hover-fg-color);
     border-bottom: 1px solid var(--links-bg-color);
+    text-decoration: underline;
 }
 dt:target {
     background-color: var(--minor-bg-color);

@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 """Tools for working with graphs and plotting them.
+
+.. py:currentmodule:: markov_helpers.graphs
 """
 from __future__ import annotations
 
@@ -371,7 +373,7 @@ class GraphAttrs(nx.Graph):
         ----------
         data : str
             Name of attribute.
-        values : ndarray (N,)
+        values : np.ndarray (N,)
             Value to assign to the attribute for each node.
         """
         for node_dict, value in zip(self.nodes.values(), values):
@@ -419,7 +421,7 @@ class GraphAttrs(nx.Graph):
         ----------
         data : str
             Name of attribute.
-        values : ndarray (E,)
+        values : np.ndarray (E,)
             Value to assign to the attribute for each edge.
         """
         for edge_dict, value in zip(self.edges.values(), values):
@@ -788,9 +790,9 @@ def list_edge_keys(graph: MultiDiGraph, get_inv: bool = False) -> np.ndarray:
 
     Returns
     -------
-    keys : ndarray (K,)
+    keys : np.ndarray (K,)
         Values of keys, in order of first appearance in `graph.edge_key()`.
-    inv : ndarray (E,)
+    inv : np.ndarray (E,)
         Index array: assignments of each edge's keys to each entry of `keys`.
     `graph.edge_key() == keys[inv]`.
     """
