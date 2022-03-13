@@ -56,12 +56,12 @@ By default 0.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>[mats</strong><span class="classifier">ndarray (PM(M-1),)</span></dt><dd><p>Which transition matrix, in a <em class="xref py py-obj">(P,M,M)</em> array of matrices?
+<dt><strong>[mats</strong><span class="classifier">np.ndarray (PM(M-1),)</span></dt><dd><p>Which transition matrix, in a <em class="xref py py-obj">(P,M,M)</em> array of matrices?
 Not returned if <em class="xref py py-obj">drn</em> is an <em class="xref py py-obj">int</em>.]</p>
 </dd>
-<dt><strong>rows</strong><span class="classifier">ndarray (PM(M-1),)</span></dt><dd><p>Vector of row indices of nonzero off-diagonal elements.</p>
+<dt><strong>rows</strong><span class="classifier">np.ndarray (PM(M-1),)</span></dt><dd><p>Vector of row indices of nonzero off-diagonal elements.</p>
 </dd>
-<dt><strong>cols</strong><span class="classifier">ndarray (PM(M-1),)</span></dt><dd><p>Vector of column indices of nonzero off-diagonal elements in order:
+<dt><strong>cols</strong><span class="classifier">np.ndarray (PM(M-1),)</span></dt><dd><p>Vector of column indices of nonzero off-diagonal elements in order:
 First, the upper/right triangle -
 mat_01, …, mat_0n-1, mat_12, …, mat_n-3n-2, mat_n-3n-1, mat_n-2n-1,
 - followed by the lower/left triangle -
@@ -77,6 +77,14 @@ mat_10, mat_20, mat_21, …, mat_n-2n-3, mat_n-10, … mat_n-1n-2.</p>
 </dl>
 </dd></dl>
 
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+</tbody>
+</table>
 </section>
 
 
@@ -184,6 +192,9 @@ mat_10, mat_20, mat_21, …, mat_n-2n-3, mat_n-10, … mat_n-1n-2.</p>
       Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
+      |
+      <a href="../_sources/_autosummary/markov_helpers.markov.indices.offdiag_split_subs.rst.txt"
+          rel="nofollow">Page source</a>
     </div>
 
     

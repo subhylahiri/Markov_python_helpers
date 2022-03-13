@@ -43,7 +43,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>params</strong><span class="classifier">ndarray (2,)</span></dt><dd><p>Vector of elements, <em class="xref py py-obj">x</em> so that:
+<dt><strong>params</strong><span class="classifier">np.ndarray (2,)</span></dt><dd><p>Vector of elements, <em class="xref py py-obj">x</em> so that:
 [mat_0n, mat_1n, …, mat_n-1,n] = [x**n-1/(1-x), x**n-2, …, 1],
 [mat_n,n+1, …, mat_2n-2,2n-1] = [x/(1-x), …, x**n-2/(1-x)],
 mat_2n-1,n-1, …, mat_n+1,n-1, mat_n,n-1 = [x**n-1/(1-x), …, 1],
@@ -60,7 +60,7 @@ If a sequence of length <em class="xref py py-obj">P</em>, return a <em class="x
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>mat</strong><span class="classifier">ndarray (n,n)</span></dt><dd><p>Continuous time stochastic matrix.
+<dt><strong>mat</strong><span class="classifier">np.ndarray (n,n)</span></dt><dd><p>Continuous time stochastic matrix.
 The extra axis in (from,to) is inserted after <em class="xref py py-obj">axis</em>.</p>
 </dd>
 </dl>
@@ -79,6 +79,14 @@ The extra axis in (from,to) is inserted after <em class="xref py py-obj">axis</e
 </dl>
 </dd></dl>
 
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+</tbody>
+</table>
 </section>
 
 
@@ -198,6 +206,9 @@ The extra axis in (from,to) is inserted after <em class="xref py py-obj">axis</e
       Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
+      |
+      <a href="../_sources/_autosummary/markov_helpers.markov.params.std_cascade_params_to_mat.rst.txt"
+          rel="nofollow">Page source</a>
     </div>
 
     

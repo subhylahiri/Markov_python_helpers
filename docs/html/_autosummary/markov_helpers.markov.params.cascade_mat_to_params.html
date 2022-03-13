@@ -43,7 +43,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>mat</strong><span class="classifier">ndarray (n,n)</span></dt><dd><p>Continuous time stochastic matrix.</p>
+<dt><strong>mat</strong><span class="classifier">np.ndarray (n,n)</span></dt><dd><p>Continuous time stochastic matrix.</p>
 </dd>
 <dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional, default: 0</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.
 If a sequence of length <em class="xref py py-obj">P</em>, we have a <em class="xref py py-obj">(P,M,M)</em> array of matrices.</p>
@@ -56,7 +56,7 @@ If a sequence of length <em class="xref py py-obj">P</em>, we have a <em class="
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>params</strong><span class="classifier">ndarray (2n-2,)</span></dt><dd><p>Vector of elements, in order:
+<dt><strong>params</strong><span class="classifier">np.ndarray (2n-2,)</span></dt><dd><p>Vector of elements, in order:
 mat_0n, mat_1n, …, mat_n-1,n,
 mat_n,n+1, mat_n+1,n+2, …, mat_2n-2,2n-1,
 mat_2n-1,n-1, …, mat_n+1,n-1, mat_n,n-1,
@@ -79,6 +79,14 @@ Elements lie across the earlier axis of <em class="xref py py-obj">axes</em>.</p
 </dl>
 </dd></dl>
 
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+</tbody>
+</table>
 </section>
 
 
@@ -198,6 +206,9 @@ Elements lie across the earlier axis of <em class="xref py py-obj">axes</em>.</p
       Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
+      |
+      <a href="../_sources/_autosummary/markov_helpers.markov.params.cascade_mat_to_params.rst.txt"
+          rel="nofollow">Page source</a>
     </div>
 
     

@@ -40,10 +40,10 @@
 <dt class="sig sig-object py" id="markov_helpers.markov.params.uni_gen_mat_to_params">
 <span class="sig-name descname"><span class="pre">uni_gen_mat_to_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">drn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(-</span> <span class="pre">2,</span> <span class="pre">-</span> <span class="pre">1)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">daxis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#markov_helpers.markov.params.uni_gen_mat_to_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Independent parameters of uniform transition matrix.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>mat</strong><span class="classifier">ndarray (n,n)</span></dt><dd><p>Continuous time stochastic matrix.</p>
+<dt><strong>mat</strong><span class="classifier">np.ndarray (n,n)</span></dt><dd><p>Continuous time stochastic matrix.</p>
 </dd>
 <dt><strong>drn</strong><span class="classifier">int|Sequence[int], optional, default: 0</span></dt><dd><p>If nonzero, only include transitions in direction <em class="xref py py-obj">i -&gt; i + sgn(drn)</em>.
 If a sequence of length <em class="xref py py-obj">P</em>, we have a <em class="xref py py-obj">(P,M,M)</em> array of matrices.</p>
@@ -58,14 +58,16 @@ If True, return sum of values in each direction, else, return mean.</p>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>params</strong><span class="classifier">ndarray (2,)</span></dt><dd><p>Vector of independent elements, in order (grad=False):
-mat_01 = … = mat_0n-1 = mat_12 = … mat_1n-1 = … = mat_n-2,n-1,
-mat_10 = mat_20 = mat_21 = mat_30 = … = mat_n-10 = … = mat_n-1,n-2.
-Or, in order (grad=True):
-mat_01 + … + mat_0n-1 + mat_12 + … mat_1n-1 + … + mat_n-2,n-1,
-mat_10 + mat_20 + mat_21 + mat_30 + … + mat_n-10 + … + mat_n-1,n-2.
-Elements lie across the earlier axis of <em class="xref py py-obj">axes</em>.</p>
+<dd class="field-even"><dl>
+<dt><strong>params</strong><span class="classifier">np.ndarray (2,)</span></dt><dd><dl class="simple">
+<dt>Vector of independent elements, in order (grad=False):</dt><dd><p>mat_01 = … = mat_0n-1 = mat_12 = … mat_1n-1 = … = mat_n-2n-1,
+mat_10 = mat_20 = mat_21 = … = mat_n-10 = … = mat_n-1n-2.</p>
+</dd>
+<dt>Or, in order (grad=True):</dt><dd><p>mat_01 + … + mat_0n-1 + mat_12 + … mat_1n-1 + … + mat_n-2n-1,
+mat_10 + mat_20 + mat_21 + … + mat_n-10 + … + mat_n-1n-2.</p>
+</dd>
+</dl>
+<p>Elements lie across the earlier axis of <em class="xref py py-obj">axes</em>.</p>
 </dd>
 </dl>
 </dd>
@@ -83,6 +85,14 @@ Elements lie across the earlier axis of <em class="xref py py-obj">axes</em>.</p
 </dl>
 </dd></dl>
 
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+</tbody>
+</table>
 </section>
 
 
@@ -202,6 +212,9 @@ Elements lie across the earlier axis of <em class="xref py py-obj">axes</em>.</p
       Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
+      |
+      <a href="../_sources/_autosummary/markov_helpers.markov.params.uni_gen_mat_to_params.rst.txt"
+          rel="nofollow">Page source</a>
     </div>
 
     

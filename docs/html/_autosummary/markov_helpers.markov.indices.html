@@ -111,7 +111,7 @@ if <em class="xref py py-obj">drn</em> is a sequence. By default <em class="xref
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>inds</strong><span class="classifier">ndarray (PQ,)</span></dt><dd><dl class="simple">
+<dt><strong>inds</strong><span class="classifier">np.ndarray (PQ,)</span></dt><dd><dl class="simple">
 <dt>Vector of ravelled indices of independent parameters.</dt><dd><p>mat_0n, mat_1n, …, mat_n-1,n,</p>
 </dd>
 </dl>
@@ -149,12 +149,12 @@ By default 0.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>[mats</strong><span class="classifier">ndarray (2P(M-1),)</span></dt><dd><p>Which transition matrix, in a <em class="xref py py-obj">(P,M,M)</em> array of matrices?
+<dt><strong>[mats</strong><span class="classifier">np.ndarray (2P(M-1),)</span></dt><dd><p>Which transition matrix, in a <em class="xref py py-obj">(P,M,M)</em> array of matrices?
 Not returned if <em class="xref py py-obj">drn</em> is an <em class="xref py py-obj">int</em>.]</p>
 </dd>
-<dt><strong>rows</strong><span class="classifier">ndarray (2P(M-1),)</span></dt><dd><p>Vector of row indices of nonzero off-diagonal elements.</p>
+<dt><strong>rows</strong><span class="classifier">np.ndarray (2P(M-1),)</span></dt><dd><p>Vector of row indices of nonzero off-diagonal elements.</p>
 </dd>
-<dt><strong>cols</strong><span class="classifier">ndarray (2P(M-1),)</span></dt><dd><p>Vector of column indices of nonzero off-diagonal elements in order:
+<dt><strong>cols</strong><span class="classifier">np.ndarray (2P(M-1),)</span></dt><dd><p>Vector of column indices of nonzero off-diagonal elements in order:
 mat_0n, mat_1n, …, mat_n-1,n,
 mat_n,n+1, mat_n+1,n+2, … mat_2n-2,2n-1,
 mat_2n-1,n-1, …, mat_n+1,n-1, mat_n,n-1,
@@ -190,7 +190,7 @@ By default 0.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>inds</strong><span class="classifier">ndarray (M(M-1),)</span></dt><dd><p>Vector of ravel indices of nonzero off-diagonal elements, in order:
+<dt><strong>inds</strong><span class="classifier">np.ndarray (M(M-1),)</span></dt><dd><p>Vector of ravel indices of nonzero off-diagonal elements, in order:
 mat_01, mat_02, …, mat_0n-1, mat10, mat_12, …, mat_n-1,n-2.</p>
 </dd>
 </dl>
@@ -223,7 +223,7 @@ if <em class="xref py py-obj">drn</em> is a sequence. By default <em class="xref
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>inds</strong><span class="classifier">ndarray (PQ,)</span></dt><dd><dl class="simple">
+<dt><strong>inds</strong><span class="classifier">np.ndarray (PQ,)</span></dt><dd><dl class="simple">
 <dt>Vector of ravelled indices of independent parameters.</dt><dd><p>First, the upper/right triangle -</p>
 </dd>
 </dl>
@@ -268,12 +268,12 @@ By default 0.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>[mats</strong><span class="classifier">ndarray (PM(M-1),)</span></dt><dd><p>Which transition matrix, in a <em class="xref py py-obj">(P,M,M)</em> array of matrices?
+<dt><strong>[mats</strong><span class="classifier">np.ndarray (PM(M-1),)</span></dt><dd><p>Which transition matrix, in a <em class="xref py py-obj">(P,M,M)</em> array of matrices?
 Not returned if <em class="xref py py-obj">drn</em> is an <em class="xref py py-obj">int</em>.]</p>
 </dd>
-<dt><strong>rows</strong><span class="classifier">ndarray (PM(M-1),)</span></dt><dd><p>Vector of row indices of nonzero off-diagonal elements.</p>
+<dt><strong>rows</strong><span class="classifier">np.ndarray (PM(M-1),)</span></dt><dd><p>Vector of row indices of nonzero off-diagonal elements.</p>
 </dd>
-<dt><strong>cols</strong><span class="classifier">ndarray (PM(M-1),)</span></dt><dd><p>Vector of column indices of nonzero off-diagonal elements in order:
+<dt><strong>cols</strong><span class="classifier">np.ndarray (PM(M-1),)</span></dt><dd><p>Vector of column indices of nonzero off-diagonal elements in order:
 First, the upper/right triangle -
 mat_01, …, mat_0n-1, mat_12, …, mat_n-3n-2, mat_n-3n-1, mat_n-2n-1,
 - followed by the lower/left triangle -
@@ -309,12 +309,12 @@ By default 0.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>[mats</strong><span class="classifier">ndarray (PM(M-1),)</span></dt><dd><p>Which transition matrix, in a <em class="xref py py-obj">(P,M,M)</em> array of matrices?
+<dt><strong>[mats</strong><span class="classifier">np.ndarray (PM(M-1),)</span></dt><dd><p>Which transition matrix, in a <em class="xref py py-obj">(P,M,M)</em> array of matrices?
 Not returned if <em class="xref py py-obj">drn</em> is an <em class="xref py py-obj">int</em>.]</p>
 </dd>
-<dt><strong>rows</strong><span class="classifier">ndarray (PM(M-1),)</span></dt><dd><p>Vector of row indices of nonzero off-diagonal elements.</p>
+<dt><strong>rows</strong><span class="classifier">np.ndarray (PM(M-1),)</span></dt><dd><p>Vector of row indices of nonzero off-diagonal elements.</p>
 </dd>
-<dt><strong>cols</strong><span class="classifier">ndarray (PM(M-1),)</span></dt><dd><p>Vector of column indices of nonzero off-diagonal elements in order:
+<dt><strong>cols</strong><span class="classifier">np.ndarray (PM(M-1),)</span></dt><dd><p>Vector of column indices of nonzero off-diagonal elements in order:
 mat_01, mat_02, …, mat_0n-1, mat10, mat_12, …, mat_n-1,n-2.</p>
 </dd>
 </dl>
@@ -353,7 +353,7 @@ By default 0.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>inds</strong><span class="classifier">ndarray (k,), k in (M(M-1), 2(M-1), 2M, 2)</span></dt><dd><p>Indices of independent elements. For the order, see docs for <em class="xref py py-obj">*_inds</em>.</p>
+<dt><strong>inds</strong><span class="classifier">np.ndarray (k,), k in (M(M-1), 2(M-1), 2M, 2)</span></dt><dd><p>Indices of independent elements. For the order, see docs for <em class="xref py py-obj">*_inds</em>.</p>
 </dd>
 </dl>
 </dd>
@@ -391,12 +391,12 @@ By default 0.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>[mats</strong><span class="classifier">ndarray (PQ,)</span></dt><dd><p>Which transition matrix, in a <em class="xref py py-obj">(P,M,M)</em> array of matrices?
+<dt><strong>[mats</strong><span class="classifier">np.ndarray (PQ,)</span></dt><dd><p>Which transition matrix, in a <em class="xref py py-obj">(P,M,M)</em> array of matrices?
 Not returned if <em class="xref py py-obj">drn</em> is an <em class="xref py py-obj">int</em>.]</p>
 </dd>
-<dt><strong>rows</strong><span class="classifier">ndarray</span></dt><dd><p>Vector of row indices of nonzero off-diagonal elements.</p>
+<dt><strong>rows</strong><span class="classifier">np.ndarray</span></dt><dd><p>Vector of row indices of nonzero off-diagonal elements.</p>
 </dd>
-<dt><strong>cols</strong><span class="classifier">ndarray</span></dt><dd><p>Vector of column indices of nonzero off-diagonal elements.</p>
+<dt><strong>cols</strong><span class="classifier">np.ndarray</span></dt><dd><p>Vector of column indices of nonzero off-diagonal elements.</p>
 </dd>
 <dt>For the order, see docs for <em class="xref py py-obj">*_subs</em>.</dt><dd></dd>
 </dl>
@@ -429,7 +429,7 @@ By default 0.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>inds</strong><span class="classifier">ndarray (2M,)</span></dt><dd><p>Vector of ravel indices of nonzero off-diagonal elements, in order:
+<dt><strong>inds</strong><span class="classifier">np.ndarray (2M,)</span></dt><dd><p>Vector of ravel indices of nonzero off-diagonal elements, in order:
 mat_01, mat_12, …, mat_n-2,n-1, mat_n-1,0,
 mat_0,n-1, mat_10, mat_21, …, mat_n-1,n-2.</p>
 </dd>
@@ -463,12 +463,12 @@ By default 0.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>[mats</strong><span class="classifier">ndarray (2PM,)</span></dt><dd><p>Which transition matrix, in a <em class="xref py py-obj">(P,M,M)</em> array of matrices?
+<dt><strong>[mats</strong><span class="classifier">np.ndarray (2PM,)</span></dt><dd><p>Which transition matrix, in a <em class="xref py py-obj">(P,M,M)</em> array of matrices?
 Not returned if <em class="xref py py-obj">drn</em> is an <em class="xref py py-obj">int</em>.]</p>
 </dd>
-<dt><strong>rows</strong><span class="classifier">ndarray (2PM,)</span></dt><dd><p>Vector of row indices of nonzero off-diagonal elements.</p>
+<dt><strong>rows</strong><span class="classifier">np.ndarray (2PM,)</span></dt><dd><p>Vector of row indices of nonzero off-diagonal elements.</p>
 </dd>
-<dt><strong>cols</strong><span class="classifier">ndarray (2PM,)</span></dt><dd><p>Vector of column indices of nonzero off-diagonal elements in order:
+<dt><strong>cols</strong><span class="classifier">np.ndarray (2PM,)</span></dt><dd><p>Vector of column indices of nonzero off-diagonal elements in order:
 mat_01, mat_12, …, mat_n-2,n-1, mat_n-1,0,
 mat_0,n-1, mat_10, mat_21, …, mat_n-1,n-2.</p>
 </dd>
@@ -502,7 +502,7 @@ By default 0.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>inds</strong><span class="classifier">ndarray (2(M-1),)</span></dt><dd><p>Vector of ravel indices of nonzero off-diagonal elements, in order:
+<dt><strong>inds</strong><span class="classifier">np.ndarray (2(M-1),)</span></dt><dd><p>Vector of ravel indices of nonzero off-diagonal elements, in order:
 mat_01, mat_12, …, mat_n-2,n-1,
 mat_10, mat_21, …, mat_n-1,n-2.</p>
 </dd>
@@ -536,12 +536,12 @@ By default 0.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>[mats</strong><span class="classifier">ndarray (2P(M-1),)</span></dt><dd><p>Which transition matrix, in a <em class="xref py py-obj">(P,M,M)</em> array of matrices?
+<dt><strong>[mats</strong><span class="classifier">np.ndarray (2P(M-1),)</span></dt><dd><p>Which transition matrix, in a <em class="xref py py-obj">(P,M,M)</em> array of matrices?
 Not returned if <em class="xref py py-obj">drn</em> is an <em class="xref py py-obj">int</em>.]</p>
 </dd>
-<dt><strong>rows</strong><span class="classifier">ndarray (2P(M-1),)</span></dt><dd><p>Vector of row indices of nonzero off-diagonal elements.</p>
+<dt><strong>rows</strong><span class="classifier">np.ndarray (2P(M-1),)</span></dt><dd><p>Vector of row indices of nonzero off-diagonal elements.</p>
 </dd>
-<dt><strong>cols</strong><span class="classifier">ndarray (2P(M-1),)</span></dt><dd><p>Vector of column indices of nonzero off-diagonal elements in order:
+<dt><strong>cols</strong><span class="classifier">np.ndarray (2P(M-1),)</span></dt><dd><p>Vector of column indices of nonzero off-diagonal elements in order:
 mat_01, mat_12, …, mat_n-2,n-1,
 mat_10, mat_21, …, mat_n-1,n-2.</p>
 </dd>
@@ -660,6 +660,9 @@ mat_10, mat_21, …, mat_n-1,n-2.</p>
       Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
+      |
+      <a href="../_sources/_autosummary/markov_helpers.markov.indices.rst.txt"
+          rel="nofollow">Page source</a>
     </div>
 
     

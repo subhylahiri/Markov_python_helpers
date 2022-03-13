@@ -43,9 +43,9 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>mat</strong><span class="classifier">ndarray (n,n)</span></dt><dd><p>Continuous time stochastic matrix.</p>
+<dt><strong>mat</strong><span class="classifier">np.ndarray (n,n)</span></dt><dd><p>Continuous time stochastic matrix.</p>
 </dd>
-<dt><strong>param</strong><span class="classifier">ndarray (2,)</span></dt><dd><p>The parameter of the cascade model, needed when taking gradients.
+<dt><strong>param</strong><span class="classifier">np.ndarray (2,)</span></dt><dd><p>The parameter of the cascade model, needed when taking gradients.
 Can be omitted when <em class="xref py py-obj">grad = False</em>.
 Elements should lie across the earlier axis of <em class="xref py py-obj">axes</em>.</p>
 </dd>
@@ -63,7 +63,7 @@ If True, return sum of values in each direction, else, return mean.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>params</strong><span class="classifier">ndarray (2,)</span></dt><dd><p>Vector of parameters, for <em class="xref py py-obj">drn = +/-1</em>.
+<dt><strong>params</strong><span class="classifier">np.ndarray (2,)</span></dt><dd><p>Vector of parameters, for <em class="xref py py-obj">drn = +/-1</em>.
 Elements lie across the earlier axis of <em class="xref py py-obj">axes</em>.</p>
 </dd>
 </dl>
@@ -82,6 +82,14 @@ Elements lie across the earlier axis of <em class="xref py py-obj">axes</em>.</p
 </dl>
 </dd></dl>
 
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+</tbody>
+</table>
 </section>
 
 
@@ -201,6 +209,9 @@ Elements lie across the earlier axis of <em class="xref py py-obj">axes</em>.</p
       Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
+      |
+      <a href="../_sources/_autosummary/markov_helpers.markov.params.std_cascade_mat_to_params.rst.txt"
+          rel="nofollow">Page source</a>
     </div>
 
     
