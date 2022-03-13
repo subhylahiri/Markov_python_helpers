@@ -36,6 +36,7 @@ extensions = [
     "sphinx.ext.mathjax",
     "numpydoc",
     # 'sphinx.ext.napoleon',
+    # 'sphinx.ext.autosummary',
     'sphinx_autodoc_typehints',  # Automatically document param types (less noise in signature)
     'sphinx.ext.githubpages',  # auto create .nojekyll
 ]
@@ -52,9 +53,12 @@ autodoc_type_aliases = {
 }
 autosummary_generate = True
 autosummary_imported_members = True
-autosummary_ignore_module_all = False
+autosummary_ignore_module_all = True
 numpydoc_edit_link = False
 numpydoc_show_class_members = False
+# numpydoc_show_inherited_class_members = False
+# numpydoc_class_members_toctree = False
+# numpydoc_attributes_as_param_list = False
 # numpydoc_xref_param_type = True
 # Mappings for sphinx.ext.intersphinx. Projects have to have Sphinx-generated doc! (.inv file)
 intersphinx_mapping = {
@@ -96,7 +100,7 @@ html_static_path = ['_static']
 html_css_files = [
     'custom.css',
 ]
-html_show_sourcelink = False
+html_show_sourcelink = True
 # html_sidebars = {
 #    '**': ['localtoc.html', 'globaltoc.html', 'relations.html', 'searchbox.html'],
 # }
