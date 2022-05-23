@@ -324,8 +324,8 @@ class GraphAttrs(nx.Graph):
 
     Base class for DiGraph and MultiDiGraph.
 
-    This class provides methods for working with `np.ndarray`s of node/edge
-    attribute: `has_node_attr`, `get_node_attr`, `set_node_attr`,
+    This class provides methods for working with node/edge attributes in a
+    `numpy.ndarray`: `has_node_attr`, `get_node_attr`, `set_node_attr`,
     `has_edge_attr`, `get_edge_attr`, `set_edge_attr`.
     """
 
@@ -371,7 +371,7 @@ class GraphAttrs(nx.Graph):
         ----------
         data : str
             Name of attribute.
-        values : ndarray (N,)
+        values : np.ndarray (N,)
             Value to assign to the attribute for each node.
         """
         for node_dict, value in zip(self.nodes.values(), values):
@@ -419,7 +419,7 @@ class GraphAttrs(nx.Graph):
         ----------
         data : str
             Name of attribute.
-        values : ndarray (E,)
+        values : np.ndarray (E,)
             Value to assign to the attribute for each edge.
         """
         for edge_dict, value in zip(self.edges.values(), values):
@@ -507,8 +507,8 @@ class MultiDiGraph(nx.MultiDiGraph, GraphAttrs):
     """Custom directed multi-graph class that remembers edge order (N,E)
 
     Iterating over edges is done in the order that the edges were first added.
-    It also provides methods for working with `np.ndarray`s of node/edge
-    attribute: `has_node_attr`, `get_node_attr`, `set_node_attr`,
+    It also provides methods for working with node/edge attributes in a
+    `numpy.ndarray`: `has_node_attr`, `get_node_attr`, `set_node_attr`,
     `has_edge_attr`, `get_edge_attr`, `set_edge_attr`.
     """
     edge_order: ty.List[Edge]
@@ -788,9 +788,9 @@ def list_edge_keys(graph: MultiDiGraph, get_inv: bool = False) -> np.ndarray:
 
     Returns
     -------
-    keys : ndarray (K,)
+    keys : np.ndarray (K,)
         Values of keys, in order of first appearance in `graph.edge_key()`.
-    inv : ndarray (E,)
+    inv : np.ndarray (E,)
         Index array: assignments of each edge's keys to each entry of `keys`.
     `graph.edge_key() == keys[inv]`.
     """
