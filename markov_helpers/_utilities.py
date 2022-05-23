@@ -74,32 +74,6 @@ def default_eval(optional: _ty.Optional[Some],
     return optional
 
 
-def eval_or_default(optional: _ty.Optional[Some],
-                    non_default_fn: _ty.Callable[[Some], Other],
-                    default_value: Other, *args, **kwds) -> Other:
-    """Evaluate function on optional if it is not None
-
-    Parameters
-    ----------
-    optional : Some or None
-        The optional argument, where `None` indicates that the default value
-        should be used instead.
-    non_default_fn : Callable[(Some)->Other]
-        Evaluated on `optional`if it is not `None`.
-    default_value : Other
-        Default value for the argument, used when `optional` is `None`.
-
-    Returns
-    -------
-    use_value : Other
-        Either `non_default_fn(optional)`, if `optional` is not `None` or
-        `default_value` if it is.
-    """
-    if optional is None:
-        return default_value
-    return non_default_fn(optional, *args, **kwds)
-
-
 @_ty.overload
 def tuplify(arg: _ty.Iterable[Some], num: int = 1, exclude: Excludable = ()
             ) -> _ty.Tuple[Some, ...]:
@@ -162,7 +136,7 @@ def repeatify(arg, times=None, exclude=()):
     repeated : Iterable[Var]
         Iterable version of `arg`.
     """
-    opt = eval_or_default(times, tuple, ())
+    opt = () if times is None else (times,)
     return arg if _is_iter(arg, exclude) else _it.repeat(arg, *opt)
 
 

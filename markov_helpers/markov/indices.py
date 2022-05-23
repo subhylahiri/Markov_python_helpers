@@ -2,6 +2,20 @@
 
 This package assumes probability distributions are represented by row vectors,
 so :math:`Q_{ij}` is the transition rate from :math:`i` to :math:`j`.
+
+For general topology, the parameters are:
+    :math:`M_{01}, M_{02}, ..., M_{0n-1}, M_{10}, M_{12}, ..., M_{n-2,n-1}.`
+
+For a serial topology:
+    :math:`M_{01}, M_{12}, ..., M_{n-2,n-1},`
+    :math:`M_{10}, M_{21}, ..., M_{n-1,n-2}.`
+
+For a ring topology:
+    :math:`M_{01}, M_{12}, ..., M_{n-2,n-1}, M_{n-1,0},`
+    :math:`M_{0,n-1}, M_{10}, M_{21}, ..., M_{n-1,n-2}.`
+
+If `drn` is positive/negative, we only consider the upper/lower triangle.
+If `drn == 0`, we consider both.
 """
 from __future__ import annotations
 

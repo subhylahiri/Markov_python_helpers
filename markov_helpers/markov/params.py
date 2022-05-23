@@ -1,14 +1,19 @@
 # -*- coding: utf-8 -*-
 """Tools for parameterising Markov processes
 
+This package assumes probability distributions are represented by row vectors,
+so :math:`Q_{ij}` is the transition rate from :math:`i` to :math:`j`.
+
 For general topology, the parameters are:
-    mat_01, mat_02, ..., mat_0n-1, mat_10, mat_12, ..., mat_n-2,n-1.
+    :math:`M_{01}, M_{02}, ..., M_{0n-1}, M_{10}, M_{12}, ..., M_{n-2,n-1}.`
+
 For a serial topology:
-    mat_01, mat_12, ..., mat_n-2,n-1,
-    mat_10, mat_21, ..., mat_n-1,n-2.
+    :math:`M_{01}, M_{12}, ..., M_{n-2,n-1},`
+    :math:`M_{10}, M_{21}, ..., M_{n-1,n-2}.`
+
 For a ring topology:
-    mat_01, mat_12, ..., mat_n-2,n-1, mat_n-1,0,
-    mat_0,n-1, mat_10, mat_21, ..., mat_n-1,n-2.
+    :math:`M_{01}, M_{12}, ..., M_{n-2,n-1}, M_{n-1,0},`
+    :math:`M_{0,n-1}, M_{10}, M_{21}, ..., M_{n-1,n-2}.`
 
 If `drn` is positive/negative, we only consider the upper/lower triangle.
 If `drn == 0`, we consider both.
@@ -16,9 +21,6 @@ If `drn == 0`, we consider both.
 When `uniform`, we assume that all non-zero elements in the upper/lower
 triangle are equal. When extracting `uniform` parameters we average them,
 unless `grad` is `True` when we take the sum.
-
-This package assumes probability distributions are represented by row vectors,
-so :math:`Q_{ij}` is the transition rate from :math:`i` to :math:`j`.
 """
 from __future__ import annotations
 
